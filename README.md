@@ -100,6 +100,17 @@ Versión 1.0
 > - El total de estas horas, contando con que cada miembro del equipo trabajará diariamente unas dos/tres horas tendremos un total de más o menos 20 horas a la semana por lo que el total de horas del proyecto serán 240 horas por miembro del equipo.
 
 
+> ## 4. Mecánicas de Juego y Elementos de Juego
+> ##### 4.1 Descripción detallada del concepto de juego
+> - El juego es un plataformas en dos dimensiones multijugador cooperativo. Al iniciar el juego el usuario se encontrará en el menú principal, donde podrá configurar ciertos aspectos del mismo, al mismo tiempo que se podrá acceder a la pantalla de créditos y empezar a jugar. La parte jugable consistirá en un número de niveles a cada cuál más difícil, los cuales se tendrán que superar en pareja avanzando a lo largo del nivel resolviendo puzzles cuya dificultad irá aumentando en función del nivel. Si uno de los dos jugadores muere se reinicia el nivel hasta que los dos lo hagan bien. Al acabar el nivel o ciertos puzzles se adjudicarán recompensas que se podrán canjear por ventajas para poder superar los niveles más fácilmente o para comprar skins. Se pueden rejugar los niveles las veces que se quiera.
+> ##### 4.2 Descripción detallada de las mecánicas de juego
+> - Las mecánicas de movimiento consisten en moverse a la izquierda y a la derecha y saltar. Además el jugador deberá interactuar con los elementos de los puzzles empujando bloques, activando palancas, apoyándose en el otro jugador, subiendo y bajando plataformas. Se añadirán más a lo largo que se vaya aumentando el número de puzzles.
+> ##### 4.3 Controles
+> - Movimiento hacia la derecha (D), movimiento hacia la izquierda (A), salto (S), activar palancas/botones (S). Por los menús se podrá navegar tanto con el ratón como con las flechas.
+> ##### 4.4 Niveles y misiones
+> ##### 4.5 Objetos, armas y power ups
+
+
 
 
 
