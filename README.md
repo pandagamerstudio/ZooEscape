@@ -89,6 +89,18 @@ Versión 1.0
 >   - Paquete de 10 monedas → 11´99$
 
 
+> ## 3. Planificación y Costes
+> ###### 3.1 El equipo humano
+> ###### 3.2 Estimación temporal del desarrollo
+> - Sabiendo que es un proyecto bastante grande tendrá una gran cantidad de trabajo por lo que la carga del mismo será bastante. 
+> - El tiempo total, el cual se empleará en el desarrollo del proyecto será de unas 12 semanas. Estas se empezarán a contar a partir del 04/10/2021 y llegarán hasta el día 21/12/2021 donde se presentará el proyecto final.
+
+> ###### 3.3 Costes asociados
+> - Al no tener experiencia previa en un proyecto de tal calibre, los costes adicionales se contarán en horas de trabajo del equipo.
+> - El total de estas horas, contando con que cada miembro del equipo trabajará diariamente unas dos/tres horas tendremos un total de más o menos 20 horas a la semana por lo que el total de horas del proyecto serán 240 horas por miembro del equipo.
+
+
+
 
 
 
