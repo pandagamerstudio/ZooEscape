@@ -62,6 +62,34 @@ Versión 1.0
 > - El propósito principal del juego es divertir a los jugadores y hacerles pasar un buen rato con sus amigos, familiares…
 > - Nuestro público objetivo o el nicho en el que nos queremos centrar será  un público más joven, ya que están más acostumbrados a juegos en navegadores web, y que les guste pasar el tiempo con sus amigos jugando. Este sería nuestro nicho principal aunque no descartamos llegar a otros grupos de la sociedad, ya que al fin y al cabo lo que buscamos es conseguir el mayor número de jugadores.
 
+> ## 2. Monetización
+> ##### 2.1 Tipo de modelo de monetización
+> - Primer modelo:
+>   - El tipo de monetización usada será F2P, debido a los siguientes motivos:
+>     - El objetivo del producto es darnos a conocer, por ello con una monetización facilitamos su división y llegar a más público.
+>     - Es un juego que se subirá a itchi.io donde los juegos son gratis siempre
+>     - La cantidad de contenido ofrecida por el juego se ajusta a la de un F2P.
+>   - Pero para generar ingresos dentro de los F2P la opción más adecuada es FREEMIUM.
+>     - Poder comprar nuevas zonas con puzzles de distintas temáticas.
+>     - Apariencias exclusivas
+>     - Posibilidad de comprar “pistas” que nos ayudan a resolver los diferentes puzzles.
+>     - Poder comprar potenciadores, por ejemplo uno que nos dé más tiempo para resolver los puzzles
+> - Segundo modelo:
+>   - A la hora de intentar superar los niveles, existirán un número limitado de vidas. Cuando no consigues superar un nivel, se perderá una vida y cuando pierdas todas las vidas tendrás que esperar un tiempo o de lo contrario pagar monedas del juego para comprar vidas. ¿Cómo se consiguen estas vidas?
+>     - La primera opción que se pueden encontrar los jugadores es que al pasarse otros niveles se les otorgarán una serie de monedas, las cuáles podrán utilizar para comprar nuevas vidas.
+>     -  Si algún jugador no tiene monedas ya y quiere seguir jugando, la opción alternativa que tendrá es ver un vídeo el cual le otorgará una moneda gratuita. El número de vídeos estará limitado.
+>     -  Si algún jugador no tiene monedas ya, no le quedan vídeos y quiere seguir jugando, la opción alternativa que tendrá es realizar una micro transacción para comprar monedas del juego con dinero real para poder seguir jugando.
+
+ 
+
+> ##### 2.2 Tablas de productos y precios
+> - La tabla de productos que tendremos en nuestro juego será bastante limitada ya que únicamente se podrán encontrar monedas.
+>   - Paquete de 3 monedas → 3´99$
+>   - Paquete de 6 monedas → 7´5$
+>   - Paquete de 10 monedas → 11´99$
+
+
+
 
 
 
