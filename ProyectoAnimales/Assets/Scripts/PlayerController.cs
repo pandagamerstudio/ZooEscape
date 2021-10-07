@@ -1,53 +1,55 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerController : MonoBehaviourPun
+public class PlayerMove : MonoBehaviourPun
 {
 
     [HideInInspector]
     public int id;
 
-    [Header("Info")]
-    public float moveSpeed;
+    public float runSpeed = 2f;
+    public float jumpSpeed = 3f;
+    Rigidbody2D rb2D;
 
-    [Header("Components")]
-    public Rigidbody2D rig;
     public Player photonPlayer;
     public SpriteRenderer sr;
     public Animator anim;
-    
-    public static PlayerController me;
 
+    public static PlayerMove me;
+    
     void Awake(){
-        rig = this.GetComponent<Rigidbody2D>();
+        rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
     }
 
-    void Update(){
+    // Update is called once per frame
+    void FixedUpdate()
+    {
         if (!photonView.IsMine)
             return;
-
-        Move();
-    }
-
-    void Move(){
-        float x = Input.GetAxis("Horizontal");
-
-        if (x != 0)
-            anim.SetBool("Walk", true);
+    
+        Debug.Log(CheckGround.isGrounded);
+        if(Input.GetKey("d") || Input.GetKey("right"))
+        {
+            rb2D.velocity = new Vector2(runSpeed, rb2D.velocity.y);
+        }
+        else if (Input.GetKey("a") || Input.GetKey("left"))
+        {
+            rb2D.velocity = new Vector2(-runSpeed, rb2D.velocity.y);
+        }
         else
-            anim.SetBool("Walk", false);
+        {
+            rb2D.velocity = new Vector2(0, rb2D.velocity.y);
+        }
 
-        if (x > 0)
-            transform.localScale = new Vector3(3,3,1);
-        else if (x < 0)
-            transform.localScale = new Vector3(-3,3,1);
-
-        rig.velocity = new Vector2(x,0) * moveSpeed;
+        if((Input.GetKey("w") || Input.GetKey("up")) && CheckGround.isGrounded)
+        {
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+        }
     }
 
     [PunRPC]
@@ -55,12 +57,6 @@ public class PlayerController : MonoBehaviourPun
         id = player.ActorNumber;
         photonPlayer = player;
 
-        GameManager.instance.players[id - 1] = this;
+        //GameManager.instance.players[id - 1] = this;
     }
-
-    [PunRPC]
-    public void TakeDamage(int damage){
-
-    }
-    
 }
