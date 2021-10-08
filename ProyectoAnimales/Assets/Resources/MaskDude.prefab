@@ -243,6 +243,11 @@ MonoBehaviour:
   id: 0
   runSpeed: 2
   jumpSpeed: 3
+  doubleJumpSpeed: 2.5
+  canDoubleJump: 0
+  superJump: 0
+  lowJumpMultiplier: 1
+  fallMultiplier: 0.5
   sr: {fileID: 0}
   anim: {fileID: 0}
 --- !u!114 &2343128798855106546
