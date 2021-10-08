@@ -114,7 +114,38 @@ Versión 1.0
 > - No hay ningún arma como tal pero en el caso de que en el futuro se añadan enemigos se podrá acabar con ellos saltándoles encima.
 > - En principio no habrá power ups como tal sino tips para poder pasar el nivel más fácilmente o un aumento de tiempo, etc.
 
+> ## 5. Trasfondo
+> ##### 5.1 Descripción detallada de la historia y la trama
+> ##### 5.2 Personajes
+> - Al ser un videojuego cuyo argumento es la huída de unos animales de un zoo, los personajes serán los animales de dicho zoo. 
+> - El juego contará con 6 animales entre los que podrán elegir los jugadores: un oso panda, un oso pardo, un oso polar, un león, un tigre y un elefante.
+> - Todos los personajes funcionarán del mismo modo: mismas mecánicas, atributos y funcionalidades. El único propósito de tener más de un tipo de animal es dotar al juego de mayor diversidad y jugabilidad, al permitir a los jugadores elegir el avatar con el que van a jugar.
+> - El permitir a los jugadores elegir su avatar hace que el juego resulte automáticamente más atractivo, pues les da la opción de personalizar (dentro de las opciones disponibles) su experiencia de juego.
+> ##### 5.3 Entornos y lugares
+> - El escenario principal del juego será el Zoo.
+> - Como el argumento es que los animales quieren escapar de éste, los niveles representarán la huida de las jaulas y otros espacios del zoo.
 
+> ## 6. Arte
+> #### 6.1 Estética general del juego
+> - La estética general del juego será cartoon 2D.
+> - Queremos gráficos claros y sencillos, con figuras simples y paleta de colores vistosa.
+> - No queremos sobrecargar al jugador con demasiada información visual. Es más, queremos conseguir lo contrario. Los niveles serán fáciles y rápidos de entender, pudiendo identificar a la primera al personaje, las plataformas y los items importantes. 
+> - Queremos que el jugador pueda leer el nivel entero con gran facilidad, para que sea más agradable y tranquilo de jugar, y pueda centrarse en resolver los puzles en lugar de perder el tiempo ubicándose en la pantalla. La intención es que un jugador pueda concentrarse al máximo posible en el juego y pueda dedicarse a resolver el nivel a su máximo potencial, sin distracciones visuales en el nivel.
+> - En general los niveles no tendrán muchos elementos visuales. Cuantos menos elementos tengan, menos se distraerán los jugadores.
+> - Sin embargo, la paleta de colores de los niveles y el estilo de dibujo serán llamativos y vistosos, pues que el estilo sea sencillo no significa que tenga que ser soso o feo. Queremos que el juego sea bonito y agradable, y que los jugadores disfruten del contenido artístico y visual.
+> #### 6.2 Apartado visual
+> - En principio todos los elementos visuales como los escenarios, o las plataformas, o los sprites de los personajes van a ser dibujados por nosotros. 
+> - Del mismo modo, los menús e interfaces también serán diseñados y dibujados por nosotros.
+> - Tal y como se indicaba en el apartado anterior, el estilo del juego será cartoon 2D. Para que sea agradable y tenga un estilo más o menos unificado, vamos a utilizar un estilo kawaii con una paleta de colores pastel.
+> - Los animales (que serán los avatares de los jugadores) serán de formas redondeadas y suaves, con ojos grandes y aspecto inofensivo.
+> - Los elementos del nivel - las plataformas, o las cajas que hay que empujar, o los botones que hay que pulsar - también tendrán una base de formas circulares y suaves, sin picos ni esquinas ni trazos bruscos. 
+> - La interfaz y los menús tendrán un estilo similar, pues queremos que el juego posea una estética común y unificada. Los botones tendrán las esquinas redondeadas, y la fuente de los textos será de estilo cartoon, tirando más a adorable y divertida que a elegante. Además, mantendrán la paleta de colores.
+> #### 6.3 Música
+> #### 6.4 Ambiente sonoro
+
+> ## 7. Interfaz
+> #### 7.1 Diseños básicos de los menús
+> #### 7.2 Diagrama de flujo
 
 
 
