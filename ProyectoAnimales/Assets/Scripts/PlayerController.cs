@@ -14,6 +14,13 @@ public class PlayerController : MonoBehaviourPun
     public float jumpSpeed = 3f;
     Rigidbody2D rb2D;
 
+    public float doubleJumpSpeed = 2.5f;
+    public bool canDoubleJump = false;
+    
+    public bool superJump = false;
+    public float lowJumpMultiplier = 1f;
+    public float fallMultiplier = 0.5f;
+
     public Player photonPlayer;
     public SpriteRenderer sr;
     public Animator anim;
@@ -24,6 +31,30 @@ public class PlayerController : MonoBehaviourPun
         rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        if ((Input.GetKey("w") || Input.GetKey("up")))
+        {
+            if (CheckGround.isGrounded)
+            {
+                canDoubleJump = true;
+                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+            }
+            else
+            {
+                if ((Input.GetKeyDown("w") || Input.GetKeyDown("up")))
+                {
+                    if (canDoubleJump)
+                    {
+                        rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
+                        canDoubleJump = false;
+                    }
+                }
+            }
+
+        }
     }
 
     // Update is called once per frame
@@ -49,6 +80,18 @@ public class PlayerController : MonoBehaviourPun
         if((Input.GetKey("w") || Input.GetKey("up")) && CheckGround.isGrounded)
         {
             rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+        }
+
+        if (superJump)
+        {
+            if (rb2D.velocity.y < 0)
+            {
+                rb2D.velocity = Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
+            }
+            if (rb2D.velocity.y > 0 && !Input.GetKey("w"))
+            {
+                rb2D.velocity = Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+            }
         }
     }
 
