@@ -106,9 +106,14 @@ Versión 1.0
 > ##### 4.2 Descripción detallada de las mecánicas de juego
 > - Las mecánicas de movimiento consisten en moverse a la izquierda y a la derecha y saltar. Además el jugador deberá interactuar con los elementos de los puzzles empujando bloques, activando palancas, apoyándose en el otro jugador, subiendo y bajando plataformas. Se añadirán más a lo largo que se vaya aumentando el número de puzzles.
 > ##### 4.3 Controles
-> - Movimiento hacia la derecha (D), movimiento hacia la izquierda (A), salto (S), activar palancas/botones (S). Por los menús se podrá navegar tanto con el ratón como con las flechas.
+> - Movimiento hacia la derecha (D), movimiento hacia la izquierda (A), salto (S), activar palancas/botones (S). Cuando se juegue en móvil aparecerán de izquierda, derecha y  arriba para el movimiento y otro botón para interactuar con palancas/botones. Por los menús se podrá navegar tanto con el ratón como con las flechas.
 > ##### 4.4 Niveles y misiones
+>  - La parte jugable consistirá en pasarse un número de niveles concreto cuya dificultad irá aumentando con su número. Los primeros niveles consistirán en enseñar al jugador las mecánicas básicas del juego y ha medida que se vaya avanzando se tendrá que ir mezclando el uso de mecánicas aprendidas para poder pasar el nivel. En principio el número total de niveles a superar será alrededor de quince. En cuanto a las misiones intra niveles no existirán, no obstante se conseguirá una recompensa por pasar cierto puzzle o por superar el nivel.
 > ##### 4.5 Objetos, armas y power ups
+> - Los objetos involucrados en el juego son los obstáculos que tendrán que superar los jugadores o los medios por los que superarlos (cajas que hay que arrastrar, trampas que te matan, palancas que activar, plataformas que se mueven, etc). 
+> - No hay ningún arma como tal pero en el caso de que en el futuro se añadan enemigos se podrá acabar con ellos saltándoles encima.
+> - En principio no habrá power ups como tal sino tips para poder pasar el nivel más fácilmente o un aumento de tiempo, etc.
+
 
 
 
