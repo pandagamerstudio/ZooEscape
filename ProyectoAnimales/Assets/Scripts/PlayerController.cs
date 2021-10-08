@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class PlayerMove : MonoBehaviourPun
+public class PlayerController : MonoBehaviourPun
 {
 
     [HideInInspector]
@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviourPun
     public SpriteRenderer sr;
     public Animator anim;
 
-    public static PlayerMove me;
+    public static PlayerController me;
     
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -57,6 +57,6 @@ public class PlayerMove : MonoBehaviourPun
         id = player.ActorNumber;
         photonPlayer = player;
 
-        //GameManager.instance.players[id - 1] = this;
+        GameManager.instance.players[id - 1] = this;
     }
 }
