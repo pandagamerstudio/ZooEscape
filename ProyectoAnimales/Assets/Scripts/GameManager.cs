@@ -23,9 +23,7 @@ public class GameManager : MonoBehaviourPun
     void Awake(){
         instance = this;
         PlayerPrefabPath = this.playerPrefab.name;
-    }
 
-    void Start(){
         players = new PlayerController[PhotonNetwork.PlayerList.Length];
 
         photonView.RPC("ImInGame", RpcTarget.AllBuffered);

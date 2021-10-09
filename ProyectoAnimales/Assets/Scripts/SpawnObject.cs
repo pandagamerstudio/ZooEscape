@@ -9,18 +9,13 @@ public class SpawnObject : MonoBehaviourPun
     public Transform[] bananaSpawn;
     public GameObject banana;
 
-    private void Awake()
+    private void Start()
     {
-        photonView.RPC("spawnBanana", RpcTarget.AllBuffered);
-    }
-    [PunRPC]
-    private void spawnBanana()
-    {
-        for (int i =0; i< bananaSpawn.Length;i++)
-        {
-            GameObject playerObject = PhotonNetwork.Instantiate(banana.name, bananaSpawn[i].position, Quaternion.identity);
+        if (PhotonNetwork.IsMasterClient){
+            for(int i=0; i < bananaSpawn.Length; i++){
+                PhotonNetwork.Instantiate(banana.name, bananaSpawn[i].position, Quaternion.identity);
+            }
         }
-        
     }
 
 }

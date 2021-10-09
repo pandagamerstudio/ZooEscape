@@ -9,15 +9,24 @@ public class KeyCollect : MonoBehaviourPun
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if(!PhotonNetwork.IsMasterClient)
+            return;
+
         if (collision.CompareTag("Player"))
         {
-            photonView.RPC("RecogerObjeto", RpcTarget.AllBuffered);
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+
+            photonView.RPC("RecogerObjeto", RpcTarget.All);
+
+            PhotonNetwork.Destroy(gameObject);
         }
+
     }
 
     [PunRPC]
     void RecogerObjeto()
     {
-        GetComponent<SpriteRenderer>().enabled = false;
+        //GetComponent<SpriteRenderer>().enabled = false;
     }
 }

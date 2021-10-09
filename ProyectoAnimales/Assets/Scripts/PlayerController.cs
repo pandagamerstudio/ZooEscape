@@ -35,26 +35,7 @@ public class PlayerController : MonoBehaviourPun
 
     private void Update()
     {
-        if ((Input.GetKey("w") || Input.GetKey("up")))
-        {
-            if (CheckGround.isGrounded)
-            {
-                canDoubleJump = true;
-                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
-            }
-            else
-            {
-                if ((Input.GetKeyDown("w") || Input.GetKeyDown("up")))
-                {
-                    if (canDoubleJump)
-                    {
-                        rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
-                        canDoubleJump = false;
-                    }
-                }
-            }
-
-        }
+        
     }
 
     // Update is called once per frame
@@ -77,9 +58,25 @@ public class PlayerController : MonoBehaviourPun
             rb2D.velocity = new Vector2(0, rb2D.velocity.y);
         }
 
-        if((Input.GetKey("w") || Input.GetKey("up")) && CheckGround.isGrounded)
+        if ((Input.GetKey("w") || Input.GetKey("up")))
         {
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+            if (CheckGround.isGrounded)
+            {
+                canDoubleJump = true;
+                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+            }
+            else
+            {
+                if ((Input.GetKeyDown("w") || Input.GetKeyDown("up")))
+                {
+                    if (canDoubleJump)
+                    {
+                        rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
+                        canDoubleJump = false;
+                    }
+                }
+            }
+
         }
 
         if (superJump)
