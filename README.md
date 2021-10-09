@@ -177,6 +177,7 @@ Versión 1.0
 > - Revisar que los servidores funcionen bien.
 > - Compartir en redes sociales para que la gente lo pruebe.
 
+![Captura](https://user-images.githubusercontent.com/37275365/136663284-db444dfb-a42e-435b-958a-c04d4e08f40e.JPG)
 
 
 
