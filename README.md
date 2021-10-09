@@ -135,6 +135,19 @@ Versión 1.0
 > - Queremos que el jugador pueda leer el nivel entero con gran facilidad, para que sea más agradable y tranquilo de jugar, y pueda centrarse en resolver los puzles en lugar de perder el tiempo ubicándose en la pantalla. La intención es que un jugador pueda concentrarse al máximo posible en el juego y pueda dedicarse a resolver el nivel a su máximo potencial, sin distracciones visuales en el nivel.
 > - En general los niveles no tendrán muchos elementos visuales. Cuantos menos elementos tengan, menos se distraerán los jugadores.
 > - Sin embargo, la paleta de colores de los niveles y el estilo de dibujo serán llamativos y vistosos, pues que el estilo sea sencillo no significa que tenga que ser soso o feo. Queremos que el juego sea bonito y agradable, y que los jugadores disfruten del contenido artístico y visual.
+> - Algunos juegos de estéticas parecidas son:
+> ##### - Pico Park
+> ![](https://i.imgur.com/jkJVLDY.jpeg)
+> ##### - The Looper
+> ![](https://i.imgur.com/NWI7Qic.jpg)
+> ##### - Heart Star
+> ![](https://i.imgur.com/RUuxMTr.jpg)
+> ##### - Fireboy & Watergirl
+> ![](https://i.imgur.com/f8HGmrV.png)
+> ##### - Pikuniku
+> ![](https://i.imgur.com/jxSm0Kk.jpg)
+> ##### - Robotry
+> ![](https://i.imgur.com/Ev85jws.jpg)
 > #### 6.2 Apartado visual
 > - En principio todos los elementos visuales como los escenarios, o las plataformas, o los sprites de los personajes van a ser dibujados por nosotros. 
 > - Del mismo modo, los menús e interfaces también serán diseñados y dibujados por nosotros.
@@ -142,6 +155,20 @@ Versión 1.0
 > - Los animales (que serán los avatares de los jugadores) serán de formas redondeadas y suaves, con ojos grandes y aspecto inofensivo.
 > - Los elementos del nivel - las plataformas, o las cajas que hay que empujar, o los botones que hay que pulsar - también tendrán una base de formas circulares y suaves, sin picos ni esquinas ni trazos bruscos. 
 > - La interfaz y los menús tendrán un estilo similar, pues queremos que el juego posea una estética común y unificada. Los botones tendrán las esquinas redondeadas, y la fuente de los textos será de estilo cartoon, tirando más a adorable y divertida que a elegante. Además, mantendrán la paleta de colores.
+> ##### Referencias:
+> ![](https://i.imgur.com/Sr1304u.jpg)
+> https://www.pinterest.es/pin/363525001179177476/
+> 
+> ![](https://i.imgur.com/zcoYgkj.jpg)
+> https://www.pinterest.es/pin/363525001179177450/
+> 
+> ![](https://i.imgur.com/nujvTMR.jpg)
+> https://www.pinterest.es/pin/363525001179177522/
+> 
+> ![](https://i.imgur.com/qnmRkwe.jpg)
+> 
+> https://www.pinterest.es/pin/363525001179177528/
+> 
 > #### 6.3 Música
 > #### 6.4 Ambiente sonoro
 
