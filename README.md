@@ -41,10 +41,12 @@ Versión 1.0
 > ##### 7.2 Diagrama de flujo
 
 > ## 8. Hoja de ruta del desarrollo
-> ##### 8.1 Hito 1
-> ##### 8.2 Hito 2
-> ##### 8.3 Hito 3
-> ##### 8.4 Fecha de lanzamiento
+> ##### 8.1 Semana 1
+> ##### 8.2 Semana 2
+> ##### 8.3 Semanas 3 y 4
+> ##### 8.4 Semanas 5, 6 y 7
+> ##### 8.5 Semanas 8, 9 y 10
+> ##### 8.6 Semana de lanzamiento
 
 
 
@@ -147,7 +149,33 @@ Versión 1.0
 > #### 7.1 Diseños básicos de los menús
 > #### 7.2 Diagrama de flujo
 
-
+> ## 8. Hoja de ruta del desarrollo
+> ##### 8.1 Semana 1
+> - Fecha de inicio: 04/10/2021
+> - Pensar en las mecánicas.
+> - Definir la estética.
+> - Pensar sistemas de monetización.
+> - Desarrollar el GDD 1.0.
+> ##### 8.2 Semana 2
+> - Implementar mecánicas básicas.
+> - Implementar sala online.
+> - (Hito 1)
+> ##### 8.3 Semanas 3 y 4
+> - Mecánicas completas.
+> - Versión Alpha (31/10/2021).
+> - (Hito 2)
+> ##### 8.4 Semanas 5, 6 y 7
+> - Niveles Completos
+> - Versión Beta (21/11/2021).
+> - Pruebas Beta
+> - (Hito 3)
+> ##### 8.5 Semanas 8, 9 y 10
+> - Pulido completo.
+> - Versión Gold Master (12/12/2021).
+> - (Hito 4)
+> ##### 8.6 Semana de lanzamiento
+> - Revisar que los servidores funcionen bien.
+> - Compartir en redes sociales para que la gente lo pruebe.
 
 
 
