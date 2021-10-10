@@ -118,6 +118,7 @@ Versión 1.0
 
 > ## 5. Trasfondo
 > ##### 5.1 Descripción detallada de la historia y la trama
+> - La historia del videojuego está relacionada con los animales del zoo, cuyo objetivo es escapar del mismo en busca de la libertad y por ende la felicidad. En su intento por huir se encontrarán con diversas dificultades como guardias, cerraduras y visitantes del zoo. Los animales por tanto estarán dotados de características más humanas en el videojuego, tendrán sentimientos muy notables y predominará en ellos el ansia por la búsqueda de la libertad fuera de las pequeñas jaulas que les aguardan en el parque. Cada uno de los animales dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común,dando importancia en cada momento a todaslas opiniones de los miembros del equipo por muy dispares que sean. Además, los trabajadores del zoo intentarán a toda costa retener a los animales y evitar que los visitantes del zoo sientan pánico o sean atacados. También habrá diferentes puntos de vista entre los turistas, puesto que alguno no estará tan en contra de la escapada.
 > ##### 5.2 Personajes
 > - Al ser un videojuego cuyo argumento es la huída de unos animales de un zoo, los personajes serán los animales de dicho zoo. 
 > - El juego contará con 6 animales entre los que podrán elegir los jugadores: un oso panda, un oso pardo, un oso polar, un león, un tigre y un elefante.
@@ -170,7 +171,9 @@ Versión 1.0
 > https://www.pinterest.es/pin/363525001179177528/
 > 
 > #### 6.3 Música
+> - La música del videojuego estara en consonancia con el estilo global. Esta va a ser remezclada y producida por nosotros mismos y se buscarán tanto efectos como una banda sonora propia del videojuego con melodía agradable y alegre representando la búsqueda de la felicidad de los personajes dentro del juego, contando con algún patrón de incertidumbre variando los instrumentos generales y con tonos graves que aporten dramatización a la melodía cuya característica principal será que aporte felicidad con ritmos suaves y de intensidad moderada y cambios puntuales.
 > #### 6.4 Ambiente sonoro
+> - El ambiente sonoro dentro de la partida estará ligado con la banda sonora principal del juego pero de una forma mucho más suave y menos dominante durante el gameplay. No es intención que el aspecto sonoro pueda llegar a molestar o no sea agradable a la hora de jugar por lo que la melodía será ligera y no demasiado notable, con ritmos lentos pero variantes dependiendo del nivel, por lo general tonos suaves y alegres, pero con cambios en determinados momentos de peligro o tensión.
 
 > ## 7. Interfaz
 > #### 7.1 Diseños básicos de los menús
