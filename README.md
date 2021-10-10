@@ -178,8 +178,24 @@ Versión 1.0
 
 > ## 7. Interfaz
 > #### 7.1 Diseños básicos de los menús
-> #### 7.2 Diagrama de flujo
+> ##### Menu Inicio
+>![](https://media.discordapp.net/attachments/658480479015534651/896798197882695750/menuinicio.png?width=993&height=702)
+> ##### Niveles
+>![](https://media.discordapp.net/attachments/658480479015534651/896798200894226453/menuniveles.png?width=993&height=702)
+> ##### Interfaz
+>![](https://media.discordapp.net/attachments/658480479015534651/896798195168985138/interfaz.png?width=993&height=702)
+> ##### Opciones
+>![](https://media.discordapp.net/attachments/658480479015534651/896798201686949918/menuopciones.png?width=993&height=702)
+> ##### Pausa
+>![](https://media.discordapp.net/attachments/658480479015534651/896798191549308938/menupausa.png?width=993&height=702)
+> ##### GameOver
+>![](https://media.discordapp.net/attachments/658480479015534651/896798196897050714/menugameover.png?width=993&height=702)
+> ##### Creditos
+>![](https://media.discordapp.net/attachments/658480479015534651/896798193126375484/creditos.png?width=993&height=702)
 
+> #### 7.2 Diagrama de flujo
+>![](https://media.discordapp.net/attachments/658480479015534651/896798194749571092/diagrama.png?width=993&height=702)
+>
 > ## 8. Hoja de ruta del desarrollo
 > ##### 8.1 Semana 1
 > - Fecha de inicio: 04/10/2021
