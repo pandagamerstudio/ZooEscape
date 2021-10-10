@@ -178,24 +178,32 @@ Versión 1.0
 
 > ## 7. Interfaz
 > #### 7.1 Diseños básicos de los menús
-> ##### Menu Inicio
+> ##### - Menu Inicio:
+> El menú de inicio del juego tendrá el título en grande en la parte superior de la pantalla, y 4 botones debajo de éste: jugar, opciones, créditos (o contactar) y salir del juego. Tal y como se indicaba anteriormente, los botones tendrán las esquinas redondeadas y serán de colores pastel, siguiendo la paleta de colores ya decidida. 
 >![](https://media.discordapp.net/attachments/658480479015534651/896798197882695750/menuinicio.png?width=993&height=702)
-> ##### Niveles
+> ##### - Niveles:
+> El menú de niveles se dividirá en tantas pantallas como sean necesarias. Si tenemos 8 niveles, tendríamos solo una. Si tenemos 16, tendríamos dos y nos desplazaríamos de una a otra con las flechas que aparecerían en los laterales. Con el botón de 'return' podríamos volver al menú de inicio.
 >![](https://media.discordapp.net/attachments/658480479015534651/896798200894226453/menuniveles.png?width=993&height=702)
-> ##### Interfaz
+> ##### - Interfaz:
+> La interfaz de nuestro juego es muy sencilla. Los jugadores no tienen vida, ni energía ni items, por lo que lo único que se podría ver en la interfaz sería el temporizador (en los niveles que tengan cuenta atrás), el nivel en el que se encuentra el jugador (para facilitar que el jugador se ubique en el juego y que pueda seguir su progreso) y el icono de pausa (útil sobre todo para el móvil).
 >![](https://media.discordapp.net/attachments/658480479015534651/896798195168985138/interfaz.png?width=993&height=702)
-> ##### Opciones
+> ##### - Opciones:
+> El menú de opciones le dará la opción al jugador de subir/bajar el volumen y los efectos especiales del juego. Además podrán acceder a 'controles' para ver o recordar los controles del juego. El botón de 'Quit' te devolverá al menú de inicio o de pausa, dependiendo desde cuál de los dos has accedido a 'opciones'.
 >![](https://media.discordapp.net/attachments/658480479015534651/896798201686949918/menuopciones.png?width=993&height=702)
-> ##### Pausa
+> ##### - Pausa:
+> El menú de pausa le dará al jugador la opción de volver al juego, reiniciar el nivel actual, ir al menú de opciones, salir al menú de niveles o salir al menú principal. Le permitimos al jugador volver al menú de niveles para que el juego sea más dinámico y fácil de navegar.
 >![](https://media.discordapp.net/attachments/658480479015534651/896798191549308938/menupausa.png?width=993&height=702)
-> ##### GameOver
+> ##### - GameOver:
+> Cuando mueres, en lugar de ir a una pantalla que te indique que has muerto, queremos hacer algo más dinámico. En lugar de poner "GameOver", aparece el dibujo del panda y un fondo (de algún color de la paleta) que se reduce en forma de circulo hasta llegar al panda y ocultarse en él. Cuando la animación (que será muy rápida) termina, el nivel se ha vuelto a reiniciar.
 >![](https://media.discordapp.net/attachments/658480479015534651/896798196897050714/menugameover.png?width=993&height=702)
-> ##### Creditos
+> ##### - Creditos:
+> En esta pantalla pondríamos los nombres del equipo, el rol que han llevado a cabo y una forma de contactar con nosotros. 
 >![](https://media.discordapp.net/attachments/658480479015534651/896798193126375484/creditos.png?width=993&height=702)
 
 > #### 7.2 Diagrama de flujo
 >![](https://media.discordapp.net/attachments/658480479015534651/896798194749571092/diagrama.png?width=993&height=702)
->
+>Las flechas indican desde que pantallas o botones se llega a cuales otras pantallas. Esto nos facilitará programar la navegación del juego.
+
 > ## 8. Hoja de ruta del desarrollo
 > ##### 8.1 Semana 1
 > - Fecha de inicio: 04/10/2021
