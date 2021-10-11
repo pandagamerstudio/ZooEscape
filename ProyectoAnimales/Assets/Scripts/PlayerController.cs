@@ -73,6 +73,7 @@ public class PlayerController : MonoBehaviourPun
                     {
                         rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
                         canDoubleJump = false;
+                        return;
                     }
                 }
             }
@@ -81,13 +82,9 @@ public class PlayerController : MonoBehaviourPun
 
         if (superJump)
         {
-            if (rb2D.velocity.y < 0)
-            {
-                rb2D.velocity = Vector2.up * Physics2D.gravity.y * (fallMultiplier) * Time.deltaTime;
-            }
             if (rb2D.velocity.y > 0 && !Input.GetKey("w"))
             {
-                rb2D.velocity = Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier) * Time.deltaTime;
+                rb2D.velocity = new Vector2 (rb2D.velocity.x,Physics2D.gravity.y * Time.deltaTime);
             }
         }
     }
