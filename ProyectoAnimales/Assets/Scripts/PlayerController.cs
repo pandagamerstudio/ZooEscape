@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviourPun
 {
@@ -13,7 +14,7 @@ public class PlayerController : MonoBehaviourPun
     public float runSpeed = 2f;
     public float jumpSpeed = 3f;
     Rigidbody2D rb2D;
-   public CheckGround cg;
+    public CheckGround cg;
 
     public float doubleJumpSpeed = 2.5f;
 
@@ -26,8 +27,11 @@ public class PlayerController : MonoBehaviourPun
     public Player photonPlayer;
     public SpriteRenderer sr;
     public Animator anim;
+    Vector2 ad;
+    bool Salto;
 
     public static PlayerController me;
+   
     
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -36,41 +40,39 @@ public class PlayerController : MonoBehaviourPun
         cg = this.GetComponentInChildren<CheckGround>();
     }
 
-    private void Update()
-    {
+    public void Movimiento(InputAction.CallbackContext callback) {
+        ad = callback.ReadValue<Vector2>();
         
     }
+    public void salto(InputAction.CallbackContext callback)
+    {
+        Salto = callback.ReadValue<bool>();
+
+    }
+
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (!photonView.IsMine)
             return;
     
         Debug.Log(cg.isGrounded);
-        if(Input.GetKey("d") || Input.GetKey("right"))
-        {
-            rb2D.velocity = new Vector2(runSpeed, rb2D.velocity.y);
-        }
-        else if (Input.GetKey("a") || Input.GetKey("left"))
-        {
-            rb2D.velocity = new Vector2(-runSpeed, rb2D.velocity.y);
-        }
-        else
-        {
-            rb2D.velocity = new Vector2(0, rb2D.velocity.y);
-        }
+        
+        rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
+        
+     
 
-        if ((Input.GetKey("w") || Input.GetKey("up")))
+        if (Salto)
         {
             if (cg.isGrounded)
             {
                 canDoubleJump = true;
-                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed );
             }
             else
             {
-                if ((Input.GetKeyDown("w") || Input.GetKeyDown("up")))
+                if (Salto)
                 {
                     if (canDoubleJump)
                     {
@@ -85,9 +87,9 @@ public class PlayerController : MonoBehaviourPun
 
         if (superJump)
         {
-            if (rb2D.velocity.y > 0 && !Input.GetKey("w"))
+            if (rb2D.velocity.y > 0 && !Salto)
             {
-                rb2D.velocity = new Vector2 (rb2D.velocity.x,Physics2D.gravity.y * Time.deltaTime);
+                rb2D.velocity = new Vector2 (rb2D.velocity.x,Physics2D.gravity.y);
             }
         }
     }

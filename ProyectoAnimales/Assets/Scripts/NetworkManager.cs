@@ -19,6 +19,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        PhotonNetwork.AutomaticallySyncScene = true;
     }
 
     void Start(){
@@ -51,8 +53,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void JoinRoom(string roomName){
         PhotonNetwork.JoinRoom(roomName);
     }
-
-    [PunRPC]
+    
+   // [PunRPC]
     public void ChangeScene(string sceneName){
         PhotonNetwork.LoadLevel(sceneName);
     }
