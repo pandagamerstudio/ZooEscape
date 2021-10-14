@@ -5,7 +5,8 @@ using UnityEngine;
 public class CheckGround : MonoBehaviour
 {
     [SerializeField]
-    public static bool isGrounded;
+    public bool isGrounded;
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

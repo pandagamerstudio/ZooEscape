@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviourPun
     public float runSpeed = 2f;
     public float jumpSpeed = 3f;
     Rigidbody2D rb2D;
+   public CheckGround cg;
 
     public float doubleJumpSpeed = 2.5f;
+
     public bool canDoubleJump = false;
     
     public bool superJump = false;
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviourPun
         rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
+        cg = this.GetComponentInChildren<CheckGround>();
     }
 
     private void Update()
@@ -44,7 +47,7 @@ public class PlayerController : MonoBehaviourPun
         if (!photonView.IsMine)
             return;
     
-        Debug.Log(CheckGround.isGrounded);
+        Debug.Log(cg.isGrounded);
         if(Input.GetKey("d") || Input.GetKey("right"))
         {
             rb2D.velocity = new Vector2(runSpeed, rb2D.velocity.y);
@@ -60,7 +63,7 @@ public class PlayerController : MonoBehaviourPun
 
         if ((Input.GetKey("w") || Input.GetKey("up")))
         {
-            if (CheckGround.isGrounded)
+            if (cg.isGrounded)
             {
                 canDoubleJump = true;
                 rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
