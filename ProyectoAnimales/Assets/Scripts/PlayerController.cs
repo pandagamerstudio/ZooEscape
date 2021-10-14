@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviourPun
     public SpriteRenderer sr;
     public Animator anim;
     Vector2 ad;
-    bool Salto;
+    float Salto;
 
     public static PlayerController me;
    
@@ -38,6 +38,9 @@ public class PlayerController : MonoBehaviourPun
         sr = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
         cg = this.GetComponentInChildren<CheckGround>();
+
+        //InputSystem.EnableDevice(Keyboard.current);
+        //InputSystem.DisableDevice();
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
@@ -46,7 +49,33 @@ public class PlayerController : MonoBehaviourPun
     }
     public void salto(InputAction.CallbackContext callback)
     {
-        Salto = callback.ReadValue<bool>();
+        Salto = callback.ReadValue<float>();
+
+        if (cg.isGrounded)
+        {
+            canDoubleJump = true;
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+        }
+        else
+        {
+            if (Salto > 0f)
+            {
+                if (canDoubleJump)
+                {
+                    rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
+                    canDoubleJump = false;
+                    return;
+                }
+            }
+        }
+
+        if (superJump)
+        {
+            if (rb2D.velocity.y > 0 && Salto == 0)
+            {
+                rb2D.velocity = new Vector2(rb2D.velocity.x, Physics2D.gravity.y);
+            }
+        }
 
     }
 
@@ -60,38 +89,7 @@ public class PlayerController : MonoBehaviourPun
         Debug.Log(cg.isGrounded);
         
         rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
-        
-     
-
-        if (Salto)
-        {
-            if (cg.isGrounded)
-            {
-                canDoubleJump = true;
-                rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed );
-            }
-            else
-            {
-                if (Salto)
-                {
-                    if (canDoubleJump)
-                    {
-                        rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
-                        canDoubleJump = false;
-                        return;
-                    }
-                }
-            }
-
-        }
-
-        if (superJump)
-        {
-            if (rb2D.velocity.y > 0 && !Salto)
-            {
-                rb2D.velocity = new Vector2 (rb2D.velocity.x,Physics2D.gravity.y);
-            }
-        }
+       
     }
 
     [PunRPC]
