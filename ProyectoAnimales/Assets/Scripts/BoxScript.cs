@@ -11,10 +11,12 @@ public class BoxScript : MonoBehaviourPun
     public int nPlayersNecesarios = 2;
     public TextMeshPro textoCaja;
     private Rigidbody2D caja;
+    
 
     private void Awake()
     {
         caja = GetComponent<Rigidbody2D>();
+
     }
 
 
@@ -22,7 +24,7 @@ public class BoxScript : MonoBehaviourPun
     {
         textoCaja.text = "" + nPlayersNecesarios;
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+ /*   private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -38,21 +40,23 @@ public class BoxScript : MonoBehaviourPun
             //photonView.RPC("changeNplayersSum", RpcTarget.All);
             changeNplayersSum();
         }
-    }
+    }*/
 
     //[PunRPC]
-    private void changeNplayersSum()
+    public void changeNplayersSum()
     {
         nPlayersNecesarios++;
         if (nPlayersNecesarios == 1)
         {
-            caja.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+           // caja.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            caja.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
+
         }
-        
+
     }
 
     //[PunRPC]
-    private void changeNplayersRest()
+    public void changeNplayersRest()
     {
         nPlayersNecesarios--;
         if (nPlayersNecesarios == 0)
