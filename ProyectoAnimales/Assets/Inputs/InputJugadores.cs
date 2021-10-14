@@ -71,11 +71,33 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""877019b8-0a88-4499-a6ef-42f2d3839ab2"",
+                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Movil"",
+                    ""action"": ""Movimiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""afb9ea9b-b02e-4ef0-a27f-aa480fea2c55"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""salto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4e3ea4e-00c5-4f95-a939-952c40809619"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Movil"",
                     ""action"": ""salto"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -649,6 +671,22 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Movil"",
+            ""bindingGroup"": ""Movil"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<AndroidJoystick>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -902,6 +940,15 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         {
             if (m_XRSchemeIndex == -1) m_XRSchemeIndex = asset.FindControlSchemeIndex("XR");
             return asset.controlSchemes[m_XRSchemeIndex];
+        }
+    }
+    private int m_MovilSchemeIndex = -1;
+    public InputControlScheme MovilScheme
+    {
+        get
+        {
+            if (m_MovilSchemeIndex == -1) m_MovilSchemeIndex = asset.FindControlSchemeIndex("Movil");
+            return asset.controlSchemes[m_MovilSchemeIndex];
         }
     }
     public interface IPlayerActions
