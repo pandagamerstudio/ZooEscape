@@ -12,6 +12,12 @@ public class SpawnObject : MonoBehaviourPun
     public Transform[] cajaSpawn;
     public GameObject caja;
 
+    public Transform[] platformSpawn;
+    public GameObject platform;
+
+    public Transform[] palancaSpawn;
+    public GameObject palanca;
+
     private void Start()
     {
         if (PhotonNetwork.IsMasterClient){
@@ -21,6 +27,16 @@ public class SpawnObject : MonoBehaviourPun
             for (int i = 0; i < cajaSpawn.Length; i++)
             {
                 PhotonNetwork.Instantiate(caja.name, cajaSpawn[i].position, Quaternion.identity);
+            }
+
+            for (int i = 0; i < platformSpawn.Length; i++)
+            {
+                PhotonNetwork.Instantiate(platform.name, platformSpawn[i].position, Quaternion.identity);
+            }
+
+            for (int i = 0; i < palancaSpawn.Length; i++)
+            {
+                PhotonNetwork.Instantiate(palanca.name, palancaSpawn[i].position, Quaternion.identity);
             }
         }
     }
