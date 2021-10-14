@@ -1,10 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
-using Photon.Realtime;
 
-public class PlatformMovement : MonoBehaviourPun
+public class PlatformMovement : MonoBehaviour
 {
     [SerializeField] public GameObject[] waypoints;
     private int currentWaypointIndex = 0;
