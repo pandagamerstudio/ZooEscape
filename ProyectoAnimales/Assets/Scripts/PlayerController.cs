@@ -86,7 +86,7 @@ public class PlayerController : MonoBehaviourPun
         if (!photonView.IsMine)
             return;
     
-        Debug.Log(cg.isGrounded);
+        //Debug.Log(cg.isGrounded);
         
         rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
        
