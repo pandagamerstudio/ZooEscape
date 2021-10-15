@@ -209,6 +209,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &327011106
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 327011107}
+  m_Layer: 0
+  m_Name: SpawnColorBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327011107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327011106}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.62, y: 0.71, z: -0.3148818}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1854,6 +1884,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1137047595
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1137047596}
+  m_Layer: 0
+  m_Name: SpawnSueloBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1137047596
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137047595}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.584, y: -0.002, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1353456311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,6 +1944,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1578217800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578217801}
+  m_Layer: 0
+  m_Name: SpawnSuelo2Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1578217801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578217800}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.584, y: 0.48, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1636040679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1908,7 +1998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636040679}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.91, y: -0.5910001, z: 0}
+  m_LocalPosition: {x: -1.424, y: -0.5910001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1698043861}
@@ -2134,12 +2224,14 @@ MonoBehaviour:
   playerPrefab: {fileID: 2343128798855106553, guid: 1d092dd4ddeb97a40970e6aaf044d3ea,
     type: 3}
   players: []
+  playersGO: []
   spawnPoints:
   - {fileID: 1919936599}
   - {fileID: 1636040680}
   - {fileID: 1805375462}
   - {fileID: 1684766541}
   respawnTime: 4
+  rope: {fileID: 4395937416194616667, guid: 55697d1c78003bc4ea0436a32ae719fb, type: 3}
 --- !u!4 &1698043861
 Transform:
   m_ObjectHideFlags: 0
@@ -2261,6 +2353,17 @@ MonoBehaviour:
   palancaSpawn:
   - {fileID: 1353456312}
   palanca: {fileID: 2663620000481751924, guid: 86874d1dadcef614caa040edbc87dbc0, type: 3}
+  colorBoxSpawn:
+  - {fileID: 327011107}
+  colorBox: {fileID: 7256227805961506604, guid: 54556745bf4887540b634c5739df93ea,
+    type: 3}
+  cajas1Spawn:
+  - {fileID: 1137047596}
+  cajas2Spawn:
+  - {fileID: 1578217801}
+  sueloBox: {fileID: 9144967646920782628, guid: c876cdf834dbeb047a270f96195600b0,
+    type: 3}
+  cuerda: {fileID: 4066116938465161591, guid: 5f569778bca6760468f3e75b3ca64b91, type: 3}
 --- !u!4 &2039347290
 Transform:
   m_ObjectHideFlags: 0

@@ -4,24 +4,27 @@ using UnityEngine;
 
 public class PlatMovManager : MonoBehaviour
 {
-    public GameObject plataforma;
+    private GameObject plataforma;
     private PlatformMovement platMov;
     
     // Start is called before the first frame update
     void Start()
     {
-        //platMov = plataforma.transform.GetChild(0).GetComponent<PlatformMovement>();
-        platMov = FindObjectOfType<PlatformMovement>();
+
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(platMov.activate);
 
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !plataforma.GetComponentInChildren<PlatformMovement>().activate)
         {
             Debug.Log("Entra");
-            platMov.activate = true;
+            plataforma.GetComponentInChildren<PlatformMovement>().activate = true;
         }
+    }
+
+    public void setPlataforma(GameObject plat){
+        Debug.Log("Plataforma asignada");
+        plataforma = plat;
     }
 }

@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviourPun
 {
 
-    [HideInInspector]
+    //[HideInInspector]
     public int id;
 
     public float runSpeed = 2f;
@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviourPun
     }
     public void salto(InputAction.CallbackContext callback)
     {
+        if (!photonView.IsMine)
+            return;
+
         Salto = callback.ReadValue<float>();
 
         if (cg.isGrounded)
@@ -98,5 +101,7 @@ public class PlayerController : MonoBehaviourPun
         photonPlayer = player;
 
         GameManager.instance.players[id - 1] = this;
+
+        this.gameObject.layer = 9+id;
     }
 }

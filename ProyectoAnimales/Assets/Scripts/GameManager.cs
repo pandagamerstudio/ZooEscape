@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System.Linq;
+using Photon.Realtime;
 
 public class GameManager : MonoBehaviourPun
 {
@@ -12,11 +13,14 @@ public class GameManager : MonoBehaviourPun
     public GameObject playerPrefab;
 
     public PlayerController[] players;
+    public List<GameObject> playersGO;
 
     public Transform[] spawnPoints;
     public float respawnTime;
 
     private int playersInGame;
+
+    public GameObject rope;
 
     public static GameManager instance;
 
@@ -25,8 +29,9 @@ public class GameManager : MonoBehaviourPun
         PlayerPrefabPath = this.playerPrefab.name;
 
         players = new PlayerController[PhotonNetwork.PlayerList.Length];
+        playersGO = new List<GameObject>();
 
-        photonView.RPC("ImInGame", RpcTarget.AllBuffered);
+        photonView.RPC("ImInGame", RpcTarget.All);
     }
 
     [PunRPC]
@@ -39,9 +44,16 @@ public class GameManager : MonoBehaviourPun
     }
 
     void SpawnPlayer(){
-        GameObject playerObject = PhotonNetwork.Instantiate(PlayerPrefabPath, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
+        Vector3 playerPos;
+        if (PhotonNetwork.IsMasterClient){
+            playerPos = spawnPoints[0].position;
+        }else{
+            playerPos = spawnPoints[1].position;
+        }
 
+        GameObject playerObject = PhotonNetwork.Instantiate(PlayerPrefabPath, playerPos, Quaternion.identity);
+        
         playerObject.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
-    
+
 }
