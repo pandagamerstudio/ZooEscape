@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: -8775311759137005886}
   - component: {fileID: 1381727172209418550}
   - component: {fileID: 2161108722065402795}
-  - component: {fileID: 1946151434363105388}
+  - component: {fileID: 8383549569435862050}
   m_Layer: 0
   m_Name: MaskDude
   m_TagString: Player
@@ -246,6 +246,7 @@ MonoBehaviour:
   id: 0
   runSpeed: 2
   jumpSpeed: 3
+  rb2D: {fileID: 0}
   cg: {fileID: 0}
   doubleJumpSpeed: 2.5
   canDoubleJump: 0
@@ -432,8 +433,8 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!255 &1946151434363105388
-FixedJoint2D:
+--- !u!233 &8383549569435862050
+HingeJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -446,7 +447,13 @@ FixedJoint2D:
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0.01, y: -0.06}
-  m_ConnectedAnchor: {x: -0.763, y: -0.018}
-  m_DampingRatio: 0
-  m_Frequency: 0
+  m_Anchor: {x: 0, y: 0}
+  m_ConnectedAnchor: {x: 0, y: 0}
+  m_UseMotor: 0
+  m_Motor:
+    m_MotorSpeed: 0
+    m_MaximumMotorForce: 10000
+  m_UseLimits: 0
+  m_AngleLimits:
+    m_LowerAngle: 0
+    m_UpperAngle: 359

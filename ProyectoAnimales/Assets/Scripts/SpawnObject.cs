@@ -27,6 +27,8 @@ public class SpawnObject : MonoBehaviourPun
 
     public GameObject cuerda;
 
+    public GameObject[] players;
+
     private void Start()
     {
 
@@ -65,7 +67,7 @@ public class SpawnObject : MonoBehaviourPun
                 photonView.RPC("setCaja2", RpcTarget.All, c2.GetComponent<PhotonView>().ViewID);
             }
 
-            //createCuerda();
+            createCuerda();
 
         }
     }
@@ -102,16 +104,17 @@ public class SpawnObject : MonoBehaviourPun
         Vector3 pos = (GameManager.instance.spawnPoints[1].position - GameManager.instance.spawnPoints[0].position) / 2 + GameManager.instance.spawnPoints[0].position;
         GameObject rope = PhotonNetwork.Instantiate(cuerda.name, pos, Quaternion.identity);
 
-
+        photonView.RPC("UnirCuerda", RpcTarget.All);
     }
 
     [PunRPC]
     public void UnirCuerda(){
-        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        players = GameObject.FindGameObjectsWithTag("Player");
 
-        cuerda.transform.GetChild(0).GetComponent<FixedJoint2D>().connectedBody = players[0].GetComponent<Rigidbody2D>();
+        //cuerda.transform.GetChild(0).GetComponent<FixedJoint2D>().connectedBody = players[0].GetComponent<Rigidbody2D>();
+        cuerda.GetComponent<FixedJoint2D>().connectedBody = players[0].GetComponent<PlayerController>().rb2D;
 
-        players[1].GetComponent<FixedJoint2D>().connectedBody = cuerda.transform.GetChild(cuerda.transform.childCount-1).GetComponent<Rigidbody2D>();
+        //players[1].GetComponent<FixedJoint2D>().connectedBody = cuerda.transform.GetChild(cuerda.transform.childCount-1).GetComponent<Rigidbody2D>();
     }
 
 }

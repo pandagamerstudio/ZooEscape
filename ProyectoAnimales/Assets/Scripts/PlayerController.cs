@@ -13,12 +13,18 @@ public class PlayerController : MonoBehaviourPun
 
     public float runSpeed = 2f;
     public float jumpSpeed = 3f;
-    Rigidbody2D rb2D;
+    public Rigidbody2D rb2D;
     public CheckGround cg;
+    public HingeJoint2D hj;
 
     public float doubleJumpSpeed = 2.5f;
+    public float pushForce = 10f;
 
     public bool canDoubleJump = false;
+    public bool attached = false;
+
+    public Transform attachedTo;
+    private GameObject disregard;
     
     public bool superJump = false;
     public float lowJumpMultiplier = 1f;
@@ -29,6 +35,7 @@ public class PlayerController : MonoBehaviourPun
     public Animator anim;
     Vector2 ad;
     float Salto;
+    float agarrar;
 
     public static PlayerController me;
    
@@ -38,6 +45,7 @@ public class PlayerController : MonoBehaviourPun
         sr = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
         cg = this.GetComponentInChildren<CheckGround>();
+        hj = this.GetComponent<HingeJoint2D>();
 
         //InputSystem.EnableDevice(Keyboard.current);
         //InputSystem.DisableDevice();
@@ -45,11 +53,28 @@ public class PlayerController : MonoBehaviourPun
 
     public void Movimiento(InputAction.CallbackContext callback) {
         ad = callback.ReadValue<Vector2>();
-        
+        rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
+
+        if (attached){
+            if (ad.x < 0)
+                rb2D.AddRelativeForce(new Vector3(-1, 0, 0) * pushForce);
+            else
+                rb2D.AddRelativeForce(new Vector3(1, 0, 0) * pushForce);
+
+            if (ad.y > 0)
+
+            else
+
+
+        }
     }
+
     public void salto(InputAction.CallbackContext callback)
     {
         if (!photonView.IsMine)
+            return;
+
+        if(attached)
             return;
 
         Salto = callback.ReadValue<float>();
@@ -82,6 +107,15 @@ public class PlayerController : MonoBehaviourPun
 
     }
 
+    public void Agarrar(InputAction.CallbackContext callback) {
+        agarrar = callback.ReadValue<Float>();
+
+        if (agarrar > 0 && attached){
+            Detach();
+        }
+        
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -91,7 +125,9 @@ public class PlayerController : MonoBehaviourPun
     
         //Debug.Log(cg.isGrounded);
         
-        rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
+        
+
+
        
     }
 

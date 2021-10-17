@@ -33,6 +33,14 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Agarrar"",
+                    ""type"": ""Button"",
+                    ""id"": ""bca348da-5cad-495b-9c05-95df014fb793"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -70,6 +78,28 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""up"",
+                    ""id"": ""c3d5586f-9203-4fa9-b116-7921687cb985"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Movimiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""b645b271-b1c6-4f50-b3be-eb16a3d3b40e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Movimiento"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""877019b8-0a88-4499-a6ef-42f2d3839ab2"",
                     ""path"": ""<AndroidJoystick>/stick"",
@@ -99,6 +129,17 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Movil"",
                     ""action"": ""salto"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""017a8623-1c0d-4b8d-ba92-ce4fa2c9687b"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Agarrar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -694,6 +735,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Movimiento = m_Player.FindAction("Movimiento", throwIfNotFound: true);
         m_Player_salto = m_Player.FindAction("salto", throwIfNotFound: true);
+        m_Player_Agarrar = m_Player.FindAction("Agarrar", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -757,12 +799,14 @@ public class @InputJugadores : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Movimiento;
     private readonly InputAction m_Player_salto;
+    private readonly InputAction m_Player_Agarrar;
     public struct PlayerActions
     {
         private @InputJugadores m_Wrapper;
         public PlayerActions(@InputJugadores wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movimiento => m_Wrapper.m_Player_Movimiento;
         public InputAction @salto => m_Wrapper.m_Player_salto;
+        public InputAction @Agarrar => m_Wrapper.m_Player_Agarrar;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -778,6 +822,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @salto.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSalto;
                 @salto.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSalto;
                 @salto.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSalto;
+                @Agarrar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAgarrar;
+                @Agarrar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAgarrar;
+                @Agarrar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAgarrar;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -788,6 +835,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @salto.started += instance.OnSalto;
                 @salto.performed += instance.OnSalto;
                 @salto.canceled += instance.OnSalto;
+                @Agarrar.started += instance.OnAgarrar;
+                @Agarrar.performed += instance.OnAgarrar;
+                @Agarrar.canceled += instance.OnAgarrar;
             }
         }
     }
@@ -955,6 +1005,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
     {
         void OnMovimiento(InputAction.CallbackContext context);
         void OnSalto(InputAction.CallbackContext context);
+        void OnAgarrar(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -20,6 +20,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Agarrar",
+                    "type": "Button",
+                    "id": "bca348da-5cad-495b-9c05-95df014fb793",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -57,6 +65,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "up",
+                    "id": "c3d5586f-9203-4fa9-b116-7921687cb985",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "b645b271-b1c6-4f50-b3be-eb16a3d3b40e",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Movimiento",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "877019b8-0a88-4499-a6ef-42f2d3839ab2",
                     "path": "<AndroidJoystick>/stick",
@@ -86,6 +116,17 @@
                     "processors": "",
                     "groups": "Movil",
                     "action": "salto",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "017a8623-1c0d-4b8d-ba92-ce4fa2c9687b",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "Agarrar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
