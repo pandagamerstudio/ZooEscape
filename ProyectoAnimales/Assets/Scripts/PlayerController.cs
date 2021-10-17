@@ -52,6 +52,9 @@ public class PlayerController : MonoBehaviourPun
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
+        if (!photonView.IsMine)
+            return;
+
         ad = callback.ReadValue<Vector2>();
         rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
 
@@ -60,12 +63,12 @@ public class PlayerController : MonoBehaviourPun
                 rb2D.AddRelativeForce(new Vector3(-1, 0, 0) * pushForce);
             else
                 rb2D.AddRelativeForce(new Vector3(1, 0, 0) * pushForce);
-
+/*
             if (ad.y > 0)
 
             else
 
-
+            */
         }
     }
 
@@ -106,7 +109,7 @@ public class PlayerController : MonoBehaviourPun
         }
 
     }
-
+    /*
     public void Agarrar(InputAction.CallbackContext callback) {
         agarrar = callback.ReadValue<Float>();
 
@@ -115,7 +118,7 @@ public class PlayerController : MonoBehaviourPun
         }
         
     }
-
+    */
 
     // Update is called once per frame
     void Update()

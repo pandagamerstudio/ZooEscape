@@ -248,8 +248,12 @@ MonoBehaviour:
   jumpSpeed: 3
   rb2D: {fileID: 0}
   cg: {fileID: 0}
+  hj: {fileID: 0}
   doubleJumpSpeed: 2.5
+  pushForce: 10
   canDoubleJump: 0
+  attached: 0
+  attachedTo: {fileID: 0}
   superJump: 0
   lowJumpMultiplier: 1
   fallMultiplier: 0.5
@@ -443,7 +447,7 @@ HingeJoint2D:
   m_Enabled: 1
   serializedVersion: 4
   m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
+  m_ConnectedRigidBody: {fileID: 2343128798855106552}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
