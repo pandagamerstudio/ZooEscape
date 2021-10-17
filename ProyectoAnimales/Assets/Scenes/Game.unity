@@ -239,6 +239,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &465020671
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 465020672}
+  m_Layer: 0
+  m_Name: SpawnCuerda
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &465020672
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 465020671}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.59, y: 0.99, z: -9.122892}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2363,7 +2393,9 @@ MonoBehaviour:
   - {fileID: 1578217801}
   sueloBox: {fileID: 9144967646920782628, guid: c876cdf834dbeb047a270f96195600b0,
     type: 3}
-  cuerda: {fileID: 2691228947911992685, guid: 6de7164e8b3c6104daf03633e6b75fa2, type: 3}
+  cuerdaSpawn: {fileID: 465020672}
+  cuerda: {fileID: 4912521291718628692, guid: ab25565a249205247ab7cedb8a5d2d7f, type: 3}
+  players: []
 --- !u!4 &2039347290
 Transform:
   m_ObjectHideFlags: 0
