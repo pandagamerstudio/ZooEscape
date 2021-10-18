@@ -28,6 +28,9 @@ public class SpawnObject : MonoBehaviourPun
     public Transform cuerdaSpawn;
     public GameObject cuerda;
 
+    public Transform[] minasSpawn;
+    public GameObject mina;
+
     public GameObject[] players;
 
     private void Start()
@@ -69,8 +72,13 @@ public class SpawnObject : MonoBehaviourPun
             }
 
             GameObject rope = PhotonNetwork.Instantiate(cuerda.name, cuerdaSpawn.position, Quaternion.identity);
-          
-            
+
+            for (int i = 0; i < minasSpawn.Length; i++)
+            {
+                GameObject m = PhotonNetwork.Instantiate(mina.name, minasSpawn[i].position, Quaternion.identity);
+            }
+
+
 
         }
     }
