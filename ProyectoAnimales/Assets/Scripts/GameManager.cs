@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using System.Linq;
 using Photon.Realtime;
+using Cinemachine;
 
 public class GameManager : MonoBehaviourPun
 {
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviourPun
     public GameObject rope;
 
     public static GameManager instance;
+
+    public CinemachineVirtualCamera camara;
 
     void Awake(){
         instance = this;
@@ -52,7 +55,8 @@ public class GameManager : MonoBehaviourPun
         }
 
         GameObject playerObject = PhotonNetwork.Instantiate(PlayerPrefabPath, playerPos, Quaternion.identity);
-        
+        camara.Follow = playerObject.transform;
+
         playerObject.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
 
