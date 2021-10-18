@@ -93,6 +93,13 @@ Versión 1.0
 
 > ## 3. Planificación y Costes
 > ###### 3.1 El equipo humano
+> - Aitor García Prádanos (a.garciap.2018@alumnos.urjc.es): diseñador de mecánicas. 
+> - Jaime Jiménez López (j.jimenezl.2018@alumnos.urjc.es): project manager y diseñador de mecánicas.
+> - Raúl Fernández Ruiz (r.fernandezru.2018@alumnos.urjc.es): CEO de la organización y diseñador de sistema multijugador.
+> - Borja Santiago Guerra (b.santiagog.2018@alumnos.urjc.es): diseñador del sistema multijugador.
+> - Ana Mercedes García Gamoneda (am.garciaga.2018@alumnos.urjc.es): ejecutiva del proyecto y diseñadora de arte y niveles.
+> - Daniel Romero Hernández (d.romeroh.2018@alumnos.urjc.es): diseñador de arte y niveles.
+> - Lucas Hernández Luelmo (l.hernandezl.2018@alumnos.urjc.es): diseñador de arte y niveles.
 > ###### 3.2 Estimación temporal del desarrollo
 > - Sabiendo que es un proyecto bastante grande tendrá una gran cantidad de trabajo por lo que la carga del mismo será bastante. 
 > - El tiempo total, el cual se empleará en el desarrollo del proyecto será de unas 12 semanas. Estas se empezarán a contar a partir del 04/10/2021 y llegarán hasta el día 21/12/2021 donde se presentará el proyecto final.
