@@ -41,6 +41,9 @@ public class PlayerController : MonoBehaviourPun
     bool top = false;
     Vector2 gravedadLados;
     public static PlayerController me;
+
+    GameObject canvas;
+    
    
     
     void Awake(){
@@ -50,8 +53,22 @@ public class PlayerController : MonoBehaviourPun
         cg = this.GetComponentInChildren<CheckGround>();
         hj = this.GetComponent<HingeJoint2D>();
 
+        //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
         //InputSystem.EnableDevice(Keyboard.current);
         //InputSystem.DisableDevice();
+    }
+
+    void Start(){
+        var user = GetComponent<PlayerInput>().user;
+        canvas = GameObject.Find("Canvas");
+        canvas.SetActive(false);
+        if (SystemInfo.deviceType == DeviceType.Desktop){
+            user.ActivateControlScheme("Keyboard&Mouse");
+            //canvas.SetActive(true);
+        } else if (SystemInfo.deviceType == DeviceType.Handheld){
+            user.ActivateControlScheme("Movil");   
+            canvas.SetActive(true);
+        }
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
