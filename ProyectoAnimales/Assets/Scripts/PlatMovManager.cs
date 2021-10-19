@@ -1,30 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlatMovManager : MonoBehaviour
 {
     private GameObject plataforma;
     private PlatformMovement platMov;
+    bool activada = false;
+    float pulsar;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player") && !plataforma.GetComponentInChildren<PlatformMovement>().activate)
+        if (collision.CompareTag("Player"))
         {
-            Debug.Log("Entra");
-            plataforma.GetComponentInChildren<PlatformMovement>().activate = true;
+            plataforma.GetComponentInChildren<PlatformMovement>().activate = !plataforma.GetComponentInChildren<PlatformMovement>().activate;
         }
     }
 
     public void setPlataforma(GameObject plat){
-        Debug.Log("Plataforma asignada");
         plataforma = plat;
     }
+
 }
