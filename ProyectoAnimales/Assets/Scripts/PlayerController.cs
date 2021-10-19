@@ -36,8 +36,14 @@ public class PlayerController : MonoBehaviourPun
     Vector2 ad;
     float Salto;
     float agarrar;
-
+    float gravedad;
+    bool activadaGravedad = false;
+    bool top = false;
+    Vector2 gravedadLados;
     public static PlayerController me;
+
+    GameObject canvas;
+    
    
     
     void Awake(){
@@ -47,8 +53,22 @@ public class PlayerController : MonoBehaviourPun
         cg = this.GetComponentInChildren<CheckGround>();
         hj = this.GetComponent<HingeJoint2D>();
 
+        //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
         //InputSystem.EnableDevice(Keyboard.current);
         //InputSystem.DisableDevice();
+    }
+
+    void Start(){
+        var user = GetComponent<PlayerInput>().user;
+        canvas = GameObject.Find("Canvas");
+        canvas.SetActive(false);
+        if (SystemInfo.deviceType == DeviceType.Desktop){
+            user.ActivateControlScheme("Keyboard&Mouse");
+            //canvas.SetActive(true);
+        } else if (SystemInfo.deviceType == DeviceType.Handheld){
+            user.ActivateControlScheme("Movil");   
+            canvas.SetActive(true);
+        }
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
@@ -57,6 +77,21 @@ public class PlayerController : MonoBehaviourPun
 
         ad = callback.ReadValue<Vector2>();
         rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
+
+        
+        if (top == false){
+            if (ad.x > 0){
+            transform.localScale = new Vector3(1,1,1);
+            } else if (ad.x < 0) {
+            transform.localScale = new Vector3(-1,1,1);
+            } 
+        } else {
+            if (ad.x < 0){
+            transform.localScale = new Vector3(1,1,1);
+            } else if (ad.x > 0) {
+            transform.localScale = new Vector3(-1,1,1);
+            }
+        }
 
         if (attached){
             if (ad.x < 0)
@@ -109,6 +144,49 @@ public class PlayerController : MonoBehaviourPun
         }
 
     }
+    
+    public void Gravedad(InputAction.CallbackContext callback) {
+        if (!photonView.IsMine)
+            return;
+        gravedad = callback.ReadValue<float>();
+
+        if (gravedad > 0 && activadaGravedad == false){
+            if (top == false){
+                transform.eulerAngles = new Vector3(0,0,180f);
+                Physics2D.gravity = new Vector2 (0,9.81f);
+            } else {
+                transform.eulerAngles = Vector3.zero;
+                Physics2D.gravity = new Vector2 (0,-9.81f);
+            }
+
+            top = !top;
+            StartCoroutine(activarGravedad());
+        }
+        
+    }
+
+    private IEnumerator activarGravedad()
+    {
+        activadaGravedad = true;
+        yield return new WaitForSeconds(1f);
+        activadaGravedad = false;
+    }
+
+    public void GravedadLados(InputAction.CallbackContext callback) {
+        if (!photonView.IsMine)
+            return;
+        gravedadLados = callback.ReadValue<Vector2>();
+
+        if (gravedadLados.x > 0){
+            Physics2D.gravity = new Vector2 (9.81f, 0);
+            transform.eulerAngles = new Vector3(0,0,90f);
+        } else if (gravedadLados.x < 0){
+            Physics2D.gravity = new Vector2 (-9.81f, 0);
+            transform.eulerAngles = new Vector3(0,0,-90f);
+        }
+        
+    }
+    
     /*
     public void Agarrar(InputAction.CallbackContext callback) {
         agarrar = callback.ReadValue<Float>();
