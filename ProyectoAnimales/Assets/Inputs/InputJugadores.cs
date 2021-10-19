@@ -41,6 +41,30 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Gravedad"",
+                    ""type"": ""Button"",
+                    ""id"": ""c689ee22-b022-4ec6-8e3e-3a861184d60f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""GravedadLados"",
+                    ""type"": ""Value"",
+                    ""id"": ""7a088485-6fa1-4c9e-9bea-b890314d64e0"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pulsar"",
+                    ""type"": ""Button"",
+                    ""id"": ""8c9069c6-7b7a-4026-ab7e-ccf813fa184e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -140,6 +164,61 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Agarrar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b19a820e-2716-4b11-923b-915a77c5d5fe"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Gravedad"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""162c2a8a-5d3e-4e8f-b6bc-c31cd78be6a8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravedadLados"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""686e4b33-bf88-4d85-8e23-b077406a910d"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravedadLados"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""4a385981-2c6b-4ef6-addf-474564876227"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GravedadLados"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2a705a59-8e19-4a03-ab9a-4d46339d2e24"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pulsar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -736,6 +815,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         m_Player_Movimiento = m_Player.FindAction("Movimiento", throwIfNotFound: true);
         m_Player_salto = m_Player.FindAction("salto", throwIfNotFound: true);
         m_Player_Agarrar = m_Player.FindAction("Agarrar", throwIfNotFound: true);
+        m_Player_Gravedad = m_Player.FindAction("Gravedad", throwIfNotFound: true);
+        m_Player_GravedadLados = m_Player.FindAction("GravedadLados", throwIfNotFound: true);
+        m_Player_Pulsar = m_Player.FindAction("Pulsar", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -800,6 +882,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Movimiento;
     private readonly InputAction m_Player_salto;
     private readonly InputAction m_Player_Agarrar;
+    private readonly InputAction m_Player_Gravedad;
+    private readonly InputAction m_Player_GravedadLados;
+    private readonly InputAction m_Player_Pulsar;
     public struct PlayerActions
     {
         private @InputJugadores m_Wrapper;
@@ -807,6 +892,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         public InputAction @Movimiento => m_Wrapper.m_Player_Movimiento;
         public InputAction @salto => m_Wrapper.m_Player_salto;
         public InputAction @Agarrar => m_Wrapper.m_Player_Agarrar;
+        public InputAction @Gravedad => m_Wrapper.m_Player_Gravedad;
+        public InputAction @GravedadLados => m_Wrapper.m_Player_GravedadLados;
+        public InputAction @Pulsar => m_Wrapper.m_Player_Pulsar;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -825,6 +913,15 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @Agarrar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAgarrar;
                 @Agarrar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAgarrar;
                 @Agarrar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAgarrar;
+                @Gravedad.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGravedad;
+                @Gravedad.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGravedad;
+                @Gravedad.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGravedad;
+                @GravedadLados.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGravedadLados;
+                @GravedadLados.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGravedadLados;
+                @GravedadLados.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGravedadLados;
+                @Pulsar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPulsar;
+                @Pulsar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPulsar;
+                @Pulsar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPulsar;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -838,6 +935,15 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @Agarrar.started += instance.OnAgarrar;
                 @Agarrar.performed += instance.OnAgarrar;
                 @Agarrar.canceled += instance.OnAgarrar;
+                @Gravedad.started += instance.OnGravedad;
+                @Gravedad.performed += instance.OnGravedad;
+                @Gravedad.canceled += instance.OnGravedad;
+                @GravedadLados.started += instance.OnGravedadLados;
+                @GravedadLados.performed += instance.OnGravedadLados;
+                @GravedadLados.canceled += instance.OnGravedadLados;
+                @Pulsar.started += instance.OnPulsar;
+                @Pulsar.performed += instance.OnPulsar;
+                @Pulsar.canceled += instance.OnPulsar;
             }
         }
     }
@@ -1006,6 +1112,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         void OnMovimiento(InputAction.CallbackContext context);
         void OnSalto(InputAction.CallbackContext context);
         void OnAgarrar(InputAction.CallbackContext context);
+        void OnGravedad(InputAction.CallbackContext context);
+        void OnGravedadLados(InputAction.CallbackContext context);
+        void OnPulsar(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
