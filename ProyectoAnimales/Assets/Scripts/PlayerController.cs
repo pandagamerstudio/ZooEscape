@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviourPun
+public class PlayerController : MonoBehaviourPun,IPunObservable
 {
 
     //[HideInInspector]
@@ -43,9 +43,18 @@ public class PlayerController : MonoBehaviourPun
     public static PlayerController me;
 
     GameObject canvas;
-    
-   
-    
+
+    //Para quitar lag
+    public Vector2 posicionReal;
+    public Vector2 posicionUltimoPaquete;
+    public double tiempoActual;
+    public double tiempoActualPaquete;
+    public double tiempoUltimoPaquete;
+    public double tiempo;
+
+
+
+
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
@@ -53,21 +62,28 @@ public class PlayerController : MonoBehaviourPun
         cg = this.GetComponentInChildren<CheckGround>();
         hj = this.GetComponent<HingeJoint2D>();
 
-        //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
-        //InputSystem.EnableDevice(Keyboard.current);
-        //InputSystem.DisableDevice();
-    }
+
+        posicionReal = new Vector2(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y);
+        posicionUltimoPaquete = Vector2.zero;
+        tiempoActual=0.0;
+        tiempoActualPaquete = 0.0;
+        tiempoUltimoPaquete = 0.0;
+        tiempo = 0.0;
+    //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
+    //InputSystem.EnableDevice(Keyboard.current);
+    //InputSystem.DisableDevice();
+}
 
     void Start(){
-        var user = GetComponent<PlayerInput>().user;
-        canvas = GameObject.Find("Canvas");
-        canvas.SetActive(false);
+       var user = GetComponent<PlayerInput>().user;
+      //  canvas = GameObject.Find("Canvas");
+//        canvas.SetActive(false);
         if (SystemInfo.deviceType == DeviceType.Desktop){
-            user.ActivateControlScheme("Keyboard&Mouse");
+  //         user.ActivateControlScheme("Keyboard&Mouse");
             //canvas.SetActive(true);
         } else if (SystemInfo.deviceType == DeviceType.Handheld){
-            user.ActivateControlScheme("Movil");   
-            canvas.SetActive(true);
+   //         user.ActivateControlScheme("Movil");   
+    //        canvas.SetActive(true);
         }
     }
 
@@ -201,15 +217,26 @@ public class PlayerController : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine)
-            return;
-    
-        //Debug.Log(cg.isGrounded);
+        if (!photonView.IsMine) {
+            tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
+            tiempoActual += Time.deltaTime;
+            transform.position = Vector2.Lerp(posicionUltimoPaquete,posicionReal,(float)(tiempoActual/tiempo));
         
-        
-
-
-       
+        }
+    }
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(new Vector2(transform.position.x, transform.position.y));
+        }
+        else {
+            tiempoActual = 0.0;
+            posicionUltimoPaquete = transform.position;
+            posicionReal = (Vector2)stream.ReceiveNext();
+            tiempoUltimoPaquete = tiempoActualPaquete;
+            tiempoActualPaquete = info.SentServerTime;
+        }
     }
 
     [PunRPC]
@@ -221,4 +248,6 @@ public class PlayerController : MonoBehaviourPun
 
         this.gameObject.layer = 9+id;
     }
+
+    
 }
