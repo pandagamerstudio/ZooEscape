@@ -259,6 +259,12 @@ MonoBehaviour:
   fallMultiplier: 0.5
   sr: {fileID: 0}
   anim: {fileID: 0}
+  posicionReal: {x: 0, y: 0}
+  posicionUltimoPaquete: {x: 0, y: 0}
+  tiempoActual: 0
+  tiempoActualPaquete: 0
+  tiempoUltimoPaquete: 0
+  tiempo: 0
 --- !u!114 &2343128798855106546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,6 +284,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
+  - {fileID: 2343128798855106547}
   - {fileID: -8325044275776902285}
   - {fileID: -8775311759137005886}
   - {fileID: 1381727172209418550}
