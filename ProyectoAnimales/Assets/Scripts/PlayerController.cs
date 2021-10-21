@@ -75,16 +75,16 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 }
 
     void Start(){
-       var user = GetComponent<PlayerInput>().user;
-      //  canvas = GameObject.Find("Canvas");
-//        canvas.SetActive(false);
-        if (SystemInfo.deviceType == DeviceType.Desktop){
-  //         user.ActivateControlScheme("Keyboard&Mouse");
-            //canvas.SetActive(true);
+   /*    var user = GetComponent<PlayerInput>().user;
+      //  canvas = GameObject.Find("CanvasGame");
+      //canvas.SetActive(false);
+      if (SystemInfo.deviceType == DeviceType.Desktop){
+      //     user.ActivateControlScheme("Keyboard&Mouse");
+            //canvas.SetActive(false);
         } else if (SystemInfo.deviceType == DeviceType.Handheld){
-   //         user.ActivateControlScheme("Movil");   
-    //        canvas.SetActive(true);
-        }
+            user.ActivateControlScheme("Movil");   
+            canvas.SetActive(true);
+        }*/
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
