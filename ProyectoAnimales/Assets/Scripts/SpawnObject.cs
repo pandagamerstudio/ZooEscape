@@ -33,11 +33,20 @@ public class SpawnObject : MonoBehaviourPun
 
     public GameObject[] players;
 
+    public Transform canvasSpawn;
+    public GameObject canvas;
+
     private void Start()
     {
 
+     /*  if (photonView.IsMine) {
+            Instantiate(canvas,canvasSpawn.position,Quaternion.identity);
+        }*/
+
         if (PhotonNetwork.IsMasterClient){
-            for(int i=0; i < bananaSpawn.Length; i++){
+            PhotonNetwork.Instantiate(canvas.name, canvasSpawn.position, Quaternion.identity);
+
+            for (int i=0; i < bananaSpawn.Length; i++){
                 PhotonNetwork.Instantiate(banana.name, bananaSpawn[i].position, Quaternion.identity);
             }
             for (int i = 0; i < cajaSpawn.Length; i++)
