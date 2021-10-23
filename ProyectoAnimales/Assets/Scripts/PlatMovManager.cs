@@ -9,13 +9,29 @@ public class PlatMovManager : MonoBehaviour
     private PlatformMovement platMov;
     bool activada = false;
     float pulsar;
-    
+    private Animator animator;
+
+     void Awake()
+    {
+        animator = this.GetComponent<Animator>();
+    }
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
         if (collision.CompareTag("Player"))
         {
-            plataforma.GetComponentInChildren<PlatformMovement>().activate = !plataforma.GetComponentInChildren<PlatformMovement>().activate;
+            if (activada) {
+                plataforma.GetComponentInChildren<PlatformMovement>().activate = false;
+                animator.SetBool("Activada", false);
+                activada = false;
+            }
+            else{
+                plataforma.GetComponentInChildren<PlatformMovement>().activate = true;
+                animator.SetBool("Activada", true);
+                activada = true;
+
+            }
+           
         }
     }
 

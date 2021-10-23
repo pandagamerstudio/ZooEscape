@@ -52,6 +52,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     public double tiempoUltimoPaquete;
     public double tiempo;
 
+    private Animator animator;
+
 
 
 
@@ -61,7 +63,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         anim = this.GetComponent<Animator>();
         cg = this.GetComponentInChildren<CheckGround>();
         hj = this.GetComponent<HingeJoint2D>();
-
+        animator = this.GetComponent<Animator>();
 
         posicionReal = new Vector2(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y);
         posicionUltimoPaquete = Vector2.zero;
@@ -92,35 +94,31 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             return;
 
         ad = callback.ReadValue<Vector2>();
-        rb2D.velocity = new Vector2(runSpeed*ad.x, rb2D.velocity.y);
+      
 
         
         if (top == false){
             if (ad.x > 0){
-            transform.localScale = new Vector3(1,1,1);
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             } else if (ad.x < 0) {
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
             } 
         } else {
             if (ad.x < 0){
-            transform.localScale = new Vector3(1,1,1);
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             } else if (ad.x > 0) {
-            transform.localScale = new Vector3(-1,1,1);
+            transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
             }
         }
 
-        if (attached){
-            if (ad.x < 0)
-                rb2D.AddRelativeForce(new Vector3(-1, 0, 0) * pushForce);
-            else
-                rb2D.AddRelativeForce(new Vector3(1, 0, 0) * pushForce);
+     
 /*
             if (ad.y > 0)
 
             else
 
             */
-        }
+        
     }
 
     public void salto(InputAction.CallbackContext callback)
@@ -217,11 +215,23 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     // Update is called once per frame
     void Update()
     {
-        if (!photonView.IsMine) {
+        if (!photonView.IsMine)
+        {
             tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
             tiempoActual += Time.deltaTime;
-            transform.position = Vector2.Lerp(posicionUltimoPaquete,posicionReal,(float)(tiempoActual/tiempo));
-        
+            transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
+
+        }
+        else {
+            rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
+            if (ad.x != 0)
+            {
+                animator.SetBool("Walk", true);
+            }
+            else {
+                animator.SetBool("Walk", false);
+
+            }
         }
     }
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
