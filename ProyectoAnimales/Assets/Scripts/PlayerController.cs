@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.InputSystem;
+using System.Runtime.InteropServices;
 
 public class PlayerController : MonoBehaviourPun,IPunObservable
 {
@@ -72,7 +73,21 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
     //InputSystem.EnableDevice(Keyboard.current);
     //InputSystem.DisableDevice();
-}
+    }
+
+    bool isMobile;
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    static extern bool IsMobile();
+#endif
+
+    void CheckIfMobile()
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+        isMobile = IsMobile();
+#endif
+    }
 
     void Start(){
         if (!photonView.IsMine)
@@ -80,12 +95,16 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 
         var user = GetComponent<PlayerInput>().user;
         canvas = GameObject.FindWithTag("Canvas");
+        canvas.SetActive(false);
+        /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
             user.ActivateControlScheme("Keyboard&Mouse");
-            canvas.SetActive(false);
         } else if (SystemInfo.deviceType == DeviceType.Handheld){
             user.ActivateControlScheme("Movil");   
-        }
+        }*/
+        CheckIfMobile();
+        if(isMobile)
+            canvas.SetActive(true);
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {

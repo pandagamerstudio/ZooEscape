@@ -126,10 +126,10 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""877019b8-0a88-4499-a6ef-42f2d3839ab2"",
-                    ""path"": ""<AndroidJoystick>/stick"",
+                    ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Movil"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Movimiento"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -151,7 +151,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Movil"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""salto"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
