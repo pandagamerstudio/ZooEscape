@@ -18,6 +18,9 @@ public class SpawnObject : MonoBehaviourPun
     public Transform[] palancaSpawn;
     public GameObject palanca;
 
+    public Transform[] botonSpawn;
+    public GameObject boton;
+
     public Transform[] colorBoxSpawn;
     public GameObject colorBox;
 
@@ -33,9 +36,6 @@ public class SpawnObject : MonoBehaviourPun
 
     public GameObject[] players;
 
-    public Transform canvasSpawn;
-    public GameObject canvas;
-
     private void Start()
     {
 
@@ -44,8 +44,6 @@ public class SpawnObject : MonoBehaviourPun
         }*/
 
         if (PhotonNetwork.IsMasterClient){
-            PhotonNetwork.Instantiate(canvas.name, canvasSpawn.position, Quaternion.identity);
-
             for (int i=0; i < bananaSpawn.Length; i++){
                 PhotonNetwork.Instantiate(banana.name, bananaSpawn[i].position, Quaternion.identity);
             }
@@ -58,7 +56,9 @@ public class SpawnObject : MonoBehaviourPun
             {
                 GameObject p = PhotonNetwork.Instantiate(platform.name, platformSpawn[i].position, Quaternion.identity);
                 GameObject pa = PhotonNetwork.Instantiate(palanca.name, palancaSpawn[i].position, Quaternion.identity);
+                GameObject b = PhotonNetwork.Instantiate(boton.name, botonSpawn[i].position, Quaternion.identity);
                 photonView.RPC("instantiatePlat", RpcTarget.All, p.transform.GetChild(0).GetComponent<PhotonView>().ViewID, pa.GetComponent<PhotonView>().ViewID);
+                photonView.RPC("instantiatePlat", RpcTarget.All, p.transform.GetChild(0).GetComponent<PhotonView>().ViewID, b.GetComponent<PhotonView>().ViewID);
             }
 
             for (int i=0; i < colorBoxSpawn.Length; i++){

@@ -5,6 +5,7 @@ using Photon.Pun;
 using System.Linq;
 using Photon.Realtime;
 using Cinemachine;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviourPun
 {
@@ -22,6 +23,8 @@ public class GameManager : MonoBehaviourPun
     private int playersInGame;
 
     public GameObject rope;
+
+    public GameObject canvas;
 
     public static GameManager instance;
 

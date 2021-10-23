@@ -10,6 +10,7 @@ public class PlatMovManager : MonoBehaviour
     bool activada = false;
     float pulsar;
     private Animator animator;
+    public string tipo;
 
      void Awake()
     {
@@ -18,7 +19,7 @@ public class PlatMovManager : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") || collision.CompareTag("Objects"))
         {
             if (activada) {
                 plataforma.GetComponentInChildren<PlatformMovement>().activate = false;
@@ -32,6 +33,22 @@ public class PlatMovManager : MonoBehaviour
 
             }
            
+        }
+    }
+
+    public void OnTriggerExit2D(Collider2D collision){
+        if ((collision.CompareTag("Player") || collision.CompareTag("Objects")) && tipo == "Boton"){
+            plataforma.GetComponentInChildren<PlatformMovement>().activate = false;
+            animator.SetBool("Activada", false);
+            activada = false;
+        }
+    }
+
+    public void OnTriggerStay2D(Collider2D collision){
+        if ((collision.CompareTag("Player") || collision.CompareTag("Objects")) && tipo == "Boton"){
+            plataforma.GetComponentInChildren<PlatformMovement>().activate = true;
+            animator.SetBool("Activada", true);
+            activada = true;
         }
     }
 

@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     public float jumpSpeed = 3f;
     public Rigidbody2D rb2D;
     public CheckGround cg;
-    public HingeJoint2D hj;
 
     public float doubleJumpSpeed = 2.5f;
     public float pushForce = 10f;
@@ -62,7 +61,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         sr = this.GetComponent<SpriteRenderer>();
         anim = this.GetComponent<Animator>();
         cg = this.GetComponentInChildren<CheckGround>();
-        hj = this.GetComponent<HingeJoint2D>();
         animator = this.GetComponent<Animator>();
 
         posicionReal = new Vector2(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y);
@@ -77,16 +75,17 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 }
 
     void Start(){
-   /*    var user = GetComponent<PlayerInput>().user;
-      //  canvas = GameObject.Find("CanvasGame");
-      //canvas.SetActive(false);
-      if (SystemInfo.deviceType == DeviceType.Desktop){
-      //     user.ActivateControlScheme("Keyboard&Mouse");
-            //canvas.SetActive(false);
+        if (!photonView.IsMine)
+            return;
+
+        var user = GetComponent<PlayerInput>().user;
+        canvas = GameObject.FindWithTag("Canvas");
+        if (SystemInfo.deviceType == DeviceType.Desktop){
+            user.ActivateControlScheme("Keyboard&Mouse");
+            canvas.SetActive(false);
         } else if (SystemInfo.deviceType == DeviceType.Handheld){
             user.ActivateControlScheme("Movil");   
-            canvas.SetActive(true);
-        }*/
+        }
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
@@ -130,6 +129,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             return;
 
         Salto = callback.ReadValue<float>();
+        Debug.Log("Salto");
 
         if (cg.isGrounded)
         {
