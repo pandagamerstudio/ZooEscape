@@ -54,7 +54,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 
     private Animator animator;
 
-
+    private CheckGround checkGround;
+    public bool chocandLatPlat;
+   public int aux;
 
 
     void Awake(){
@@ -63,6 +65,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         anim = this.GetComponent<Animator>();
         cg = this.GetComponentInChildren<CheckGround>();
         animator = this.GetComponent<Animator>();
+        checkGround = this.GetComponentInChildren<CheckGround>();
+        
 
         posicionReal = new Vector2(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y);
         posicionUltimoPaquete = Vector2.zero;
@@ -70,9 +74,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         tiempoActualPaquete = 0.0;
         tiempoUltimoPaquete = 0.0;
         tiempo = 0.0;
-    //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
-    //InputSystem.EnableDevice(Keyboard.current);
-    //InputSystem.DisableDevice();
+        chocandLatPlat = false;
+        aux = 0;
+        //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
+        //InputSystem.EnableDevice(Keyboard.current);
+        //InputSystem.DisableDevice();
     }
 
     bool isMobile;
@@ -241,7 +247,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
 
         }
-        else {
+        else if(!chocandLatPlat) {
             rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
             if (ad.x != 0)
             {
@@ -278,5 +284,61 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         this.gameObject.layer = 9+id;
     }
 
-    
+
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        //No quirto que los objetos copia de los otro jugadores lo ejecuten
+        if (!photonView.IsMine)
+            return;
+        if (!collision.gameObject.tag.Equals("suelo")) {
+            return;
+
+           
+        }
+
+      
+        if ( !checkGround.isGrounded)
+        {
+            chocandLatPlat = true;
+
+        }
+        else if(checkGround.isGrounded) {
+            chocandLatPlat = false;
+        }
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!photonView.IsMine)
+            return;
+
+        if (!collision.gameObject.tag.Equals("suelo"))
+            return;
+
+        if ( checkGround.isGrounded)
+        {
+            chocandLatPlat = false;
+
+        }
+        else {
+            chocandLatPlat = true;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D collision)
+    {
+        if (!photonView.IsMine)
+            return;
+        if (!collision.gameObject.tag.Equals("suelo"))
+            return;
+
+ 
+            chocandLatPlat = false;
+        
+     
+    }
+
+
+
 }
