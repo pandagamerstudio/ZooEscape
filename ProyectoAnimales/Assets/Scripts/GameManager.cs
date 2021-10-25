@@ -63,4 +63,8 @@ public class GameManager : MonoBehaviourPun
         playerObject.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
     }
 
+    public void LeavePlayer(){
+        playersInGame--;
+    }
+
 }
