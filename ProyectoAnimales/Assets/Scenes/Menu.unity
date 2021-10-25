@@ -1419,12 +1419,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1396210484}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
         m_MethodName: OnPlayerNameValueChanged
-        m_Mode: 2
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 630354047}
-          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3349,7 +3349,6 @@ GameObject:
   - component: {fileID: 1396210484}
   - component: {fileID: 1396210483}
   - component: {fileID: 1396210487}
-  - component: {fileID: 1396210486}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -3403,6 +3402,7 @@ MonoBehaviour:
   roomListContainer: {fileID: 699880662}
   roomButtonPrefab: {fileID: 8540660614405191092, guid: a88f0c0d5c9a53741b94fb3d9f447317,
     type: 3}
+  playerNameInput: {fileID: 630354047}
 --- !u!4 &1396210485
 Transform:
   m_ObjectHideFlags: 0
@@ -3417,24 +3417,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!255 &1396210486
-FixedJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1396210482}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_DampingRatio: 0
-  m_Frequency: 0
 --- !u!50 &1396210487
 Rigidbody2D:
   serializedVersion: 4
