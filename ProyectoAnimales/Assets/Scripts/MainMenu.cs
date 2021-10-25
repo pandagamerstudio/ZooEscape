@@ -17,9 +17,11 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public Button startGameButton;//loby button
     public RectTransform roomListContainer;
     public GameObject roomButtonPrefab;
+    public TMP_InputField playerNameInput;
 
     private List<GameObject> roomButtons = new List<GameObject>();
     private List<RoomInfo> roomList = new List<RoomInfo>();
+
 
     void Start(){
 
@@ -35,6 +37,35 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
             PhotonNetwork.CurrentRoom.IsOpen = true;
         }
 
+        if (!photonView.IsMine)
+            return;
+
+        /*
+        if (SystemInfo.deviceType == DeviceType.Desktop){
+            user.ActivateControlScheme("Keyboard&Mouse");
+        } else if (SystemInfo.deviceType == DeviceType.Handheld){
+            user.ActivateControlScheme("Movil");   
+        }*/
+        CheckIfMobile();
+
+        if (isMobile){
+            if(playerNameInput){
+                TouchScreenKeyboard.Open("",TouchScreenKeyboardType.Default,false,false,true);
+            }
+        }    
+    }
+
+    bool isMobile;
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    static extern bool IsMobile();
+#endif
+        void CheckIfMobile()
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+        isMobile = IsMobile();
+#endif
     }
 
     void SetScreen(GameObject screen){
@@ -49,7 +80,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
             UpdateLobbyBrowserUI();
     }
 
-    public void OnPlayerNameValueChanged(TMP_InputField playerNameInput){
+    public void OnPlayerNameValueChanged(){
         PhotonNetwork.NickName = playerNameInput.text;
     }
 
@@ -147,5 +178,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnRoomListUpdate(List<RoomInfo> allRooms){
         roomList = allRooms;
     }
+
+
 
 }

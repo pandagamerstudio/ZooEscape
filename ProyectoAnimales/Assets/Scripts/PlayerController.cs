@@ -291,10 +291,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         //No quirto que los objetos copia de los otro jugadores lo ejecuten
         if (!photonView.IsMine)
             return;
-        if (!collision.gameObject.tag.Equals("suelo")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects")) {
             return;
-
-           
         }
 
       
@@ -313,8 +311,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         if (!photonView.IsMine)
             return;
 
-        if (!collision.gameObject.tag.Equals("suelo"))
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects")) {
             return;
+        }
 
         if ( checkGround.isGrounded)
         {
@@ -330,9 +329,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     {
         if (!photonView.IsMine)
             return;
-        if (!collision.gameObject.tag.Equals("suelo"))
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects")) {
             return;
-
+        }
  
             chocandLatPlat = false;
         
