@@ -10,7 +10,7 @@ using Photon.Realtime;
 public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     
-    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen;
+    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, mesanjePantalla;
 
     public Button createRoomButton, findRoomButton;//Screen buttons
     public TextMeshProUGUI playerListText, roomInfoText;//loby text
@@ -90,10 +90,18 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnCreateRoomButton(){
+        if(PhotonNetwork.NickName == ""){
+            Avisar();
+            return;
+        }
         SetScreen(createRoomScreen);
     }
 
     public void OnFindRoomButton(){
+        if(PhotonNetwork.NickName == ""){
+            Avisar();
+            return;
+        }
         SetScreen(lobyBrowserScreen);
     }
 
@@ -102,6 +110,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnCreateButton(TMP_InputField roomNameInput){
+        if(roomNameInput.text == ""){
+            Avisar();
+            return;
+        }
         NetworkManager.instance.CreateRooms(roomNameInput.text);
     }
 
@@ -177,6 +189,17 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> allRooms){
         roomList = allRooms;
+    }
+
+    public void Avisar(){
+        StartCoroutine(AvisarCo()); 
+    }
+
+
+    IEnumerator AvisarCo(){
+        mesanjePantalla.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        mesanjePantalla.SetActive(false);
     }
 
 
