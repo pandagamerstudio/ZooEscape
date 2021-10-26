@@ -157,14 +157,17 @@ Versión 1.0
 > ![](https://i.imgur.com/jxSm0Kk.jpg)
 > ##### - Robotry
 > ![](https://i.imgur.com/Ev85jws.jpg)
+
+
 > #### 6.2 Apartado visual
-> - En principio todos los elementos visuales como los escenarios, o las plataformas, o los sprites de los personajes van a ser dibujados por nosotros. 
+> - Casi todos los elementos visuales como los escenarios, las plataformas o los sprites de los personajes van a ser dibujados por nosotros. 
 > - Del mismo modo, los menús e interfaces también serán diseñados y dibujados por nosotros.
 > - Tal y como se indicaba en el apartado anterior, el estilo del juego será cartoon 2D. Para que sea agradable y tenga un estilo más o menos unificado, vamos a utilizar un estilo kawaii con una paleta de colores pastel.
 > - Los animales (que serán los avatares de los jugadores) serán de formas redondeadas y suaves, con ojos grandes y aspecto inofensivo.
 > - Los elementos del nivel - las plataformas, o las cajas que hay que empujar, o los botones que hay que pulsar - también tendrán una base de formas circulares y suaves, sin picos ni esquinas ni trazos bruscos. 
 > - La interfaz y los menús tendrán un estilo similar, pues queremos que el juego posea una estética común y unificada. Los botones tendrán las esquinas redondeadas, y la fuente de los textos será de estilo cartoon, tirando más a adorable y divertida que a elegante. Además, mantendrán la paleta de colores.
-> ##### Referencias:
+> 
+> ##### 6.2.1 Referencias:
 > ![](https://i.imgur.com/Sr1304u.jpg)
 > https://www.pinterest.es/pin/363525001179177476/
 > 
@@ -175,8 +178,17 @@ Versión 1.0
 > https://www.pinterest.es/pin/363525001179177522/
 > 
 > ![](https://i.imgur.com/qnmRkwe.jpg)
-> 
+>
 > https://www.pinterest.es/pin/363525001179177528/
+> 
+> ##### 6.2.2 Arte propio para el juego:
+> ###### Paleta de colores:
+> ![](https://i.imgur.com/G0Ysbzz.png)
+> ###### Primer personaje:
+> ![](https://i.imgur.com/ERXxV2g.png)
+> ###### Elementos del nivel:
+> ![](https://i.imgur.com/hzcelTl.png)
+> ![](https://i.imgur.com/U3HZP3E.png)
 > 
 > #### 6.3 Música
 > - La música del videojuego estara en consonancia con el estilo global. Esta va a ser remezclada y producida por nosotros mismos y se buscarán tanto efectos como una banda sonora propia del videojuego con melodía agradable y alegre representando la búsqueda de la felicidad de los personajes dentro del juego, contando con algún patrón de incertidumbre variando los instrumentos generales y con tonos graves que aporten dramatización a la melodía cuya característica principal será que aporte felicidad con ritmos suaves y de intensidad moderada y cambios puntuales.
