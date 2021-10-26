@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     //[HideInInspector]
     public int id;
 
+    public int idCanvas;
+    public bool canvasBool;
+
     public float runSpeed = 2f;
     public float jumpSpeed = 3f;
     public Rigidbody2D rb2D;
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     public static PlayerController me;
 
     GameObject canvas;
+
 
     //Para quitar lag
     public Vector2 posicionReal;
@@ -114,7 +118,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine && !canvasBool)
             return;
 
         ad = callback.ReadValue<Vector2>();
@@ -147,7 +151,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 
     public void salto(InputAction.CallbackContext callback)
     {
-        if (!photonView.IsMine)
+        if (!photonView.IsMine && !canvasBool)
             return;
 
         if(attached)
@@ -336,6 +340,16 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             chocandLatPlat = false;
         
      
+    }
+
+    public void OnclickCanvas(){
+        StartCoroutine(canvasCo());
+    }
+
+    IEnumerator canvasCo(){
+        canvasBool = true;
+        yield return new WaitForSeconds(2.0f);
+        canvasBool = false;
     }
 
 
