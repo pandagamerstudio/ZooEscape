@@ -6,7 +6,7 @@ using System.Linq;
 using Photon.Realtime;
 using Cinemachine;
 using UnityEngine.InputSystem;
-
+//
 public class GameManager : MonoBehaviourPun
 {
     
