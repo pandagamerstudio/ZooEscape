@@ -90,18 +90,18 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnCreateRoomButton(){
-        if(PhotonNetwork.NickName == ""){
-            Avisar();
-            return;
-        }
+        //if(PhotonNetwork.NickName == ""){
+          //  Avisar();
+            //return;
+        //}
         SetScreen(createRoomScreen);
     }
 
     public void OnFindRoomButton(){
-        if(PhotonNetwork.NickName == ""){
-            Avisar();
-            return;
-        }
+        //if(PhotonNetwork.NickName == ""){
+          //  Avisar();
+            //return;
+        //}
         SetScreen(lobyBrowserScreen);
     }
 
@@ -110,10 +110,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnCreateButton(TMP_InputField roomNameInput){
-        if(roomNameInput.text == ""){
-            Avisar();
-            return;
-        }
+        //if(roomNameInput.text == ""){
+          //  Avisar();
+            //return;
+        //}
         NetworkManager.instance.CreateRooms(roomNameInput.text);
     }
 
@@ -192,7 +192,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void Avisar(){
-        StartCoroutine(AvisarCo()); 
+        //StartCoroutine(AvisarCo()); 
     }
 
 

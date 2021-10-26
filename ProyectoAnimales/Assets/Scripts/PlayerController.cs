@@ -104,7 +104,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             return;
 
         var user = GetComponent<PlayerInput>().user;
-        canvas = GameObject.FindWithTag("Canvas");
+        //canvas = GameObject.FindWithTag("Canvas");
+        canvas = this.transform.GetChild(1).gameObject;
         canvas.SetActive(false);
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
