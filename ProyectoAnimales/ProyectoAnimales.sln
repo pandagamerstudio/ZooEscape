@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.csproj", "{c3f86714-ece7-d17a-2d75-01a16e597c26}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{a46cd517-eef8-9582-872e-8d0178a111a7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.TestRunner", "UnityEngine.TestRunner.csproj", "{d5236e9a-b642-3365-743c-b137a72c45c5}"
@@ -8,8 +10,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Mathematics", "Unity.Mathematics.csproj", "{010c6dea-333f-e071-bad4-5c81a6437592}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.InputSystem", "Unity.InputSystem.csproj", "{308e7633-4ecb-8055-1099-195aa279d451}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityEngine.UI", "UnityEngine.UI.csproj", "{c3f86714-ece7-d17a-2d75-01a16e597c26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonUnityNetworking.Demos", "PhotonUnityNetworking.Demos.csproj", "{31bbb190-8a32-a687-e176-819492b09f05}"
 EndProject
@@ -102,6 +102,8 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{c3f86714-ece7-d17a-2d75-01a16e597c26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{c3f86714-ece7-d17a-2d75-01a16e597c26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{a46cd517-eef8-9582-872e-8d0178a111a7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{a46cd517-eef8-9582-872e-8d0178a111a7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{d5236e9a-b642-3365-743c-b137a72c45c5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -110,8 +112,6 @@ Global
 		{010c6dea-333f-e071-bad4-5c81a6437592}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{308e7633-4ecb-8055-1099-195aa279d451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{308e7633-4ecb-8055-1099-195aa279d451}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{c3f86714-ece7-d17a-2d75-01a16e597c26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{c3f86714-ece7-d17a-2d75-01a16e597c26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31bbb190-8a32-a687-e176-819492b09f05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{31bbb190-8a32-a687-e176-819492b09f05}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{f7b63846-dcdc-200d-d5c1-7b6d8fd47e51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

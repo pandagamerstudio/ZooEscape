@@ -16,17 +16,9 @@ public class KeyCollect : MonoBehaviourPun
         if (collision.CompareTag("Player"))
         {
             PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-
-            photonView.RPC("RecogerObjeto", RpcTarget.All);
-
+            player.photonView.RPC("GetKey", RpcTarget.All);
             PhotonNetwork.Destroy(gameObject);
         }
 
-    }
-
-    [PunRPC]
-    void RecogerObjeto()
-    {
-        //GetComponent<SpriteRenderer>().enabled = false;
     }
 }

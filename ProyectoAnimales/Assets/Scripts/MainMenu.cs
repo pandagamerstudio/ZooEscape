@@ -166,7 +166,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        NetworkManager.instance.ChangeScene("Game"); 
+        NetworkManager.instance.ChangeScene("Level1"); 
         //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
     }
 
