@@ -22,7 +22,9 @@ public class GameManager : MonoBehaviourPun
 
     private int playersInGame;
 
-    //public GameObject rope;
+    public GameObject rope;
+
+    public GameObject canvas;
 
     public static GameManager instance;
 

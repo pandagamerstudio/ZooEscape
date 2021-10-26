@@ -17,11 +17,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 
     public float runSpeed = 2f;
     public float jumpSpeed = 3f;
-    Rigidbody2D rb2D;
-    CheckGround cg;
+    public Rigidbody2D rb2D;
+    public CheckGround cg;
 
     public float doubleJumpSpeed = 2.5f;
-    //public float pushForce = 10f;
+    public float pushForce = 10f;
 
     public bool canDoubleJump = false;
     public bool attached = false;
@@ -62,8 +62,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     public bool chocandLatPlat;
    public int aux;
 
-   public bool key;
-
 
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -82,7 +80,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         tiempo = 0.0;
         chocandLatPlat = false;
         aux = 0;
-        key = false;
         //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
         //InputSystem.EnableDevice(Keyboard.current);
         //InputSystem.DisableDevice();
@@ -131,15 +128,15 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         
         if (top == false){
             if (ad.x > 0){
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             } else if (ad.x < 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
             } 
         } else {
             if (ad.x < 0){
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             } else if (ad.x > 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-0.1f, 0.1f, 0.1f);
             }
         }
 
@@ -292,10 +289,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         this.gameObject.layer = 9+id;
     }
 
-    [PunRPC]
-    public void GetKey(){
-        key = true;
-    }
+
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
