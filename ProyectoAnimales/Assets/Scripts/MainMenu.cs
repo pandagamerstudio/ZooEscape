@@ -10,9 +10,10 @@ using Photon.Realtime;
 public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     
-    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, mesanjePantalla;
+    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla;
 
     public Button createRoomButton, findRoomButton;//Screen buttons
+
     public TextMeshProUGUI playerListText, roomInfoText;//loby text
     public Button startGameButton;//loby button
     public RectTransform roomListContainer;
@@ -73,6 +74,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         createRoomScreen.SetActive(false);
         lobyScreen.SetActive(false);
         lobyBrowserScreen.SetActive(false);
+        menuPrincipalScreen.SetActive(false);
+        creditosScreen.SetActive(false);
+        opcionesScreen.SetActive(false);
 
         screen.SetActive(true);
 
@@ -109,6 +113,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         SetScreen(mainScreen);
     }
 
+    public void OnVolverButton(){
+        SetScreen(menuPrincipalScreen);
+    }
+
     public void OnCreateButton(TMP_InputField roomNameInput){
         //if(roomNameInput.text == ""){
           //  Avisar();
@@ -116,6 +124,19 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         //}
         NetworkManager.instance.CreateRooms(roomNameInput.text);
     }
+
+    public void OnPlayButton(){
+        SetScreen(mainScreen);
+    }
+
+    public void OnCreditosButton(){
+        SetScreen(creditosScreen);
+    }
+    public void OnOptionsButton(){
+        SetScreen(opcionesScreen);
+    }
+
+
 
     //Lobby Screen
     public override void OnJoinedRoom(){
@@ -127,6 +148,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer){
         UpdateLobbyUI();
     }
+
 
     [PunRPC]
     void UpdateLobbyUI(){
@@ -144,7 +166,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        NetworkManager.instance.ChangeScene("Game"); 
+        NetworkManager.instance.ChangeScene("Level1"); 
         //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
     }
 
