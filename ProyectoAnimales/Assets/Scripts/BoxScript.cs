@@ -66,6 +66,17 @@ public class BoxScript : MonoBehaviourPun
         }
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision){
+        if (collision.collider.CompareTag("Caja"))
+        {
+            //transform.parent = collision.transform;
+            //collision.transform.position = new Vector3(collision.transform.position.x + 0.1f,collision.transform.position.y, 0f);
+            //collision.GetComponent<BoxScript>().caja.bodyType = RigidbodyType2D.Kinematic;
+            FixedJoint2D joint = gameObject.AddComponent<FixedJoint2D>();
+            joint.anchor = collision.contacts[0].point;
+            joint.connectedBody = collision.collider.GetComponent<Rigidbody2D>();
+            joint.enableCollision = false;
+        }
+    }
 
 }

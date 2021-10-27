@@ -200,10 +200,10 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         if (gravedad > 0 && activadaGravedad == false){
             if (top == false){
                 transform.eulerAngles = new Vector3(0,0,180f);
-                Physics2D.gravity = new Vector2 (0,9.81f);
+                Physics2D.gravity = new Vector2 (0,29.43f);
             } else {
                 transform.eulerAngles = Vector3.zero;
-                Physics2D.gravity = new Vector2 (0,-9.81f);
+                Physics2D.gravity = new Vector2 (0,-29.43f);
             }
 
             top = !top;
@@ -225,10 +225,10 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         gravedadLados = callback.ReadValue<Vector2>();
 
         if (gravedadLados.x > 0){
-            Physics2D.gravity = new Vector2 (9.81f, 0);
+            Physics2D.gravity = new Vector2 (29.43f, 0);
             transform.eulerAngles = new Vector3(0,0,90f);
         } else if (gravedadLados.x < 0){
-            Physics2D.gravity = new Vector2 (-9.81f, 0);
+            Physics2D.gravity = new Vector2 (-29.43f, 0);
             transform.eulerAngles = new Vector3(0,0,-90f);
         }
         
