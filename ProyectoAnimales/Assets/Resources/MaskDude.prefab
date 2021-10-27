@@ -444,10 +444,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 15
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -468,9 +468,9 @@ MonoBehaviour:
   id: 0
   idCanvas: 0
   canvasBool: 0
-  runSpeed: 8
+  runSpeed: 9
   jumpSpeed: 15
-  doubleJumpSpeed: 10
+  doubleJumpSpeed: 12
   canDoubleJump: 0
   attached: 0
   attachedTo: {fileID: 0}
