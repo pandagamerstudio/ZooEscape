@@ -11,6 +11,7 @@ public class CheckGround : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         isGrounded = true;
+        Debug.Log("eeeeeeeeentra");
     }
     private void OnTriggerStay2D(Collider2D other)
     {
@@ -20,5 +21,6 @@ public class CheckGround : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         isGrounded = false;
+        Debug.Log("saliendooooooo");
     }
 }

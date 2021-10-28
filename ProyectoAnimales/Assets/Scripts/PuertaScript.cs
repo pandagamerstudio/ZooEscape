@@ -20,7 +20,8 @@ public class PuertaScript : MonoBehaviourPun
         if (collision.CompareTag("Player")){
             playersIn++;
 
-            if (playersIn == 2 && collision.gameObject.GetComponent<PlayerController>().key){
+            GameObject l = GameObject.FindWithTag("Llave");
+            if (playersIn == 2 && (l == null)){
                 Scene scene = SceneManager.GetActiveScene();
                 string nombre = "";
                 switch(scene.name){
