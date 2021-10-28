@@ -61,11 +61,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
 
     private CheckGround checkGround;
     public bool chocandLatPlat;
-   public int aux;
-
-   public bool key;
-
-
+    public int aux;
+ 
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
@@ -83,7 +80,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         tiempo = 0.0;
         chocandLatPlat = false;
         aux = 0;
-        key = false;
         //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
         //InputSystem.EnableDevice(Keyboard.current);
         //InputSystem.DisableDevice();
@@ -300,11 +296,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         this.gameObject.layer = 9+id;
     }
 
-    [PunRPC]
-    public void GetKey(){
-        key = true;
-    }
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
         //No quirto que los objetos copia de los otro jugadores lo ejecuten
@@ -356,6 +347,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         
      
     }
+
 
     public void OnclickCanvas(){
         StartCoroutine(canvasCo());
