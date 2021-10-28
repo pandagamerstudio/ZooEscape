@@ -45,7 +45,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     Vector2 gravedadLados;
     public static PlayerController me;
 
-    GameObject canvas;
+    public GameObject canvas;
+    //GameObject canvasEnt;
 
 
     //Para quitar lag
@@ -107,8 +108,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             return;
 
         var user = GetComponent<PlayerInput>().user;
-        //canvas = GameObject.FindWithTag("Canvas");
-        canvas = this.transform.GetChild(1).gameObject;
+        canvas = GameObject.FindWithTag("Canvas");
+        //canvas = this.transform.GetChild(1).gameObject;
         canvas.SetActive(false);
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
@@ -116,13 +117,20 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         } else if (SystemInfo.deviceType == DeviceType.Handheld){
             user.ActivateControlScheme("Movil");   
         }*/
+        
         CheckIfMobile();
-        if(isMobile)
+        if(isMobile){
             canvas.SetActive(true);
+            //canvasEnt = GameObject.FindWithTag("Canvas");
+            //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
+            //b.transform.parent = canvasEnt.transform;
+        }
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
-        if (!photonView.IsMine && !canvasBool)
+        Player p = PhotonNetwork.LocalPlayer;
+
+        if (!photonView.IsMine && p != photonPlayer)
             return;
 
         ad = callback.ReadValue<Vector2>();
