@@ -5,7 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.InputSystem;
 using System.Runtime.InteropServices;
-
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviourPun,IPunObservable
 {
 
@@ -62,6 +62,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     private CheckGround checkGround;
     public bool chocandLatPlat;
     public int aux;
+
+    bool cargarUnaVez = true;
+   public Transform posI;
  
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -80,6 +83,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         tiempo = 0.0;
         chocandLatPlat = false;
         aux = 0;
+
+        
+
         //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
         //InputSystem.EnableDevice(Keyboard.current);
         //InputSystem.DisableDevice();
@@ -102,7 +108,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     void Start(){
         if (!photonView.IsMine)
             return;
-
+        posI = gameObject.transform;
         var user = GetComponent<PlayerInput>().user;
         canvas = GameObject.FindWithTag("Canvas");
         //canvas = this.transform.GetChild(1).gameObject;
@@ -121,6 +127,85 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
             //b.transform.parent = canvasEnt.transform;
         }
+    }
+
+    public void Reiniciar(InputAction.CallbackContext callback)
+    {
+        Debug.Log("1");
+        if (cargarUnaVez&&PhotonNetwork.IsMasterClient) {
+            // PhotonNetwork.LoadScene("SceneName");
+            cargarUnaVez = false;
+            Debug.Log("2");
+            if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                Debug.Log("3");
+                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+                photonView.RPC("moverJug", RpcTarget.All);
+            }
+            else if (SceneManager.GetActiveScene().name == "Level2")
+            {
+                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+                photonView.RPC("moverJug2", RpcTarget.All);
+            }
+            else {
+                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel3>().reiniciarNivel();
+                photonView.RPC("moverJug3", RpcTarget.All);
+            }
+           
+
+
+        }
+    }
+
+    [PunRPC]
+    public void moverJug()
+    {
+        Debug.Log("4");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("5");
+            gameObject.transform.position = new Vector3(-6,-2.3f,0);
+        }
+        else
+        {
+            gameObject.transform.position = new Vector3(-1.1f, -2.3f, 0);
+        }
+        cargarUnaVez = true;
+
+    }
+
+    [PunRPC]
+    public void moverJug2()
+    {
+        Debug.Log("4");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("5");
+            gameObject.transform.position = new Vector3(0.2f, -2.1f, 0);
+        }
+        else
+        {
+            gameObject.transform.position = new Vector3(5.1f, -2.1f, 0);
+        }
+        cargarUnaVez = true;
+
+    }
+
+    [PunRPC]
+    public void moverJug3()
+    {
+        Debug.Log("4");
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("5");
+            gameObject.transform.position = new Vector3(46.6f, 16.1f, 0);
+        }
+        else
+        {
+            gameObject.transform.position = new Vector3(37.9f, 16.1f, 0);
+        }
+        cargarUnaVez = true;
+
     }
 
     public void Movimiento(InputAction.CallbackContext callback) {
@@ -146,6 +231,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
+
+
+
 
      
 /*

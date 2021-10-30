@@ -11,11 +11,13 @@ public class BoxScript : MonoBehaviourPun
     public int nPlayersNecesarios = 2;
     public TextMeshPro textoCaja;
     private Rigidbody2D caja;
-    
+    //Para quitar lag
+    Vector3 networkPos;
 
     private void Awake()
     {
         caja = GetComponent<Rigidbody2D>();
+        networkPos = new Vector3();
 
     }
 
@@ -23,24 +25,28 @@ public class BoxScript : MonoBehaviourPun
     private void Update()
     {
         textoCaja.text = "" + nPlayersNecesarios;
-    }
- /*   private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            //photonView.RPC("changeNplayersRest", RpcTarget.All);
-            changeNplayersRest();
-        }
-    }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            //photonView.RPC("changeNplayersSum", RpcTarget.All);
-            changeNplayersSum();
-        }
-    }*/
+       
+    }
+   
+
+    /*   private void OnTriggerEnter2D(Collider2D collision)
+       {
+           if (collision.CompareTag("Player"))
+           {
+               //photonView.RPC("changeNplayersRest", RpcTarget.All);
+               changeNplayersRest();
+           }
+       }
+
+       private void OnTriggerExit2D(Collider2D collision)
+       {
+           if (collision.CompareTag("Player"))
+           {
+               //photonView.RPC("changeNplayersSum", RpcTarget.All);
+               changeNplayersSum();
+           }
+       }*/
 
     //[PunRPC]
     public void changeNplayersSum()

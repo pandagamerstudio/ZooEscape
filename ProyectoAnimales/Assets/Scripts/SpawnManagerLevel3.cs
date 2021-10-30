@@ -26,4 +26,19 @@ public class SpawnManagerLevel3 : MonoBehaviourPun
             PhotonNetwork.Instantiate(cajas.name, cajasSpawn[i].position, Quaternion.identity);
         }
     }
+    public void reiniciarNivel()
+    {
+        GameObject l = GameObject.FindWithTag("Llave");
+        if (l == null)
+        {
+            PhotonNetwork.Instantiate(key.name, keySpawn.position, Quaternion.identity);
+
+        }
+        GameObject[] cajas = GameObject.FindGameObjectsWithTag("Caja");
+        for (int i = 0; i < cajas.Length; i++) {
+            cajas[i].transform.position = cajasSpawn[i].position;
+        }
+
+
+    }
 }

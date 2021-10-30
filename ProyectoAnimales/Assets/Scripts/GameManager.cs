@@ -47,7 +47,9 @@ public class GameManager : MonoBehaviourPun
         }
     }
 
-    void SpawnPlayer(){
+
+
+   public void SpawnPlayer(){
         Vector3 playerPos;
         if (PhotonNetwork.IsMasterClient){
             playerPos = spawnPoints[0].position;
