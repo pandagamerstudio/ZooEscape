@@ -10,7 +10,7 @@ using Photon.Realtime;
 public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     
-    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla;
+    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla, controlesScreen;
 
     public Button createRoomButton, findRoomButton;//Screen buttons
 
@@ -77,6 +77,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         menuPrincipalScreen.SetActive(false);
         creditosScreen.SetActive(false);
         opcionesScreen.SetActive(false);
+        controlesScreen.SetActive(false);
 
         screen.SetActive(true);
 
@@ -134,6 +135,11 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
     public void OnOptionsButton(){
         SetScreen(opcionesScreen);
+    }
+
+    public void OnControlesButton()
+    {
+        SetScreen(controlesScreen);
     }
 
 
