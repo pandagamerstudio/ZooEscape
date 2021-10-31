@@ -4,12 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
-public class EscenaFinal : MonoBehaviourPun
+
+public class EscenaFinal : MonoBehaviour
 {
-
-    public void OnVolverMenu(){
+    public void OnVolverMenu()
+    {
         Debug.Log("Pulsadooooo");
-        NetworkManager.instance.ChangeScene("Menu"); 
+        SceneManager.LoadScene("Menu");
     }
 }
