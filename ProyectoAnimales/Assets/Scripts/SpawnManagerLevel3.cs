@@ -36,6 +36,7 @@ public class SpawnManagerLevel3 : MonoBehaviourPun
         }
         GameObject[] cajas = GameObject.FindGameObjectsWithTag("Caja");
         for (int i = 0; i < cajas.Length; i++) {
+            Destroy(cajas[i].GetComponent<FixedJoint2D>());
             cajas[i].transform.position = cajasSpawn[i].position;
         }
 

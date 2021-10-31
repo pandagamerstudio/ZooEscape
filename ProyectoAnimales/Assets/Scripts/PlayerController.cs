@@ -83,6 +83,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         tiempo = 0.0;
         chocandLatPlat = false;
         aux = 0;
+        cargarUnaVez = true;
 
         
 
@@ -164,11 +165,20 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("5");
-            gameObject.transform.position = new Vector3(-6,-2.3f,0);
+            //gameObject.transform.position = new Vector3(-6,-2.3f,0);
+            gameObject.transform.position = GameManager.instance.spawnPoints[0].position;
+
+            GameObject[] jugs = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject j in jugs){
+                if (j.GetComponent<PlayerController>().photonPlayer != photonPlayer){
+                    j.transform.position = GameManager.instance.spawnPoints[1].position;
+                }
+            }
         }
         else
         {
-            gameObject.transform.position = new Vector3(-1.1f, -2.3f, 0);
+            //gameObject.transform.position = new Vector3(-1.1f, -2.3f, 0);
+            gameObject.transform.position = GameManager.instance.spawnPoints[1].position;
         }
         cargarUnaVez = true;
 
@@ -181,11 +191,13 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("5");
-            gameObject.transform.position = new Vector3(0.2f, -2.1f, 0);
+            //gameObject.transform.position = new Vector3(0.2f, -2.1f, 0);
+            gameObject.transform.position = GameManager.instance.spawnPoints[0].position;
         }
         else
         {
-            gameObject.transform.position = new Vector3(5.1f, -2.1f, 0);
+            //gameObject.transform.position = new Vector3(5.1f, -2.1f, 0);
+            gameObject.transform.position = GameManager.instance.spawnPoints[1].position;
         }
         cargarUnaVez = true;
 
@@ -198,11 +210,13 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         if (PhotonNetwork.IsMasterClient)
         {
             Debug.Log("5");
-            gameObject.transform.position = new Vector3(46.6f, 16.1f, 0);
+            //gameObject.transform.position = new Vector3(46.6f, 16.1f, 0);
+            gameObject.transform.position = GameManager.instance.spawnPoints[0].position;
         }
         else
         {
-            gameObject.transform.position = new Vector3(37.9f, 16.1f, 0);
+            //gameObject.transform.position = new Vector3(37.9f, 16.1f, 0);
+            gameObject.transform.position = GameManager.instance.spawnPoints[1].position;
         }
         cargarUnaVez = true;
 

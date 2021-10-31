@@ -82,6 +82,7 @@ public class BoxScript : MonoBehaviourPun
             joint.anchor = collision.contacts[0].point;
             joint.connectedBody = collision.collider.GetComponent<Rigidbody2D>();
             joint.enableCollision = false;
+            collision.transform.GetComponent<BoxScript>().changeNplayersRest();
         }
     }
 
