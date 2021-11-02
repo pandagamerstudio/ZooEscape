@@ -7,10 +7,13 @@ using Photon.Realtime;
 using UnityEngine.SceneManagement;
 
 
-public class EscenaFinal : MonoBehaviour
+public class EscenaFinal : MonoBehaviourPun
 {
     public void OnVolverMenu()
     {
+        if (!photonView.IsMine){
+            return;
+        }
         Debug.Log("Pulsadooooo");
         SceneManager.LoadScene("Menu");
     }
