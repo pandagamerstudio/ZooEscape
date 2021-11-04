@@ -81,8 +81,47 @@ Versión 1.0
 >     - La primera opción que se pueden encontrar los jugadores es que al pasarse otros niveles se les otorgarán una serie de monedas, las cuáles podrán utilizar para comprar nuevas vidas.
 >     -  Si algún jugador no tiene monedas ya y quiere seguir jugando, la opción alternativa que tendrá es ver un vídeo el cual le otorgará una moneda gratuita. El número de vídeos estará limitado.
 >     -  Si algún jugador no tiene monedas ya, no le quedan vídeos y quiere seguir jugando, la opción alternativa que tendrá es realizar una micro transacción para comprar monedas del juego con dinero real para poder seguir jugando.
+> - Lienzo de modelo de negocio (Canvas):
+>   - Socios claves:
+>     - Unity: obtenemos el software que utilizamos para desarrollar el producto.
+>     - Photon: obtenemos de ella el plug-in que utilizaremos para desarrollar el modo multijugador.
+>     - Plataformas donde se comparte el juego(Itch.io): medio donde poder compartir nuestro producto.
+>     - Anunciantes: compañías dispuestas a anunciarse en el videojuego.
+>   - Actividades clave: 
+>     - Anunciar el juego en otras páginas web u otros medios (YouTube, Twitch, etc.)
+>     - Sacar betas para que la gente vaya probando y le entren ganas de jugar al resultado final.
+>     - Tener el juego disponible en plataformas de juegos web.
+>     - Tener un medio por el que los usuarios puedan dar feedback a los desarrolladores.
+>     - Soporte técnico.
+>   - Recursos clave:
+>     - Redes Sociales para publicitar nuestro producto.
+>     - El software de desarrollo.
+>     - Hardware (ordenadores, tableta gráfica).
+>   - Propuesta de valor:
+>     - El producto tangible que es el videojuego.
+>     - Experiencia cooperativa.
+>     - Entretenimiento y ocio.
+>   - Relación con clientes:
+>     - Se espera una relación la cual incluya un feedback importante por parte del cliente ya que su opinión será importante para futuras actualizaciones.
+>     - Las relaciones que se han establecido han sido con el nicho de clientes más importantes de nuestro juego. Estos serían jugadores jóvenes que les guste y valoren el trabajo en equipo. Deben ser personas sociables, y que suelan dedicar tiempo a jugar en casa.
+>     - Estas no son prácticamente costosas.
+>     - Estas relaciones con los clientes se integran perfectamente en nuestro modelo de negocios con distintas comunidades y foros online para que puedan comunicarse y crear una comunidad que se ayude.
+>   - Canales: 
+>     - Fase 1, crear conciencia: Para que la gente conozca nuestro videojuego haremos publicidad en nuestras redes sociales, como Twitter y YouTube.
+>     - Fase 2, evaluación: Para recibir feedback de los jugadores sobre nuestro juego, nos pueden escribir por cualquier red social. Además, en juego será subido a itch.io por lo que en la misma página web que juegan pueden dejar sus comentarios y sus valoraciones.
+>     - Fase 3, compra: Nuestro juego va a ser FreeToPlay, por lo que la fase de compra no existe, sacaremos beneficios de los anuncios y micropagos.
+>     - En cuanto a la publicidad, la red que funciona mejor ahora mismo es Twitter. Y para la distribución, itch.io, ya que está integrado en la Epic Games Store y tiene un público mucho mayor que otras páginas.
+>   - Segmentos de clientes:
+>     - Nuestro juego se centra en unos nichos de mercado muy concretos donde puede tener un gran éxito como aquellos jugadores que les apasione el trabajo en equipo y pasar tiempo con sus amigos. Aunque también se puede orientar a un mercado más general ya que no se trata de un género “polémico” y cualquier jugador podría jugarlo.
+>     - Nuestros clientes más importantes serían ese nicho más “fijo” que se ha mencionado anteriormente que sería el de los jugadores a los cuales les apasione el trabajo en equipo y colaborar para llegar a un fin común.
+>   - Estructura de costos:
+>     - El costo principal de nuestro producto constaría del software empleado para la realización del videojuego y el costo de vida de los trabajadores de la plantilla.
+>     - Además, costes menores como la participación en eventos para dar a conocer nuestro videojuego y recibir feedback de los potenciales clientes.
+>     - Por último, dependiendo del sistema que se emplee para realizar el sistema multijugador (dependiendo del número de jugadores que jueguen online), el coste de mantenimiento de los servidores.
+>   - Fuente de ingresos:
+>     - La fuente de ingresos principal consta de  mediante donaciones en itch.io o páginas similares, y mediante anuncios y micropagos dentro del videojuego (ya que el público objetivo en jóven, y probablemente no trabajen y quieran gastar dinero en juegos).
+>     - Al ser un juego casual modo party, seguramente los micropagos se centren en contenido estético.
 
- 
 
 > ##### 2.2 Tablas de productos y precios
 > - La tabla de productos que tendremos en nuestro juego será bastante limitada ya que únicamente se podrán encontrar monedas.
