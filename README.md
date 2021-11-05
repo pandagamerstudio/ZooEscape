@@ -168,9 +168,8 @@ Versión 1.0
 > - Cada uno de los animales dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común,dando importancia en cada momento a todaslas opiniones de los miembros del equipo por muy dispares que sean. Además, los trabajadores del zoo intentarán a toda costa retener a los animales y evitar que los visitantes del zoo sientan pánico o sean atacados. También habrá diferentes puntos de vista entre los turistas, puesto que alguno no estará tan en contra de la escapada.
 > ##### 5.2 Personajes
 > - Al ser un videojuego cuyo argumento es la huída de unos animales de un zoo, los personajes serán los animales de dicho zoo. 
-> - El juego contará con 6 animales entre los que podrán elegir los jugadores: un oso panda, un oso pardo, un oso polar, un león, un tigre y un elefante.
-> - Todos los personajes funcionarán del mismo modo: mismas mecánicas, atributos y funcionalidades. El único propósito de tener más de un tipo de animal es dotar al juego de mayor diversidad y jugabilidad, al permitir a los jugadores elegir el avatar con el que van a jugar.
-> - El permitir a los jugadores elegir su avatar hace que el juego resulte automáticamente más atractivo, pues les da la opción de personalizar (dentro de las opciones disponibles) su experiencia de juego.
+> - El juego contará con 2 animales: un oso panda y un oso pardo.
+> - Los dos personajes funcionarán del mismo modo: mismas mecánicas, atributos y funcionalidades. 
 > ##### 5.3 Entornos y lugares
 > - El escenario principal del juego será el Zoo.
 > - Como el argumento es que los animales quieren escapar de éste, los niveles representarán la huida de las jaulas y otros espacios del zoo.
