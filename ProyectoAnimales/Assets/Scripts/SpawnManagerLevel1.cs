@@ -13,6 +13,7 @@ public class SpawnManagerLevel1 : MonoBehaviourPun
     public Transform jug1;
     public Transform jug2;
     public GameObject gm;
+    public GameObject caja;
     GameManager g;
   
 
@@ -22,8 +23,10 @@ public class SpawnManagerLevel1 : MonoBehaviourPun
 
         PhotonNetwork.Instantiate(key.name, keySpawn.position, Quaternion.identity);
         PhotonNetwork.Instantiate(puerta.name, puertaSpawn.position, Quaternion.identity);
+        PhotonNetwork.Instantiate(caja.name, keySpawn.position, Quaternion.identity);
+
         //g = gm.GetComponent<GameManager>();
-      
+
     }
 
     public void reiniciarNivel() {

@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 7256227805961506608}
   - component: {fileID: 7256227805961506610}
   - component: {fileID: 7256227805961506605}
-  - component: {fileID: 7256227805961506612}
   - component: {fileID: -7995736254237751680}
-  - component: {fileID: 4795324600781827495}
+  - component: {fileID: -6534405192117244318}
   m_Layer: 0
   m_Name: Caja
   m_TagString: Caja
@@ -155,11 +154,11 @@ MonoBehaviour:
   Group: 0
   prefixField: -1
   Synchronization: 3
-  OwnershipTransfer: 0
+  OwnershipTransfer: 1
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 7256227805961506612}
-  - {fileID: 4795324600781827495}
+  - {fileID: 7256227805961506605}
+  - {fileID: -6534405192117244318}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -177,22 +176,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nPlayersNecesarios: 1
   textoCaja: {fileID: 1611054030236238129}
---- !u!114 &7256227805961506612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7256227805961506604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 1
-  m_TeleportIfDistanceGreaterThan: 1
 --- !u!61 &-7995736254237751680
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -219,7 +202,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.08644462}
   m_EdgeRadius: 0
---- !u!114 &4795324600781827495
+--- !u!114 &-6534405192117244318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -228,13 +211,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 7256227805961506604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 0
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
+  m_PositionModel:
+    SynchronizeEnabled: 1
+    TeleportEnabled: 1
+    TeleportIfDistanceGreaterThan: 1
+    InterpolateOption: 2
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 1
+    ExtrapolateOption: 3
+    ExtrapolateSpeed: 1
+    ExtrapolateIncludingRoundTripTime: 1
+    ExtrapolateNumberOfStoredPositions: 1
+  m_RotationModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 1
+    InterpolateRotateTowardsSpeed: 180
+    InterpolateLerpSpeed: 5
+  m_ScaleModel:
+    SynchronizeEnabled: 0
+    InterpolateOption: 0
+    InterpolateMoveTowardsSpeed: 1
+    InterpolateLerpSpeed: 0
 --- !u!1 &8269178917401818568
 GameObject:
   m_ObjectHideFlags: 0
