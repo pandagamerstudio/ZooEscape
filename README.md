@@ -278,19 +278,25 @@ Versión 1.0
 > - Versión Alpha (31/10/2021).
 > - (Hito 2)
 > ##### 8.4 Semanas 5, 6 y 7
-> - Niveles Completos
+> - Niveles Completos (10 niveles)
+> - Personajes completos (mínimo de 2 personajes)
+> - Diseño final de los menús
+> - Diseño de pantalla de victoria y derrota
+> - Acabar diseño de niveles
+> - Añadir sistema de monetización
 > - Versión Beta (21/11/2021).
 > - Pruebas Beta
 > - (Hito 3)
 > ##### 8.5 Semanas 8, 9 y 10
 > - Pulido completo.
+> - Añadir la IA
 > - Versión Gold Master (12/12/2021).
 > - (Hito 4)
 > ##### 8.6 Semana de lanzamiento
 > - Revisar que los servidores funcionen bien.
 > - Compartir en redes sociales para que la gente lo pruebe.
 
-![Captura](https://user-images.githubusercontent.com/37275365/136663284-db444dfb-a42e-435b-958a-c04d4e08f40e.JPG)
+![hoja de ruta](https://user-images.githubusercontent.com/37275365/140500165-8714ee91-7723-4acd-9ea3-b29a1cd62306.JPG)
 
 
 
