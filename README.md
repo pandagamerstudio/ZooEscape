@@ -2,7 +2,7 @@
 
 
 Versión 1.0
-
+> Si quieres conocer más de nuestro equipo visita nuestra <a href="https://pandagamerstudio.github.io/">página web</a>
 > # Índice:
 > ## 1.Introducción
 > ##### 1.1 Descripción breve del concepto
