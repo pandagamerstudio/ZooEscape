@@ -81,7 +81,11 @@ Versión 1.0
 >     - La primera opción que se pueden encontrar los jugadores es que al pasarse otros niveles se les otorgarán una serie de monedas, las cuáles podrán utilizar para comprar nuevas vidas.
 >     -  Si algún jugador no tiene monedas ya y quiere seguir jugando, la opción alternativa que tendrá es ver un vídeo el cual le otorgará una moneda gratuita. El número de vídeos estará limitado.
 >     -  Si algún jugador no tiene monedas ya, no le quedan vídeos y quiere seguir jugando, la opción alternativa que tendrá es realizar una micro transacción para comprar monedas del juego con dinero real para poder seguir jugando.
+>
 > - Lienzo de modelo de negocio (Canvas):
+>
+> > ![Business Model Canvas (1)](https://user-images.githubusercontent.com/49784060/140505587-75242fb1-cab1-4666-8f7e-e1e4903d8ea3.jpg)
+>
 >   - Socios claves:
 >     - Unity: obtenemos el software que utilizamos para desarrollar el producto.
 >     - Photon: obtenemos de ella el plug-in que utilizaremos para desarrollar el modo multijugador.
