@@ -6,7 +6,9 @@ using Photon.Realtime;
 using UnityEngine.InputSystem;
 using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
-public class PlayerController : MonoBehaviourPun,IPunObservable
+using ExitGames.Client.Photon;
+
+public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallback
 {
 
     //[HideInInspector]
@@ -133,7 +135,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
     public void Reiniciar(InputAction.CallbackContext callback)
     {
         Debug.Log("1");
-        if (cargarUnaVez&&PhotonNetwork.IsMasterClient) {
+        if (cargarUnaVez && PhotonNetwork.IsMasterClient)
+        {
             // PhotonNetwork.LoadScene("SceneName");
             cargarUnaVez = false;
             Debug.Log("2");
@@ -141,21 +144,46 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
             {
                 Debug.Log("3");
                 GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
-                photonView.RPC("moverJug", RpcTarget.All);
+                //   photonView.RPC("moverJug", RpcTarget.All);
+                RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
             }
             else if (SceneManager.GetActiveScene().name == "Level2")
             {
                 GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
                 photonView.RPC("moverJug2", RpcTarget.All);
             }
-            else {
+            else
+            {
                 GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel3>().reiniciarNivel();
                 photonView.RPC("moverJug3", RpcTarget.All);
             }
-           
+
 
 
         }
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+      
+
+        if (eventCode == 1)
+        {
+     
+            moverJug();
+        }
+    }
+
+    private void OnEnable()
+    {
+        PhotonNetwork.AddCallbackTarget(this);
+    }
+
+    private void OnDisable()
+    {
+        PhotonNetwork.RemoveCallbackTarget(this);
     }
 
     [PunRPC]
@@ -178,7 +206,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable
         else
         {
             //gameObject.transform.position = new Vector3(-1.1f, -2.3f, 0);
-            gameObject.transform.position = GameManager.instance.spawnPoints[1].position;
+            gameObject.transform.position = GameManager.instance.spawnPoints[0].position;
         }
         cargarUnaVez = true;
 
