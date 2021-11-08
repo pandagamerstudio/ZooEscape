@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
-
-public class SpawnManagerLevel1 : MonoBehaviourPun
+using System.Runtime.InteropServices;
+using UnityEngine.SceneManagement;
+using ExitGames.Client.Photon;
+public class SpawnManagerLevel1 : MonoBehaviourPun, IOnEventCallback
 {
     public Transform keySpawn;
     public GameObject key;
@@ -31,6 +33,14 @@ public class SpawnManagerLevel1 : MonoBehaviourPun
         }
       
       
+    }
+
+    public virtual void activarBotones(int id, bool aux){
+
+    }
+
+    public virtual void OnEvent(EventData photonEvent){
+
     }
 
     

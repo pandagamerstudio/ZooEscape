@@ -61,7 +61,7 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         base.reiniciarNivel();
     }
 
-    public void activarBotones(int id, bool aux){
+    public override void activarBotones(int id, bool aux){
         botonesActivados[id] = aux;
         foreach (bool b in botonesActivados){
             if (!b){

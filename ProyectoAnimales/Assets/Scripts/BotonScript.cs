@@ -10,12 +10,13 @@ public class BotonScript : MonoBehaviourPun
     bool activada = false;
     float pulsar;
     private Animator animator;
-    private SpawnManagerLevel4 nivel;
+    private SpawnManagerLevel1 nivel;
 
     int id;
      void Awake()
     {
         animator = this.GetComponent<Animator>();
+        activada = false;
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,7 +51,7 @@ public class BotonScript : MonoBehaviourPun
         paredes = par;
     }
 
-    public void inicializarBoton(SpawnManagerLevel4 s, int i){
+    public void inicializarBoton(SpawnManagerLevel1 s, int i){
         nivel = s;
         id = i;
     }
