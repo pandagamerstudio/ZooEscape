@@ -4,12 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class SpawnManagerLevel3 : MonoBehaviourPun
+public class SpawnManagerLevel3 : SpawnManagerLevel1
 {
-    public Transform keySpawn;
-    public GameObject key;
-    public Transform puertaSpawn;
-    public GameObject puerta;
     public Transform[] cajasSpawn;
     public GameObject cajas;
 
@@ -26,7 +22,7 @@ public class SpawnManagerLevel3 : MonoBehaviourPun
             PhotonNetwork.Instantiate(cajas.name, cajasSpawn[i].position, Quaternion.identity);
         }
     }
-    public void reiniciarNivel()
+    public override void reiniciarNivel()
     {
         GameObject l = GameObject.FindWithTag("Llave");
         if (l == null)

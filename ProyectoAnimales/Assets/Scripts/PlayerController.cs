@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             // PhotonNetwork.LoadScene("SceneName");
             cargarUnaVez = false;
             Debug.Log("2");
-            if (SceneManager.GetActiveScene().name == "Level1")
+            /*if (SceneManager.GetActiveScene().name == "Level1")
             {
                 Debug.Log("3");
                 GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
@@ -157,8 +157,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             {
                 GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel3>().reiniciarNivel();
                 photonView.RPC("moverJug3", RpcTarget.All);
-            }
+            }*/
 
+            GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+            RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
 
 
         }
