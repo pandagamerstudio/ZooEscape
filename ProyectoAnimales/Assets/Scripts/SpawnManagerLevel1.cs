@@ -10,12 +10,6 @@ public class SpawnManagerLevel1 : MonoBehaviourPun
     public GameObject key;
     public Transform puertaSpawn;
     public GameObject puerta;
-    public Transform jug1;
-    public Transform jug2;
-    public GameObject gm;
-    public GameObject caja;
-    GameManager g;
-  
 
     void Start() {
         if (!PhotonNetwork.IsMasterClient)
@@ -29,7 +23,7 @@ public class SpawnManagerLevel1 : MonoBehaviourPun
 
     }
 
-    public void reiniciarNivel() {
+    public virtual void reiniciarNivel() {
         GameObject l = GameObject.FindWithTag("Llave");
         if (l == null) {
             PhotonNetwork.Instantiate(key.name, keySpawn.position, Quaternion.identity);

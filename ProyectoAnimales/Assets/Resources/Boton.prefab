@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7556983506834551275}
   - component: {fileID: 625752302699315316}
   - component: {fileID: 6067457853610643086}
-  - component: {fileID: 187724343434994376}
   - component: {fileID: 6890521508237712956}
   - component: {fileID: 7041891517190113028}
+  - component: {fileID: -2184757743728059658}
   m_Layer: 0
   m_Name: Boton
   m_TagString: Objects
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7556983506834551269}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.5956464, y: -1.7265801, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -137,19 +137,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.080859, y: 2.45}
   m_EdgeRadius: 0
---- !u!114 &187724343434994376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7556983506834551269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a36afc073d557c64d8a3cf065f1fc5b3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tipo: Boton
 --- !u!95 &6890521508237712956
 Animator:
   serializedVersion: 3
@@ -183,7 +170,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: Activada
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &-2184757743728059658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7556983506834551269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baaefc4cae9889b418c7c00cc5835daa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
