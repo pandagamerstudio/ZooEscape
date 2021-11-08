@@ -26,9 +26,7 @@ public class PuertaScript : MonoBehaviourPun
                 string nombre = "";
                 switch(scene.name){
                     case "Level1":
-
                         nombre = "Level2";
-
                         break;
                     case "Level2":
                         nombre = "Level3";
@@ -37,10 +35,12 @@ public class PuertaScript : MonoBehaviourPun
                         nombre = "Level4";
                         break;
                     case "Level4": 
+                        nombre = "Level5";
+                        break;
+                    case "Level5": 
                         nombre = "Final";
                         break;
                     default:
-                    
                         nombre = "Menu";
                         break;
                 }

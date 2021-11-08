@@ -10,7 +10,6 @@ public class BotonScript : MonoBehaviourPun
     bool activada = false;
     float pulsar;
     private Animator animator;
-
     private SpawnManagerLevel4 nivel;
 
     int id;

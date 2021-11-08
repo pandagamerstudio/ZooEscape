@@ -11,6 +11,15 @@ TextureImporter:
   - first:
       213: 8851129673723073535
     second: TileMap_Botones_Palancas_Plat_Barreras_0
+  - first:
+      213: 1113386828219502469
+    second: TileMap_Botones_Palancas_Plat_Barreras_1
+  - first:
+      213: -8408051274357463723
+    second: TileMap_Botones_Palancas_Plat_Barreras_2
+  - first:
+      213: 3092818564849732306
+    second: TileMap_Botones_Palancas_Plat_Barreras_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -237,7 +246,7 @@ TextureImporter:
         width: 69
         height: 841
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -245,6 +254,69 @@ TextureImporter:
       bones: []
       spriteID: ff3de2ffa8785da70800000000000000
       internalID: 8851129673723073535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_1
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1858
+        width: 308
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58f4f99db6b837f00800000000000000
+      internalID: 1113386828219502469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_2
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 931
+        width: 308
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55527aae9e9905b80800000000000000
+      internalID: -8408051274357463723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_3
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 1019
+        width: 879
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2da0a982916ebea20800000000000000
+      internalID: 3092818564849732306
       vertices: []
       indices: 
       edges: []
