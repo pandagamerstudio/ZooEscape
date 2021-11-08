@@ -46,11 +46,13 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
      <Compile Include="Assets\Scripts\NetworkManager.cs" />
+     <Compile Include="Assets\Scripts\BotonScript.cs" />
      <Compile Include="Assets\Scripts\Mine.cs" />
      <Compile Include="Assets\Scripts\PlatformMovement.cs" />
      <Compile Include="Assets\Scripts\CheckGround.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
      <Compile Include="Assets\Scripts\PuertaScript.cs" />
+     <Compile Include="Assets\Scripts\SpawnManagerLevel4.cs" />
      <Compile Include="Assets\Scripts\PlatMovManager.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
      <Compile Include="Assets\Scripts\SpawnManagerLevel3.cs" />
@@ -83,8 +85,9 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <Compile Include="Assets\Scripts\SpawnManagerLevel1.cs" />
-     <Compile Include="Assets\Scripts\SpawnManagerLevel4.cs" />
-     <Compile Include="Assets\Scripts\BotonScript.cs" />
+     <Compile Include="Assets\Scripts\SpawnManagerLevel5.cs" />
+     <Compile Include="Assets\Scripts\BotonScriptLevel5.cs" />
+     <Compile Include="Assets\Scripts\BotonQuitarPlat.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
