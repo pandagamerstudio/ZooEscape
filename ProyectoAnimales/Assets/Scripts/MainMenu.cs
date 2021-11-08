@@ -9,7 +9,8 @@ using Photon.Realtime;
 
 public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
-    
+    public string scene;
+
     public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla, controlesScreen;
 
     public Button createRoomButton, findRoomButton;//Screen buttons
@@ -173,6 +174,14 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
         NetworkManager.instance.ChangeScene("Level1"); 
+        //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
+    }
+
+    public void OnPruebaButton(){
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+
+        NetworkManager.instance.ChangeScene(scene); 
         //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
     }
 
