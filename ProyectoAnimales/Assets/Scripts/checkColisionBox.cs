@@ -9,7 +9,7 @@ public class checkColisionBox : MonoBehaviour
 
     void Start()
     {
-        box = GetComponent<BoxScript>();
+        box = GetComponentInParent<BoxScript>();
     }
 
 
