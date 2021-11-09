@@ -67,6 +67,7 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
      <Compile Include="Assets\Scripts\BotonScriptLevel5.cs" />
+     <Compile Include="Assets\Scripts\SpawnManagerLevel6.cs" />
      <Compile Include="Assets\Scripts\SpawnObject.cs" />
      <Compile Include="Assets\Scripts\KeyCollect.cs" />
      <Compile Include="Assets\Scripts\RopeSegment.cs" />
@@ -76,6 +77,7 @@
      <Compile Include="Assets\Inputs\InputJugadores.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\PlataformaAnimScript.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
      <Compile Include="Assets\Scripts\checkBoxColorColission.cs" />
      <Compile Include="Assets\Scripts\AudioVolume.cs" />
@@ -88,8 +90,6 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <Compile Include="Assets\Scripts\SpawnManagerLevel1.cs" />
-     <Compile Include="Assets\Scripts\SpawnManagerLevel6.cs" />
-     <Compile Include="Assets\Scripts\PlataformaAnimScript.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
@@ -340,10 +340,10 @@
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.19f1\Editor\Data\Managed\UnityEngine\UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
     <Reference Include="websocket-sharp">
-        <HintPath>K:\Github\ZooEscape\ProyectoAnimales\Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
+        <HintPath>C:\Users\Aitor\Documents\GitHub\ZooEscape\ProyectoAnimales\Assets\Photon\PhotonLibs\WebSocket\websocket-sharp.dll</HintPath>
     </Reference>
     <Reference Include="Photon3Unity3D">
-        <HintPath>K:\Github\ZooEscape\ProyectoAnimales\Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
+        <HintPath>C:\Users\Aitor\Documents\GitHub\ZooEscape\ProyectoAnimales\Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2020.3.19f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>

@@ -23,6 +23,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private List<GameObject> roomButtons = new List<GameObject>();
     private List<RoomInfo> roomList = new List<RoomInfo>();
+    int idJugSel;
+    public GameObject[] personajes;
 
 
     void Start(){
@@ -31,6 +33,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         findRoomButton.interactable = false;
 
         Cursor.lockState = CursorLockMode.None;
+
 
         if (PhotonNetwork.InRoom){
             //go to lobby
@@ -41,6 +44,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
         if (!photonView.IsMine)
             return;
+
+    
 
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
@@ -148,8 +153,14 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     //Lobby Screen
     public override void OnJoinedRoom(){
         SetScreen(lobyScreen);
-
         photonView.RPC("UpdateLobbyUI", RpcTarget.All);
+        if (PhotonNetwork.IsMasterClient){
+            idJugSel = 0;
+        } else {
+            idJugSel = 1;
+        }
+
+        SelectorPersonajes(idJugSel);
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer){
@@ -237,6 +248,15 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         mesanjePantalla.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         mesanjePantalla.SetActive(false);
+    }
+
+    public void SelectorPersonajes(int i){
+        idJugSel = i;
+        foreach(GameObject p in personajes){
+            p.GetComponent<Animator>().SetBool("Seleccionado", false);
+        }
+        Debug.Log(i);
+        personajes[i].GetComponent<Animator>().SetBool("Seleccionado", true);
     }
 
 
