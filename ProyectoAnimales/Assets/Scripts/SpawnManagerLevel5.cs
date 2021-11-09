@@ -31,7 +31,9 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         
         PhotonNetwork.Instantiate(caja.name, cajaSpawn.position, Quaternion.identity);
 
-        PhotonNetwork.Instantiate(botonEspecial.name, botonEspecialSpawn.position, Quaternion.identity);
+        GameObject botonEs = PhotonNetwork.Instantiate(botonEspecial.name, botonEspecialSpawn.position, Quaternion.identity);
+        botonEs.GetComponent<BotonQuitarPlat>().inicializarBoton(this);
+
 
         paredesAux = new GameObject [paredesSpawn.Length];
 
@@ -52,7 +54,7 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         platAux = new GameObject [platMovilesSpawn.Length];
 
         for (int i = 0; i < platMovilesSpawn.Length; i++){
-          PhotonNetwork.Instantiate(platMovil.name, platMovilesSpawn[i].position, Quaternion.identity);  
+          platAux[i] = PhotonNetwork.Instantiate(platMovil.name, platMovilesSpawn[i].position, Quaternion.identity);  
         }
     }
 

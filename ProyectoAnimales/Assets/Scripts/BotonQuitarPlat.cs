@@ -53,9 +53,8 @@ public class BotonQuitarPlat : MonoBehaviourPun
         plataformas = plat;
     }
 
-    public void inicializarBoton(SpawnManagerLevel5 s, int i){
+    public void inicializarBoton(SpawnManagerLevel5 s){
         nivel = s;
-        id = i;
     }
 
 }
