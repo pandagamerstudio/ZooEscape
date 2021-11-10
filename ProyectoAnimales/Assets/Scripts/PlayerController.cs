@@ -159,9 +159,12 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 photonView.RPC("moverJug3", RpcTarget.All);
             }*/
 
-            GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
-            RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-            PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
+            //GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+            //RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            //PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
+
+            PhotonNetwork.DestroyAll();
+            PhotonNetwork.LoadLevel("Recargar");
 
 
         }
