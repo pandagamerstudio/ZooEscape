@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150884011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.7, y: -2.754, z: 0}
+  m_LocalPosition: {x: 34, y: -2.754, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -187,7 +187,7 @@ MonoBehaviour:
   puertaSpawn: {fileID: 857435397}
   puerta: {fileID: 551000780651517063, guid: 1f84604bedd06fc418ec3f296e61879f, type: 3}
   cajaSpawn: {fileID: 1605680809}
-  caja: {fileID: 7256227805961506604, guid: b82e30be4b4f7df4ca4d2f0a06915c05, type: 3}
+  caja: {fileID: 7256227805961506604, guid: fa70614b82cd3534080e6548199e88d4, type: 3}
   botonesSpawn:
   - {fileID: 1444509856}
   - {fileID: 150884012}
@@ -199,6 +199,9 @@ MonoBehaviour:
   - {fileID: 2005928583}
   - {fileID: 340556806}
   - {fileID: 1709541494}
+  paredesSpawn2:
+  - {fileID: 492661164}
+  - {fileID: 524418521}
   paredes: {fileID: 234707726218093551, guid: eca3f290cb5cbaa43a23d03533a218e1, type: 3}
   platMovilesSpawn:
   - {fileID: 1741503805}
@@ -279,6 +282,66 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &492661163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 492661164}
+  m_Layer: 0
+  m_Name: SpawnPared3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &492661164
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 492661163}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 19.67, y: -0.93, z: 0}
+  m_LocalScale: {x: 0.7000001, y: 0.7000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &524418520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524418521}
+  m_Layer: 0
+  m_Name: SpawnPared4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524418521
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524418520}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 26.29, y: -0.93, z: 0}
+  m_LocalScale: {x: 0.7000001, y: 0.7000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &582972934
 GameObject:

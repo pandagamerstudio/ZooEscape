@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 281442754916069046}
   - component: {fileID: 2359912074460056756}
   - component: {fileID: 9157608065389611470}
+  - component: {fileID: 6685358594993956651}
   m_Layer: 0
   m_Name: PlatMovil
   m_TagString: Untagged
@@ -133,3 +134,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!95 &6685358594993956651
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8447063994403993189}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4412d3146a8aac44b24b61d1f3e5bca, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

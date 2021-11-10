@@ -13,8 +13,10 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
     public Transform botonEspecialSpawn;
     public GameObject botonEspecial;
     public Transform [] paredesSpawn;
+    public Transform [] paredesSpawn2;
     public GameObject paredes;
     GameObject[] paredesAux;
+    GameObject[] paredesAux2;
     public Transform[] platMovilesSpawn;
     public GameObject platMovil;
     GameObject[] platAux;
@@ -43,6 +45,12 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
                 paredesAux[i].transform.rotation = Quaternion.Euler(0,0,90f);
             }
         }
+
+        paredesAux2 = new GameObject [paredesSpawn2.Length];
+        for (int i = 0; i < paredesSpawn2.Length; i++){
+            paredesAux2[i] = PhotonNetwork.Instantiate(paredes.name, paredesSpawn2[i].position, Quaternion.identity);
+            paredesAux2[i].GetComponent<Animator>().SetBool("Pared", true);
+        }
         
         botonesActivados = new bool[botonesSpawn.Length];
 
@@ -56,6 +64,7 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         for (int i = 0; i < platMovilesSpawn.Length; i++){
           platAux[i] = PhotonNetwork.Instantiate(platMovil.name, platMovilesSpawn[i].position, Quaternion.identity);  
         }
+
     }
 
     public override void reiniciarNivel()
@@ -77,29 +86,46 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
     public void desactivarParedes(){
             //p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
             //p.GetComponent<BoxCollider2D>().enabled = false;
-            paredesAux[0].transform.position = new Vector3(19.67f, -0.93f, 0);
-            paredesAux[1].transform.position = new Vector3(26.29f, -0.93f, 0);
+            //paredesAux[0].transform.position = new Vector3(19.67f, -0.93f, 0);
+            //paredesAux[1].transform.position = new Vector3(26.29f, -0.93f, 0);
+        foreach(GameObject p in paredesAux){
+            p.GetComponent<Animator>().SetBool("Pared", true);
+        }
+
+        foreach(GameObject p in paredesAux2){
+            p.GetComponent<Animator>().SetBool("Pared", false);
+        }
     }
 
     public void activarParedes(){
             //p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
             //p.GetComponent<BoxCollider2D>().enabled = true;
-            paredesAux[0].transform.position = new Vector3(19.67f, 7.56f, 0);
-            paredesAux[1].transform.position = new Vector3(26.29f, 7.56f, 0);
+            //paredesAux[0].transform.position = new Vector3(19.67f, 7.56f, 0);
+            //paredesAux[1].transform.position = new Vector3(26.29f, 7.56f, 0);
             //paredesAux[2].transform.position = new Vector3(23f, 10.78f, 0);
+
+        foreach(GameObject p in paredesAux){
+            p.GetComponent<Animator>().SetBool("Pared", false);
+        }
+
+        foreach(GameObject p in paredesAux2){
+            p.GetComponent<Animator>().SetBool("Pared", true);
+        }
     }
 
     public void desactivarPlat(){
         foreach(GameObject p in platAux){
-            p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
-            p.GetComponent<BoxCollider2D>().enabled = false;
+            //p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
+            //p.GetComponent<BoxCollider2D>().enabled = false;
+            p.GetComponent<Animator>().SetBool("Activada", false);
         }
     }
 
     public void activarPlat(){
         foreach(GameObject p in platAux){
-            p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
-            p.GetComponent<BoxCollider2D>().enabled = true;
+            //p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
+            //p.GetComponent<BoxCollider2D>().enabled = true;
+            p.GetComponent<Animator>().SetBool("Activada", true);
         }
     }
 }
