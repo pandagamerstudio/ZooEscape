@@ -34,6 +34,8 @@ public class BoxScript : MonoBehaviourPun, IPunObservable
         networkPos = new Vector3();
         r = GetComponent<Rigidbody2D>();
 
+
+
     }
 
 

@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     public void Reiniciar(InputAction.CallbackContext callback)
     {
         Debug.Log("1");
-        if (cargarUnaVez && PhotonNetwork.IsMasterClient)
+        if (cargarUnaVez && PhotonNetwork.IsMasterClient&&photonView.IsMine)
         {
             // PhotonNetwork.LoadScene("SceneName");
             cargarUnaVez = false;
@@ -159,23 +159,37 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 photonView.RPC("moverJug3", RpcTarget.All);
             }*/
 
-            GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
-            RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-            PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
+            /*     GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+                 RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                 PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);*/
+
+            /*     RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                 PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);*/
+            PhotonNetwork.DestroyAll();
+            PhotonNetwork.LoadLevel("Recargar");
+
+
 
 
         }
     }
-
+    public void resetear() {
+        PhotonNetwork.LoadLevel("Level3");
+    }
     public void OnEvent(EventData photonEvent)
     {
         byte eventCode = photonEvent.Code;
-      
+
 
         if (eventCode == 1)
         {
-     
-            moverJug();
+
+            if (PhotonNetwork.IsMasterClient) { 
+                        PhotonNetwork.LoadLevel("Recargar");
+
+            }
+            //  resetear();
+
         }
     }
 
