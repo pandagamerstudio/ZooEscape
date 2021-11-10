@@ -11,8 +11,7 @@ public class GameManager : MonoBehaviourPun
 {
     
     [Header("Players")]
-    public string PlayerPrefabPath;
-    public GameObject playerPrefab;
+    public GameObject[] playerPrefab;
 
     public PlayerController[] players;
     public List<GameObject> playersGO;
@@ -22,6 +21,8 @@ public class GameManager : MonoBehaviourPun
 
     private int playersInGame;
 
+    private int idPersonaje;
+
     //public GameObject rope;
 
     public static GameManager instance;
@@ -30,7 +31,12 @@ public class GameManager : MonoBehaviourPun
 
     void Awake(){
         instance = this;
-        PlayerPrefabPath = this.playerPrefab.name;
+        
+        if (PhotonNetwork.IsMasterClient){
+            idPersonaje = PlayerPrefs.GetInt ("idPersonaje1");
+        }else{
+            idPersonaje = PlayerPrefs.GetInt ("idPersonaje2");
+        }
 
         players = new PlayerController[PhotonNetwork.PlayerList.Length];
         playersGO = new List<GameObject>();
@@ -57,7 +63,7 @@ public class GameManager : MonoBehaviourPun
             playerPos = spawnPoints[1].position;
         }
 
-        GameObject playerObject = PhotonNetwork.Instantiate(PlayerPrefabPath, playerPos, Quaternion.identity);
+        GameObject playerObject = PhotonNetwork.Instantiate(playerPrefab[idPersonaje].name, playerPos, Quaternion.identity);
         camara.Follow = playerObject.transform;
 
         playerObject.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);

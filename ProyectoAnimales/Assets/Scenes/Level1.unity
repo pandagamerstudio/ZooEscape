@@ -156,10 +156,6 @@ MonoBehaviour:
   key: {fileID: 279194075850644778, guid: 5a20d99a1ead86340a829f58993a1477, type: 3}
   puertaSpawn: {fileID: 857435397}
   puerta: {fileID: 551000780651517063, guid: 1f84604bedd06fc418ec3f296e61879f, type: 3}
-  jug1: {fileID: 1729265383}
-  jug2: {fileID: 1687408112}
-  gm: {fileID: 1686517490}
-  caja: {fileID: 7256227805961506604, guid: b82e30be4b4f7df4ca4d2f0a06915c05, type: 3}
 --- !u!4 &155514958
 Transform:
   m_ObjectHideFlags: 0
@@ -2402,9 +2398,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3018d1dd2bf604e92d11e3a92b5676, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefabPath: 
-  playerPrefab: {fileID: 2343128798855106553, guid: 1d092dd4ddeb97a40970e6aaf044d3ea,
-    type: 3}
+  playerPrefab:
+  - {fileID: 2343128798855106553, guid: 1d092dd4ddeb97a40970e6aaf044d3ea, type: 3}
+  - {fileID: 2453068180332577471, guid: 13d20d5ad5bd1e54ca64617469216169, type: 3}
+  - {fileID: 2044231414510557450, guid: aa6165469f5b7a14590b942ba70dfe93, type: 3}
   players: []
   playersGO: []
   spawnPoints:
