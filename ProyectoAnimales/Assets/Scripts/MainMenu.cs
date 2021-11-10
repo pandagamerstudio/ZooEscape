@@ -156,8 +156,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         photonView.RPC("UpdateLobbyUI", RpcTarget.All);
         if (PhotonNetwork.IsMasterClient){
             idJugSel = 0;
+            PlayerPrefs.SetInt ("idPersonaje1", idJugSel);
         } else {
             idJugSel = 1;
+            PlayerPrefs.SetInt ("idPersonaje2", idJugSel);
         }
 
         SelectorPersonajes(idJugSel);
@@ -257,6 +259,12 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
         Debug.Log(i);
         personajes[i].GetComponent<Animator>().SetBool("Seleccionado", true);
+
+        if (PhotonNetwork.IsMasterClient){
+            PlayerPrefs.SetInt ("idPersonaje1", idJugSel);
+        }else{
+            PlayerPrefs.SetInt ("idPersonaje2", idJugSel);
+        }
     }
 
 

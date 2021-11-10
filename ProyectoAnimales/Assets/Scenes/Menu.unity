@@ -1722,8 +1722,8 @@ RectTransform:
   - {fileID: 2121409876}
   - {fileID: 2098193693}
   - {fileID: 1593864866}
-  - {fileID: 2066023977}
   - {fileID: 1105680197}
+  - {fileID: 2066023977}
   m_Father: {fileID: 1936295998}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5898,7 +5898,7 @@ GameObject:
   - component: {fileID: 1105680199}
   - component: {fileID: 1105680198}
   m_Layer: 5
-  m_Name: Personaje3
+  m_Name: Personaje2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5916,7 +5916,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 245544482}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5974,7 +5974,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -7312,8 +7312,8 @@ MonoBehaviour:
   playerNameInput: {fileID: 630354047}
   personajes:
   - {fileID: 1593864865}
-  - {fileID: 2066023976}
   - {fileID: 1105680196}
+  - {fileID: 2066023976}
 --- !u!4 &1396210485
 Transform:
   m_ObjectHideFlags: 0
@@ -9384,7 +9384,7 @@ GameObject:
   - component: {fileID: 2066023979}
   - component: {fileID: 2066023978}
   m_Layer: 5
-  m_Name: Personaje2
+  m_Name: Personaje3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9402,7 +9402,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 245544482}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9460,7 +9460,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
