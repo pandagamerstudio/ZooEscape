@@ -113,8 +113,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             return;
         posI = gameObject.transform;
         var user = GetComponent<PlayerInput>().user;
-        canvas = GameObject.FindWithTag("Canvas");
-        //canvas = this.transform.GetChild(1).gameObject;
+        //canvas = GameObject.FindWithTag("Canvas");
+        canvas = this.transform.GetChild(1).gameObject;
         canvas.SetActive(false);
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
@@ -129,45 +129,37 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             //canvasEnt = GameObject.FindWithTag("Canvas");
             //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
             //b.transform.parent = canvasEnt.transform;
+        }else{
+            Destroy(canvas);
+        }
+    }
+
+    void Update()
+    {
+        if (!photonView.IsMine)
+        {
+            tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
+            tiempoActual += Time.deltaTime;
+            transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
+
+        }
+        else if(!chocandLatPlat) {
+            rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
+            if (ad.x != 0)
+            {
+                animator.SetBool("Walk", true);
+            }
+            else {
+                animator.SetBool("Walk", false);
+
+            }
         }
     }
 
     public void Reiniciar(InputAction.CallbackContext callback)
     {
         Debug.Log("1");
-        if (cargarUnaVez && PhotonNetwork.IsMasterClient)
-        {
-            // PhotonNetwork.LoadScene("SceneName");
-            cargarUnaVez = false;
-            Debug.Log("2");
-            /*if (SceneManager.GetActiveScene().name == "Level1")
-            {
-                Debug.Log("3");
-                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
-                //   photonView.RPC("moverJug", RpcTarget.All);
-                RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-                PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
-            }
-            else if (SceneManager.GetActiveScene().name == "Level2")
-            {
-                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
-                photonView.RPC("moverJug2", RpcTarget.All);
-            }
-            else
-            {
-                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel3>().reiniciarNivel();
-                photonView.RPC("moverJug3", RpcTarget.All);
-            }*/
-
-            //GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
-            //RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
-            //PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
-
-            PhotonNetwork.DestroyAll();
-            PhotonNetwork.LoadLevel("Recargar");
-
-
-        }
+        OnReiniciar();
     }
 
     public void OnEvent(EventData photonEvent)
@@ -218,6 +210,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     }
 
+/*
     [PunRPC]
     public void moverJug2()
     {
@@ -255,6 +248,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         cargarUnaVez = true;
 
     }
+*/
 
     public void Movimiento(InputAction.CallbackContext callback) {
         Player p = PhotonNetwork.LocalPlayer;
@@ -263,34 +257,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             return;
 
         ad = callback.ReadValue<Vector2>();
+
+        Flip();
       
-
-        
-        if (top == false){
-            if (ad.x > 0){
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            } else if (ad.x < 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-            } 
-        } else {
-            if (ad.x < 0){
-            transform.localScale = new Vector3(1f, 1f, 1f);
-            } else if (ad.x > 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
-            }
-        }
-
-
-
-
-     
-/*
-            if (ad.y > 0)
-
-            else
-
-            */
-        
     }
 
     public void salto(InputAction.CallbackContext callback)
@@ -302,34 +271,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             return;
 
         Salto = callback.ReadValue<float>();
-        Debug.Log("Salto");
-
-        if (cg.isGrounded)
-        {
-            canDoubleJump = true;
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
-        }
-        else
-        {
-            if (Salto > 0f)
-            {
-                if (canDoubleJump)
-                {
-                    rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
-                    canDoubleJump = false;
-                    return;
-                }
-            }
-        }
-
-        if (superJump)
-        {
-            if (rb2D.velocity.y > 0 && Salto == 0)
-            {
-                rb2D.velocity = new Vector2(rb2D.velocity.x, Physics2D.gravity.y);
-            }
-        }
-
+        
+        Saltar(Salto);
     }
     
     public void Gravedad(InputAction.CallbackContext callback) {
@@ -385,28 +328,102 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     }
     */
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!photonView.IsMine)
-        {
-            tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
-            tiempoActual += Time.deltaTime;
-            transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
-
-        }
-        else if(!chocandLatPlat) {
-            rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
-            if (ad.x != 0)
-            {
-                animator.SetBool("Walk", true);
-            }
-            else {
-                animator.SetBool("Walk", false);
-
+    void Flip(){
+        if (top == false){
+            if (ad.x > 0){
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            } else if (ad.x < 0) {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
+            } 
+        } else {
+            if (ad.x < 0){
+            transform.localScale = new Vector3(1f, 1f, 1f);
+            } else if (ad.x > 0) {
+            transform.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
     }
+
+    void Saltar(float s){
+        //Debug.Log("Salto");
+
+        if (cg.isGrounded)
+        {
+            canDoubleJump = true;
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+        }
+        else
+        {
+            if (s > 0f)
+            {
+                if (canDoubleJump)
+                {
+                    rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
+                    canDoubleJump = false;
+                    return;
+                }
+            }
+        }
+
+        if (superJump)
+        {
+            if (rb2D.velocity.y > 0 && s == 0)
+                rb2D.velocity = new Vector2(rb2D.velocity.x, Physics2D.gravity.y);
+        }
+    }
+
+    public void OnSaltarButton(){
+        if (!photonView.IsMine)
+            return;
+
+        Saltar(1);
+    }
+
+    public void OnMoveButton(float dir){
+        if (!photonView.IsMine)
+            return;
+
+        ad = new Vector2(dir, 0);
+        Flip();
+    }
+
+    public void OnReiniciar(){
+        if (cargarUnaVez && PhotonNetwork.IsMasterClient)
+        {
+            // PhotonNetwork.LoadScene("SceneName");
+            cargarUnaVez = false;
+            Debug.Log("2");
+            /*if (SceneManager.GetActiveScene().name == "Level1")
+            {
+                Debug.Log("3");
+                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+                //   photonView.RPC("moverJug", RpcTarget.All);
+                RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
+            }
+            else if (SceneManager.GetActiveScene().name == "Level2")
+            {
+                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+                photonView.RPC("moverJug2", RpcTarget.All);
+            }
+            else
+            {
+                GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel3>().reiniciarNivel();
+                photonView.RPC("moverJug3", RpcTarget.All);
+            }*/
+
+            //GameObject.Find("SpawnManager").GetComponent<SpawnManagerLevel1>().reiniciarNivel();
+            //RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+            //PhotonNetwork.RaiseEvent(1, null, raiseEvent, SendOptions.SendReliable);
+
+            PhotonNetwork.DestroyAll();
+            PlayerPrefs.SetString ("Scene", SceneManager.GetActiveScene().name);
+            PhotonNetwork.LoadLevel("Recargar");
+
+
+        }
+    }
+
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting)
