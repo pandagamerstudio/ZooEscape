@@ -1,0 +1,35 @@
+Como no sé como de dividido necesitais cada elemento de los menús, he hecho:
+- Botones sin texto cuando ese botón está normal, cuando el ratón está sobre él (HOVER) y cuando se hace click sobre él (CLICK).
+- El texto de cada una de las opciones del menú, ya que en su diseño los textos tienen efecto de photoshop como bisel o sombra.
+- Si quereis poner el texto vosotros, la tipografía elegida es ARCO: https://www.dafont.com/es/arco.font
+- Versiones de cada botón con el texto puesto (una versión normal, otra hover y otra click; todas ellas con el texto de esa opción).
+- Unas previews para que veais como quedaría todo junto. Las podeis poner de fondo para que sea más sencillo saber donde situar 
+	cada botón.
+- El fondo del menú (con y sin el título).
+- El título del menú aparte.
+- Si no indico lo contrario, los botones HOVER y CLICK son del mismo tamaño que los normales.
+
+MENÚ DE OPCIONES: 
+- El fondo sin título solo es un color verde sólido (#ebf8f2).
+- Como "musica" y "sfx" son sliders, en la carpeta están esos dos botones con el slider y sin él.
+- También está la barra y la esfera del slider adjuntadas a parte.
+- "musica" y "sfx" no tienen versión CLICK porque no se les puede hacer click, pero si tienen versión HOVER.
+
+MENÚ DE PAUSA:
+- El menú no ocupa toda la extensión de la pantalla. La idea es que cuando aparezca se coloque sobre lo que estaba en la pantalla
+	(el nivel) y que éste se vea congelado. Esa era la idea. Si eso es mucho trabajo, decídmelo y lo adapto para que ocupe
+	toda la pantalla.
+
+MENÚ INICIAL:
+- Los botones HOVER y CLICK son más grandes que los normales. Si los quereis hacer vosotros a partir de los normales coloreándolos
+	en unity, recordad hacerlo un poco más grandes. La letra también es un poco más grande.
+- Adjunto diversos formatos de los osos, para que elijais la que mejor os venga.
+- Recordad que el botón de EXIT es más pequeño que los demás.
+
+CONTROLES:
+- Como es la pantalla de controles, he pensado que los botones se pongan en rojo cuando presionas esa tecla. Por eso se llaman PRESS 
+	y no HOVER o CLICK. Estas versiones PRESS son más grandes que los botones normales.
+- Si esto es complicado de programar o no se quiere hacer, en la carpeta hay capturas del menú completo para que se ponga este menú
+	como si fuera una foto (excepto el botón de return, que debe ser interactuable).
+- El botón de return en versión HOVER y CLICK es más grande que en su versión normal.
+
