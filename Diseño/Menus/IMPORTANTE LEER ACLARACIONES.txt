@@ -7,14 +7,21 @@ Como no sé como de dividido necesitais cada elemento de los menús, he hecho:
 	cada botón.
 - El fondo del menú (con y sin el título).
 - El título del menú aparte.
+- Si no indico lo contrario, los botones HOVER y CLICK son del mismo tamaño que los normales.
 
-PARA EL MENÚ DE OPCIONES: 
+MENÚ DE OPCIONES: 
 - El fondo sin título solo es un color verde sólido (#ebf8f2).
 - Como "musica" y "sfx" son sliders, en la carpeta están esos dos botones con el slider y sin él.
 - También está la barra y la esfera del slider adjuntadas a parte.
 - "musica" y "sfx" no tienen versión CLICK porque no se les puede hacer click, pero si tienen versión HOVER.
 
-PARA EL MENÚ DE PAUSA:
+MENÚ DE PAUSA:
 - El menú no ocupa toda la extensión de la pantalla. La idea es que cuando aparezca se coloque sobre lo que estaba en la pantalla
 	(el nivel) y que éste se vea congelado. Esa era la idea. Si eso es mucho trabajo, decídmelo y lo adapto para que ocupe
 	toda la pantalla.
+
+MENÚ INICIAL:
+- Los botones HOVER y CLICK son más grandes que los normales. Si los quereis hacer vosotros a partir de los normales coloreándolos
+	en unity, recordad hacerlo un poco más grandes. La letra también es un poco más grande.
+- Adjunto diversos formatos de los osos, para que elijais la que mejor os venga.
+- Recordad que el botón de EXIT es más pequeño que los demás.
