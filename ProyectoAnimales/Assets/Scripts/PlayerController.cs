@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     bool cargarUnaVez = true;
    public Transform posI;
+    bool padre = false;
  
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -140,7 +141,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         {
             tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
             tiempoActual += Time.deltaTime;
-            transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
+            if (!padre)
+            {
+                transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
+            }
+           
 
         }
         else if(!chocandLatPlat) {
@@ -448,16 +453,26 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         this.gameObject.layer = 9+id;
     }
-
+    
     public void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag.Equals("platMovil")&&!padre)
+        {
+            padre = true;
+          //  Vector3 scala = transform.localScale;
+           transform.SetParent(collision.gameObject.transform);
+          //  transform.SetParent(collision.gameObject.transform);
+         //   transform.localScale = scala;
+                
+        }
         //No quirto que los objetos copia de los otro jugadores lo ejecuten
         if (!photonView.IsMine)
             return;
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
             return;
         }
 
+   
       
         if ( !checkGround.isGrounded)
         {
@@ -474,7 +489,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         if (!photonView.IsMine)
             return;
 
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
             return;
         }
 
@@ -490,9 +505,16 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     public void OnCollisionExit2D(Collision2D collision)
     {
+        if (collision.gameObject.tag.Equals("platMovil") &&padre)
+        {
+            transform.SetParent(null);
+
+            padre = false;
+
+        }
         if (!photonView.IsMine)
             return;
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
             return;
         }
  
