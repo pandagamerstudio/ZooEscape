@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using ExitGames.Client.Photon;
 
-public class BotonScriptLevel5 : MonoBehaviourPun
+public class BotonScriptLevel5 : MonoBehaviourPun, IOnEventCallback
 {
     private GameObject[] paredes;
     bool activada = false;
@@ -24,12 +25,17 @@ public class BotonScriptLevel5 : MonoBehaviourPun
         {
             if (!activada) {
                 activada = true;
-                nivel.activarBotones(id, true);
-                animator.SetBool("Activada" , true);
+                RaiseEventOptions raiseEvent = new RaiseEventOptions { Receivers = ReceiverGroup.All };
+                PhotonNetwork.RaiseEvent(3, null, raiseEvent, SendOptions.SendReliable);
+               // photonView.RPC("botonPulsado", RpcTarget.All);
             }      
         }
     }
-
+ 
+    public void botonPulsado() {
+        nivel.activarBotones(id, true);
+        animator.SetBool("Activada", true);
+    }
     public void OnTriggerExit2D(Collider2D collision){
         if (nivel == null) return;
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
@@ -55,5 +61,18 @@ public class BotonScriptLevel5 : MonoBehaviourPun
     public void inicializarBoton(SpawnManagerLevel5 s, int i){
         nivel = s;
         id = i;
+    }
+
+    public void OnEvent(EventData photonEvent)
+    {
+        byte eventCode = photonEvent.Code;
+
+
+        if (eventCode == 3)
+        {
+
+            botonPulsado();
+        }
+       
     }
 }
