@@ -32,4 +32,18 @@ CONTROLES:
 - Si esto es complicado de programar o no se quiere hacer, en la carpeta hay capturas del menú completo para que se ponga este menú
 	como si fuera una foto (excepto el botón de return, que debe ser interactuable).
 - El botón de return en versión HOVER y CLICK es más grande que en su versión normal.
+- El fondo es un color sólido: #ebf8f2 (el mismo que en el resto de menús).
+
+MENU DE NIVELES:
+- Como los niveles tienen que ir desbloqueándose, la idea es que estén en blanco los que no están disponibles, y en amarillo los que 
+	sí.
+- El nivel 1 no tiene versión bloqueada porque siempre se va a poder jugar al primer nivel.
+- Los niveles bloqueados, los blancos, no deberían ser interactuables. Es decir, si pones el ratón encima o haces click sobre ellos
+	no debería pasar nada. Las versiones HOVER y CLICK solo ocurrirían cuando ese nivel estuviera desbloqueado. (si pones el 
+	ratón sobre un nivel bloqueado, no cambia de color a naranja y se hace más grande. No es interactuable, no debería pasar nada).
+- El botón de return es exactamente igual al del menú de controles, por si no queréis importar ambos al proyecto.
+- El fondo es un color sólido: #ebf8f2 (el mismo que en el resto de menús).
+- Si no queréis programar lo de que estén en blanco cuando estén bloqueados, podemos dejarlos siempre amarillos y que cuando pulses
+	sobre uno no disponible aparezca un cuadrito que avise que ese nivel no está disponible. Si queréis hacer eso, avisadme y 
+	hago ese cuadrito.
 
