@@ -34,6 +34,9 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         PhotonNetwork.Instantiate(caja.name, cajaSpawn.position, Quaternion.identity);
 
         GameObject botonEs = PhotonNetwork.Instantiate(botonEspecial.name, botonEspecialSpawn.position, Quaternion.identity);
+
+
+
         botonEs.GetComponent<BotonQuitarPlat>().inicializarBoton(this);
 
 

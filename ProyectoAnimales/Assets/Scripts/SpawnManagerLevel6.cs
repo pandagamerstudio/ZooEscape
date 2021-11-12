@@ -54,6 +54,7 @@ public class SpawnManagerLevel6 : SpawnManagerLevel1
         
         botonesActivados = aux;
         if (!botonesActivados){
+
             activarParedes();
             return;
         }
