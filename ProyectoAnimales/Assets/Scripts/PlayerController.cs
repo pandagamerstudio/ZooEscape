@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     bool cargarUnaVez = true;
    public Transform posI;
     bool padre = false;
+    public int scale;
  
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -87,6 +88,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         chocandLatPlat = false;
         aux = 0;
         cargarUnaVez = true;
+        scale = 1;
 
         
 
@@ -336,26 +338,30 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     void Flip(){
         if (top == false){
             if (ad.x > 0){
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
             } else if (ad.x < 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
             } 
         } else {
             if (ad.x < 0){
-            transform.localScale = new Vector3(1f, 1f, 1f);
+            transform.localScale = new Vector3(1f, 1f, 1f) * scale;
             } else if (ad.x > 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
             }
         }
     }
 
     void Saltar(float s){
         //Debug.Log("Salto");
+        float jumpM = 1f;
+        if (scale == 2)
+            jumpM = 1.5f;
 
         if (cg.isGrounded)
         {
             canDoubleJump = true;
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed);
+            
+            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed * jumpM);
         }
         else
         {
@@ -363,7 +369,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             {
                 if (canDoubleJump)
                 {
-                    rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed);
+                    rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed * jumpM);
                     canDoubleJump = false;
                     return;
                 }
@@ -532,6 +538,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         canvasBool = true;
         yield return new WaitForSeconds(2.0f);
         canvasBool = false;
+    }
+
+    public void changeScale(float f){
+        transform.localScale = new Vector3(f,f,f);
+        scale = (int)f;
     }
 
 

@@ -23,6 +23,12 @@ TextureImporter:
   - first:
       213: -2051461024137493758
     second: TileMap_Botones_Palancas_Plat_Barreras_4
+  - first:
+      213: 1811390310384768935
+    second: TileMap_Botones_Palancas_Plat_Barreras_5
+  - first:
+      213: 6450124395375554525
+    second: TileMap_Botones_Palancas_Plat_Barreras_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -341,6 +347,48 @@ TextureImporter:
       bones: []
       spriteID: 203c9b1511fb783e0800000000000000
       internalID: -2051461024137493758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_5
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 305
+        width: 308
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a79110e3e9532910800000000000000
+      internalID: 1811390310384768935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_6
+      rect:
+        serializedVersion: 2
+        x: 1860
+        y: 305
+        width: 308
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfe07f96f1738950800000000000000
+      internalID: 6450124395375554525
       vertices: []
       indices: 
       edges: []

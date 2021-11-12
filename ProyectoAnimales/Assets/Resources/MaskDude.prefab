@@ -241,6 +241,7 @@ MonoBehaviour:
   chocandLatPlat: 0
   aux: 0
   posI: {fileID: 0}
+  scale: 0
 --- !u!114 &2343128798855106546
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -299,7 +300,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 1
     Name: Walk
   m_SynchronizeLayers:
   - SynchronizeType: 0
