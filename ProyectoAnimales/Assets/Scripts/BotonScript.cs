@@ -20,6 +20,8 @@ public class BotonScript : MonoBehaviourPun
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!PhotonNetwork.IsMasterClient)
+            return;
 
         if (collision.CompareTag("Player") || collision.CompareTag("Caja"))
         {
@@ -32,6 +34,9 @@ public class BotonScript : MonoBehaviourPun
     }
 
     public void OnTriggerExit2D(Collider2D collision){
+        if (!PhotonNetwork.IsMasterClient)
+            return;
+
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
             activada = false;
             nivel.activarBotones(id, false);
@@ -40,6 +45,8 @@ public class BotonScript : MonoBehaviourPun
     }
 
     public void OnTriggerStay2D(Collider2D collision){
+        if (!PhotonNetwork.IsMasterClient)
+            return;
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
             activada = true;
             nivel.activarBotones(id, true);

@@ -41,6 +41,12 @@ public class PuertaScript : MonoBehaviourPun
                         nombre = "Level6";
                         break;
                     case "Level6":
+                        nombre = "Level7";
+                        break;
+                    case "Level7":
+                        nombre = "Level8";
+                        break;
+                    case "Level8":
                         nombre = "Final";
                         break;
                     default:

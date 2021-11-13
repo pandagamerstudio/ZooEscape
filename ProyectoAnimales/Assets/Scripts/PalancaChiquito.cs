@@ -20,13 +20,12 @@ public class PalancaChiquito : MonoBehaviourPun
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!playerIn){
-            players = GameObject.FindGameObjectsWithTag("Player");
-            playerIn = true;
-        }
-
         if (collision.CompareTag("Player") && !dentro)
         {
+            if (!playerIn){
+                players = GameObject.FindGameObjectsWithTag("Player");
+                playerIn = true;
+            }
             dentro = true;
             if (activada) {
                 if (players[0].GetComponent<PlayerController>().id == collision.gameObject.GetComponent<PlayerController>().id){
