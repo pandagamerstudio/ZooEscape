@@ -29,6 +29,15 @@ TextureImporter:
   - first:
       213: 6450124395375554525
     second: TileMap_Botones_Palancas_Plat_Barreras_6
+  - first:
+      213: 6630479196754914024
+    second: TileMap_Botones_Palancas_Plat_Barreras_9
+  - first:
+      213: -6769198017043218666
+    second: TileMap_Botones_Palancas_Plat_Barreras_10
+  - first:
+      213: 3169110705476808214
+    second: TileMap_Botones_Palancas_Plat_Barreras_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -389,6 +398,69 @@ TextureImporter:
       bones: []
       spriteID: ddfe07f96f1738950800000000000000
       internalID: 6450124395375554525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_9
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 620
+        width: 308
+        height: 245
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8eaa13d13b1340c50800000000000000
+      internalID: 6630479196754914024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_10
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 2215
+        width: 69
+        height: 841
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f3cdba44afe02a0800000000000000
+      internalID: -6769198017043218666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TileMap_Botones_Palancas_Plat_Barreras_11
+      rect:
+        serializedVersion: 2
+        x: 1360
+        y: 2215
+        width: 69
+        height: 841
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e25dd5561fafb20800000000000000
+      internalID: 3169110705476808214
       vertices: []
       indices: 
       edges: []
