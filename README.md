@@ -244,7 +244,7 @@ Versión 1.0
 >![](https://i.imgur.com/LdhUVP7.png)
 > ##### - Niveles:
 > El menú de niveles se dividirá en tantas pantallas como sean necesarias. Si tenemos 8 niveles, tendremos solo una. Si tenemos 16, tendremos dos y nos desplazaríamos de una a otra con las flechas que aparecerán en los laterales. Con el botón de 'return' podemos volver al menú de inicio.
->![](https://i.imgur.com/G58cqud.png)
+>![](https://i.imgur.com/9EOEABY.png)
 > ##### - Interfaz:
 > La interfaz de nuestro juego es muy sencilla. Los jugadores no tienen vida, ni energía ni items, por lo que lo único que se podría ver en la interfaz sería el temporizador (en los niveles que tengan cuenta atrás), el nivel en el que se encuentra el jugador (para facilitar que el jugador se ubique en el juego y que pueda seguir su progreso) y el icono de pausa (útil sobre todo para el móvil).
 >![](https://media.discordapp.net/attachments/658480479015534651/896798195168985138/interfaz.png?width=993&height=702)
@@ -259,7 +259,7 @@ Versión 1.0
 >![](https://media.discordapp.net/attachments/658480479015534651/896798196897050714/menugameover.png?width=993&height=702)
 > ##### - Creditos:
 > Es una pantalla que muestra la información relevante sobre los autores del juego y nuestra compañía.
->![](https://media.discordapp.net/attachments/658480479015534651/896798193126375484/creditos.png?width=993&height=702)
+>![](https://i.imgur.com/ESqFIR8.png)
 >##### - Controles:
 > En esta pantalla mostramos al jugador los controles de nuestro juego. Se puede acceder a esta pantalla desde el menú de opciones, el cual a su vez se puede acceder desde el menú inicial o el menú de pausa. De este modo el jugador podrá consultar los controles del juego en cualquier momento de la partida si así lo necesita.
 > ![](https://i.imgur.com/SHIyrMV.png)
