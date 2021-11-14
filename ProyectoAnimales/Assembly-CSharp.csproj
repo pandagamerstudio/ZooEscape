@@ -67,11 +67,14 @@
     <Compile Include="Assets\Scripts\NetworkManager.cs" />
     <Compile Include="Assets\Scripts\BotonScript.cs" />
     <Compile Include="Assets\Scripts\SpawnManagerLevel8.cs" />
+    <Compile Include="Assets\Scripts\Enemy\PatrolState.cs" />
     <Compile Include="Assets\Scripts\Mine.cs" />
     <Compile Include="Assets\Scripts\PlatformMovement.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
     <Compile Include="Assets\Scripts\PuertaScript.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
+    <Compile Include="Assets\Scripts\Enemy\RangedState.cs" />
     <Compile Include="Assets\Scripts\SpawnManagerLevel4.cs" />
     <Compile Include="Assets\Scripts\PlatMovManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
@@ -81,19 +84,24 @@
     <Compile Include="Assets\Scripts\SpawnManagerLevel7.cs" />
     <Compile Include="Assets\Scripts\EscenaFinal.cs" />
     <Compile Include="Assets\Scripts\SpawnManagerLevel5.cs" />
+    <Compile Include="Assets\Scripts\Enemy\IgnoreCollision.cs" />
     <Compile Include="Assets\Scripts\BoxScript.cs" />
+    <Compile Include="Assets\Scripts\Enemy\IdleState.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\BotonScriptLevel5.cs" />
     <Compile Include="Assets\Scripts\SpawnManagerLevel6.cs" />
     <Compile Include="Assets\Scripts\SpawnObject.cs" />
+    <Compile Include="Assets\Scripts\Enemy\Knife.cs" />
     <Compile Include="Assets\Scripts\KeyCollect.cs" />
     <Compile Include="Assets\Scripts\RopeSegment.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\RoomManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\recargarEscena.cs" />
     <Compile Include="Assets\Inputs\InputJugadores.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickSetterExample.cs" />
@@ -113,14 +121,8 @@
     <Compile Include="Assets\Scripts\cargarEscena.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Scripts\SpawnManagerLevel1.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
-    <Compile Include="Assets\Scripts\Enemy\EnemyAI.cs" />
-    <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\IdleState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\RangedState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\Knife.cs" />
-    <Compile Include="Assets\Scripts\Enemy\PatrolState.cs" />
-    <Compile Include="Assets\Scripts\Enemy\IgnoreCollision.cs" />
+    <Compile Include="Assets\Scripts\SpawnManagerLevel9.cs" />
+    <Compile Include="Assets\Scripts\moverizqlvl9.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
