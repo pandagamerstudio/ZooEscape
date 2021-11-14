@@ -14,4 +14,5 @@ public class RoomManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("Menu");
     }
+    
 }

@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     public GameObject canvas;
     //GameObject canvasEnt;
+    public GameObject canvasPause;
 
 
     //Para quitar lag
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         //InputSystem.DisableDevice();
     }
 
-    bool isMobile;
+    public bool isMobile;
 
 #if !UNITY_EDITOR && UNITY_WEBGL
     [System.Runtime.InteropServices.DllImport("__Internal")]
@@ -114,6 +115,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     void Start(){
         if (!photonView.IsMine)
             return;
+
+        canvasPause = this.transform.GetChild(2).gameObject;
+
         posI = gameObject.transform;
         var user = GetComponent<PlayerInput>().user;
         //canvas = GameObject.FindWithTag("Canvas");
@@ -163,10 +167,16 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         }
     }
 
-    public void Reiniciar(InputAction.CallbackContext callback)
+    public void Pause(InputAction.CallbackContext callback)
     {
-        Debug.Log("1");
-        OnReiniciar();
+        OnPause();
+    }
+
+    public void OnPause(){
+        canvasPause.transform.GetChild(0).gameObject.SetActive(true);
+
+        if (isMobile)
+            canvas.SetActive(false);
     }
 
     public void OnEvent(EventData photonEvent)
