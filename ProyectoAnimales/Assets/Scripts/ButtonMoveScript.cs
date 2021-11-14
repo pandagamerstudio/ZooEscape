@@ -16,8 +16,8 @@ public class ButtonMoveScript : MonoBehaviour, IPointerUpHandler, IPointerDownHa
             pc.OnMoveButton(-1);
         }else if (tipo == "Salto"){
             pc.OnSaltarButton();
-        }else{
-            pc.OnReiniciar();
+        }else if (tipo == "Pause") {
+            pc.OnPause();
         }
         
     }

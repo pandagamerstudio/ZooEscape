@@ -67,7 +67,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Reiniciar"",
+                    ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""bf1a27b2-ffa8-4549-b4bf-b6e09fb2574f"",
                     ""expectedControlType"": ""Button"",
@@ -233,11 +233,11 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a148e49c-3fd2-445b-b06b-70a02c2cc5d2"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Reiniciar"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -837,7 +837,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         m_Player_Gravedad = m_Player.FindAction("Gravedad", throwIfNotFound: true);
         m_Player_GravedadLados = m_Player.FindAction("GravedadLados", throwIfNotFound: true);
         m_Player_Pulsar = m_Player.FindAction("Pulsar", throwIfNotFound: true);
-        m_Player_Reiniciar = m_Player.FindAction("Reiniciar", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -905,7 +905,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Gravedad;
     private readonly InputAction m_Player_GravedadLados;
     private readonly InputAction m_Player_Pulsar;
-    private readonly InputAction m_Player_Reiniciar;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @InputJugadores m_Wrapper;
@@ -916,7 +916,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         public InputAction @Gravedad => m_Wrapper.m_Player_Gravedad;
         public InputAction @GravedadLados => m_Wrapper.m_Player_GravedadLados;
         public InputAction @Pulsar => m_Wrapper.m_Player_Pulsar;
-        public InputAction @Reiniciar => m_Wrapper.m_Player_Reiniciar;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -944,9 +944,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @Pulsar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPulsar;
                 @Pulsar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPulsar;
                 @Pulsar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPulsar;
-                @Reiniciar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReiniciar;
-                @Reiniciar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReiniciar;
-                @Reiniciar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnReiniciar;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -969,9 +969,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @Pulsar.started += instance.OnPulsar;
                 @Pulsar.performed += instance.OnPulsar;
                 @Pulsar.canceled += instance.OnPulsar;
-                @Reiniciar.started += instance.OnReiniciar;
-                @Reiniciar.performed += instance.OnReiniciar;
-                @Reiniciar.canceled += instance.OnReiniciar;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1143,7 +1143,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         void OnGravedad(InputAction.CallbackContext context);
         void OnGravedadLados(InputAction.CallbackContext context);
         void OnPulsar(InputAction.CallbackContext context);
-        void OnReiniciar(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
