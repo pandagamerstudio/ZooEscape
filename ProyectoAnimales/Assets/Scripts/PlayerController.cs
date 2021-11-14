@@ -466,7 +466,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         {
             padre = true;
           //  Vector3 scala = transform.localScale;
-           transform.SetParent(collision.gameObject.transform);
+           //transform.SetParent(collision.gameObject.transform);
           //  transform.SetParent(collision.gameObject.transform);
          //   transform.localScale = scala;
                 

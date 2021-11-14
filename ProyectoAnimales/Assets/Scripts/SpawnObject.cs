@@ -54,11 +54,11 @@ public class SpawnObject : MonoBehaviourPun
 
             for (int i = 0; i < platformSpawn.Length; i++)
             {
-                GameObject p = PhotonNetwork.Instantiate(platform.name, platformSpawn[i].position, Quaternion.identity);
-                GameObject pa = PhotonNetwork.Instantiate(palanca.name, palancaSpawn[i].position, Quaternion.identity);
-                GameObject b = PhotonNetwork.Instantiate(boton.name, botonSpawn[i].position, Quaternion.identity);
-                photonView.RPC("instantiatePlat", RpcTarget.All, p.transform.GetChild(0).GetComponent<PhotonView>().ViewID, pa.GetComponent<PhotonView>().ViewID);
-                photonView.RPC("instantiatePlat", RpcTarget.All, p.transform.GetChild(0).GetComponent<PhotonView>().ViewID, b.GetComponent<PhotonView>().ViewID);
+                //GameObject p = PhotonNetwork.Instantiate(platform.name, platformSpawn[i].position, Quaternion.identity);
+                //GameObject pa = PhotonNetwork.Instantiate(palanca.name, palancaSpawn[i].position, Quaternion.identity);
+                //GameObject b = PhotonNetwork.Instantiate(boton.name, botonSpawn[i].position, Quaternion.identity);
+                //photonView.RPC("instantiatePlat", RpcTarget.All, p.transform.GetChild(0).GetComponent<PhotonView>().ViewID, pa.GetComponent<PhotonView>().ViewID);
+                //photonView.RPC("instantiatePlat", RpcTarget.All, p.transform.GetChild(0).GetComponent<PhotonView>().ViewID, b.GetComponent<PhotonView>().ViewID);
             }
 
             for (int i=0; i < colorBoxSpawn.Length; i++){

@@ -46,28 +46,11 @@ public class PalancaChiquito : MonoBehaviourPun
             if (activada) {
 
                 cambiarTamano(collision.gameObject);
-              /*  if (players[0].GetComponent<PlayerController>().id == collision.gameObject.GetComponent<PlayerController>().id){
-                    players[0].GetComponent<PlayerController>().changeScale(2);
-                    players[1].GetComponent<PlayerController>().changeScale(1);
-                }else{
-                    players[1].GetComponent<PlayerController>().changeScale(2);
-                    players[0].GetComponent<PlayerController>().changeScale(1);
-                }*/
-                
+
                 animator.SetBool("Activada", false);
                 StartCoroutine(changeActivada(false));
             }
             else{
-                
-                /*if (players[0].GetComponent<PlayerController>().id == collision.gameObject.GetComponent<PlayerController>().id){
-                    players[0].GetComponent<PlayerController>().changeScale(1);
-                    players[1].GetComponent<PlayerController>().changeScale(2);
-                }else{
-                    players[1].GetComponent<PlayerController>().changeScale(1);
-                    players[0].GetComponent<PlayerController>().changeScale(2);
-                }*/
-                //Caso que ambos jugadores tengan la misma escala(primera colisión), 
- 
               
                     cambiarTamano(collision.gameObject);
            
