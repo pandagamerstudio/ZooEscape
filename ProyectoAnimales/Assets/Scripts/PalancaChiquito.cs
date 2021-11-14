@@ -11,12 +11,14 @@ public class PalancaChiquito : MonoBehaviourPun
     private Animator animator;
     public GameObject[] players;
     bool playerIn, dentro;
+    Collider2D collider;
 
      void Awake()
     {
         animator = this.GetComponent<Animator>();
         playerIn = false;
         dentro = false;
+        collider = GetComponent<BoxCollider2D>();
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,6 +29,7 @@ public class PalancaChiquito : MonoBehaviourPun
                 playerIn = true;
             }
             dentro = true;
+            collider.enabled = false;
             if (activada) {
                 if (players[0].GetComponent<PlayerController>().id == collision.gameObject.GetComponent<PlayerController>().id){
                     players[0].GetComponent<PlayerController>().changeScale(2);
@@ -62,8 +65,9 @@ public class PalancaChiquito : MonoBehaviourPun
     }
 
     IEnumerator changeActivada(bool b){
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         activada = b;
+        collider.enabled = true;
     }
 
 }
