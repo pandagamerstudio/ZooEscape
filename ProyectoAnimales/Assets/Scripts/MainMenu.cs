@@ -177,9 +177,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
         playerListText.text = "";
         foreach(Player player in PhotonNetwork.PlayerList)
-            playerListText.text += player.NickName + "\n";
+            playerListText.text += player.NickName + "\n\n";
 
-        roomInfoText.text = "<b>Room Name</b>\n" + PhotonNetwork.CurrentRoom.Name;
+        roomInfoText.text = PhotonNetwork.CurrentRoom.Name;
     }
 
     public void OnStartGameButton(){
