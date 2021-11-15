@@ -9,7 +9,7 @@ public class cambiarGravedad : MonoBehaviour
     // Start is called before the first frame update
 
     public enum Tipo { 
-    izquierda
+    izquierda, derecha, arriba
     }
     public Tipo tipo;
     
@@ -28,10 +28,21 @@ public class cambiarGravedad : MonoBehaviour
          tiempo=Time.time;
         switch (tipo) {
 
-            case Tipo.izquierda:
-                
-                 collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
-                 collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.izquierda;
+            case Tipo.izquierda:                
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.izquierda;
+                collision.gameObject.GetComponent<PlayerController>().Flip();
+                StartCoroutine(activarControles(collision));
+                break;
+            case Tipo.derecha:
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(29.43f, 0), ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.derecha;
+                collision.gameObject.GetComponent<PlayerController>().Flip();
+                StartCoroutine(activarControles(collision));
+                break;
+            case Tipo.arriba:
+                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 29.43f), ForceMode2D.Impulse);
+                collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.arriba;
                 collision.gameObject.GetComponent<PlayerController>().Flip();
                 StartCoroutine(activarControles(collision));
                 break;
@@ -50,7 +61,12 @@ public class cambiarGravedad : MonoBehaviour
             {
                 case Tipo.izquierda:
                     collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
-
+                    break;
+                case Tipo.derecha:
+                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(29.43f, 0), ForceMode2D.Impulse);
+                    break;
+                case Tipo.arriba:
+                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 29.43f), ForceMode2D.Impulse);
                     break;
             }
         }
@@ -62,16 +78,10 @@ public class cambiarGravedad : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (!collision.gameObject.tag.Equals("Player") || !collision.gameObject.GetComponent<PhotonView>().IsMine) return;
+        if (collision.GetComponent<PlayerController>().g.ToString() != tipo.ToString()) return;
         collision.GetComponent<Rigidbody2D>().gravityScale = 1;
         collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.normal;
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        collision.gameObject.GetComponent<PlayerController>().Flip();
     }
 
     IEnumerator activarControles(Collider2D collision) {

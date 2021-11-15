@@ -73,7 +73,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
    public enum gra { 
     normal,
-    izquierda
+    izquierda,
+    derecha,
+    arriba
     }
 
     public gra g;
@@ -155,6 +157,12 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 break;
             case gra.izquierda:
                 rb2D.velocity = new Vector2(rb2D.velocity.x, -runSpeed * ad.x);
+                break;
+            case gra.derecha:
+                rb2D.velocity = new Vector2(rb2D.velocity.x, runSpeed * ad.x);
+                break;
+            case gra.arriba:
+                rb2D.velocity = new Vector2(-runSpeed * ad.x, rb2D.velocity.y);
                 break;
         
         }
@@ -370,7 +378,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         switch (g) {
             case gra.normal:
-                transform.eulerAngles = new Vector3(0, 0, 0.0f);
+                transform.eulerAngles = Vector3.zero;
                 if (ad.x > 0)
                 {
                     transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
@@ -381,18 +389,36 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 }
                 break;
             case gra.izquierda:
+            transform.eulerAngles = new Vector3(0, 0, -90f);
                 if (ad.x > 0)
                 {
                     transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
-                    transform.eulerAngles = new Vector3(0, 0, -90f);
-
                 }
                 else if (ad.x < 0)
                 {
                     transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
-
-                    transform.eulerAngles = new Vector3(0, 0, -90f);
-
+                }
+                break;
+            case gra.derecha:
+                transform.eulerAngles = new Vector3(0, 0, 90f);
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+                }
+                break;
+            case gra.arriba:
+                transform.eulerAngles = new Vector3(0, 0, 180f);
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
                 }
                 break;
         }
@@ -428,10 +454,19 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 velocidadSuper= new Vector2(rb2D.velocity.x, Physics2D.gravity.y);
                 break;
             case gra.izquierda:
-               
-               velocidad = new Vector2(jumpSpeed * jumpM, rb2D.velocity.y);
+                velocidad = new Vector2(jumpSpeed * jumpM, rb2D.velocity.y);
                 velocidadDoble = new Vector2(doubleJumpSpeed * jumpM, rb2D.velocity.y);
                 velocidadSuper= new Vector2(-Physics2D.gravity.y, rb2D.velocity.y);
+                break;
+            case gra.derecha:
+                velocidad = new Vector2(-jumpSpeed * jumpM, rb2D.velocity.y);
+                velocidadDoble = new Vector2(-doubleJumpSpeed * jumpM, rb2D.velocity.y);
+                velocidadSuper= new Vector2(Physics2D.gravity.y, rb2D.velocity.y);
+                break;
+            case gra.arriba:
+                velocidad= new Vector2(rb2D.velocity.x, -jumpSpeed * jumpM);
+                velocidadDoble= new Vector2(rb2D.velocity.x, -doubleJumpSpeed * jumpM);
+                velocidadSuper= new Vector2(rb2D.velocity.x, -Physics2D.gravity.y);
                 break;
         }
         if (cg.isGrounded)

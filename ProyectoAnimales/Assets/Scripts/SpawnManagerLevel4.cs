@@ -61,15 +61,13 @@ public class SpawnManagerLevel4 : SpawnManagerLevel1
 
     public void desactivarParedes(){
         foreach(GameObject p in paredesAux){
-            p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
-            p.GetComponent<BoxCollider2D>().enabled = false;
+            p.GetComponent<Animator>().SetBool("Pared", true);
         }
     }
 
     public void activarParedes(){
         foreach(GameObject p in paredesAux){
-            p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
-            p.GetComponent<BoxCollider2D>().enabled = true;
+            p.GetComponent<Animator>().SetBool("Pared", false);
         }
     }
 

@@ -132,7 +132,7 @@ public class BoxScript : MonoBehaviourPun, IPunObservable
             if (collision.collider.CompareTag("Player") && collision.gameObject.GetComponent<PhotonView>().IsMine)
             {
                 //Transfer PhotonView of Rigidbody to our local player
-                Debug.Log("Cambiado dueño");
+                Debug.Log("Cambiado dueï¿½o");
                 if (gameObject.GetComponent<PhotonView>().Owner.ActorNumber != PhotonNetwork.LocalPlayer.ActorNumber)
                 {
                     gameObject.GetComponent<PhotonView>().TransferOwnership(PhotonNetwork.LocalPlayer.ActorNumber);
