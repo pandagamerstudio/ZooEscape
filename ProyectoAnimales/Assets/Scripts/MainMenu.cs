@@ -29,6 +29,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     void Start(){
 
+        PlayerPrefs.DeleteAll();
+
+        if (PlayerPrefs.HasKey("music") == false)
+        {
+            PlayerPrefs.SetFloat("music", 0.5f);
+        }
+
         createRoomButton.interactable = false;
         findRoomButton.interactable = false;
 

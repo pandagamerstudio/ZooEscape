@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     public GameObject canvas;
     //GameObject canvasEnt;
     public GameObject canvasPause;
+    public GameObject canvasVidas;
 
 
     //Para quitar lag
@@ -126,19 +127,22 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             return;
 
         canvasPause = this.transform.GetChild(2).gameObject;
+        canvasVidas = this.transform.GetChild(3).gameObject;
+
 
         posI = gameObject.transform;
         var user = GetComponent<PlayerInput>().user;
         //canvas = GameObject.FindWithTag("Canvas");
         canvas = this.transform.GetChild(1).gameObject;
         canvas.SetActive(false);
+        canvasVidas.SetActive(true);
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
             user.ActivateControlScheme("Keyboard&Mouse");
         } else if (SystemInfo.deviceType == DeviceType.Handheld){
             user.ActivateControlScheme("Movil");   
         }*/
-        
+
         CheckIfMobile();
         if(isMobile){
             canvas.SetActive(true);
