@@ -70,6 +70,13 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
    public Transform posI;
     bool padre = false;
     public int scale;
+
+   public enum gra { 
+    normal,
+    izquierda
+    }
+
+    public gra g;
  
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -140,6 +147,19 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             Destroy(canvas);
         }
     }
+    public void checkGravedad() {
+
+        switch (g) {
+            case gra.normal:
+                rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
+                break;
+            case gra.izquierda:
+                rb2D.velocity = new Vector2(rb2D.velocity.x, -runSpeed * ad.x);
+                break;
+        
+        }
+    
+    }
 
     void Update()
     {
@@ -155,7 +175,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         }
         else if(!chocandLatPlat) {
-            rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
+            
+            checkGravedad();
             if (ad.x != 0)
             {
                 animator.SetBool("Walk", true);
@@ -345,20 +366,50 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     }
     */
 
-    void Flip(){
-        if (top == false){
-            if (ad.x > 0){
-            transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
-            } else if (ad.x < 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
-            } 
-        } else {
-            if (ad.x < 0){
-            transform.localScale = new Vector3(1f, 1f, 1f) * scale;
-            } else if (ad.x > 0) {
-            transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
-            }
+   public void Flip(){
+
+        switch (g) {
+            case gra.normal:
+                transform.eulerAngles = new Vector3(0, 0, 0.0f);
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+                }
+                break;
+            case gra.izquierda:
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                    transform.eulerAngles = new Vector3(0, 0, -90f);
+
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+
+                    transform.eulerAngles = new Vector3(0, 0, -90f);
+
+                }
+                break;
         }
+        //if (top == false){
+        //    if (ad.x > 0){
+        //    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+        //    } else if (ad.x < 0) {
+        //    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+        //    } 
+        //} else {
+        //    if (ad.x < 0){
+        //    transform.localScale = new Vector3(1f, 1f, 1f) * scale;
+        //    } else if (ad.x > 0) {
+        //    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+        //    }
+        //}
+
     }
 
     void Saltar(float s){
@@ -367,11 +418,28 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         if (scale == 2)
             jumpM = 1.5f;
 
+        Vector2 velocidad=Vector2.zero;
+        Vector2 velocidadDoble = Vector2.zero;
+        Vector2 velocidadSuper = Vector2.zero;
+        switch (g) {
+            case gra.normal:
+                velocidad= new Vector2(rb2D.velocity.x, jumpSpeed * jumpM);
+                velocidadDoble= new Vector2(rb2D.velocity.x, doubleJumpSpeed * jumpM);
+                velocidadSuper= new Vector2(rb2D.velocity.x, Physics2D.gravity.y);
+                break;
+            case gra.izquierda:
+               
+               velocidad = new Vector2(jumpSpeed * jumpM, rb2D.velocity.y);
+                velocidadDoble = new Vector2(doubleJumpSpeed * jumpM, rb2D.velocity.y);
+                velocidadSuper= new Vector2(-Physics2D.gravity.y, rb2D.velocity.y);
+                break;
+        }
         if (cg.isGrounded)
         {
             canDoubleJump = true;
             
-            rb2D.velocity = new Vector2(rb2D.velocity.x, jumpSpeed * jumpM);
+            rb2D.velocity =velocidad;
+            
         }
         else
         {
@@ -379,7 +447,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             {
                 if (canDoubleJump)
                 {
-                    rb2D.velocity = new Vector2(rb2D.velocity.x, doubleJumpSpeed * jumpM);
+                    rb2D.velocity = velocidadDoble;
                     canDoubleJump = false;
                     return;
                 }
@@ -389,7 +457,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         if (superJump)
         {
             if (rb2D.velocity.y > 0 && s == 0)
-                rb2D.velocity = new Vector2(rb2D.velocity.x, Physics2D.gravity.y);
+                rb2D.velocity = velocidadSuper;
         }
     }
 

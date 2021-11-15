@@ -173,6 +173,7 @@ MonoBehaviour:
   aux: 0
   posI: {fileID: 0}
   scale: 0
+  g: 0
   isMobile: 0
 --- !u!114 &2453068180332577460
 MonoBehaviour:
@@ -250,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 1
-  m_SynchronizeRotation: 0
+  m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!114 &2266075151097554669
