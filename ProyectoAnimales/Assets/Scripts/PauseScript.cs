@@ -8,6 +8,13 @@ using UnityEngine.SceneManagement;
 public class PauseScript : MonoBehaviourPun
 {
     public GameObject panel;
+    /*private LifesScript livesScript;
+
+    private void Start()
+    {
+        livesScript = FindObjectOfType<LifesScript>();
+    }*/
+
     public void OnPause(){
         panel.SetActive(true);
     }
@@ -21,9 +28,11 @@ public class PauseScript : MonoBehaviourPun
     public void OnResetLevel(){
         if (PhotonNetwork.IsMasterClient)
         {
+            this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
             PhotonNetwork.DestroyAll();
             PlayerPrefs.SetString ("Scene", SceneManager.GetActiveScene().name);
             PhotonNetwork.LoadLevel("Recargar");
+            //photonView.RPC("LoseLife", RpcTarget.All);
         }
     }
 
