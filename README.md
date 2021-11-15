@@ -172,8 +172,8 @@ Versión 1.0
 > - Cada uno de los animales dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común,dando importancia en cada momento a todaslas opiniones de los miembros del equipo por muy dispares que sean. Además, los trabajadores del zoo intentarán a toda costa retener a los animales y evitar que los visitantes del zoo sientan pánico o sean atacados. También habrá diferentes puntos de vista entre los turistas, puesto que alguno no estará tan en contra de la escapada.
 > ##### 5.2 Personajes
 > - Al ser un videojuego cuyo argumento es la huída de unos animales de un zoo, los personajes serán los animales de dicho zoo. 
-> - El juego contará con 2 animales: un oso panda y un oso pardo.
-> - Los dos personajes funcionarán del mismo modo: mismas mecánicas, atributos y funcionalidades. 
+> - El juego contará con 3 animales: un oso panda, un oso pardo y un oso polar.
+> - Los tres personajes funcionarán del mismo modo: mismas mecánicas, atributos y funcionalidades. 
 > ##### 5.3 Entornos y lugares
 > - El escenario principal del juego será el Zoo.
 > - Como el argumento es que los animales quieren escapar de éste, los niveles representarán la huida de las jaulas y otros espacios del zoo.
@@ -242,6 +242,18 @@ Versión 1.0
 > ##### - Menu Inicio:
 > El menú de inicio del juego cuenta con el título en grande en la parte superior de la pantalla y 4 botones debajo de éste: jugar, opciones, créditos y salir del juego. Además, el fondo de este menú cuenta con los dibujos de nuestros 3 personajes.
 >![](https://i.imgur.com/LdhUVP7.png)
+> ##### - Introduce tu nombre:
+> Es el menú que aparece cuando le das al botón de play del menú de inicio. En este menú el jugador puede introducir su nombre para la partida, y elegir entre crear un sala o unirse a una ya creada. Además, como todos los menús, tiene un botón de return que le permite volver a la pantalla anterior.
+> ![](https://i.imgur.com/pUBZSHI.png)
+> ##### - Crear sala:
+> Es el menú que aparece cuando le das al botón de crear sala. En este menú puedes introducir el nombre que quieres que tenga tu sala, aunque si no pones nada el sistema te asignará uno él. También hay un botón para confirmarlo y para volver a la pantalla anterior.
+> ![](https://i.imgur.com/rFqqsR7.png)
+> ##### - Encontrar sala:
+> Es la otra opción respecto al anterior menú. Cuando un jugador ya ha creado una sala, el segundo jugador deberá buscar esa sala en vez de crear otra nueva (si quieren jugar juntos). En este menú aparecerán todas las salas disponibles, y cuántos jugadores hay en cada una respecto a la capacidad total de cada sala (de dos jugadores). Cuenta con un botón de "refresh" que permite refrescar la lista de salas por si acaso se crea la sala después de que el jugador haya entrado a buscarla.
+> ![](https://i.imgur.com/XRqRb9p.png)
+> ##### - Lobby de inicio:
+> Es el menú que aparece justo antes de empezar la partida. En este menú se puede ver el nombre de la sala y los jugadores que están en esa sala. Además, aparecen los 3 avatares disponibles en nuestro juego para que el jugador elija con cúal quiere jugar. 
+> ![](https://i.imgur.com/Cnv6ntv.png)
 > ##### - Niveles:
 > El menú de niveles se dividirá en tantas pantallas como sean necesarias. Si tenemos 8 niveles, tendremos solo una. Si tenemos 16, tendremos dos y nos desplazaríamos de una a otra con las flechas que aparecerán en los laterales. Con el botón de 'return' podemos volver al menú de inicio.
 >![](https://i.imgur.com/9EOEABY.png)
@@ -254,15 +266,15 @@ Versión 1.0
 > ##### - Pausa:
 > El menú de pausa le da al jugador la opción de volver al juego, reiniciar el nivel actual, ir al menú de opciones, salir al menú de niveles o salir al menú principal. Le permitimos al jugador volver al menú de niveles para que el juego sea más dinámico y fácil de navegar.
 >![](https://i.imgur.com/Wi7r0q6.png)
+> ##### - Controles:
+> En esta pantalla mostramos al jugador los controles de nuestro juego. Se puede acceder a esta pantalla desde el menú de opciones, el cual a su vez se puede acceder desde el menú inicial o el menú de pausa. De este modo el jugador podrá consultar los controles del juego en cualquier momento de la partida si así lo necesita.
+> ![](https://i.imgur.com/SHIyrMV.png)
 > ##### - GameOver:
 > Cuando mueres, en lugar de ir a una pantalla que te indique que has muerto, queremos hacer algo más dinámico. En lugar de poner "GameOver", aparece el dibujo del panda y un fondo (de algún color de la paleta) que se reduce en forma de circulo hasta llegar al panda y ocultarse en él. Cuando la animación (que será muy rápida) termina, el nivel se ha vuelto a reiniciar.
 >![](https://media.discordapp.net/attachments/658480479015534651/896798196897050714/menugameover.png?width=993&height=702)
 > ##### - Creditos:
 > Es una pantalla que muestra la información relevante sobre los autores del juego y nuestra compañía.
 >![](https://i.imgur.com/ESqFIR8.png)
->##### - Controles:
-> En esta pantalla mostramos al jugador los controles de nuestro juego. Se puede acceder a esta pantalla desde el menú de opciones, el cual a su vez se puede acceder desde el menú inicial o el menú de pausa. De este modo el jugador podrá consultar los controles del juego en cualquier momento de la partida si así lo necesita.
-> ![](https://i.imgur.com/SHIyrMV.png)
 
 > #### 7.2 Diagrama de flujo
 >![](https://media.discordapp.net/attachments/658480479015534651/896798194749571092/diagrama.png?width=993&height=702)
