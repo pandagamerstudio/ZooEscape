@@ -21,8 +21,6 @@ public class PauseScript : MonoBehaviourPun
     public void OnResetLevel(){
         if (PhotonNetwork.IsMasterClient)
         {
-            this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
-
             PhotonNetwork.DestroyAll();
             PlayerPrefs.SetString ("Scene", SceneManager.GetActiveScene().name);
             PhotonNetwork.LoadLevel("Recargar");
