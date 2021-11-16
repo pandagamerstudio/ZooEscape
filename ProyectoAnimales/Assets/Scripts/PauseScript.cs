@@ -48,6 +48,11 @@ public class PauseScript : MonoBehaviourPun
     }
 
     public void OnExitToMain(){
+
+        GameManager.instance.LeavePlayer();
+        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("Menu");
         PhotonNetwork.LoadLevel("Menu");
     }
 
