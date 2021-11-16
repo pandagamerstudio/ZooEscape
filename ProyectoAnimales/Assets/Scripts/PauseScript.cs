@@ -24,7 +24,9 @@ public class PauseScript : MonoBehaviourPun
             this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
             if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
             {
-                PhotonNetwork.DestroyAll();
+                GameManager.instance.LeavePlayer();
+                PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+                PhotonNetwork.LeaveRoom();
                 PhotonNetwork.LoadLevel("Menu");
             }
             else
