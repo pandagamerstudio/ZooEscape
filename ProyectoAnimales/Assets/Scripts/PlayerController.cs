@@ -205,8 +205,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     }
 
     public void OnPause(){
-        if (!photonView.IsMine) return;
-        
         canvasPause.transform.GetChild(0).gameObject.SetActive(true);
 
         if (isMobile)

@@ -11,78 +11,29 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     public string scene;
 
-    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla, controlesScreen, levelsScreen;
+    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla, controlesScreen;
 
     public Button createRoomButton, findRoomButton;//Screen buttons
 
     public TextMeshProUGUI playerListText, roomInfoText;//loby text
     public Button startGameButton;//loby button
-    public Button[] levelButtons; 
     public RectTransform roomListContainer;
     public GameObject roomButtonPrefab;
     public TMP_InputField playerNameInput;
 
     private List<GameObject> roomButtons = new List<GameObject>();
     private List<RoomInfo> roomList = new List<RoomInfo>();
-    int idJugSel, actualLevel1, actualLevel2;
+    int idJugSel;
     public GameObject[] personajes;
 
 
     void Start(){
 
-        if (PlayerPrefs.HasKey("LevelMenu")){
-            if (PlayerPrefs.GetInt("LevelMenu") == 1){
-                if (PhotonNetwork.IsMasterClient){
-                    if (PlayerPrefs.HasKey("actualLevel1") == false)
-                    {
-                        PlayerPrefs.SetInt("actualLevel1", 1);
-                        actualLevel1 = 1;
-                    }else{
-                        actualLevel1 = PlayerPrefs.GetInt("actualLevel1");
-                    }
-                }else{
-                    if (PlayerPrefs.HasKey("actualLevel2") == false)
-                    {
-                        PlayerPrefs.SetInt("actualLevel2", 1);
-                        actualLevel2 = 1;
-                    }else{
-                        actualLevel2 = PlayerPrefs.GetInt("actualLevel2");
-                    }
-                }
-                photonView.RPC("SetScreenLevels", RpcTarget.All);
-                PlayerPrefs.SetInt("LevelMenu", 0);
-                //Debug.Log("1: "+actualLevel1 + " | 2: "+actualLevel2);
-
-                photonView.RPC("GetCharacters", RpcTarget.All);
-                
-
-                return;
-            }
-        }
-
-        PlayerPrefs.DeleteKey("livesRemaining");
+        PlayerPrefs.DeleteAll();
 
         if (PlayerPrefs.HasKey("music") == false)
         {
             PlayerPrefs.SetFloat("music", 0.5f);
-        }
-
-        if (PhotonNetwork.IsMasterClient){
-            if (PlayerPrefs.HasKey("actualLevel1") == false)
-            {
-                PlayerPrefs.SetInt("actualLevel1", 1);
-                actualLevel1 = 1;
-            }else{
-                actualLevel1 = PlayerPrefs.GetInt("actualLevel1");
-            }
-        }else{
-            if (PlayerPrefs.HasKey("actualLevel2") == false)
-            {
-                PlayerPrefs.SetInt("actualLevel2", 1);
-                actualLevel2 = 1;
-            }else{
-                actualLevel2 = PlayerPrefs.GetInt("actualLevel2");
-            }
         }
 
         createRoomButton.interactable = false;
@@ -140,44 +91,11 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         creditosScreen.SetActive(false);
         opcionesScreen.SetActive(false);
         controlesScreen.SetActive(false);
-        levelsScreen.SetActive(false);
 
         screen.SetActive(true);
 
         if (screen == lobyBrowserScreen)
             UpdateLobbyBrowserUI();
-    }
-
-    [PunRPC]
-    public void SetScreenLevels(){
-        mainScreen.SetActive(false);
-        createRoomScreen.SetActive(false);
-        lobyScreen.SetActive(false);
-        lobyBrowserScreen.SetActive(false);
-        menuPrincipalScreen.SetActive(false);
-        creditosScreen.SetActive(false);
-        opcionesScreen.SetActive(false);
-        controlesScreen.SetActive(false);
-
-        ComprobarNiveles();
-        levelsScreen.SetActive(true);
-    }
-
-    [PunRPC]
-    public void SetScreenLobby(){
-        SetScreen(lobyScreen);
-
-        SelectorPersonajes(idJugSel);
-        UpdateLobbyUI();
-        ComprobarNiveles();
-    }
-
-    [PunRPC]
-    public void GetCharacters(){
-        if (PhotonNetwork.IsMasterClient)
-            idJugSel = PlayerPrefs.GetInt("idPersonaje1");
-        else
-            idJugSel = PlayerPrefs.GetInt("idPersonaje2");
     }
 
     public void OnPlayerNameValueChanged(){
@@ -209,16 +127,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         SetScreen(mainScreen);
     }
 
-    public void OnBackInLevelsButton(){
-        photonView.RPC("SetScreenLobby", RpcTarget.All);
-    }
-
     public void OnVolverButton(){
         SetScreen(menuPrincipalScreen);
-    }
-
-    public void OnVolverOpcButton(){
-        SetScreen(opcionesScreen);
     }
 
     public void OnCreateButton(TMP_InputField roomNameInput){
@@ -260,7 +170,6 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
 
         SelectorPersonajes(idJugSel);
-        ComprobarNiveles();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer){
@@ -284,14 +193,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        //SetScreen(levelsScreen);
-        photonView.RPC("SetScreenLevels", RpcTarget.All);
-        //NetworkManager.instance.ChangeScene("Level1"); 
+        NetworkManager.instance.ChangeScene("Level1"); 
         //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
-    }
-
-    public void OnStartLevelButton(int n){
-        NetworkManager.instance.ChangeScene("Level"+n); 
     }
 
     public void OnPruebaButton(){
@@ -369,21 +272,6 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }else{
             PlayerPrefs.SetInt ("idPersonaje2", idJugSel);
         }
-    }
-
-    public void ComprobarNiveles(){
-        if (actualLevel1 >= actualLevel2){
-            for(int i=levelButtons.Length-1; i >= actualLevel1 ; i--){
-                levelButtons[i].interactable = false;
-            }
-        }else{
-            for(int i=levelButtons.Length-1; i >= actualLevel2 ; i--){
-                levelButtons[i].interactable = false;
-            }
-        }
-
-        if (!PhotonNetwork.IsMasterClient)
-            levelsScreen.transform.GetChild(levelsScreen.transform.childCount-1).gameObject.SetActive(true);
     }
 
 
