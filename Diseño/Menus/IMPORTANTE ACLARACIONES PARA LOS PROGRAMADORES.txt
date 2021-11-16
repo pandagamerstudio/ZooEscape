@@ -9,6 +9,12 @@ Como no sé como de dividido necesitais cada elemento de los menús, he hecho:
 - El título del menú aparte.
 - Si no indico lo contrario, los botones HOVER y CLICK son del mismo tamaño que los normales.
 
+
+ORDEN:
+- Del lobby yo iría a la pantalla de historia, y de ahí al selector de niveles, y que sea el usuario el que elija el primer nivel.
+
+
+
 MENÚ DE OPCIONES: 
 - El fondo sin título solo es un color verde sólido (#ebf8f2).
 - Como "musica" y "sfx" son sliders, en la carpeta están esos dos botones con el slider y sin él.
@@ -71,3 +77,7 @@ MUERTE 1 VIDA:
 - Me gustaría que tuviera una transición de salida en la cual cuando esta pantalla desaparece sea como un circulo haciendose cada vez 
 	más pequeño. En plan, aparece toda la pantalla, y pasado un segundo es como si un circulo se lo fuuera comiendo, haciendose
 	cada vez más pequeño hasta no quedar nada.
+
+VICTORIA:
+- Es el menú que aparece cuando el jugador ya se ha pasado los 10 niveles. 
+- Su cuadro amarillo NO es el mismo que el de GAMEOVER. Este es más grande.
