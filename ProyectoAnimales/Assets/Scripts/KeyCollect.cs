@@ -15,6 +15,7 @@ public class KeyCollect : MonoBehaviourPun
 
         if (collision.CompareTag("Player"))
         {
+            GameObject.Find("AudioManager").GetComponent<AudioVolume>().playSfx("llave");
             PhotonNetwork.Destroy(gameObject);
         }
 

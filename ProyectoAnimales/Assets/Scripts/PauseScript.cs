@@ -22,6 +22,7 @@ public class PauseScript : MonoBehaviourPun
     public void OnLoseLife()
     {
         this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
+        GameObject.Find("AudioManager").GetComponent<AudioVolume>().playSfx("derrota");
     }
     
     public void OnResetLevel(){

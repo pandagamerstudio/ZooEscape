@@ -19,9 +19,9 @@ public class PuertaScript : MonoBehaviourPun
 
         if (collision.CompareTag("Player")){
             playersIn++;
-
             GameObject l = GameObject.FindWithTag("Llave");
             if (playersIn == 2 && (l == null)){
+                GameObject.Find("AudioManager").GetComponent<AudioVolume>().playSfx("pasoNivel");
                 Scene scene = SceneManager.GetActiveScene();
                 string nombre = "";
                 int level = 0;

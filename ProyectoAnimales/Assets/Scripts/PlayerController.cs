@@ -11,7 +11,14 @@ using ExitGames.Client.Photon;
 public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallback
 {
 
-    //[HideInInspector]
+
+    public enum gra { 
+    normal,
+    izquierda,
+    derecha,
+    arriba
+    }
+    public gra g;
     public int id;
 
     public int idCanvas;
@@ -71,15 +78,10 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
    public Transform posI;
     bool padre = false;
     public int scale;
+    //Efectos sonido
+    AudioVolume sonido;
 
-   public enum gra { 
-    normal,
-    izquierda,
-    derecha,
-    arriba
-    }
 
-    public gra g;
  
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
@@ -89,7 +91,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         animator = this.GetComponent<Animator>();
         checkGround = this.GetComponentInChildren<CheckGround>();
         
-
         posicionReal = new Vector2(this.GetComponent<Transform>().position.x, this.GetComponent<Transform>().position.y);
         posicionUltimoPaquete = Vector2.zero;
         tiempoActual=0.0;
@@ -101,11 +102,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         cargarUnaVez = true;
         scale = 1;
 
-        
-
-        //GetComponent<PlayerInput>().SwitchCurrentControlScheme.Gravedad;
-        //InputSystem.EnableDevice(Keyboard.current);
-        //InputSystem.DisableDevice();
+        sonido = GameObject.Find("AudioManager").GetComponent<AudioVolume>();
     }
 
     public bool isMobile;
@@ -269,46 +266,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     }
 
-/*
-    [PunRPC]
-    public void moverJug2()
-    {
-        Debug.Log("4");
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Debug.Log("5");
-            //gameObject.transform.position = new Vector3(0.2f, -2.1f, 0);
-            gameObject.transform.position = GameManager.instance.spawnPoints[0].position;
-        }
-        else
-        {
-            //gameObject.transform.position = new Vector3(5.1f, -2.1f, 0);
-            gameObject.transform.position = GameManager.instance.spawnPoints[1].position;
-        }
-        cargarUnaVez = true;
-
-    }
-
-    [PunRPC]
-    public void moverJug3()
-    {
-        Debug.Log("4");
-        if (PhotonNetwork.IsMasterClient)
-        {
-            Debug.Log("5");
-            //gameObject.transform.position = new Vector3(46.6f, 16.1f, 0);
-            gameObject.transform.position = GameManager.instance.spawnPoints[0].position;
-        }
-        else
-        {
-            //gameObject.transform.position = new Vector3(37.9f, 16.1f, 0);
-            gameObject.transform.position = GameManager.instance.spawnPoints[1].position;
-        }
-        cargarUnaVez = true;
-
-    }
-*/
-
     public void Movimiento(InputAction.CallbackContext callback) {
         Player p = PhotonNetwork.LocalPlayer;
 
@@ -360,7 +317,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         yield return new WaitForSeconds(1f);
         activadaGravedad = false;
     }
-
     public void GravedadLados(InputAction.CallbackContext callback) {
         if (!photonView.IsMine)
             return;
@@ -375,18 +331,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         }
         
     }
-    
-    /*
-    public void Agarrar(InputAction.CallbackContext callback) {
-        agarrar = callback.ReadValue<Float>();
-
-        if (agarrar > 0 && attached){
-            Detach();
-        }
-        
-    }
-    */
-
    public void Flip(){
 
         switch (g) {
@@ -435,24 +379,9 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 }
                 break;
         }
-        //if (top == false){
-        //    if (ad.x > 0){
-        //    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
-        //    } else if (ad.x < 0) {
-        //    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
-        //    } 
-        //} else {
-        //    if (ad.x < 0){
-        //    transform.localScale = new Vector3(1f, 1f, 1f) * scale;
-        //    } else if (ad.x > 0) {
-        //    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
-        //    }
-        //}
-
     }
 
     void Saltar(float s){
-        //Debug.Log("Salto");
         float jumpM = 1f;
         if (scale == 2)
             jumpM = 1.5f;
@@ -485,7 +414,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         if (cg.isGrounded)
         {
             canDoubleJump = true;
-            
+            sonido.playSfx("salto");
             rb2D.velocity =velocidad;
             
         }
@@ -497,6 +426,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 {
                     rb2D.velocity = velocidadDoble;
                     canDoubleJump = false;
+                    sonido.playSfx("salto");
                     return;
                 }
             }

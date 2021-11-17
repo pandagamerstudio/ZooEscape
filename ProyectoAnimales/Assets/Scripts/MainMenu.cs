@@ -51,7 +51,6 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
                 }
                 photonView.RPC("SetScreenLevels", RpcTarget.All);
                 PlayerPrefs.SetInt("LevelMenu", 0);
-                //Debug.Log("1: "+actualLevel1 + " | 2: "+actualLevel2);
 
                 photonView.RPC("GetCharacters", RpcTarget.All);
                 
@@ -61,6 +60,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
 
         PlayerPrefs.DeleteKey("livesRemaining");
+        //PlayerPrefs.DeleteKey("music");
 
         if (PlayerPrefs.HasKey("music") == false)
         {
@@ -371,6 +371,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
     }
 
+    public void OnSelectSound (){
+        GameObject.Find("AudioManager").GetComponent<AudioVolume>().playSfx("seleccionar");
+    }
+
+    public void OnSelectSoundLevel (){
+        GameObject.Find("AudioManager").GetComponent<AudioVolume>().playSfx("pasoNivel");
+    }
     public void ComprobarNiveles(){
         if (actualLevel1 >= actualLevel2){
             for(int i=levelButtons.Length-1; i >= actualLevel1 ; i--){
