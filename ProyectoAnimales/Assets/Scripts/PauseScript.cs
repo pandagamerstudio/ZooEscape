@@ -4,10 +4,20 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseScript : MonoBehaviourPun
 {
     public GameObject panel, panelOptions, panelControls;
+    public Button exitToLevelClient;
+
+    public void Start()
+    {
+        if(!PhotonNetwork.IsMasterClient)
+        {
+            exitToLevelClient.interactable = false;
+        }
+    }
     public void OnPause(){
         panel.SetActive(true);
     }

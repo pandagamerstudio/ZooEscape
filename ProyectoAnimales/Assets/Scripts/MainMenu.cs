@@ -11,12 +11,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     public string scene;
 
-    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen,creditosScreen, mesanjePantalla, controlesScreen, levelsScreen;
+    public GameObject mainScreen, createRoomScreen, lobyScreen, lobyBrowserScreen, menuPrincipalScreen, opcionesScreen, creditosScreen, mesanjePantalla, controlesScreen, levelsScreen,
+        historia1;
 
     public Button createRoomButton, findRoomButton;//Screen buttons
 
     public TextMeshProUGUI playerListText, roomInfoText;//loby text
-    public Button startGameButton;//loby button
+    public Button startGameButton, buttonContinue;
     public Button[] levelButtons; 
     public RectTransform roomListContainer;
     public GameObject roomButtonPrefab;
@@ -145,6 +146,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         opcionesScreen.SetActive(false);
         controlesScreen.SetActive(false);
         levelsScreen.SetActive(false);
+        historia1.SetActive(false);
 
         screen.SetActive(true);
 
@@ -165,6 +167,16 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
         ComprobarNiveles();
         levelsScreen.SetActive(true);
+    }
+
+    [PunRPC]
+    public void SetScreenHistoria()
+    {
+        SetScreen(historia1);
+        if (!PhotonNetwork.IsMasterClient)
+        {
+            buttonContinue.interactable = false;
+        }
     }
 
     [PunRPC]
@@ -214,6 +226,11 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnBackInLevelsButton(){
+        if(PhotonNetwork.IsMasterClient)
+        {
+            PhotonNetwork.CurrentRoom.IsOpen = true;
+            PhotonNetwork.CurrentRoom.IsVisible = true;
+        }
         photonView.RPC("SetScreenLobby", RpcTarget.All);
     }
 
@@ -295,6 +312,11 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnStartLevelButton(int n){
+        if(n == 0)
+        {
+            photonView.RPC("SetScreenHistoria", RpcTarget.All);
+            return;
+        }
         NetworkManager.instance.ChangeScene("Level"+n); 
     }
 
