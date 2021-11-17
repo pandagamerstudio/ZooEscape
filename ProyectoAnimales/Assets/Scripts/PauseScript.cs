@@ -18,10 +18,17 @@ public class PauseScript : MonoBehaviourPun
             this.GetComponentInParent<PlayerController>().canvas.SetActive(true);
     }
 
+    [PunRPC]
+    public void OnLoseLife()
+    {
+        this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
+    }
+    
     public void OnResetLevel(){
         if (PhotonNetwork.IsMasterClient)
         {
-            this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
+            photonView.RPC("OnLoseLife", RpcTarget.All);
+
             if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
             {
                 GameManager.instance.LeavePlayer();

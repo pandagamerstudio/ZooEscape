@@ -8,43 +8,19 @@ public class LifesScript : MonoBehaviourPun
 {
     public Image[] lives;
     public int livesRemaining;
-    private Color cora = new Color(1f, 1f, 1f, 0f);
-    private int entraUi = 0;
-
     void Start()
     {
-        if (PlayerPrefs.HasKey("entraUi"))
-        {
-            entraUi = PlayerPrefs.GetInt("entraUi");
-        }
         if (PlayerPrefs.HasKey("livesRemaining"))
         {
             livesRemaining = PlayerPrefs.GetInt("livesRemaining");
         }
         Debug.Log(livesRemaining);
 
-        if(entraUi == 1)
-        {
-            UpdateLivesUI();
-        }
-        
-        PlayerPrefs.SetInt("entraUi", 1);
+        UpdateLivesUI();
     }
 
-    //[PunRPC]
     public void LoseLife()
     {
-        if (livesRemaining == 0)
-        {
-            Debug.Log("vidas0");
-            if(PhotonNetwork.IsMasterClient)
-            {
-                Debug.Log("camvbionivel");
-                PhotonNetwork.LoadLevel("Menu");
-            }
-            
-        }
-
         livesRemaining--;
         PlayerPrefs.SetInt("livesRemaining", livesRemaining);
 
