@@ -18,36 +18,23 @@ public class AudioVolume : MonoBehaviour
         sfxSeleccionar = Resources.Load<AudioClip>("Sonido/Efectos/SonidoSeleccionar");
         sfxLlave = Resources.Load<AudioClip>("Sonido/Efectos/SonidoLlave");
 
-
-        if (PlayerPrefs.HasKey("music") == false)
-        {
-            PlayerPrefs.SetFloat("music", 0.5f);
-        }
         audioSrc.volume = PlayerPrefs.GetFloat("music");
-
-        if (PlayerPrefs.HasKey("sfx") == false)
-        {
-            PlayerPrefs.SetFloat("sfx", 0.5f);
-        }
         sfxSrc.volume = PlayerPrefs.GetFloat("sfx");
     }
     void Update(){
         audioSrc.volume = PlayerPrefs.GetFloat("music");
+        sfxSrc.volume = PlayerPrefs.GetFloat("sfx");
     }
     public void SetVolume(float vol)
     {
         PlayerPrefs.SetFloat("music", vol);
     }
 
-    public void SetSfxOn()
+    public void SetSfx(float vol)
     {
-        PlayerPrefs.SetFloat("sfx", 1f);
+        PlayerPrefs.SetFloat("sfx", vol);
     }
 
-    public void SetSfxOff()
-    {
-        PlayerPrefs.SetFloat("sfx", 0f);
-    }
     public void playSfx(string a){
         switch(a){
             case "derrota":

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseScript : MonoBehaviourPun
 {
-    public GameObject panel;
+    public GameObject panel, panelOptions, panelControls;
     public void OnPause(){
         panel.SetActive(true);
     }
@@ -32,7 +32,7 @@ public class PauseScript : MonoBehaviourPun
 
             if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
             {
-                GameManager.instance.LeavePlayer();
+                //GameManager.instance.LeavePlayer();
                 //PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
                 PhotonNetwork.LeaveRoom();
                 PhotonNetwork.LoadLevel("Menu");
@@ -47,17 +47,46 @@ public class PauseScript : MonoBehaviourPun
         }
     }
 
-    public void OnOptions(){
+    public void OnOptions()
+    {
+        panel.SetActive(false);
+        panelOptions.SetActive(true);
+
+    }
+
+    public void OnExitOptions()
+    {
+        panelOptions.SetActive(false);
+        panel.SetActive(true);
+
+    }
+
+    public void OnControls()
+    {
+        panelOptions.SetActive(false);
+        panelControls.SetActive(true);
+
+    }
+
+    public void OnExitControls()
+    {
+        panelControls.SetActive(false);
+        panelOptions.SetActive(true);
 
     }
 
     public void OnExitToLevel(){
+        photonView.RPC("OnLoseLife", RpcTarget.All);
+        if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
+        {
+            PhotonNetwork.LoadLevel("Menu");
+        }
         PlayerPrefs.SetInt("LevelMenu", 1);
         PhotonNetwork.LoadLevel("Menu");
     }
 
     public void OnExitToMain(){
-        GameManager.instance.LeavePlayer();
+        //GameManager.instance.LeavePlayer();
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("Menu");
     }

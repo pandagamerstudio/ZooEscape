@@ -66,6 +66,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         {
             PlayerPrefs.SetFloat("music", 0.5f);
         }
+        if (PlayerPrefs.HasKey("sfx") == false)
+        {
+            PlayerPrefs.SetFloat("sfx", 0.5f);
+        }
 
         if (PhotonNetwork.IsMasterClient){
             if (PlayerPrefs.HasKey("actualLevel1") == false)
