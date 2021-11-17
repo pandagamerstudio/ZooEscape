@@ -123,6 +123,14 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     }
 
     void Start(){
+
+        if (!photonView.IsMine)
+        {
+            canvasVidas = this.transform.GetChild(3).gameObject;
+            canvasVidas.SetActive(true);
+        }
+
+
         if (!photonView.IsMine)
             return;
 
