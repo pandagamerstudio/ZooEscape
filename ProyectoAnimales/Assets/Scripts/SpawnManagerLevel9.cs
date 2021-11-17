@@ -22,11 +22,19 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
 
     public Transform[] cajasGrandeSpwan;
     public GameObject cajasGrande;
+     GameObject ultimacaja;
+    bool unavez = true;
+
     // Start is called before the first frame update
     void Start()
     {
         if (!PhotonNetwork.IsMasterClient)
             return;
+
+     //   PhotonNetwork.Instantiate(key.name, keySpawn.position, Quaternion.identity);
+
+       
+
         for (int i = 0; i < paredesSpawn.Length; i++) {
             PhotonNetwork.Instantiate(paredes.name, paredesSpawn[i].position, Quaternion.identity);
         }
@@ -47,12 +55,14 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
         for (int i = 0; i < cajas2Spawn.Length; i++)
         {
             GameObject c2 = PhotonNetwork.Instantiate(sueloBox.name, cajas2Spawn[i].position, Quaternion.identity);
+            ultimacaja = c2;
             photonView.RPC("setCaja2", RpcTarget.All, c2.GetComponent<PhotonView>().ViewID);
         }
 
         for (int i = 0; i < cajasPequenaSpwan.Length; i++) {
           GameObject caja=  PhotonNetwork.Instantiate(cajasPeque.name, cajasPequenaSpwan[i].position, Quaternion.identity);
             //Destroy(caja.)
+           
 
             photonView.RPC("cajasJugadores", RpcTarget.All, caja.GetComponent<PhotonView>().ViewID);
 
@@ -67,6 +77,19 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
             photonView.RPC("cajasJugadores2", RpcTarget.All, caja.GetComponent<PhotonView>().ViewID);
 
 
+        }
+
+    }
+    void Update()
+    {
+        Debug.Log(ultimacaja.transform.position.x);
+
+
+        if (ultimacaja.transform.position.x <= -13&& unavez&&PhotonNetwork.IsMasterClient) {
+            unavez = false;
+
+            PhotonNetwork.Instantiate(puerta.name, puertaSpawn.position, Quaternion.identity);
+            PhotonNetwork.Instantiate(key.name, keySpawn.position, Quaternion.identity);
         }
 
     }
