@@ -42,10 +42,8 @@ public class PauseScript : MonoBehaviourPun
 
             if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
             {
-                //GameManager.instance.LeavePlayer();
-                //PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
                 PhotonNetwork.LeaveRoom();
-                PhotonNetwork.LoadLevel("Menu");
+                PhotonNetwork.LoadLevel("Derrota");
             }
             else
             {
@@ -96,9 +94,7 @@ public class PauseScript : MonoBehaviourPun
     }
 
     public void OnExitToMain(){
-        //GameManager.instance.LeavePlayer();
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("Menu");
     }
-
 }
