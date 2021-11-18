@@ -42,7 +42,6 @@ public class PauseScript : MonoBehaviourPun
 
             if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
             {
-                PhotonNetwork.LeaveRoom();
                 PhotonNetwork.LoadLevel("Derrota");
             }
             else
@@ -95,6 +94,6 @@ public class PauseScript : MonoBehaviourPun
 
     public void OnExitToMain(){
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel("Menu");
+        
     }
 }

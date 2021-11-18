@@ -18,7 +18,7 @@ public class DerrotaScript : MonoBehaviourPun
     }
     public void OnBackToMainMenu(){
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel("Menu");
+        //PhotonNetwork.LoadLevel("Menu");
     }
 
     public void OnPlayAgain(){

@@ -14,5 +14,12 @@ public class RoomManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         PhotonNetwork.LeaveRoom();
         PhotonNetwork.LoadLevel("Menu");
     }
-    
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+
+        PhotonNetwork.LoadLevel("Menu");
+    }
+
 }

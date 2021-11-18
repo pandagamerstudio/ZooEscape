@@ -23,6 +23,6 @@ public class VictoriaScript : MonoBehaviourPun
 
     public void OnBackToMainMenu(){
         PhotonNetwork.LeaveRoom();
-        SceneManager.LoadScene("Menu");
+        //SceneManager.LoadScene("Menu");
     }
 }
