@@ -9,13 +9,14 @@ using UnityEngine.UI;
 public class PauseScript : MonoBehaviourPun
 {
     public GameObject panel, panelOptions, panelControls;
-    public Button exitToLevelClient;
+    public Button exitToLevelClient, resetLevelClient;
 
     public void Start()
     {
         if(!PhotonNetwork.IsMasterClient)
         {
             exitToLevelClient.interactable = false;
+            resetLevelClient.interactable = false;
         }
     }
     public void OnPause(){
