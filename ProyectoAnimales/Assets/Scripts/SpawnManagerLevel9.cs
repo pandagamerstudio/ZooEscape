@@ -82,10 +82,8 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
     }
     void Update()
     {
-        Debug.Log(ultimacaja.transform.position.x);
 
-
-        if (ultimacaja.transform.position.x <= -13&& unavez&&PhotonNetwork.IsMasterClient) {
+        if (PhotonNetwork.IsMasterClient && ultimacaja.transform.position.x <= -13 && unavez) {
             unavez = false;
 
             PhotonNetwork.Instantiate(puerta.name, puertaSpawn.position, Quaternion.identity);
