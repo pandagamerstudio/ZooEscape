@@ -12,7 +12,7 @@ public class RoomManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         GameManager.instance.LeavePlayer();
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         PhotonNetwork.LeaveRoom();
-        PhotonNetwork.LoadLevel("Menu");
+        //PhotonNetwork.LoadLevel("Menu");
     }
 
     public override void OnLeftRoom()
