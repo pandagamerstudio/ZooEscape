@@ -26,6 +26,9 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
      GameObject ultimacaja;
     bool unavez = true;
 
+    public Sprite cajaJug1;
+    public Sprite cajaJug2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -100,7 +103,7 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
     {
         GameObject go = PhotonNetwork.GetPhotonView(c).gameObject;
         go.layer = 8;
-        go.GetComponent<SpriteRenderer>().color = Color.yellow;
+        go.GetComponent<SpriteRenderer>().sprite = cajaJug1;
     }
 
     [PunRPC]
@@ -108,7 +111,7 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
     {
         GameObject go = PhotonNetwork.GetPhotonView(c).gameObject;
         go.layer = 9;
-        go.GetComponent<SpriteRenderer>().color = Color.green;
+        go.GetComponent<SpriteRenderer>().sprite = cajaJug2;
     }
 
     [PunRPC]
