@@ -72,16 +72,10 @@ Versión 1.0
 >     - Es un juego que se subirá a itchi.io donde los juegos son gratis siempre
 >     - La cantidad de contenido ofrecida por el juego se ajusta a la de un F2P.
 >   - Pero para generar ingresos dentro de los F2P la opción más adecuada es FREEMIUM.
->     - Poder comprar nuevas zonas con puzzles de distintas temáticas.
->     - Apariencias exclusivas
->     - Posibilidad de comprar “pistas” que nos ayudan a resolver los diferentes puzzles.
->     - Poder comprar potenciadores, por ejemplo uno que nos dé más tiempo para resolver los puzzles
-> - Segundo modelo:
->   - A la hora de intentar superar los niveles, existirán un número limitado de vidas. Cuando no consigues superar un nivel, se perderá una vida y cuando pierdas todas las vidas tendrás que esperar un tiempo o de lo contrario pagar monedas del juego para comprar vidas. ¿Cómo se consiguen estas vidas?
->     - La primera opción que se pueden encontrar los jugadores es que al pasarse otros niveles se les otorgarán una serie de monedas, las cuáles podrán utilizar para comprar nuevas vidas.
->     -  Si algún jugador no tiene monedas ya y quiere seguir jugando, la opción alternativa que tendrá es ver un vídeo el cual le otorgará una moneda gratuita. El número de vídeos estará limitado.
->     -  Si algún jugador no tiene monedas ya, no le quedan vídeos y quiere seguir jugando, la opción alternativa que tendrá es realizar una micro transacción para comprar monedas del juego con dinero real para poder seguir jugando.
->
+>   - A la hora de intentar superar los niveles, existirán un número limitado de vidas. Cuando no consigues superar un nivel, se perderá una vida y cuando pierdas todas las vidas tendrás que esperar un tiempo o de lo contrario ver algún vídeo.
+>     - La opción que se tendrá es ver un vídeo el cual le otorgará una vida gratuita. El número de vídeos estará limitado.
+>   - También existiría la posibilidad de comprar “pistas” que nos ayudan a resolver los diferentes puzzles.
+>   
 > - Lienzo de modelo de negocio (Canvas):
 >
 > > ![Business Model Canvas (1)](https://user-images.githubusercontent.com/49784060/140505587-75242fb1-cab1-4666-8f7e-e1e4903d8ea3.jpg)
@@ -128,11 +122,7 @@ Versión 1.0
 
 
 > ##### 2.2 Tablas de productos y precios
-> - La tabla de productos que tendremos en nuestro juego será bastante limitada ya que únicamente se podrán encontrar monedas.
->   - Paquete de 3 monedas → 3´99$
->   - Paquete de 6 monedas → 7´5$
->   - Paquete de 10 monedas → 11´99$
-
+> - Nuestro juego no dispone de micropagos ni de tienda in game por lo que no tenemos ninguna tabla de productos ni precio.
 
 > ## 3. Planificación y Costes
 > ###### 3.1 El equipo humano
@@ -154,22 +144,22 @@ Versión 1.0
 
 > ## 4. Mecánicas de Juego y Elementos de Juego
 > ##### 4.1 Descripción detallada del concepto de juego
-> - El juego es un plataformas en dos dimensiones multijugador cooperativo. Al iniciar el juego el usuario se encontrará en el menú principal, donde podrá configurar ciertos aspectos del mismo, al mismo tiempo que se podrá acceder a la pantalla de créditos y empezar a jugar. La parte jugable consistirá en un número de niveles a cada cuál más difícil, los cuales se tendrán que superar en pareja avanzando a lo largo del nivel resolviendo puzzles cuya dificultad irá aumentando en función del nivel. Si uno de los dos jugadores muere se reinicia el nivel hasta que los dos lo hagan bien. Al acabar el nivel o ciertos puzzles se adjudicarán recompensas que se podrán canjear por ventajas para poder superar los niveles más fácilmente o para comprar skins. Se pueden rejugar los niveles las veces que se quiera.
+> - El juego es un plataformas en dos dimensiones multijugador cooperativo. Al iniciar el juego el usuario se encontrará en el menú principal, donde podrá configurar ciertos aspectos del mismo, al mismo tiempo se podrá acceder a la pantalla de créditos y empezar a jugar. La parte jugable consistirá en un número de niveles a cada cuál más difícil, los cuales se tendrán que superar en pareja avanzando a lo largo del nivel resolviendo puzzles cuya dificultad irá aumentando en función del nivel. Si uno de los dos jugadores muere se reinicia el nivel hasta que los dos lo hagan bien o se queden sin vidas. Se tienen en total 4 vidas entre los dos jugadores. Se pueden rejugar los niveles las veces que se quiera.
 > ##### 4.2 Descripción detallada de las mecánicas de juego
-> - Las mecánicas de movimiento consisten en moverse a la izquierda y a la derecha y saltar. Además el jugador deberá interactuar con los elementos de los puzzles empujando bloques, activando palancas, apoyándose en el otro jugador, subiendo y bajando plataformas. Se añadirán más a lo largo que se vaya aumentando el número de puzzles.
+> - Las mecánicas de movimiento consisten en moverse a la izquierda y a la derecha y saltar. Además el jugador deberá interactuar con los elementos de los puzzles empujando bloques, activando palancas, apoyándose en el otro jugador, subiendo y bajando plataformas. También se cambiará la gravedad en determinadas zonas de puzzles en específico.
 > ##### 4.3 Controles
-> - Movimiento hacia la derecha (D), movimiento hacia la izquierda (A), salto (S), activar palancas/botones (S). Cuando se juegue en móvil aparecerán de izquierda, derecha y  arriba para el movimiento y otro botón para interactuar con palancas/botones. Por los menús se podrá navegar tanto con el ratón como con las flechas.
+> - Movimiento hacia la derecha (D), movimiento hacia la izquierda (A) y salto (W). Cuando se juegue en móvil aparecerán de izquierda, derecha y arriba para el movimiento. Por los menús se podrá navegar con el ratón. En cuanto a las colisiones con palancas, botones únicamente se tiene que colisionar con la plataforma o ponerse encima del botón.
 > ##### 4.4 Niveles y misiones
->  - La parte jugable consistirá en pasarse un número de niveles concreto cuya dificultad irá aumentando con su número. Los primeros niveles consistirán en enseñar al jugador las mecánicas básicas del juego y ha medida que se vaya avanzando se tendrá que ir mezclando el uso de mecánicas aprendidas para poder pasar el nivel. En principio el número total de niveles a superar será alrededor de quince. En cuanto a las misiones intra niveles no existirán, no obstante se conseguirá una recompensa por pasar cierto puzzle o por superar el nivel.
+>  - La parte jugable consistirá en pasarse diez niveles cuya dificultad irá aumentando con su número. Los primeros niveles consistirán en enseñar al jugador las mecánicas básicas del juego y a medida que se vaya avanzando se tendrá que ir mezclando el uso de mecánicas aprendidas para poder pasar el nivel. En cuanto a las misiones intra niveles no existirán. 
 > ##### 4.5 Objetos, armas y power ups
-> - Los objetos involucrados en el juego son los obstáculos que tendrán que superar los jugadores o los medios por los que superarlos (cajas que hay que arrastrar, trampas que te matan, palancas que activar, plataformas que se mueven, etc). 
+> - Los objetos involucrados en el juego son los obstáculos que tendrán que superar los jugadores o los medios por los que superarlos (cajas que hay que arrastrar, palancas que activar, plataformas que se mueven, botones que se aprietan...). 
 > - No hay ningún arma como tal pero en el caso de que en el futuro se añadan enemigos se podrá acabar con ellos saltándoles encima.
-> - En principio no habrá power ups como tal sino tips para poder pasar el nivel más fácilmente o un aumento de tiempo, etc.
+> - En principio no habrá power ups como tal sino tips para poder pasar el nivel más fácilmente (resolutor de puzzles).
 
 > ## 5. Trasfondo
 > ##### 5.1 Descripción detallada de la historia y la trama
 > - La historia del videojuego está relacionada con los animales del zoo, cuyo objetivo es escapar del mismo en busca de la libertad y por ende la felicidad. En su intento por huir se encontrarán con diversas dificultades como guardias, cerraduras y visitantes del zoo. Los animales por tanto estarán dotados de características más humanas en el videojuego, tendrán sentimientos muy notables y predominará en ellos el ansia por la búsqueda de la libertad fuera de las pequeñas jaulas que les aguardan en el parque.
-> - Cada uno de los animales dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común,dando importancia en cada momento a todaslas opiniones de los miembros del equipo por muy dispares que sean. Además, los trabajadores del zoo intentarán a toda costa retener a los animales y evitar que los visitantes del zoo sientan pánico o sean atacados. También habrá diferentes puntos de vista entre los turistas, puesto que alguno no estará tan en contra de la escapada.
+> - Cada uno de los animales dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común,dando importancia en cada momento a todas las opiniones de los miembros del equipo por muy dispares que sean. Además, los trabajadores del zoo intentarán a toda costa retener a los animales y evitar que los visitantes del zoo sientan pánico o sean atacados. También habrá diferentes puntos de vista entre los turistas, puesto que alguno no estará tan en contra de la escapada.
 > ##### 5.2 Personajes
 > - Al ser un videojuego cuyo argumento es la huída de unos animales de un zoo, los personajes serán los animales de dicho zoo. 
 > - El juego contará con 3 animales: un oso panda, un oso pardo y un oso polar.
@@ -297,11 +287,11 @@ Versión 1.0
 > - (Hito 2)
 > ##### 8.4 Semanas 5, 6 y 7
 > - Niveles Completos (10 niveles)
-> - Personajes completos (mínimo de 2 personajes)
+> - Personajes completos (3 personajes)
 > - Diseño final de los menús
 > - Diseño de pantalla de victoria y derrota
 > - Acabar diseño de niveles
-> - Añadir sistema de monetización
+> - Añadir sistema de monetización (placeholder)
 > - Versión Beta (21/11/2021).
 > - Pruebas Beta
 > - (Hito 3)
