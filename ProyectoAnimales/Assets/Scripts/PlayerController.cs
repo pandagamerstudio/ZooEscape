@@ -178,8 +178,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     
     }
 
-    void FixedUpdate()
-    {
+    void Update(){
         if (!photonView.IsMine)
         {
             tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
@@ -189,9 +188,12 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                 transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
             }
            
-
         }
-        else if(!chocandLatPlat) {
+    }
+
+    void FixedUpdate()
+    {
+        if(!chocandLatPlat) {
             
             checkGravedad();
             if (ad.x != 0)
@@ -523,7 +525,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         {
             padre = true;
           //  Vector3 scala = transform.localScale;
-           transform.SetParent(collision.gameObject.transform);
+           //transform.SetParent(collision.gameObject.transform);
           //  transform.SetParent(collision.gameObject.transform);
          //   transform.localScale = scala;
                 
