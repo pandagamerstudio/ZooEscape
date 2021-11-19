@@ -177,7 +177,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!photonView.IsMine)
         {

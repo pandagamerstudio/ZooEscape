@@ -379,6 +379,18 @@ function dynCall(sig, ptr, args) {
   return Module["dynCall_" + sig].call(null, ptr);
  }
 }
+var Runtime = {
+ dynCall: dynCall,
+ getTempRet0: (function() {
+  abort('getTempRet0() is now a top-level function, after removing the Runtime object. Remove "Runtime."');
+ }),
+ staticAlloc: (function() {
+  abort('staticAlloc() is now a top-level function, after removing the Runtime object. Remove "Runtime."');
+ }),
+ stackAlloc: (function() {
+  abort('stackAlloc() is now a top-level function, after removing the Runtime object. Remove "Runtime."');
+ })
+};
 var GLOBAL_BASE = 1024;
 var ABORT = 0;
 var EXITSTATUS = 0;
@@ -1310,7 +1322,7 @@ function _emscripten_asm_const_ii(code, a0) {
  return ASM_CONSTS[code](a0);
 }
 STATIC_BASE = GLOBAL_BASE;
-STATICTOP = STATIC_BASE + 3788864;
+STATICTOP = STATIC_BASE + 3799680;
 __ATINIT__.push({
  func: (function() {
   __GLOBAL__sub_I_AccessibilityScriptingClasses_cpp();
@@ -3364,7 +3376,7 @@ __ATINIT__.push({
   ___emscripten_environ_constructor();
  })
 });
-var STATIC_BUMP = 3788864;
+var STATIC_BUMP = 3799680;
 Module["STATIC_BASE"] = STATIC_BASE;
 Module["STATIC_BUMP"] = STATIC_BUMP;
 var tempDoublePtr = STATICTOP;
@@ -3692,6 +3704,9 @@ function _JS_SystemInfo_HasFullscreen() {
 function _JS_SystemInfo_HasWebGL() {
  return Module.SystemInfo.hasWebGL;
 }
+function _JS_SystemInfo_IsMobile() {
+ return Module.SystemInfo.mobile;
+}
 var wr = {
  requestInstances: {},
  nextRequestId: 1
@@ -3868,6 +3883,218 @@ function _SocketSend(socketInstance, ptr, length) {
 function _SocketState(socketInstance) {
  var socket = webSocketInstances[socketInstance];
  return socket.socket.readyState;
+}
+var instances = [];
+function _WebGLInputCreate(canvasId, x, y, width, height, fontsize, text, placeholder, isMultiLine, isPassword, isHidden) {
+ var container = document.getElementById(UTF8ToString(canvasId));
+ var canvas = document.getElementsByTagName("canvas")[0];
+ if (!container && canvas) {
+  container = canvas.parentNode;
+ }
+ if (canvas) {
+  var scaleX = container.offsetWidth / canvas.width;
+  var scaleY = container.offsetHeight / canvas.height;
+  if (scaleX && scaleY) {
+   x *= scaleX;
+   width *= scaleX;
+   y *= scaleY;
+   height *= scaleY;
+  }
+ }
+ var input = document.createElement(isMultiLine ? "textarea" : "input");
+ input.style.position = "absolute";
+ input.style.top = y + "px";
+ input.style.left = x + "px";
+ input.style.width = width + "px";
+ input.style.height = height + "px";
+ input.style.outlineWidth = 1 + "px";
+ input.style.opacity = isHidden ? 0 : 1;
+ input.style.resize = "none";
+ input.style.padding = "0px 1px";
+ input.style.cursor = "default";
+ input.spellcheck = false;
+ input.value = UTF8ToString(text);
+ input.placeholder = UTF8ToString(placeholder);
+ input.style.fontSize = fontsize + "px";
+ if (isPassword) {
+  input.type = "password";
+ }
+ container.appendChild(input);
+ return instances.push(input) - 1;
+}
+function _WebGLInputDelete(id) {
+ var input = instances[id];
+ input.parentNode.removeChild(input);
+ instances[id] = null;
+}
+function _WebGLInputEnterSubmit(id, falg) {
+ var input = instances[id];
+ input.addEventListener("keydown", (function(e) {
+  if (e.which && e.which === 13 || e.keyCode && e.keyCode === 13) {
+   if (falg) {
+    e.preventDefault();
+    input.blur();
+   }
+  }
+ }));
+}
+function _WebGLInputFocus(id) {
+ var input = instances[id];
+ input.focus();
+}
+function _WebGLInputInit() {
+ if (typeof Runtime === "undefined") Runtime = {
+  dynCall: dynCall
+ };
+}
+function _WebGLInputIsFocus(id) {
+ return instances[id] === document.activeElement;
+}
+function _WebGLInputMaxLength(id, maxlength) {
+ var input = instances[id];
+ input.maxLength = maxlength;
+}
+function _WebGLInputMobileOnFocusOut(id, focusout) {
+ document.body.addEventListener("focusout", (function() {
+  document.body.removeEventListener("focusout", arguments.callee);
+  Runtime.dynCall("vi", focusout, [ id ]);
+ }));
+}
+function _WebGLInputMobileRegister(touchend) {
+ var id = instances.push(null) - 1;
+ document.body.addEventListener("touchend", (function() {
+  document.body.removeEventListener("touchend", arguments.callee);
+  Runtime.dynCall("vi", touchend, [ id ]);
+ }));
+ return id;
+}
+function _WebGLInputOnBlur(id, cb) {
+ var input = instances[id];
+ input.onblur = (function() {
+  Runtime.dynCall("vi", cb, [ id ]);
+ });
+}
+function _WebGLInputOnEditEnd(id, cb) {
+ var input = instances[id];
+ input.onchange = (function() {
+  var value = allocate(intArrayFromString(input.value), "i8", ALLOC_NORMAL);
+  Runtime.dynCall("vii", cb, [ id, value ]);
+ });
+}
+function _WebGLInputOnFocus(id, cb) {
+ var input = instances[id];
+ input.onfocus = (function() {
+  Runtime.dynCall("vi", cb, [ id ]);
+ });
+}
+function _WebGLInputOnValueChange(id, cb) {
+ var input = instances[id];
+ input.oninput = (function() {
+  var value = allocate(intArrayFromString(input.value), "i8", ALLOC_NORMAL);
+  Runtime.dynCall("vii", cb, [ id, value ]);
+ });
+}
+function _WebGLInputSelectionDirection(id) {
+ var input = instances[id];
+ return input.selectionDirection == "backward" ? -1 : 1;
+}
+function _WebGLInputSelectionEnd(id) {
+ var input = instances[id];
+ return input.selectionEnd;
+}
+function _WebGLInputSelectionStart(id) {
+ var input = instances[id];
+ return input.selectionStart;
+}
+function _WebGLInputSetSelectionRange(id, start, end) {
+ var input = instances[id];
+ input.setSelectionRange(start, end);
+}
+function _WebGLInputTab(id, cb) {
+ var input = instances[id];
+ input.addEventListener("keydown", (function(e) {
+  if (e.which && e.which === 9 || e.keyCode && e.keyCode === 9) {
+   e.preventDefault();
+   if (input.enableTabText) {
+    var val = input.value;
+    var start = input.selectionStart;
+    var end = input.selectionEnd;
+    input.value = val.substr(0, start) + "\t" + val.substr(end, val.length);
+    input.setSelectionRange(start + 1, start + 1);
+    input.oninput();
+   } else {
+    Runtime.dynCall("vii", cb, [ id, e.shiftKey ? -1 : 1 ]);
+   }
+  }
+ }));
+}
+function _WebGLInputText(id, text) {
+ var input = instances[id];
+ input.value = UTF8ToString(text);
+}
+function _WebGLWindowInjectFullscreen() {
+ document.makeFullscreen = (function(id, keepAspectRatio) {
+  var getFullScreenObject = (function() {
+   var doc = window.document;
+   var objFullScreen = doc.fullscreenElement || doc.mozFullScreenElement || doc.webkitFullscreenElement || doc.msFullscreenElement;
+   return objFullScreen;
+  });
+  var eventFullScreen = (function(callback) {
+   document.addEventListener("fullscreenchange", callback, false);
+   document.addEventListener("webkitfullscreenchange", callback, false);
+   document.addEventListener("mozfullscreenchange", callback, false);
+   document.addEventListener("MSFullscreenChange", callback, false);
+  });
+  var removeEventFullScreen = (function(callback) {
+   document.removeEventListener("fullscreenchange", callback, false);
+   document.removeEventListener("webkitfullscreenchange", callback, false);
+   document.removeEventListener("mozfullscreenchange", callback, false);
+   document.removeEventListener("MSFullscreenChange", callback, false);
+  });
+  var div = document.createElement("div");
+  document.body.appendChild(div);
+  var canvas = document.getElementById(id);
+  var beforeParent = canvas.parentNode;
+  var beforeStyle = window.getComputedStyle(canvas);
+  var beforeWidth = parseInt(beforeStyle.width);
+  var beforeHeight = parseInt(beforeStyle.height);
+  var index = Array.from(beforeParent.children).findIndex((function(v) {
+   return v == canvas;
+  }));
+  div.appendChild(canvas);
+  var fullscreenFunc = (function() {
+   if (getFullScreenObject()) {
+    if (keepAspectRatio) {
+     var ratio = Math.min(window.screen.width / beforeWidth, window.screen.height / beforeHeight);
+     var width = Math.floor(beforeWidth * ratio);
+     var height = Math.floor(beforeHeight * ratio);
+     canvas.style.width = width + "px";
+     canvas.style.height = height + "px";
+    } else {
+     canvas.style.width = window.screen.width + "px";
+     canvas.style.height = window.screen.height + "px";
+    }
+   } else {
+    canvas.style.width = beforeWidth + "px";
+    canvas.style.height = beforeHeight + "px";
+    beforeParent.insertBefore(canvas, Array.from(beforeParent.children)[index]);
+    div.parentNode.removeChild(div);
+    removeEventFullScreen(fullscreenFunc);
+   }
+  });
+  eventFullScreen(fullscreenFunc);
+  if (div.mozRequestFullScreen) div.mozRequestFullScreen(); else if (div.webkitRequestFullScreen) div.webkitRequestFullScreen(); else if (div.msRequestFullscreen) div.msRequestFullscreen(); else if (div.requestFullscreen) div.requestFullscreen();
+ });
+}
+function _WebGLWindowOnBlur(cb) {
+ window.addEventListener("blur", (function() {
+  Runtime.dynCall("v", cb, []);
+ }));
+}
+function _WebGLWindowOnFocus(cb) {
+ window.addEventListener("focus", (function() {
+  Runtime.dynCall("v", cb, []);
+ }));
 }
 function ___atomic_compare_exchange_8(ptr, expected, desiredl, desiredh, weak, success_memmodel, failure_memmodel) {
  var pl = HEAP32[ptr >> 2];
@@ -16383,8 +16610,8 @@ function nullFunc_vjji(x) {
  err("Build with ASSERTIONS=2 for more info.");
  abort(x);
 }
-Module["wasmTableSize"] = 110964;
-Module["wasmMaxTableSize"] = 110964;
+Module["wasmTableSize"] = 111092;
+Module["wasmMaxTableSize"] = 111092;
 function invoke_d(index) {
  var sp = stackSave();
  try {
@@ -20297,6 +20524,7 @@ Module.asmLibraryArg = {
  "_JS_SystemInfo_HasCursorLock": _JS_SystemInfo_HasCursorLock,
  "_JS_SystemInfo_HasFullscreen": _JS_SystemInfo_HasFullscreen,
  "_JS_SystemInfo_HasWebGL": _JS_SystemInfo_HasWebGL,
+ "_JS_SystemInfo_IsMobile": _JS_SystemInfo_IsMobile,
  "_JS_WebRequest_Abort": _JS_WebRequest_Abort,
  "_JS_WebRequest_Create": _JS_WebRequest_Create,
  "_JS_WebRequest_GetResponseHeaders": _JS_WebRequest_GetResponseHeaders,
@@ -20313,6 +20541,28 @@ Module.asmLibraryArg = {
  "_SocketRecvLength": _SocketRecvLength,
  "_SocketSend": _SocketSend,
  "_SocketState": _SocketState,
+ "_WebGLInputCreate": _WebGLInputCreate,
+ "_WebGLInputDelete": _WebGLInputDelete,
+ "_WebGLInputEnterSubmit": _WebGLInputEnterSubmit,
+ "_WebGLInputFocus": _WebGLInputFocus,
+ "_WebGLInputInit": _WebGLInputInit,
+ "_WebGLInputIsFocus": _WebGLInputIsFocus,
+ "_WebGLInputMaxLength": _WebGLInputMaxLength,
+ "_WebGLInputMobileOnFocusOut": _WebGLInputMobileOnFocusOut,
+ "_WebGLInputMobileRegister": _WebGLInputMobileRegister,
+ "_WebGLInputOnBlur": _WebGLInputOnBlur,
+ "_WebGLInputOnEditEnd": _WebGLInputOnEditEnd,
+ "_WebGLInputOnFocus": _WebGLInputOnFocus,
+ "_WebGLInputOnValueChange": _WebGLInputOnValueChange,
+ "_WebGLInputSelectionDirection": _WebGLInputSelectionDirection,
+ "_WebGLInputSelectionEnd": _WebGLInputSelectionEnd,
+ "_WebGLInputSelectionStart": _WebGLInputSelectionStart,
+ "_WebGLInputSetSelectionRange": _WebGLInputSetSelectionRange,
+ "_WebGLInputTab": _WebGLInputTab,
+ "_WebGLInputText": _WebGLInputText,
+ "_WebGLWindowInjectFullscreen": _WebGLWindowInjectFullscreen,
+ "_WebGLWindowOnBlur": _WebGLWindowOnBlur,
+ "_WebGLWindowOnFocus": _WebGLWindowOnFocus,
  "__ZSt18uncaught_exceptionv": __ZSt18uncaught_exceptionv,
  "___atomic_compare_exchange_8": ___atomic_compare_exchange_8,
  "___atomic_fetch_add_8": ___atomic_fetch_add_8,

@@ -120,6 +120,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
             if(playerNameInput){
                 TouchScreenKeyboard.Open("",TouchScreenKeyboardType.Default,false,false,true);
             }
+            Screen.SetResolution(1280, 800, false);
         }    
     }
 
