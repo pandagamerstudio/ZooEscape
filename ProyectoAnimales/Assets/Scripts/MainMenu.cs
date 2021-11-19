@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     private List<RoomInfo> roomList = new List<RoomInfo>();
     int idJugSel, actualLevel1, actualLevel2;
     public GameObject[] personajes;
+    public GameObject canvasMenu;
 
 
     void Start(){
@@ -120,7 +121,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
             if(playerNameInput){
                 TouchScreenKeyboard.Open("",TouchScreenKeyboardType.Default,false,false,true);
             }
-            Screen.SetResolution(1280, 800, false);
+           // Screen.SetResolution(1280, 800, false);
+            canvasMenu.transform.localScale = new Vector3(0.8f, 0.8f, canvasMenu.transform.localScale.z);
         }    
     }
 

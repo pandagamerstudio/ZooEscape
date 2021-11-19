@@ -9,11 +9,33 @@ using UnityEngine.UI;
 public class DerrotaScript : MonoBehaviourPun
 {
     public Button playAgain;
+    public GameObject canvasMenu;
+    bool isMobile;
+
+#if !UNITY_EDITOR && UNITY_WEBGL
+    [System.Runtime.InteropServices.DllImport("__Internal")]
+    static extern bool IsMobile();
+#endif
+    void CheckIfMobile()
+    {
+#if !UNITY_EDITOR && UNITY_WEBGL
+        isMobile = IsMobile();
+#endif
+    }
     public void Start()
     {
         if(!PhotonNetwork.IsMasterClient)
         {
             playAgain.interactable = false;
+        }
+        if (!photonView.IsMine) return;
+
+        CheckIfMobile();
+
+        if (isMobile)
+        {
+            // Screen.SetResolution(1280, 800, false);
+            canvasMenu.transform.localScale = new Vector3(0.8f, 0.8f, canvasMenu.transform.localScale.z);
         }
     }
     public void OnBackToMainMenu(){
@@ -22,6 +44,8 @@ public class DerrotaScript : MonoBehaviourPun
     }
 
     public void OnPlayAgain(){
-
+       
+        PlayerPrefs.SetInt("LevelMenu", 1);
+        PhotonNetwork.LoadLevel("Menu");
     }
 }

@@ -150,6 +150,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         CheckIfMobile();
         if(isMobile){
             canvas.SetActive(true);
+
             //canvasEnt = GameObject.FindWithTag("Canvas");
             //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
             //b.transform.parent = canvasEnt.transform;
@@ -212,7 +213,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     public void OnPause(){
         if (!photonView.IsMine) return;
         
-        canvasPause.transform.GetChild(0).gameObject.SetActive(true);
+        canvasPause.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
 
         if (isMobile)
             canvas.SetActive(false);

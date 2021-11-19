@@ -11,6 +11,19 @@ public class PasoNivelScript : MonoBehaviourPun
     public Button nextLevel, exitToLevelClient;
 
     string escenaActual;
+    public GameObject canvasMenu;
+    bool isMobile;
+
+    #if !UNITY_EDITOR && UNITY_WEBGL
+        [System.Runtime.InteropServices.DllImport("__Internal")]
+        static extern bool IsMobile();
+    #endif
+        void CheckIfMobile()
+        {
+    #if !UNITY_EDITOR && UNITY_WEBGL
+            isMobile = IsMobile();
+    #endif
+        }
 
     public void Start()
     {
@@ -21,6 +34,16 @@ public class PasoNivelScript : MonoBehaviourPun
         }
 
         escenaActual = PlayerPrefs.GetString("pasoEscena");
+
+        if (!photonView.IsMine) return;
+
+        CheckIfMobile();
+
+        if (isMobile)
+        {
+            // Screen.SetResolution(1280, 800, false);
+            canvasMenu.transform.localScale = new Vector3(0.8f, 0.8f, canvasMenu.transform.localScale.z);
+        }
     }
     public void OnBackToLevelMenu(){
         PlayerPrefs.SetInt("LevelMenu", 1);
