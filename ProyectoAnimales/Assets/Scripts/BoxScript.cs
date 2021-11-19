@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class BoxScript : MonoBehaviourPun, IPunObservable
@@ -107,7 +108,7 @@ public class BoxScript : MonoBehaviourPun, IPunObservable
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Caja"))
+        if (collision.collider.CompareTag("Caja") && !SceneManager.GetActiveScene().name.Equals("Level7"))
         {
             transform.parent = collision.transform;
             //collision.transform.position = new Vector3(collision.transform.position.x + 0.1f,collision.transform.position.y, 0f);
@@ -142,13 +143,6 @@ public class BoxScript : MonoBehaviourPun, IPunObservable
             }
         }
     }
-
-    public void OnCollisionStay2D(Collision2D collision)
-    {
-
-
-    }
-
 
     public void OnCollisionExit2D(Collision2D collision)
     {
