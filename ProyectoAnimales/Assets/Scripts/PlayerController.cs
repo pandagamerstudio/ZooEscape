@@ -513,6 +513,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     public void Initialize(Player player){
         id = player.ActorNumber;
         photonPlayer = player;
+        Debug.Log("Inicalizacion");
 
         GameManager.instance.players[id - 1] = this;
 
