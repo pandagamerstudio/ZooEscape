@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviourPun
         }
 
         GameObject playerObject = PhotonNetwork.Instantiate(playerPrefab[idPersonaje].name, playerPos, Quaternion.identity);
+       
         camara.Follow = playerObject.transform;
 
         playerObject.GetComponent<PhotonView>().RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);

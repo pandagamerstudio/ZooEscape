@@ -56,7 +56,7 @@ public class BoxScript : MonoBehaviourPun, IPunObservable
             //  transform.position = Vector3.Lerp(positionAtLastPacket, latestPos, (float)(currentTime / timeToReachGoal));
             //  transform.rotation = Quaternion.Lerp(rotationAtLastPacket, latestRot, (float)(currentTime / timeToReachGoal));
 
-            transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
+           // transform.position = Vector3.Lerp(transform.position, latestPos, Time.deltaTime * 5);
             //   transform.rotation = Quaternion.Lerp(transform.rotation, latestRot, Time.deltaTime);
         }
     }
