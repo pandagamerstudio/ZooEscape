@@ -124,7 +124,7 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         foreach(GameObject p in platAux){
             //p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,0);
             //p.GetComponent<BoxCollider2D>().enabled = false;
-            p.GetComponent<Animator>().SetBool("Activada", false);
+            p.GetComponent<Animator>().SetBool("Activada", true);
         }
     }
 
@@ -132,7 +132,7 @@ public class SpawnManagerLevel5 : SpawnManagerLevel1
         foreach(GameObject p in platAux){
             //p.GetComponent<SpriteRenderer>().color = new Color(1,1,1,1);
             //p.GetComponent<BoxCollider2D>().enabled = true;
-            p.GetComponent<Animator>().SetBool("Activada", true);
+            p.GetComponent<Animator>().SetBool("Activada", false);
         }
     }
 }

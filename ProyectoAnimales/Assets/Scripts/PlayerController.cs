@@ -25,11 +25,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     public bool canvasBool;
 
     public float runSpeed = 2f;
-    public float jumpSpeed = 3f;
+    public float jumpSpeed = 2.5f;
     Rigidbody2D rb2D;
     CheckGround cg;
 
-    public float doubleJumpSpeed = 2.5f;
+    public float doubleJumpSpeed = 2f;
     //public float pushForce = 10f;
 
     public bool canDoubleJump = false;

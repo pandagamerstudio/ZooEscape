@@ -111,14 +111,15 @@ public class PauseScript : MonoBehaviourPun
         photonView.RPC("OnLoseLife", RpcTarget.All);
         if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
         {
+            PhotonNetwork.LeaveRoom();
+        } else {
+            PlayerPrefs.SetInt("LevelMenu", 1);
             PhotonNetwork.LoadLevel("Menu");
         }
-        PlayerPrefs.SetInt("LevelMenu", 1);
-        PhotonNetwork.LoadLevel("Menu");
+        
     }
 
     public void OnExitToMain(){
         PhotonNetwork.LeaveRoom();
-        
     }
 }
