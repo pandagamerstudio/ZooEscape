@@ -62,7 +62,6 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
 
         PlayerPrefs.DeleteKey("livesRemaining");
-        //PlayerPrefs.DeleteKey("music");
 
         if (PlayerPrefs.HasKey("music") == false)
         {
@@ -209,18 +208,18 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnCreateRoomButton(){
-        //if(PhotonNetwork.NickName == ""){
-          //  Avisar();
-            //return;
-        //}
+        if(PhotonNetwork.NickName == ""){
+            Avisar();
+            return;
+        }
         SetScreen(createRoomScreen);
     }
 
     public void OnFindRoomButton(){
-        //if(PhotonNetwork.NickName == ""){
-          //  Avisar();
-            //return;
-        //}
+        if(PhotonNetwork.NickName == ""){
+            Avisar();
+            return;
+        }
         SetScreen(lobyBrowserScreen);
     }
 
@@ -246,10 +245,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void OnCreateButton(TMP_InputField roomNameInput){
-        //if(roomNameInput.text == ""){
-          //  Avisar();
-            //return;
-        //}
+        if(roomNameInput.text == ""){
+            Avisar();
+            return;
+        }
         NetworkManager.instance.CreateRooms(roomNameInput.text);
     }
 
@@ -308,10 +307,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
-        //SetScreen(levelsScreen);
         photonView.RPC("SetScreenLevels", RpcTarget.All);
         //NetworkManager.instance.ChangeScene("Level1"); 
-        //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
+        //NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
     }
 
     public void OnStartLevelButton(int n){
@@ -328,7 +326,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.CurrentRoom.IsVisible = false;
 
         NetworkManager.instance.ChangeScene(scene); 
-        //  NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
+        //NetworkManager.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Game");
     }
 
     public void OnLeaveLobbyButton(){
@@ -375,7 +373,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void Avisar(){
-        //StartCoroutine(AvisarCo()); 
+        StartCoroutine(AvisarCo()); 
     }
 
 
