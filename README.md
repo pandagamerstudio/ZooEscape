@@ -158,15 +158,15 @@ Versión 1.0
 
 > ## 5. Trasfondo
 > ##### 5.1 Descripción detallada de la historia y la trama
-> - La historia del videojuego está relacionada con los animales del zoo, cuyo objetivo es escapar del mismo en busca de la libertad y por ende la felicidad. En su intento por huir se encontrarán con diversas dificultades como guardias, cerraduras y visitantes del zoo. Los animales por tanto estarán dotados de características más humanas en el videojuego, tendrán sentimientos muy notables y predominará en ellos el ansia por la búsqueda de la libertad fuera de las pequeñas jaulas que les aguardan en el parque.
-> - Cada uno de los animales dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común,dando importancia en cada momento a todas las opiniones de los miembros del equipo por muy dispares que sean. Además, los trabajadores del zoo intentarán a toda costa retener a los animales y evitar que los visitantes del zoo sientan pánico o sean atacados. También habrá diferentes puntos de vista entre los turistas, puesto que alguno no estará tan en contra de la escapada.
+> - La historia del videojuego está relacionada con los osos del zoo, cuyo objetivo es escapar del mismo en busca de la libertad y por ende la felicidad. En su intento por huir se encontrarán con diversas dificultades como trampas, obstáculos y cerraduras. Los osos por tanto estarán dotados de características más humanas en el videojuego, tendrán sentimientos muy notables y predominará en ellos el ansia por la búsqueda de la libertad fuera de las pequeñas jaulas que les aguardan en el zoo.
+> - Cada uno de los osos dentro del juego tendrá diferentes puntos de vista de la situación, unos más calmados y pensativos, otros más impulsivos y de rápida actuación, buscarán como conjunto el objetivo común, dando importancia en cada momento a todas las opiniones de los miembros del equipo por muy dispares que sean. 
 > ##### 5.2 Personajes
-> - Al ser un videojuego cuyo argumento es la huída de unos animales de un zoo, los personajes serán los animales de dicho zoo. 
-> - El juego contará con 3 animales: un oso panda, un oso pardo y un oso polar.
+> - Al ser un videojuego cuyo argumento es la huída de unos osos de un zoo, los personajes serán los osos del zoo. 
+> - El juego contará con los 3 tipos de oso más conocidos, para facilitar su reconocimiento: un oso panda, un oso pardo y un oso polar.
 > - Los tres personajes funcionarán del mismo modo: mismas mecánicas, atributos y funcionalidades. 
 > ##### 5.3 Entornos y lugares
 > - El escenario principal del juego será el Zoo.
-> - Como el argumento es que los animales quieren escapar de éste, los niveles representarán la huida de las jaulas y otros espacios del zoo.
+> - Como el argumento es que los animales quieren escapar de éste, los niveles representarán la huida de las jaulas. Tal y como se ha explicado antes, los osos deberán superar ciertas pruebas u obstáculos, que serán los puzles de nuestros niveles.
 
 > ## 6. Arte
 > #### 6.1 Estética general del juego
@@ -195,7 +195,7 @@ Versión 1.0
 > - Casi todos los elementos visuales como los escenarios, las plataformas o los sprites de los personajes van a ser dibujados por nosotros. 
 > - Del mismo modo, los menús e interfaces también serán diseñados y dibujados por nosotros.
 > - Tal y como se indicaba en el apartado anterior, el estilo del juego será cartoon 2D. Para que sea agradable y tenga un estilo más o menos unificado, vamos a utilizar un estilo kawaii con una paleta de colores pastel.
-> - Los animales (que serán los avatares de los jugadores) serán de formas redondeadas y suaves, con ojos grandes y aspecto inofensivo.
+> - Los osos (que serán los avatares de los jugadores) serán de formas redondeadas y suaves, con ojos grandes y aspecto inofensivo.
 > - Los elementos del nivel - las plataformas, o las cajas que hay que empujar, o los botones que hay que pulsar - también tendrán una base de formas circulares y suaves, sin picos ni esquinas ni trazos bruscos. 
 > - La interfaz y los menús tendrán un estilo similar, pues queremos que el juego posea una estética común y unificada. Los botones tendrán las esquinas redondeadas, y la fuente de los textos será de estilo cartoon, tirando más a adorable y divertida que a elegante. Además, mantendrán la paleta de colores.
 > 
