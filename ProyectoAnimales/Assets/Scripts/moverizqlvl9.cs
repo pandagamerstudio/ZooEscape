@@ -27,14 +27,14 @@ public class moverizqlvl9 : MonoBehaviourPun, IPunObservable
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            transform.Translate(-0.01f, 0f, 0f);
+            transform.Translate(-0.05f, 0f, 0f);
         }
         else {
-            transform.position = Vector3.MoveTowards(transform.position, networkPosition, Time.deltaTime * 0.01f);
+            transform.position = Vector3.MoveTowards(transform.position, networkPosition, Time.deltaTime * 0.05f);
 
         }
     }
