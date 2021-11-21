@@ -421,7 +421,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             rb2D.velocity =velocidad;
             
         }
-        else
+        /*else
         {
             if (s > 0f)
             {
@@ -433,7 +433,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
                     return;
                 }
             }
-        }
+        }*/
 
         if (superJump)
         {
