@@ -216,11 +216,10 @@ Versión 1.0
 > ##### 6.2.2 Arte propio para el juego:
 > ###### Paleta de colores:
 > ![](https://i.imgur.com/G0Ysbzz.png)
-> ###### Primer personaje:
-> ![](https://i.imgur.com/ERXxV2g.png)
+> ###### Avatares (osos):
+> ![](https://i.imgur.com/YMwbRTS.png)
 > ###### Elementos del nivel:
-> ![](https://i.imgur.com/hzcelTl.png)
-> ![](https://i.imgur.com/U3HZP3E.png)
+> ![](https://i.imgur.com/gP8fO4u.png)
 > 
 > #### 6.3 Música
 > - La música del videojuego estara en consonancia con el estilo global. Esta va a ser remezclada y producida por nosotros mismos y se buscarán tanto efectos como una banda sonora propia del videojuego con melodía agradable y alegre representando la búsqueda de la felicidad de los personajes dentro del juego, contando con algún patrón de incertidumbre variando los instrumentos generales y con tonos graves que aporten dramatización a la melodía cuya característica principal será que aporte felicidad con ritmos suaves y de intensidad moderada y cambios puntuales.
@@ -269,8 +268,8 @@ Versión 1.0
 > Es una pantalla que aparece cuando superamos el último nivel. En ella se nos da la opción de volver al menú principal, o al menú de niveles.
 >![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/Victoria.png?raw=true)
 > ##### - GameOver:
-> Cuando mueres, en lugar de ir a una pantalla que te indique que has muerto, queremos hacer algo más dinámico. En lugar de poner "GameOver", aparece el dibujo del panda y un fondo (de algún color de la paleta) que se reduce en forma de circulo hasta llegar al panda y ocultarse en él. Cuando la animación (que será muy rápida) termina, el nivel se ha vuelto a reiniciar.
->![](https://media.discordapp.net/attachments/658480479015534651/896798196897050714/menugameover.png?width=993&height=702)
+> Es una pantalla que aparece cuando pierdes todas las vidas. En ella se te da la opción de jugar de nuevo o de volver al menú de inicio.
+>![](https://i.imgur.com/l5aC8wN.png)
 > ##### - Creditos:
 > Es una pantalla que muestra la información relevante sobre los autores del juego y nuestra compañía.
 >![](https://i.imgur.com/ESqFIR8.png)
