@@ -44,7 +44,6 @@ public class DerrotaScript : MonoBehaviourPun
     }
 
     public void OnPlayAgain(){
-       
         PlayerPrefs.SetInt("LevelMenu", 1);
         PhotonNetwork.LoadLevel("Menu");
     }

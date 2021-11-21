@@ -58,9 +58,8 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
 
         for (int i = 0; i < cajas2Spawn.Length; i++)
         {
-            GameObject c2 = PhotonNetwork.Instantiate(sueloBox.name, cajas2Spawn[i].position, Quaternion.identity);
-            ultimacaja = c2;
-            photonView.RPC("setCaja2", RpcTarget.All, c2.GetComponent<PhotonView>().ViewID);
+            ultimacaja = PhotonNetwork.Instantiate(sueloBox.name, cajas2Spawn[i].position, Quaternion.identity);
+            photonView.RPC("setCaja2", RpcTarget.All, ultimacaja.GetComponent<PhotonView>().ViewID);
         }
 
         for (int i = 0; i < cajasPequenaSpwan.Length; i++) {

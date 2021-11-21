@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
             //b.transform.parent = canvasEnt.transform;
         }else{
-            Destroy(canvas);
+            //Destroy(canvas);
         }
     }
     public void checkGravedad() {
