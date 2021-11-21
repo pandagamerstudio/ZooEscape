@@ -231,7 +231,7 @@ Versión 1.0
 > #### 7.1 Diseños básicos de los menús
 > ##### - Menu Inicio:
 > El menú de inicio del juego cuenta con el título en grande en la parte superior de la pantalla y 4 botones debajo de éste: jugar, opciones, créditos y salir del juego. Además, el fondo de este menú cuenta con los dibujos de nuestros 3 personajes.
->![](https://i.imgur.com/LdhUVP7.png)
+>![](https://user-images.githubusercontent.com/60990208/142767147-4569c54a-8555-4704-b097-66ee636326f7.png)
 > ##### - Introduce tu nombre:
 > Es el menú que aparece cuando le das al botón de play del menú de inicio. En este menú el jugador puede introducir su nombre para la partida, y elegir entre crear un sala o unirse a una ya creada. Además, como todos los menús, tiene un botón de return que le permite volver a la pantalla anterior.
 > ![](https://i.imgur.com/pUBZSHI.png)
@@ -247,9 +247,12 @@ Versión 1.0
 > ##### - Niveles:
 > El menú de niveles se dividirá en tantas pantallas como sean necesarias. Si tenemos 8 niveles, tendremos solo una. Si tenemos 16, tendremos dos y nos desplazaríamos de una a otra con las flechas que aparecerán en los laterales. Con el botón de 'return' podemos volver al menú de inicio.
 >![](https://i.imgur.com/9EOEABY.png)
+> ##### - Historia:
+> En esta pantalla se muestran unas pocas lineas de texto poniendo en contexto al jugador.
+>![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/Historia.png?raw=true)
 > ##### - Interfaz:
-> La interfaz de nuestro juego es muy sencilla. Los jugadores no tienen vida, ni energía ni items, por lo que lo único que se podría ver en la interfaz sería el temporizador (en los niveles que tengan cuenta atrás), el nivel en el que se encuentra el jugador (para facilitar que el jugador se ubique en el juego y que pueda seguir su progreso) y el icono de pausa (útil sobre todo para el móvil).
->![](https://media.discordapp.net/attachments/658480479015534651/896798195168985138/interfaz.png?width=993&height=702)
+> La interfaz de nuestro juego es muy sencilla. Para ordenador solo se muestra la vida del jugador, y para móviles, se muestran las vidas, los controles y el icono del menú de  > pausa.
+>![](https://user-images.githubusercontent.com/60990208/142767238-8b44a6b8-fe8f-4d58-ac88-1a8e4159d257.png)
 > ##### - Opciones:
 > El menú de opciones le da la opción al jugador de subir/bajar el volumen y los efectos especiales del juego. Además puede acceder a 'controles' para ver o recordar los controles del juego. El botón de 'Quit' te devuelve al menú de inicio o de pausa, dependiendo desde cuál de los dos has accedido a 'opciones'.
 >![](https://i.imgur.com/m1epiTo.png)
@@ -259,6 +262,12 @@ Versión 1.0
 > ##### - Controles:
 > En esta pantalla mostramos al jugador los controles de nuestro juego. Se puede acceder a esta pantalla desde el menú de opciones, el cual a su vez se puede acceder desde el menú inicial o el menú de pausa. De este modo el jugador podrá consultar los controles del juego en cualquier momento de la partida si así lo necesita.
 > ![](https://i.imgur.com/SHIyrMV.png)
+> ##### - Superar Nivel:
+> Esta pantalla aparece cuando superamos un nivel. En ella tenemos las opciones de volver al menu de niveles (por si queremos jugar un nivel distinto al siguiente) o siguiente nivel.
+>![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/PasarseUnNivel.png?raw=true)
+> ##### - Victoria:
+> Es una pantalla que aparece cuando superamos el último nivel. En ella se nos da la opción de volver al menú principal, o al menú de niveles.
+>![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/Victoria.png?raw=true)
 > ##### - GameOver:
 > Cuando mueres, en lugar de ir a una pantalla que te indique que has muerto, queremos hacer algo más dinámico. En lugar de poner "GameOver", aparece el dibujo del panda y un fondo (de algún color de la paleta) que se reduce en forma de circulo hasta llegar al panda y ocultarse en él. Cuando la animación (que será muy rápida) termina, el nivel se ha vuelto a reiniciar.
 >![](https://media.discordapp.net/attachments/658480479015534651/896798196897050714/menugameover.png?width=993&height=702)
@@ -267,7 +276,7 @@ Versión 1.0
 >![](https://i.imgur.com/ESqFIR8.png)
 
 > #### 7.2 Diagrama de flujo
->![](https://media.discordapp.net/attachments/658480479015534651/896798194749571092/diagrama.png?width=993&height=702)
+>![](https://cdn.discordapp.com/attachments/658480479015534651/911993175839768686/DiagramaDeFlujo.png)
 >Las flechas indican desde que pantallas o botones se llega a cuales otras pantallas. Esto nos facilitará programar la navegación del juego.
 
 > ## 8. Hoja de ruta del desarrollo
