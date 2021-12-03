@@ -49,14 +49,11 @@ public class PauseScript : MonoBehaviourPun
 
     public void OnResume(){
         panel.SetActive(false);
-        if (this.GetComponentInParent<PlayerController>().isMobile)
-            this.GetComponentInParent<PlayerController>().canvas.SetActive(true);
     }
 
     [PunRPC]
     public void OnLoseLife()
     {
-        this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().LoseLife();
         GameObject.Find("AudioManager").GetComponent<AudioVolume>().playSfx("derrota");
     }
     
@@ -65,16 +62,7 @@ public class PauseScript : MonoBehaviourPun
         {
             photonView.RPC("OnLoseLife", RpcTarget.All);
 
-            if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
-            {
-                PhotonNetwork.LoadLevel("Derrota");
-            }
-            else
-            {
-                PhotonNetwork.DestroyAll();
-                PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name);
-                PhotonNetwork.LoadLevel("Recargar");
-            }
+
             
         }
     }
@@ -109,13 +97,7 @@ public class PauseScript : MonoBehaviourPun
 
     public void OnExitToLevel(){
         photonView.RPC("OnLoseLife", RpcTarget.All);
-        if (this.GetComponentInParent<PlayerController>().canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
-        {
-            PhotonNetwork.LoadLevel("Derrota");
-        } else {
-            PlayerPrefs.SetInt("LevelMenu", 1);
-            PhotonNetwork.LoadLevel("Menu");
-        }
+
         
     }
 
