@@ -13,29 +13,35 @@ public class movimiento : MonoBehaviour
     // Update is called once per frame
     public Vector3 movePos;
     Quaternion inicio;
-     bool click;
+
+
+
+
+    bool click;
     bool tengoLlave;
-
-
+    bool colocarmeParaEmpujar;
+    bool animCaja;
+    Vector3 puntomascercano;
+    bool cajacolocada;
 
     public GameObject llave;
+    public GameObject caja;
+
     private void Awake()
     {
         navMeshA = GetComponent<NavMeshAgent>();
         inicio = transform.rotation;
         click = false;
+        colocarmeParaEmpujar = false;
+        animCaja = false;
+        cajacolocada = false;
         movePos = Vector3.zero;
     }
     void Update()
     {
-        //   navMeshA.destination = movePos.position;
         transform.rotation= inicio;
         tengoLlave = false;
-        /*   Debug.Log(navMeshA.isStopped);
-            if (navMeshA.destination.Equals(movePos) && click) {
-                Debug.Log("path completo");
-                click = false;
-            }*/
+
 
         if (!navMeshA.pathPending&& click)
         {
@@ -43,14 +49,41 @@ public class movimiento : MonoBehaviour
             {
                 if (!navMeshA.hasPath || navMeshA.velocity.sqrMagnitude == 0f)
                 {
-                    Debug.Log("path completo");
                     click = false;
                     mejorAccion();
 
                 }
             }
         }
-    }
+        if (!navMeshA.pathPending && colocarmeParaEmpujar)
+        {
+            if (navMeshA.remainingDistance <= navMeshA.stoppingDistance)
+            {
+                if (!navMeshA.hasPath || navMeshA.velocity.sqrMagnitude == 0f)
+                {
+                    colocarmeParaEmpujar = false;
+                    animCaja = true;
+
+                }
+
+            }
+                   
+        }
+
+
+        if (animCaja)
+        {
+            if (caja.transform.parent.transform.position.x >= puntomascercano.x+2)
+            {
+                caja.transform.parent.transform.position=  new Vector3(caja.transform.parent.transform.position.x - 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+            }
+            else
+            {
+                animCaja = false;
+            }
+        }
+
+        }
 
    public void clicando(InputAction.CallbackContext callback) {
 
@@ -63,30 +96,48 @@ public class movimiento : MonoBehaviour
             // MOVE OUR AGENT
             movePos = hit.point;
             navMeshA.SetDestination(hit.point);
+            
 
         }
 
     }
 
-
-    public void irHaciaObjetivo(Vector3 objetivo) { 
-    
-    }
-
     public void mejorAccion() {
         if (!tengoLlave) {
 
-            // Miro la posición de la llave
-        /*    Vector3 down = new Vector3(llave.transform.position.x, -llave.transform.position.y, llave.transform.position.z);
-            Ray rayo = new Ray(llave.transform.position,new Vector3(1,-1,0));*/
+            //1. MIRAMOS SI NO TENEMOS COGIDA LA LLAVE
+            //2. SI NO LA TENEMOS COMPROBAMOS SI EXISTE CAMINO PARA LLEGAR A ELLA
             RaycastHit hit;
-            if (Physics.Raycast(llave.transform.position,-Vector3.up, out hit)) {
-                Debug.Log(hit.point);
-                Debug.DrawRay(llave.transform.position, -Vector3.up,Color.green,10);
-                movePos = hit.point;
-                navMeshA.SetDestination(hit.point);
+            Physics.Raycast(llave.transform.position, -Vector3.up, out hit);
+            Debug.DrawRay(llave.transform.position, -Vector3.up,Color.green,100);
+            NavMeshPath path = new NavMeshPath();
+            navMeshA.CalculatePath(hit.point, path);
+            if (path.status == NavMeshPathStatus.PathPartial)
+            {
+                Debug.Log("No hay camino");
+                //Mover izquierda caja
+                if (llave.transform.position.x < caja.transform.parent.transform.position.x&&!cajacolocada)
+                {
+                    //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
+                    cajacolocada = true;
+                    navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
+                    puntomascercano = path.corners[path.corners.Length - 1];
+                    colocarmeParaEmpujar = true;
+                }
+                else { 
+                
+                }
+
 
             }
+            else {
+                Debug.Log(hit.point);
+                movePos = hit.point;
+                navMeshA.SetDestination(hit.point);
+            }
+            
+
+            
         }
     
     }
