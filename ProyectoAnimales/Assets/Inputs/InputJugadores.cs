@@ -89,6 +89,14 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""clickDcho"",
+                    ""type"": ""Button"",
+                    ""id"": ""31268e7e-f267-46d5-8a9e-b4faf6018225"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -276,6 +284,17 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9505a504-2eba-45bd-87f8-c45287bca01b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""clickDcho"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -878,6 +897,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         m_Player_click = m_Player.FindAction("click", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
+        m_Player_clickDcho = m_Player.FindAction("clickDcho", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -948,6 +968,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Pause;
     private readonly InputAction m_Player_click;
     private readonly InputAction m_Player_Mouse;
+    private readonly InputAction m_Player_clickDcho;
     public struct PlayerActions
     {
         private @InputJugadores m_Wrapper;
@@ -961,6 +982,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputAction @click => m_Wrapper.m_Player_click;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
+        public InputAction @clickDcho => m_Wrapper.m_Player_clickDcho;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -997,6 +1019,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @Mouse.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Mouse.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
                 @Mouse.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMouse;
+                @clickDcho.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickDcho;
+                @clickDcho.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickDcho;
+                @clickDcho.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickDcho;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1028,6 +1053,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @Mouse.started += instance.OnMouse;
                 @Mouse.performed += instance.OnMouse;
                 @Mouse.canceled += instance.OnMouse;
+                @clickDcho.started += instance.OnClickDcho;
+                @clickDcho.performed += instance.OnClickDcho;
+                @clickDcho.canceled += instance.OnClickDcho;
             }
         }
     }
@@ -1202,6 +1230,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
+        void OnClickDcho(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

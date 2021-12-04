@@ -4309,7 +4309,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 02dae55af2cd7b447a35f9d616e0205f, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 5e7dafae4aa024143844b269fa225c97, type: 2}
 --- !u!4 &1002919553
 Transform:
   m_ObjectHideFlags: 0
@@ -4398,7 +4398,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.36666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5e7dafae4aa024143844b269fa225c97, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 02dae55af2cd7b447a35f9d616e0205f, type: 2}
 --- !u!1 &1060542863
 GameObject:
   m_ObjectHideFlags: 0
@@ -5109,7 +5109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
   m_StartPoint: {x: 0, y: -1.29, z: -2.5}
-  m_EndPoint: {x: 0, y: 1.07, z: -0.56}
+  m_EndPoint: {x: 0, y: 1.37, z: -0.87}
   m_Width: 0
   m_CostModifier: -1
   m_Bidirectional: 1
@@ -5345,7 +5345,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278889930}
   m_LocalRotation: {x: -0, y: -0.7071067, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.07050251, y: 8.346729, z: 12.0190525}
+  m_LocalPosition: {x: 0.07, y: 8.346729, z: 10.07}
   m_LocalScale: {x: 3.2721415, y: 2.613, z: 7.921701}
   m_Children: []
   m_Father: {fileID: 1002919553}
@@ -7406,8 +7406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_StartPoint: {x: -4.93, y: 1.63, z: 0}
-  m_EndPoint: {x: -2.81, y: 1.63, z: 0}
+  m_StartPoint: {x: -6.82, y: 1.95, z: 0}
+  m_EndPoint: {x: -2.81, y: 1.95, z: 0}
   m_Width: 0
   m_CostModifier: -1
   m_Bidirectional: 1
@@ -7693,7 +7693,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2116849430}
   m_LocalRotation: {x: -0, y: -0.7071067, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.07050251, y: 5.6567287, z: 8.899053}
+  m_LocalPosition: {x: 0.07, y: 5.6567287, z: 6.95}
   m_LocalScale: {x: 3.2721415, y: 2.613, z: 7.921701}
   m_Children: []
   m_Father: {fileID: 1002919553}
@@ -7821,7 +7821,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 85de7d8a814656243a2577c010cbac15, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 08316c60f147d604abf09db038573b90, type: 2}
 --- !u!1 &2143332057
 GameObject:
   m_ObjectHideFlags: 0
@@ -7948,8 +7948,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143626908}
   m_LocalRotation: {x: -0, y: -0.7071067, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.070503466, y: 5.6567287, z: 14.959052}
-  m_LocalScale: {x: 3.2721415, y: 2.613, z: 7.921701}
+  m_LocalPosition: {x: 0.07, y: 5.6567287, z: 13.42}
+  m_LocalScale: {x: 6.083565, y: 2.613, z: 7.921701}
   m_Children: []
   m_Father: {fileID: 1002919553}
   m_RootOrder: 4
@@ -8024,7 +8024,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157187556188858694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.17, y: 8.25, z: 0}
+  m_LocalPosition: {x: 13.1, y: 8.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -8147,7 +8147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 462945291939052053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 38.59, y: 2.98, z: 0}
+  m_LocalPosition: {x: 24.35, y: 2.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 462945292631986845}
@@ -8678,6 +8678,8 @@ MonoBehaviour:
   indicador:
   - {fileID: 1675310664}
   - {fileID: 1169216316}
+  boton: {fileID: 0}
+  sueloBoton: {fileID: 0}
 --- !u!195 &7355999441667209535
 NavMeshAgent:
   m_ObjectHideFlags: 0

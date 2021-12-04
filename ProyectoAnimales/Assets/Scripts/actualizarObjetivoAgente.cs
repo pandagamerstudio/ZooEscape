@@ -28,4 +28,13 @@ public class actualizarObjetivoAgente : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("Player") && this.name.Equals("Boton"))
+        {
+            agente.GetComponent<movimiento>().desActualizarObjetivo();
+            unaVez = true;
+        }
+    }
+
 }

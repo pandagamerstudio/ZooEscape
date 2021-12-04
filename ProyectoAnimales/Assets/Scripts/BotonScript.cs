@@ -4,43 +4,45 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 
-public class BotonScript : MonoBehaviourPun
+public class BotonScript : MonoBehaviour
 {
     private GameObject[] paredes;
     bool activada = false;
     float pulsar;
     private Animator animator;
-    private SpawnManagerLevel1 nivel;
+    public GameObject suelo;
+   public  int idObjetivo;
 
     int id;
      void Awake()
     {
         animator = this.GetComponent<Animator>();
         activada = false;
+        suelo.SetActive(false);
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!PhotonNetwork.IsMasterClient)
-            return;
+
 
         if (collision.CompareTag("Player") || collision.CompareTag("Caja"))
         {
             if (!activada) {
                 activada = true;
-                nivel.activarBotones(id, true);
                 animator.SetBool("Activada" , true);
-            }      
+                suelo.SetActive(true);
+
+            }
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision){
-        if (!PhotonNetwork.IsMasterClient)
-            return;
+        
 
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
             activada = false;
-            nivel.activarBotones(id, false);
             animator.SetBool("Activada" , false);
+            suelo.SetActive(false);
+
         }
     }
 
@@ -49,7 +51,6 @@ public class BotonScript : MonoBehaviourPun
             return;
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
             activada = true;
-            nivel.activarBotones(id, true);
             animator.SetBool("Activada" , true);
         }
     }
@@ -59,7 +60,17 @@ public class BotonScript : MonoBehaviourPun
     }
 
     public void inicializarBoton(SpawnManagerLevel1 s, int i){
-        nivel = s;
         id = i;
+    }
+
+    public void activarElementos() {
+        suelo.SetActive(true);
+        suelo.GetComponent<MeshRenderer>().enabled = false;
+
+    }
+
+    public void desactivarElementos() {
+        suelo.SetActive(false);
+        suelo.GetComponent<MeshRenderer>().enabled = true;
     }
 }

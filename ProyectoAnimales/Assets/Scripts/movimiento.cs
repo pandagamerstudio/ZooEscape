@@ -35,6 +35,10 @@ public class movimiento : MonoBehaviour
     public GameObject []posicionesApilarse;
     public GameObject[] posicionCaja;
     public GameObject[] indicador;
+    public GameObject boton;
+    public GameObject sueloBoton;
+
+    bool mirarBotones;
 
 
     Quaternion rotInicialcaja;
@@ -49,13 +53,24 @@ public class movimiento : MonoBehaviour
         animCaja = false;
         cajacolocada = false;
         heTerminadoCajas = false;
+        mirarBotones = true;
         movePos = Vector3.zero;
         objetivoActual = 0;
-
+        tengoLlave = false;
     }
 
     public void actualizarObjetivo() {
+        if (boton != null && objetivoActual > 1)
+            return;
+
         objetivoActual++;
+        Debug.Log("Objetivo actual " + objetivos[objetivoActual].name);
+    }
+
+    public void desActualizarObjetivo() {
+        if (boton != null && objetivoActual > 1)
+            return;
+        objetivoActual--;
         Debug.Log("Objetivo actual " + objetivos[objetivoActual].name);
     }
     IEnumerator desactivarIndicador(int i)
@@ -67,7 +82,7 @@ public class movimiento : MonoBehaviour
     {
         transform.rotation= inicio;
         cajaMovible.transform.rotation = rotInicialcaja;
-        tengoLlave = false;
+    
 
 
         if (!navMeshA.pathPending&& click)
@@ -126,6 +141,23 @@ public class movimiento : MonoBehaviour
             movePos = hit.point;
             navMeshA.SetDestination(hit.point);
             
+
+        }
+
+    }
+
+    public void clickDerecho(InputAction.CallbackContext callback)
+    {
+
+
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit) && callback.phase == InputActionPhase.Started)
+        {
+            // MOVE OUR AGENT
+            movePos = hit.point;
+            navMeshA.SetDestination(hit.point);
+
 
         }
 
@@ -197,6 +229,7 @@ public class movimiento : MonoBehaviour
                     else
                     {
                         Debug.Log("No se pueden hacer mas con la caja");
+                        
                     }
 
                 }
@@ -217,7 +250,7 @@ public class movimiento : MonoBehaviour
             navMeshA.CalculatePath(hit.point, path);
             if (path.status == NavMeshPathStatus.PathPartial)
             {
-                Debug.Log("No hay camino directo");
+                Debug.Log("No hay camino directo ");
 
                 //3. ¿HAY CAJA EN LA ESCENA? ¿PODEMOS HACER COSAS CON ELLA(FALTA ESTO)?
                 if (caja.activeInHierarchy&&!heTerminadoCajas)
@@ -246,24 +279,50 @@ public class movimiento : MonoBehaviour
                             indicador[i].SetActive(true);
                             StartCoroutine(desactivarIndicador(i));
                             posicionesApilarse[i].SetActive(false);//Lo desactivamos
+                            mirarBotones = false;
                             break;
 
                         }
 
                     }
+                    
 
+                }
+                if (boton!=null&&mirarBotones && boton.activeInHierarchy&&objetivoActual<=1) {
+                    //5. ¿QUE PASARÍA SI PULSO EL PRIMER BOTÓN?
+                    boton.GetComponent<BotonScript>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
+                    navMeshA.CalculatePath(hit.point, path);
+                    if (path.status == NavMeshPathStatus.PathPartial)
+                    {
+                        Debug.Log("Este boton no lleva a la solución");
+                        boton.GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                    }
+                    else {
+                        Debug.Log("Este boton  lleva a la solución");
+                        boton.GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                        navMeshA.SetDestination(puntoMallaObjetivo(boton));//Obtenemos la posición del boton para ir a él
+                        
+                    }
                 }
 
 
             }
             else {
-                Debug.Log(hit.point);
-                movePos = hit.point;
-                navMeshA.SetDestination(hit.point);
-            }
-            
+                Debug.Log(hit.collider);
+                if (hit.collider != null)
+                {
+                    movePos = hit.point;
+                    navMeshA.SetDestination(hit.point);
+                }
+                else {
+                    Debug.Log("No se que hacer");
 
-            
+                }
+
+            }
+
+
+            mirarBotones = true;
         }
     
     }
