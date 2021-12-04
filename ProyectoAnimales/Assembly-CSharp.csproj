@@ -65,13 +65,16 @@
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatAppIdCheckerUI.cs" />
     <Compile Include="Assets\Scripts\PalancaChiquito.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Scripts\NetworkManager.cs" />
     <Compile Include="Assets\Scripts\BotonScript.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel8.cs" />
     <Compile Include="Assets\Scripts\Parallax\ParallaxFondo.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
     <Compile Include="Assets\Scripts\Enemy\PatrolState.cs" />
     <Compile Include="Assets\Scripts\Mine.cs" />
     <Compile Include="Assets\Scripts\PlatformMovement.cs" />
@@ -88,15 +91,18 @@
     <Compile Include="Assets\Scripts\cambiarGravedad.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel10.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLWindow\WebGLWindow.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel7.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Scripts\EscenaFinal.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel5.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\IInputField.cs" />
     <Compile Include="Assets\Scripts\Enemy\IgnoreCollision.cs" />
     <Compile Include="Assets\Scripts\BoxScript.cs" />
     <Compile Include="Assets\Scripts\moverizqlvl9.cs" />
+    <Compile Include="Assets\Scripts\movimiento.cs" />
     <Compile Include="Assets\Scripts\Enemy\IdleState.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -122,14 +128,18 @@
     <Compile Include="Assets\Scripts\FallScript.cs" />
     <Compile Include="Assets\Scripts\PasoNivelScript.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\ForJump\ForJump\ReturnNavmeshInfo.cs" />
     <Compile Include="Assets\Scripts\PlataformaAnimScript.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\checkBoxColorColission.cs" />
     <Compile Include="Assets\Scripts\AudioVolume.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
     <Compile Include="Assets\Scripts\boxColorScript.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Mobile\WebGLInputMobile.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\FriendItem.cs" />
+    <Compile Include="Assets\Scripts\AgentLinkMover.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Scripts\SliderController.cs" />
     <Compile Include="Assets\Scripts\Rope.cs" />
@@ -137,19 +147,10 @@
     <Compile Include="Assets\Scripts\cargarEscena.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel1.cs" />
-    <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
-    <Compile Include="Assets\Scripts\movimiento.cs" />
     <Compile Include="Assets\ForJump\ForJump\AgentJumpToTarget.cs" />
-    <Compile Include="Assets\ForJump\ForJump\ReturnNavmeshInfo.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
-    <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\Scripts\AgentLinkMover.cs" />
+    <Compile Include="Assets\Scripts\actualizarObjetivoAgente.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -897,6 +898,14 @@
       <Project>{90B1BB31-328A-87A6-E176-819492B09F05}</Project>
       <Name>PhotonUnityNetworking.Demos</Name>
     </ProjectReference>
+    <ProjectReference Include="NavMeshComponentsEditor.csproj">
+      <Project>{0295631D-06F0-9AE2-2D0D-F4CD0866E2C8}</Project>
+      <Name>NavMeshComponentsEditor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NavMeshComponents.csproj">
+      <Project>{5CD90EB5-80FC-F886-3768-343C89C9872A}</Project>
+      <Name>NavMeshComponents</Name>
+    </ProjectReference>
     <ProjectReference Include="PunDemos.DemoSlotcarEditor.csproj">
       <Project>{0B721436-11B7-7023-3F12-5626A32848AA}</Project>
       <Name>PunDemos.DemoSlotcarEditor</Name>
@@ -904,14 +913,6 @@
     <ProjectReference Include="PhotonUnityNetworking.Utilities.Culling.Editor.csproj">
       <Project>{5E939013-E28F-C2F5-02D1-75C7019CD472}</Project>
       <Name>PhotonUnityNetworking.Utilities.Culling.Editor</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponents.csproj">
-      <Project>{5CD90EB5-80FC-F886-3768-343C89C9872A}</Project>
-      <Name>NavMeshComponents</Name>
-    </ProjectReference>
-    <ProjectReference Include="NavMeshComponentsEditor.csproj">
-      <Project>{0295631D-06F0-9AE2-2D0D-F4CD0866E2C8}</Project>
-      <Name>NavMeshComponentsEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
