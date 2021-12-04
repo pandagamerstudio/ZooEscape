@@ -39,7 +39,7 @@ public class movimiento : MonoBehaviour
     public GameObject sueloBoton;
 
     bool mirarBotones;
-
+    bool moverCajaIzq;
 
     Quaternion rotInicialcaja;
     private void Awake()
@@ -57,6 +57,7 @@ public class movimiento : MonoBehaviour
         movePos = Vector3.zero;
         objetivoActual = 0;
         tengoLlave = false;
+        moverCajaIzq = false;
     }
 
     public void actualizarObjetivo() {
@@ -115,16 +116,32 @@ public class movimiento : MonoBehaviour
 
         if (animCaja)
         {
-            if (caja.transform.parent.transform.position.x > puntomascercano.x)
+            if (moverCajaIzq)
             {
-                caja.transform.parent.transform.position=  new Vector3(caja.transform.parent.transform.position.x - 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
-            }
-            else
-            {
-                animCaja = false;
-                heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                if (caja.transform.parent.transform.position.x > puntomascercano.x)
+                {
+                    caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x - 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+                }
+                else
+                {
+                    animCaja = false;
+                    heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
 
+                }
             }
+            else {
+                if (caja.transform.parent.transform.position.x < puntomascercano.x)
+                {
+                    caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x + 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+                }
+                else
+                {
+                    animCaja = false;
+                    heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+
+                }
+            }
+            
         }
 
         }
@@ -217,9 +234,11 @@ public class movimiento : MonoBehaviour
                     cajaImaginaria.SetActive(false);
                     //Codigo de mover la caja falta hacer que determine la dirección en la que lo debe mover
                     Debug.Log("Esta caja es la solución ");
-                    if (llave.transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
+                   
+                    if (objetivos[objetivoActual].transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
                     {
                         //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
+                        moverCajaIzq = true;
                         cajacolocada = true;
                         navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
                         //  puntomascercano = path.corners[path.corners.Length - 1];
@@ -228,8 +247,13 @@ public class movimiento : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("No se pueden hacer mas con la caja");
-                        
+                        Debug.Log("Mover Dcha");
+                        moverCajaIzq = false;
+                        cajacolocada = true;
+                        navMeshA.SetDestination(caja.transform.parent.transform.position - new Vector3(3.5f, 0, 0));
+                        puntomascercano = cajaImaginaria.transform.position;
+                        colocarmeParaEmpujar = true;
+
                     }
 
                 }
