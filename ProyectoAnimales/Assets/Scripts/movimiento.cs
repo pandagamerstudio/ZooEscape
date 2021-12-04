@@ -26,6 +26,7 @@ public class movimiento : MonoBehaviour
     Vector3 puntomascercano;
     bool cajacolocada;
     bool heTerminadoCajas;
+    int botonActual;
 
     public GameObject llave;
     public GameObject caja;
@@ -35,8 +36,11 @@ public class movimiento : MonoBehaviour
     public GameObject []posicionesApilarse;
     public GameObject[] posicionCaja;
     public GameObject[] indicador;
-    public GameObject boton;
+    public GameObject[] boton;
     public GameObject sueloBoton;
+
+    public GameObject[] suscrpitores;
+    
 
     bool mirarBotones;
     bool moverCajaIzq;
@@ -58,20 +62,42 @@ public class movimiento : MonoBehaviour
         objetivoActual = 0;
         tengoLlave = false;
         moverCajaIzq = false;
+        botonActual = 0;
     }
 
-    public void actualizarObjetivo() {
-        if (boton != null && objetivoActual > 1)
-            return;
+    public void actualizarObjetivo(GameObject g) {
+        //if (boton[0] == null)
+        //    return;
+        if (g.name.Equals("Boton") || g.name.Equals("Boton2")) {
+            Debug.Log("Es un boton");
+            if (g.GetComponent<actualizarObjetivoAgente>().objetivo != objetivoActual) {
+                return;
+            }
+        }
 
+       
         objetivoActual++;
+        for (int i = 0; i < suscrpitores.Length; i++) {
+            suscrpitores[i].GetComponent<objetivoCompanero4>().escuchando(objetivoActual);
+        }
+        if (objetivos[objetivoActual].name.Equals("Boton2") && objetivoActual > 2)
+        {
+            botonActual++;
+            Debug.Log(" botonActual++ ");
+        }
         Debug.Log("Objetivo actual " + objetivos[objetivoActual].name);
     }
 
-    public void desActualizarObjetivo() {
-        if (boton != null && objetivoActual > 1)
+    public void desActualizarObjetivo(int miObjetivo) {
+        if (boton != null && objetivoActual != miObjetivo+1)
             return;
+
+        
         objetivoActual--;
+        for (int i = 0; i < suscrpitores.Length; i++)
+        {
+            suscrpitores[i].GetComponent<objetivoCompanero4>().escuchando(objetivoActual);
+        }
         Debug.Log("Objetivo actual " + objetivos[objetivoActual].name);
     }
     IEnumerator desactivarIndicador(int i)
@@ -312,19 +338,24 @@ public class movimiento : MonoBehaviour
                     
 
                 }
-                if (boton!=null&&mirarBotones && boton.activeInHierarchy&&objetivoActual<=1) {
+                if (boton[0]!=null&&mirarBotones && boton[0].activeInHierarchy&&objetivoActual<=2) {
                     //5. ¿QUE PASARÍA SI PULSO EL PRIMER BOTÓN?
-                    boton.GetComponent<BotonScript>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
+                  
+                   
+                    boton[botonActual].GetComponent<BotonScript>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
+
+                    Debug.Log("esta acitvo el mesh del suelo? " + boton[botonActual].GetComponent<BotonScript>().estaActivadoElSuelo());
                     navMeshA.CalculatePath(hit.point, path);
                     if (path.status == NavMeshPathStatus.PathPartial)
                     {
                         Debug.Log("Este boton no lleva a la solución");
-                        boton.GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                            boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
                     }
                     else {
                         Debug.Log("Este boton  lleva a la solución");
-                        boton.GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
-                        navMeshA.SetDestination(puntoMallaObjetivo(boton));//Obtenemos la posición del boton para ir a él
+                            boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                            navMeshA.SetDestination(puntoMallaObjetivo(boton[botonActual]));//Obtenemos la posición del boton para ir a él
+
                         
                     }
                 }

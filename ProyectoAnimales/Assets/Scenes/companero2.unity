@@ -1971,7 +1971,8 @@ MonoBehaviour:
   indicador:
   - {fileID: 657219441}
   - {fileID: 1874566107}
-  boton: {fileID: 3691937873836554267}
+  boton:
+  - {fileID: 0}
   sueloBoton: {fileID: 772904755}
 --- !u!61 &528027219
 BoxCollider2D:
@@ -6488,7 +6489,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 31aaaaebd72a3a24584f0bfaef29a310, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 8dfc2f1815dbf9c44825f4ccf53ac9bf, type: 2}
 --- !u!4 &1441224413
 Transform:
   m_ObjectHideFlags: 0
@@ -7137,7 +7138,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 8ba174b6261e6b347b090c69d309e05c, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9d3992c0db9a69b46862954b44ac59fb, type: 2}
 --- !u!4 &1614248988
 Transform:
   m_ObjectHideFlags: 0
@@ -8749,5 +8750,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baaefc4cae9889b418c7c00cc5835daa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   suelo: {fileID: 772904755}
   idObjetivo: 0

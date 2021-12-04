@@ -9,7 +9,7 @@ public class BotonScript : MonoBehaviour
     private GameObject[] paredes;
     bool activada = false;
     float pulsar;
-    private Animator animator;
+    public Animator animator;
     public GameObject suelo;
    public  int idObjetivo;
 
@@ -22,7 +22,7 @@ public class BotonScript : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-
+        
 
         if (collision.CompareTag("Player") || collision.CompareTag("Caja"))
         {
@@ -47,8 +47,7 @@ public class BotonScript : MonoBehaviour
     }
 
     public void OnTriggerStay2D(Collider2D collision){
-        if (!PhotonNetwork.IsMasterClient)
-            return;
+        
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
             activada = true;
             animator.SetBool("Activada" , true);
@@ -63,13 +62,21 @@ public class BotonScript : MonoBehaviour
         id = i;
     }
 
+
+    public bool estaActivadoElSuelo() {
+        return suelo.GetComponent<MeshRenderer>().enabled;
+    }
+
     public void activarElementos() {
+        
+
         suelo.SetActive(true);
         suelo.GetComponent<MeshRenderer>().enabled = false;
 
     }
 
     public void desactivarElementos() {
+       
         suelo.SetActive(false);
         suelo.GetComponent<MeshRenderer>().enabled = true;
     }

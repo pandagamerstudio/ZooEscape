@@ -403,7 +403,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &80600251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8678,7 +8678,8 @@ MonoBehaviour:
   indicador:
   - {fileID: 1675310664}
   - {fileID: 1169216316}
-  boton: {fileID: 0}
+  boton:
+  - {fileID: 0}
   sueloBoton: {fileID: 0}
 --- !u!195 &7355999441667209535
 NavMeshAgent:
