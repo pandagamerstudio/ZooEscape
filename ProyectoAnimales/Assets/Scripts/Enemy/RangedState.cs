@@ -8,6 +8,7 @@ public class RangedState : IEnemyState
     
     public void Execute()
     {
+        enemy.ThrowKnife();
         if(enemy.Target != null)
         {
             enemy.Move();

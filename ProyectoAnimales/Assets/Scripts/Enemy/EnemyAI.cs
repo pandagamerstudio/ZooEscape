@@ -10,12 +10,19 @@ public class EnemyAI : MonoBehaviour
     protected Transform knifePos;
 
     [SerializeField]
-    protected float movementSpeed;
+    public float movementSpeed;
 
     private bool facingRight;
 
     [SerializeField]
     private GameObject knifePrefab;
+
+    private float throwTimer;
+    private float throwAnimTimer;
+    private float throwCoolDown = 3f;
+    private bool canThrow = true;
+    private float throwKnifeTimer;
+    private bool canSpawn = true;
 
     protected bool Attack { get; set; }
 
@@ -48,15 +55,51 @@ public class EnemyAI : MonoBehaviour
 
     public void ThrowKnife()
     {
-        if(facingRight)
+
+        throwTimer += Time.deltaTime;
+
+        if (throwTimer >= throwCoolDown)
         {
-            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
-            tmp.GetComponent<Knife>().Initialize(Vector2.right);
+            canThrow = true;
+            throwTimer = 0f;
         }
-        else
+        if (canThrow)
         {
-            GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
-            tmp.GetComponent<Knife>().Initialize(Vector2.left);
+            movementSpeed = 0f;
+            myAnimator.SetBool("throw", true);
+            InstKnife();
+            throwAnimTimer += Time.deltaTime;
+            if (throwAnimTimer >= 0.833f)
+            {
+                throwAnimTimer = 0f;
+                myAnimator.SetBool("throw", false);
+                canThrow = false;
+                movementSpeed = 4f;
+            }
+        }
+    }
+
+    private void InstKnife()
+    {
+        throwKnifeTimer += Time.deltaTime;
+        if(throwKnifeTimer >= 0.833)
+        {
+            canSpawn = true;
+        }
+        if(canSpawn)
+        {
+            if (facingRight)
+            {
+                GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
+                tmp.GetComponent<Knife>().Initialize(Vector2.right);
+            }
+            else
+            {
+                GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
+                tmp.GetComponent<Knife>().Initialize(Vector2.left);
+            }
+            canSpawn = false;
+            throwKnifeTimer = 0f;
         }
     }
 
