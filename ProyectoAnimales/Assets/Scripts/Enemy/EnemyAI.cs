@@ -69,7 +69,7 @@ public class EnemyAI : MonoBehaviour
             myAnimator.SetBool("throw", true);
             InstKnife();
             throwAnimTimer += Time.deltaTime;
-            if (throwAnimTimer >= 0.833f)
+            if (throwAnimTimer >= 0.5f)
             {
                 throwAnimTimer = 0f;
                 myAnimator.SetBool("throw", false);
@@ -82,7 +82,7 @@ public class EnemyAI : MonoBehaviour
     private void InstKnife()
     {
         throwKnifeTimer += Time.deltaTime;
-        if(throwKnifeTimer >= 0.833)
+        if(throwKnifeTimer >= 0.5f)
         {
             canSpawn = true;
         }
@@ -90,11 +90,13 @@ public class EnemyAI : MonoBehaviour
         {
             if (facingRight)
             {
+                knifePrefab.transform.localScale = new Vector3(transform.localScale.x * 1, 1, 1);
                 GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
                 tmp.GetComponent<Knife>().Initialize(Vector2.right);
             }
             else
             {
+                knifePrefab.transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
                 GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
                 tmp.GetComponent<Knife>().Initialize(Vector2.left);
             }
