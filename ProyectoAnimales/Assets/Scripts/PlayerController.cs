@@ -144,7 +144,7 @@ public class PlayerController : MonoBehaviour
     }
     public void checkGravedad() {
 
-        switch (g) {
+      switch (g) {
             case gra.normal:
                 rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
                 break;

@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLWindow\WebGLWindow.cs" />
+    <Compile Include="Assets\objetivoCompanero4.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel7.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel5.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\IInputField.cs" />
     <Compile Include="Assets\Scripts\Enemy\IgnoreCollision.cs" />
+    <Compile Include="Assets\observer.cs" />
     <Compile Include="Assets\Scripts\BoxScript.cs" />
     <Compile Include="Assets\Scripts\moverizqlvl9.cs" />
     <Compile Include="Assets\Scripts\movimiento.cs" />
@@ -151,8 +153,8 @@
     <Compile Include="Assets\ForJump\ForJump\AgentJumpToTarget.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\objetivoCompanero4.cs" />
-    <Compile Include="Assets\observer.cs" />
+    <Compile Include="Assets\Scripts\playerController3d.cs" />
+    <Compile Include="Assets\Scripts\botonScript3d.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

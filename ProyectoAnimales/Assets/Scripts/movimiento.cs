@@ -225,6 +225,43 @@ public class movimiento : MonoBehaviour
         return hit.point;
     }
 
+    IEnumerator movimientosEsp(NavMeshPath path) {
+        yield return new WaitForSeconds(1);
+        cajaMovible.SetActive(true);
+        cajaAgent.CalculatePath(puntoMallaObjetivo(posicionCaja[0]), path);
+        Debug.Log(path.status);
+        if (path.status == NavMeshPathStatus.PathInvalid || path.status == NavMeshPathStatus.PathPartial)
+        {
+            Debug.Log("Hay un obstáculo que no me deja mover la caja al punto de interes ");
+            cajaMovible.SetActive(false);
+            caja.GetComponent<NavMeshObstacle>().enabled = true;
+
+        }
+        else {
+            caja.GetComponent<NavMeshObstacle>().enabled = true;
+            if (objetivos[objetivoActual].transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
+            {
+                //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
+                moverCajaIzq = true;
+                cajacolocada = true;
+                navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
+                //  puntomascercano = path.corners[path.corners.Length - 1];
+                puntomascercano = cajaImaginaria.transform.position;
+                colocarmeParaEmpujar = true;
+            }
+            else
+            {
+                Debug.Log("Mover Dcha");
+                moverCajaIzq = false;
+                cajacolocada = true;
+                navMeshA.SetDestination(caja.transform.parent.transform.position - new Vector3(3.5f, 0, 0));
+                puntomascercano = cajaImaginaria.transform.position;
+                colocarmeParaEmpujar = true;
+
+            }
+            actualizarObjetivo(gameObject);
+        }
+    }
     IEnumerator movimientosCaja(NavMeshPath path, RaycastHit hit) {
 
         for (int i = 0; i < posicionCaja.Length; i++)
@@ -294,7 +331,7 @@ public class movimiento : MonoBehaviour
             //1. MIRAMOS SI NO TENEMOS COGIDA LA LLAVE
             //2. SI NO LA TENEMOS COMPROBAMOS SI EXISTE CAMINO PARA LLEGAR A ELLA
             RaycastHit hit;
-            Physics.Raycast(objetivos[objetivoActual].transform.position, -Vector3.up, out hit);
+            Physics.Raycast(objetivos[objetivoActual].transform.position, -Vector3.up, out hit,2);
             
             NavMeshPath path = new NavMeshPath();
             navMeshA.CalculatePath(hit.point, path);
@@ -303,7 +340,7 @@ public class movimiento : MonoBehaviour
                 Debug.Log("No hay camino directo ");
 
                 //3. ¿HAY CAJA EN LA ESCENA? ¿PODEMOS HACER COSAS CON ELLA(FALTA ESTO)?
-                if (caja.activeInHierarchy&&!heTerminadoCajas)
+                if (caja.activeInHierarchy && !heTerminadoCajas)
                 {
                     caja.GetComponent<NavMeshObstacle>().enabled = false;
                     StartCoroutine(movimientosCaja(path, hit));
@@ -325,7 +362,7 @@ public class movimiento : MonoBehaviour
                         else
                         {
                             //Si el jugador se coloca en este sitio habrá cámino
-                            Debug.Log("Jugador muevete aqui "+i);
+                            Debug.Log("Jugador muevete aqui " + i);
                             indicador[i].SetActive(true);
                             StartCoroutine(desactivarIndicador(i));
                             posicionesApilarse[i].SetActive(false);//Lo desactivamos
@@ -335,13 +372,13 @@ public class movimiento : MonoBehaviour
                         }
 
                     }
-                    
+
 
                 }
-                if (boton[0]!=null&&mirarBotones && boton[0].activeInHierarchy&&objetivoActual<=2) {
+                if (boton[0] != null && mirarBotones && boton[0].activeInHierarchy && objetivoActual <= 2) {
                     //5. ¿QUE PASARÍA SI PULSO EL PRIMER BOTÓN?
-                  
-                   
+
+
                     boton[botonActual].GetComponent<BotonScript>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
 
                     Debug.Log("esta acitvo el mesh del suelo? " + boton[botonActual].GetComponent<BotonScript>().estaActivadoElSuelo());
@@ -349,18 +386,25 @@ public class movimiento : MonoBehaviour
                     if (path.status == NavMeshPathStatus.PathPartial)
                     {
                         Debug.Log("Este boton no lleva a la solución");
-                            boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                        boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
                     }
                     else {
                         Debug.Log("Este boton  lleva a la solución");
-                            boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
-                            navMeshA.SetDestination(puntoMallaObjetivo(boton[botonActual]));//Obtenemos la posición del boton para ir a él
+                        boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                        navMeshA.SetDestination(puntoMallaObjetivo(boton[botonActual]));//Obtenemos la posición del boton para ir a él
 
-                        
+
                     }
                 }
 
 
+            }
+            else if (hit.collider == null && objetivos[objetivoActual].name.Equals("cune4")){
+                
+                    caja.GetComponent<NavMeshObstacle>().enabled = false;
+                    StartCoroutine(movimientosEsp(path));
+
+                
             }
             else {
                 Debug.Log(hit.collider);

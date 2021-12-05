@@ -11,7 +11,7 @@ public class objetivoCompanero4 : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name.Equals("hijoPolar")&&unaVez) {
+        if (other.gameObject.name.Equals("OsoPolar")&&unaVez) {
             unaVez = false;
             agente.GetComponent<movimiento>().actualizarObjetivo(this.gameObject);
         }

@@ -20,7 +20,7 @@ public class actualizarObjetivoAgente : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter(Collider collision)
     {
 
 
@@ -32,7 +32,7 @@ public class actualizarObjetivoAgente : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag.Equals("Player") && (this.name.Equals("Boton")|| this.name.Equals("Boton2")))
         {
