@@ -57,6 +57,7 @@ public class PuertaScript : MonoBehaviourPun
                         break;
                     case "Level10":
                         level = 11;
+                        PlayerPrefs.SetInt("Completado", 1);
                         break;
                     default:
                         break;

@@ -90,6 +90,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
             }
         }
 
+        if (!PlayerPrefs.HasKey("Completado"))
+            PlayerPrefs.SetInt("Completado", 0);
+
         createRoomButton.interactable = false;
         findRoomButton.interactable = false;
 
