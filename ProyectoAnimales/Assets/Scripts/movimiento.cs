@@ -46,6 +46,18 @@ public class movimiento : MonoBehaviour
     bool moverCajaIzq;
 
     Quaternion rotInicialcaja;
+
+
+    public GameObject fondoPensamiento;
+    public GameObject accionAndar;
+    public GameObject irBoton;
+    public GameObject apilar;
+    public GameObject algoMeCorta;
+    public GameObject empujar;
+
+
+
+
     private void Awake()
     {
         navMeshA = GetComponent<NavMeshAgent>();
@@ -99,6 +111,15 @@ public class movimiento : MonoBehaviour
             suscrpitores[i].GetComponent<objetivoCompanero4>().escuchando(objetivoActual);
         }
         Debug.Log("Objetivo actual " + objetivos[objetivoActual].name);
+    }
+    IEnumerator mostrarAccion(GameObject accion) {
+        Debug.Log("Hola?");
+        fondoPensamiento.SetActive(true);
+        accion.SetActive(true);
+        yield return new WaitForSeconds(2.0f);
+        fondoPensamiento.SetActive(false);
+        accion.SetActive(false);
+
     }
     IEnumerator desactivarIndicador(int i)
     {
@@ -248,6 +269,7 @@ public class movimiento : MonoBehaviour
                 //  puntomascercano = path.corners[path.corners.Length - 1];
                 puntomascercano = cajaImaginaria.transform.position;
                 colocarmeParaEmpujar = true;
+                StartCoroutine(mostrarAccion(empujar));
             }
             else
             {
@@ -257,7 +279,7 @@ public class movimiento : MonoBehaviour
                 navMeshA.SetDestination(caja.transform.parent.transform.position - new Vector3(3.5f, 0, 0));
                 puntomascercano = cajaImaginaria.transform.position;
                 colocarmeParaEmpujar = true;
-
+                StartCoroutine(mostrarAccion(empujar));
             }
             actualizarObjetivo(gameObject);
         }
@@ -276,6 +298,7 @@ public class movimiento : MonoBehaviour
                 Debug.Log("Hay un obstáculo que no me deja mover la caja al punto de interes ");
                 cajaMovible.SetActive(false);
                 caja.GetComponent<NavMeshObstacle>().enabled = true;
+                StartCoroutine(mostrarAccion(algoMeCorta));
 
             }
             else
@@ -295,9 +318,9 @@ public class movimiento : MonoBehaviour
                 else
                 {
                     cajaImaginaria.SetActive(false);
-                    //Codigo de mover la caja falta hacer que determine la dirección en la que lo debe mover
+                    //Codigo de mover la caja falta hacer que determin
+                    //e la dirección en la que lo debe mover
                     Debug.Log("Esta caja es la solución ");
-                   
                     if (objetivos[objetivoActual].transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
                     {
                         //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
@@ -306,7 +329,8 @@ public class movimiento : MonoBehaviour
                         navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
                         //  puntomascercano = path.corners[path.corners.Length - 1];
                         puntomascercano = cajaImaginaria.transform.position;
-                          colocarmeParaEmpujar = true;
+                        colocarmeParaEmpujar = true;
+                        StartCoroutine(mostrarAccion(empujar));
                     }
                     else
                     {
@@ -316,7 +340,7 @@ public class movimiento : MonoBehaviour
                         navMeshA.SetDestination(caja.transform.parent.transform.position - new Vector3(3.5f, 0, 0));
                         puntomascercano = cajaImaginaria.transform.position;
                         colocarmeParaEmpujar = true;
-
+                        StartCoroutine(mostrarAccion(empujar));
                     }
 
                 }
@@ -367,6 +391,7 @@ public class movimiento : MonoBehaviour
                             StartCoroutine(desactivarIndicador(i));
                             posicionesApilarse[i].SetActive(false);//Lo desactivamos
                             mirarBotones = false;
+                            StartCoroutine(mostrarAccion(apilar));
                             break;
 
                         }
@@ -375,23 +400,24 @@ public class movimiento : MonoBehaviour
 
 
                 }
-                if (boton[0] != null && mirarBotones && boton[0].activeInHierarchy && objetivoActual <= 2) {
+                if (boton.Length != 0&&objetivos[objetivoActual].tag.Equals("boton") && mirarBotones && boton[0].activeInHierarchy && objetivoActual <= 2) {
                     //5. ¿QUE PASARÍA SI PULSO EL PRIMER BOTÓN?
 
 
-                    boton[botonActual].GetComponent<BotonScript>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
+                    boton[botonActual].GetComponent<botonScript3d>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
 
-                    Debug.Log("esta acitvo el mesh del suelo? " + boton[botonActual].GetComponent<BotonScript>().estaActivadoElSuelo());
+                    Debug.Log("esta acitvo el mesh del suelo? " + boton[botonActual].GetComponent<botonScript3d>().estaActivadoElSuelo());
                     navMeshA.CalculatePath(hit.point, path);
                     if (path.status == NavMeshPathStatus.PathPartial)
                     {
                         Debug.Log("Este boton no lleva a la solución");
-                        boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                        boton[botonActual].GetComponent<botonScript3d>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
                     }
                     else {
                         Debug.Log("Este boton  lleva a la solución");
-                        boton[botonActual].GetComponent<BotonScript>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
+                        boton[botonActual].GetComponent<botonScript3d>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
                         navMeshA.SetDestination(puntoMallaObjetivo(boton[botonActual]));//Obtenemos la posición del boton para ir a él
+                        StartCoroutine(mostrarAccion(irBoton));
 
 
                     }
@@ -412,6 +438,21 @@ public class movimiento : MonoBehaviour
                 {
                     movePos = hit.point;
                     navMeshA.SetDestination(hit.point);
+                    int accion=objetivos[objetivoActual].layer;
+                    if (accion == 17)
+                    {
+                        StartCoroutine(mostrarAccion(irBoton));
+
+                    }
+                    else if (accion == 6) {
+                        StartCoroutine(mostrarAccion(empujar));
+                    } else {
+                        StartCoroutine(mostrarAccion(accionAndar));
+
+                    }
+
+                    Debug.Log("Voy al objetivo");
+
                 }
                 else {
                     Debug.Log("No se que hacer");
