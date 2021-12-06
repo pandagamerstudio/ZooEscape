@@ -209,7 +209,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     public void Pause(InputAction.CallbackContext callback)
     {
-        OnPause();
+        if (!canvasPause.GetComponent<PauseScript>().panelOptions.active && !canvasPause.GetComponent<PauseScript>().panelControls.active)
+            OnPause();
     }
 
     public void OnPause(){
