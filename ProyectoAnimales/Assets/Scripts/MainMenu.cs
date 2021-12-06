@@ -90,6 +90,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
             }
         }
 
+        if (!PlayerPrefs.HasKey("Completado"))
+            PlayerPrefs.SetInt("Completado", 0);
+
         createRoomButton.interactable = false;
         findRoomButton.interactable = false;
 
@@ -294,7 +297,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     [PunRPC]
     void UpdateLobbyUI(){
         //enable or disable the start button depending on if we are the Host
-        startGameButton.interactable = PhotonNetwork.IsMasterClient;
+        if (PhotonNetwork.PlayerList.Length == 2)
+            startGameButton.interactable = PhotonNetwork.IsMasterClient;
+        else
+            startGameButton.interactable = false;
 
         playerListText.text = "";
         foreach(Player player in PhotonNetwork.PlayerList)

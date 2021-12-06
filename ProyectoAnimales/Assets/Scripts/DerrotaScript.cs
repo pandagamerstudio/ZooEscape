@@ -39,15 +39,19 @@ public class DerrotaScript : MonoBehaviourPun
         }
     }
     public void OnBackToMainMenu(){
-        PlayerPrefs.SetInt("actualLevel1", 1);
-        PlayerPrefs.SetInt("actualLevel2", 1);
+        if (PlayerPrefs.GetInt("Completado") != 1){
+            PlayerPrefs.SetInt("actualLevel1", 1);
+            PlayerPrefs.SetInt("actualLevel2", 1);
+        }
         PhotonNetwork.LeaveRoom();
         //PhotonNetwork.LoadLevel("Menu");
     }
 
     public void OnPlayAgain(){
-        PlayerPrefs.SetInt("actualLevel1", 1);
-        PlayerPrefs.SetInt("actualLevel2", 1);
+        if (PlayerPrefs.GetInt("Completado") != 1){
+            PlayerPrefs.SetInt("actualLevel1", 1);
+            PlayerPrefs.SetInt("actualLevel2", 1);
+        }
         PlayerPrefs.SetInt("LevelMenu", 1);
         PhotonNetwork.LoadLevel("Menu");
     }
