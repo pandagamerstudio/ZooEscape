@@ -297,7 +297,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     [PunRPC]
     void UpdateLobbyUI(){
         //enable or disable the start button depending on if we are the Host
-        startGameButton.interactable = PhotonNetwork.IsMasterClient;
+        if (PhotonNetwork.PlayerList.Length == 2)
+            startGameButton.interactable = PhotonNetwork.IsMasterClient;
+        else
+            startGameButton.interactable = false;
 
         playerListText.text = "";
         foreach(Player player in PhotonNetwork.PlayerList)
