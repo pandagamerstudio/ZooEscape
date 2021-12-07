@@ -29,6 +29,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public GameObject[] personajes;
     public GameObject canvasMenu;
 
+    public GameObject[] carteles;
+    public GameObject[] cartelesPos;
+
 
     void Start(){
 
@@ -390,17 +393,37 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void SelectorPersonajes(int i){
+        if(PhotonNetwork.PlayerList.Length != 2) i = 0;
+
+        if (PhotonNetwork.IsMasterClient){
+            if (carteles[1].transform.position == cartelesPos[i].transform.position)
+                return;
+        }else{
+            if (carteles[0].transform.position == cartelesPos[i].transform.position)
+                return;
+        }
+
         idJugSel = i;
         foreach(GameObject p in personajes){
             p.GetComponent<Animator>().SetBool("Seleccionado", false);
         }
         Debug.Log(i);
         personajes[i].GetComponent<Animator>().SetBool("Seleccionado", true);
+        photonView.RPC("PersonajeSeleccionado", RpcTarget.All, idJugSel, PhotonNetwork.IsMasterClient);
 
         if (PhotonNetwork.IsMasterClient){
             PlayerPrefs.SetInt ("idPersonaje1", idJugSel);
         }else{
             PlayerPrefs.SetInt ("idPersonaje2", idJugSel);
+        }
+    }
+
+    [PunRPC]
+    public void PersonajeSeleccionado(int i, bool master){
+        if (master){
+            carteles[0].transform.position = cartelesPos[i].transform.position;
+        }else{
+            carteles[1].transform.position = cartelesPos[i].transform.position;
         }
     }
 
