@@ -7439,7 +7439,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904766277851951816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.2, y: -1.8, z: 0}
+  m_LocalPosition: {x: 9.2, y: -2.1, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
   - {fileID: 3689191711639145844}
@@ -10194,7 +10194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25.63, y: -23.440002}
+  m_AnchoredPosition: {x: 25.629883, y: -23.439941}
   m_SizeDelta: {x: 600, y: 160}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &5340447741204079938
@@ -13531,12 +13531,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7814061b3495b143bd2daf53c2ecaa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rutina: 0
-  cronometro: 0
   anim: {fileID: 8030306508493136229}
-  angulo: {x: 0, y: 0, z: 0, w: 0}
-  grado: 0
-  target: {fileID: 0}
+  target: {fileID: 7975427202199418040}
+  llave: {fileID: 9038776496250355173}
 --- !u!95 &8030306508493136229
 Animator:
   serializedVersion: 3
@@ -15581,7 +15578,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 25.63, y: -23.440002}
+  m_AnchoredPosition: {x: 25.629883, y: -23.439941}
   m_SizeDelta: {x: 600, y: 160}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &8908131447598060440

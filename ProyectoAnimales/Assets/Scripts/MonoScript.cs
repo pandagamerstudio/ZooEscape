@@ -5,12 +5,15 @@ using UnityEngine;
 public class MonoScript : MonoBehaviour
 {
     
-    public int rutina;
-    public float cronometro;
+    int rutina;
+    float cronometro;
     public Animator anim;
-    public Quaternion angulo;
-    public float grado;
+    Quaternion angulo;
+    float grado;
+    float NPCSpeed = 1.5f;
     public GameObject target;
+
+    public GameObject llave;
     
     // Start is called before the first frame update
     void Start()
@@ -57,6 +60,15 @@ public class MonoScript : MonoBehaviour
 
             //Hacer que huya
             Debug.Log("Deberia huir");
+            Vector3 direction = transform.position - target.transform.position;
+            direction.y = 0;
+            direction = Vector3.Normalize(direction);
+            transform.rotation = Quaternion.Euler(direction);
+            transform.Translate(transform.forward * NPCSpeed);
+        }
+
+        if (llave == null){
+            Debug.Log("Pulsar boton");
         }
     }
 }
