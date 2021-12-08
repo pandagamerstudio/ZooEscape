@@ -35,6 +35,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     void Start(){
 
+        if (PhotonNetwork.NickName != "") playerNameInput.text = PhotonNetwork.NickName;
+        
         if (PlayerPrefs.HasKey("LevelMenu")){
             if (PlayerPrefs.GetInt("LevelMenu") == 1){
                 if (PhotonNetwork.IsMasterClient){
