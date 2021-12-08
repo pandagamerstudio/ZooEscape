@@ -96,6 +96,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         if (!PlayerPrefs.HasKey("Completado"))
             PlayerPrefs.SetInt("Completado", 0);
 
+        if (PhotonNetwork.NickName != "") playerNameInput.text = PhotonNetwork.NickName;
+
         createRoomButton.interactable = false;
         findRoomButton.interactable = false;
 
