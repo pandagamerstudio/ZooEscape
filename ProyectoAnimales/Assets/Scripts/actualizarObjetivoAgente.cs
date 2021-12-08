@@ -9,6 +9,8 @@ public class actualizarObjetivoAgente : MonoBehaviour
     public GameObject agente;
     bool unaVez;
    public int objetivo;
+
+
     void Start()
     {
         unaVez = true;
@@ -29,6 +31,7 @@ public class actualizarObjetivoAgente : MonoBehaviour
           
             agente.GetComponent<movimiento>().actualizarObjetivo(this.gameObject);
             unaVez = false;
+            
         }
     }
 

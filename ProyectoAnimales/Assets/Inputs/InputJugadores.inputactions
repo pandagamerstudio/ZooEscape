@@ -84,6 +84,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "pista",
+                    "type": "Button",
+                    "id": "17919982-b937-4ac7-b8bc-6dfab7c5abd8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -282,6 +290,17 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "clickDcho",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf6c59bc-610d-4272-86fc-9cbefa7fbdbd",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard&Mouse",
+                    "action": "pista",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

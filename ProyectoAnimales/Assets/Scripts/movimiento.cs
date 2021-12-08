@@ -55,6 +55,10 @@ public class movimiento : MonoBehaviour
     public GameObject algoMeCorta;
     public GameObject empujar;
 
+    public GameObject resolutor;
+    
+
+
 
 
 
@@ -87,7 +91,9 @@ public class movimiento : MonoBehaviour
             }
         }
 
-       
+        if (resolutor != null) {
+            resolutor.GetComponent<resolutor>().actualizarObjetivo(objetivoActual);
+        }
         objetivoActual++;
         for (int i = 0; i < suscrpitores.Length; i++) {
             suscrpitores[i].GetComponent<objetivoCompanero4>().escuchando(objetivoActual);
@@ -104,7 +110,10 @@ public class movimiento : MonoBehaviour
         if (boton != null && objetivoActual != miObjetivo+1)
             return;
 
-        
+        if (resolutor != null)
+        {
+            resolutor.GetComponent<resolutor>().desactualizarObjetivo(objetivoActual);
+        }
         objetivoActual--;
         for (int i = 0; i < suscrpitores.Length; i++)
         {
@@ -113,7 +122,6 @@ public class movimiento : MonoBehaviour
         Debug.Log("Objetivo actual " + objetivos[objetivoActual].name);
     }
     IEnumerator mostrarAccion(GameObject accion) {
-        Debug.Log("Hola?");
         fondoPensamiento.SetActive(true);
         accion.SetActive(true);
         yield return new WaitForSeconds(2.0f);
@@ -167,7 +175,8 @@ public class movimiento : MonoBehaviour
             {
                 if (caja.transform.parent.transform.position.x > puntomascercano.x)
                 {
-                    caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x - 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+
+                    caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x - 0.1f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
                 }
                 else
                 {
@@ -406,7 +415,6 @@ public class movimiento : MonoBehaviour
 
                     boton[botonActual].GetComponent<botonScript3d>().activarElementos();//Active el suelo pero no el meshRenderer(PARA COMPROBAR SI NOS LLEVA AL OBJETIVO ACTUAL);
 
-                    Debug.Log("esta acitvo el mesh del suelo? " + boton[botonActual].GetComponent<botonScript3d>().estaActivadoElSuelo());
                     navMeshA.CalculatePath(hit.point, path);
                     if (path.status == NavMeshPathStatus.PathPartial)
                     {

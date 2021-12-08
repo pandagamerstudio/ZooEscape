@@ -97,6 +97,14 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""pista"",
+                    ""type"": ""Button"",
+                    ""id"": ""17919982-b937-4ac7-b8bc-6dfab7c5abd8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -295,6 +303,17 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""clickDcho"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf6c59bc-610d-4272-86fc-9cbefa7fbdbd"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""pista"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -898,6 +917,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         m_Player_click = m_Player.FindAction("click", throwIfNotFound: true);
         m_Player_Mouse = m_Player.FindAction("Mouse", throwIfNotFound: true);
         m_Player_clickDcho = m_Player.FindAction("clickDcho", throwIfNotFound: true);
+        m_Player_pista = m_Player.FindAction("pista", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -969,6 +989,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_click;
     private readonly InputAction m_Player_Mouse;
     private readonly InputAction m_Player_clickDcho;
+    private readonly InputAction m_Player_pista;
     public struct PlayerActions
     {
         private @InputJugadores m_Wrapper;
@@ -983,6 +1004,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         public InputAction @click => m_Wrapper.m_Player_click;
         public InputAction @Mouse => m_Wrapper.m_Player_Mouse;
         public InputAction @clickDcho => m_Wrapper.m_Player_clickDcho;
+        public InputAction @pista => m_Wrapper.m_Player_pista;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1022,6 +1044,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @clickDcho.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickDcho;
                 @clickDcho.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickDcho;
                 @clickDcho.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClickDcho;
+                @pista.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPista;
+                @pista.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPista;
+                @pista.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPista;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1056,6 +1081,9 @@ public class @InputJugadores : IInputActionCollection, IDisposable
                 @clickDcho.started += instance.OnClickDcho;
                 @clickDcho.performed += instance.OnClickDcho;
                 @clickDcho.canceled += instance.OnClickDcho;
+                @pista.started += instance.OnPista;
+                @pista.performed += instance.OnPista;
+                @pista.canceled += instance.OnPista;
             }
         }
     }
@@ -1231,6 +1259,7 @@ public class @InputJugadores : IInputActionCollection, IDisposable
         void OnClick(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnClickDcho(InputAction.CallbackContext context);
+        void OnPista(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -11,6 +11,7 @@ public class botonScript3d : MonoBehaviour
     public GameObject suelo;
     public int idObjetivo;
 
+
     int id;
     void Awake()
     {
@@ -47,7 +48,7 @@ public class botonScript3d : MonoBehaviour
         }
     }
 
-    public void OnTriggerStay(Collider collision)
+   /* public void OnTriggerStay(Collider collision)
     {
 
         if ((collision.CompareTag("Player") || collision.CompareTag("Caja")))
@@ -55,23 +56,8 @@ public class botonScript3d : MonoBehaviour
             activada = true;
             animator.SetBool("Activada", true);
         }
-    }
+    }*/
 
-    public void setParedes(GameObject[] par)
-    {
-        paredes = par;
-    }
-
-    public void inicializarBoton(SpawnManagerLevel1 s, int i)
-    {
-        id = i;
-    }
-
-
-    public bool estaActivadoElSuelo()
-    {
-        return suelo.GetComponent<MeshRenderer>().enabled;
-    }
 
     public void activarElementos()
     {
