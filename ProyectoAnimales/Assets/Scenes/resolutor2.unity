@@ -698,7 +698,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.030000001
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 646dd722993dc3f479b326d0b4abfd0b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 53e36ef9a864afe4ca05a5701c3474ec, type: 2}
 --- !u!114 &147120911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,7 +727,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.36666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6332ef855094b9549813e6bd2a965709, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3ff4cb8dcf8fcc84386a2f473f9e2b47, type: 2}
 --- !u!114 &147120912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +796,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 6335af3eef1534e43962d9795b5fa450, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: f1fad43d22623034382a5351cb022bd1, type: 2}
 --- !u!4 &147120915
 Transform:
   m_ObjectHideFlags: 0
@@ -2010,7 +2010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355524757}
   m_LocalRotation: {x: -0, y: 0, z: -0.0012343631, w: 0.9999992}
-  m_LocalPosition: {x: 10.130196, y: 2.9, z: 0}
+  m_LocalPosition: {x: 15.130196, y: 2.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 614786698}
@@ -3750,6 +3750,7 @@ MonoBehaviour:
   jugador: {fileID: 355524757}
   cajaImaginaria: {fileID: 1626605855}
   cajaMovible: {fileID: 1493660307}
+  cajaBoton: {fileID: 0}
   posicionesApilarse:
   - {fileID: 241018798}
   posicionCaja:
@@ -3766,6 +3767,7 @@ MonoBehaviour:
   algoMeCorta: {fileID: 835477211}
   empujar: {fileID: 402249562}
   resolutor: {fileID: 1356447401}
+  movimientosDeCajaPorNivel: 0
 --- !u!212 &508594013
 SpriteRenderer:
   m_ObjectHideFlags: 0

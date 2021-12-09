@@ -27,12 +27,14 @@ public class movimiento : MonoBehaviour
     bool cajacolocada;
     bool heTerminadoCajas;
     int botonActual;
+    
 
     public GameObject llave;
     public GameObject caja;
     public GameObject jugador;
     public GameObject cajaImaginaria;//Esto se convertira en un array que correspondera con la posicionCaja
     public GameObject cajaMovible;
+    public GameObject cajaBoton;
     public GameObject []posicionesApilarse;
     public GameObject[] posicionCaja;
     public GameObject[] indicador;
@@ -44,7 +46,8 @@ public class movimiento : MonoBehaviour
 
     bool mirarBotones;
     bool moverCajaIzq;
-
+    bool moverCajaBoton;
+    bool colocarmeParaEmpujarCajaBoton;
     Quaternion rotInicialcaja;
 
 
@@ -56,6 +59,9 @@ public class movimiento : MonoBehaviour
     public GameObject empujar;
 
     public GameObject resolutor;
+
+
+    public int movimientosDeCajaPorNivel;
     
 
 
@@ -79,6 +85,8 @@ public class movimiento : MonoBehaviour
         tengoLlave = false;
         moverCajaIzq = false;
         botonActual = 0;
+        moverCajaBoton = false;
+        colocarmeParaEmpujarCajaBoton = false;
     }
 
     public void actualizarObjetivo(GameObject g) {
@@ -167,21 +175,42 @@ public class movimiento : MonoBehaviour
             }
                    
         }
+        if (!navMeshA.pathPending && colocarmeParaEmpujarCajaBoton)
+        {
+            if (navMeshA.remainingDistance <= navMeshA.stoppingDistance)
+            {
+                if (!navMeshA.hasPath || navMeshA.velocity.sqrMagnitude == 0f)
+                {
+                    colocarmeParaEmpujarCajaBoton = false;
+                    moverCajaBoton = true;
 
+                }
+
+            }
+
+        }
 
         if (animCaja)
         {
+            caja.GetComponent<NavMeshObstacle>().enabled = false;
             if (moverCajaIzq)
             {
                 if (caja.transform.parent.transform.position.x > puntomascercano.x)
                 {
 
-                    caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x - 0.1f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+                    caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x - 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+                    navMeshA.SetDestination(caja.transform.position);
                 }
                 else
                 {
+                    movimientosDeCajaPorNivel--;
+                    if (movimientosDeCajaPorNivel <= 0)
+                    {
+                        heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                    }
                     animCaja = false;
-                    heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                    caja.GetComponent<NavMeshObstacle>().enabled = true;
+                    navMeshA.ResetPath();
 
                 }
             }
@@ -192,12 +221,30 @@ public class movimiento : MonoBehaviour
                 }
                 else
                 {
+                    movimientosDeCajaPorNivel--;
+                    if (movimientosDeCajaPorNivel <= 0)
+                    {
+                        heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                    }
                     animCaja = false;
-                    heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                    caja.GetComponent<NavMeshObstacle>().enabled = true;
 
                 }
             }
             
+        }
+
+        if (moverCajaBoton) {
+            cajaBoton.transform.position = Vector3.MoveTowards(cajaBoton.transform.position,posicionCaja[1].transform.position,Time.deltaTime*5);
+            if (Vector3.Distance(cajaBoton.transform.position, posicionCaja[1].transform.position) < 0.001f) {
+                moverCajaBoton = false;
+                movimientosDeCajaPorNivel--;
+                if (movimientosDeCajaPorNivel <= 0)
+                {
+                    heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                }
+
+            }
         }
 
         }
@@ -299,6 +346,17 @@ public class movimiento : MonoBehaviour
         {
             //Primero miramos si hay algun obstaculo que no nos permita llevar la caja  a ese punto (JUGADOR POR EJEMPLO)
             yield return new WaitForSeconds(1);
+
+            if (posicionCaja[i].name.Equals("cajaBotonPosFinal")) {
+                caja.GetComponent<NavMeshObstacle>().enabled = true;
+                colocarmeParaEmpujarCajaBoton = true;
+                navMeshA.SetDestination(GameObject.Find("cajaBotonPosFinal").transform.position
+ + new Vector3(3.5f, 0, 0));
+                Debug.Log("Caja boton "+i);
+
+                break;
+            }
+
             cajaMovible.SetActive(true);
             cajaAgent.CalculatePath(puntoMallaObjetivo(posicionCaja[i]), path);
             Debug.Log(path.status);
@@ -351,7 +409,7 @@ public class movimiento : MonoBehaviour
                         colocarmeParaEmpujar = true;
                         StartCoroutine(mostrarAccion(empujar));
                     }
-
+                    break;
                 }
 
             }
@@ -406,7 +464,6 @@ public class movimiento : MonoBehaviour
                         }
 
                     }
-
 
                 }
                 if (boton.Length != 0&&objetivos[objetivoActual].tag.Equals("boton") && mirarBotones && boton[0].activeInHierarchy && objetivoActual <= 2) {

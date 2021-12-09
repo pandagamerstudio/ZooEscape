@@ -2988,6 +2988,7 @@ MonoBehaviour:
   jugador: {fileID: 526770106}
   cajaImaginaria: {fileID: 758477086}
   cajaMovible: {fileID: 1632550612}
+  cajaBoton: {fileID: 0}
   posicionesApilarse:
   - {fileID: 339279952}
   posicionCaja:
@@ -3007,6 +3008,7 @@ MonoBehaviour:
   algoMeCorta: {fileID: 679820738}
   empujar: {fileID: 573548692}
   resolutor: {fileID: 0}
+  movimientosDeCajaPorNivel: 0
 --- !u!54 &389152729
 Rigidbody:
   m_ObjectHideFlags: 0

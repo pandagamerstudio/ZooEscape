@@ -4427,7 +4427,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.36666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: a2284b0cdd2cb0e468a23eecad511e31, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 78d92393b8b5d8646adcc33c14b15814, type: 2}
 --- !u!114 &1055542299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4496,7 +4496,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 3fbb9ba2f66ca82469caa2b9434e6a46, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 409940c0082c68a4ab39c1f9f1a0b1b3, type: 2}
 --- !u!4 &1055542302
 Transform:
   m_ObjectHideFlags: 0
@@ -4545,7 +4545,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.030000001
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 640696c7992f13a44b8ccad99474f2a3, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: c4da93092c4a7da44bcde6a0b82857eb, type: 2}
 --- !u!1 &1076846537
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,6 +5243,7 @@ MonoBehaviour:
   - {fileID: 460056360}
   posicionesSpawnCaja:
   - {fileID: 443828324}
+  spawnNoNavAgent: {fileID: 0}
   objQueEscucho: 0000000002000000
   navJug1: {fileID: 861382422}
   navJug2: {fileID: 1805681815}
@@ -9578,6 +9579,7 @@ MonoBehaviour:
   jugador: {fileID: 695785489}
   cajaImaginaria: {fileID: 1360620988}
   cajaMovible: {fileID: 1435950908}
+  cajaBoton: {fileID: 0}
   posicionesApilarse:
   - {fileID: 253344195}
   posicionCaja:
@@ -9594,6 +9596,7 @@ MonoBehaviour:
   algoMeCorta: {fileID: 1390709048}
   empujar: {fileID: 599654802}
   resolutor: {fileID: 1349198240}
+  movimientosDeCajaPorNivel: 0
 --- !u!212 &2048652832
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -26,7 +26,7 @@ public class actualizarObjetivoAgente : MonoBehaviour
     {
 
 
-        if (collision.gameObject.tag.Equals("Player")&&unaVez)
+        if ((collision.gameObject.tag.Equals("Player")|| collision.CompareTag("Caja")) &&unaVez)
         {
           
             agente.GetComponent<movimiento>().actualizarObjetivo(this.gameObject);
