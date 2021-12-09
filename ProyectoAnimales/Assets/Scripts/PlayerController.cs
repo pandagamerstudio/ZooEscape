@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     public void Pause(InputAction.CallbackContext callback)
     {
-        if (!canvasPause.GetComponent<PauseScript>().panelOptions.active && !canvasPause.GetComponent<PauseScript>().panelControls.active)
+        if (!canvasPause.GetComponent<PauseScript>().panelOptions.activeSelf && !canvasPause.GetComponent<PauseScript>().panelControls.activeSelf)
             OnPause();
     }
 
@@ -602,7 +602,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     }
 
     public void changeScale(float f){
-        transform.localScale = new Vector3(f,f,f);
+        //transform.localScale = new Vector3(f,f,f);
+        if (f == 1f && scale == 2)
+            transform.localScale *= 0.5f;
+        else if (f == 2f && scale == 1)
+            transform.localScale *= f;
         scale = (int)f;
     }
 

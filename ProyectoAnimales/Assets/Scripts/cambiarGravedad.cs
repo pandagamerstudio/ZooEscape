@@ -23,28 +23,28 @@ public class cambiarGravedad : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.gameObject.tag.Equals("Player")||!collision.gameObject.GetComponent<PhotonView>().IsMine) return;
-        collision.GetComponent<Rigidbody2D>().gravityScale = 0;
+        if (!collision.gameObject.tag.Equals("Gravedad")||!collision.gameObject.GetComponentInParent<PhotonView>().IsMine) return;
+        collision.GetComponentInParent<Rigidbody2D>().gravityScale = 0;
          tiempo=Time.time;
         switch (tipo) {
 
             case Tipo.izquierda:                
-                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
-                collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.izquierda;
-                collision.gameObject.GetComponent<PlayerController>().Flip();
-                StartCoroutine(activarControles(collision));
+                collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
+                collision.gameObject.GetComponentInParent<PlayerController>().g = PlayerController.gra.izquierda;
+                collision.gameObject.GetComponentInParent<PlayerController>().Flip();
+                StartCoroutine(activarControles(collision.transform.parent.gameObject));
                 break;
             case Tipo.derecha:
-                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(29.43f, 0), ForceMode2D.Impulse);
-                collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.derecha;
-                collision.gameObject.GetComponent<PlayerController>().Flip();
-                StartCoroutine(activarControles(collision));
+                collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(29.43f, 0), ForceMode2D.Impulse);
+                collision.gameObject.GetComponentInParent<PlayerController>().g = PlayerController.gra.derecha;
+                collision.gameObject.GetComponentInParent<PlayerController>().Flip();
+                StartCoroutine(activarControles(collision.transform.parent.gameObject));
                 break;
             case Tipo.arriba:
-                collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 29.43f), ForceMode2D.Impulse);
-                collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.arriba;
-                collision.gameObject.GetComponent<PlayerController>().Flip();
-                StartCoroutine(activarControles(collision));
+                collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(0, 29.43f), ForceMode2D.Impulse);
+                collision.gameObject.GetComponentInParent<PlayerController>().g = PlayerController.gra.arriba;
+                collision.gameObject.GetComponentInParent<PlayerController>().Flip();
+                StartCoroutine(activarControles(collision.transform.parent.gameObject));
                 break;
         }
             
@@ -53,20 +53,20 @@ public class cambiarGravedad : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!collision.gameObject.tag.Equals("Player") || !collision.gameObject.GetComponent<PhotonView>().IsMine) return;
+        if (!collision.gameObject.tag.Equals("Gravedad") || !collision.gameObject.GetComponentInParent<PhotonView>().IsMine) return;
 
         if (Time.time - tiempoAplicarFuerza >= tiempo) {
             tiempo = Time.time;
             switch (tipo)
             {
                 case Tipo.izquierda:
-                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
+                    collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(-29.43f, 0), ForceMode2D.Impulse);
                     break;
                 case Tipo.derecha:
-                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(29.43f, 0), ForceMode2D.Impulse);
+                    collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(29.43f, 0), ForceMode2D.Impulse);
                     break;
                 case Tipo.arriba:
-                    collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 29.43f), ForceMode2D.Impulse);
+                    collision.GetComponentInParent<Rigidbody2D>().AddForce(new Vector2(0, 29.43f), ForceMode2D.Impulse);
                     break;
             }
         }
@@ -77,16 +77,16 @@ public class cambiarGravedad : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (!collision.gameObject.tag.Equals("Player") || !collision.gameObject.GetComponent<PhotonView>().IsMine) return;
-        if (collision.GetComponent<PlayerController>().g.ToString() != tipo.ToString()) return;
-        collision.GetComponent<Rigidbody2D>().gravityScale = 1;
-        collision.gameObject.GetComponent<PlayerController>().g = PlayerController.gra.normal;
-        collision.gameObject.GetComponent<PlayerController>().Flip();
+        if (!collision.gameObject.tag.Equals("Gravedad") || !collision.gameObject.GetComponentInParent<PhotonView>().IsMine) return;
+        if (collision.GetComponentInParent<PlayerController>().g.ToString() != tipo.ToString()) return;
+        collision.GetComponentInParent<Rigidbody2D>().gravityScale = 1;
+        collision.gameObject.GetComponentInParent<PlayerController>().g = PlayerController.gra.normal;
+        collision.gameObject.GetComponentInParent<PlayerController>().Flip();
     }
 
-    IEnumerator activarControles(Collider2D collision) {
-        collision.GetComponent<PlayerInput>().enabled = false;
+    IEnumerator activarControles(GameObject collision) {
+        collision.GetComponentInParent<PlayerInput>().enabled = false;
         yield return new WaitForSeconds(1.0f);
-        collision.GetComponent<PlayerInput>().enabled = true;
+        collision.GetComponentInParent<PlayerInput>().enabled = true;
     }
 }

@@ -36,6 +36,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     void Start(){
 
         if (PhotonNetwork.NickName != "") playerNameInput.text = PhotonNetwork.NickName;
+
+        if (PlayerPrefs.GetInt("livesRemaining") == 0) PlayerPrefs.SetInt("livesRemaining", 4);
         
         if (PlayerPrefs.HasKey("LevelMenu")){
             if (PlayerPrefs.GetInt("LevelMenu") == 1){
