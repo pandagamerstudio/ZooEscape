@@ -32,7 +32,7 @@ public class movimiento : MonoBehaviour
     public GameObject llave;
     public GameObject caja;
     public GameObject jugador;
-    public GameObject cajaImaginaria;//Esto se convertira en un array que correspondera con la posicionCaja
+    public GameObject[] cajaImaginaria;//Esto se convertira en un array que correspondera con la posicionCaja
     public GameObject cajaMovible;
     public GameObject cajaBoton;
     public GameObject []posicionesApilarse;
@@ -60,6 +60,7 @@ public class movimiento : MonoBehaviour
 
     public GameObject resolutor;
 
+    int cajasporVer = 0;
 
     public int movimientosDeCajaPorNivel;
     
@@ -204,9 +205,11 @@ public class movimiento : MonoBehaviour
                 else
                 {
                     movimientosDeCajaPorNivel--;
+                    cajaMovible.transform.position = caja.transform.position;
                     if (movimientosDeCajaPorNivel <= 0)
                     {
                         heTerminadoCajas = true;//Ya no hay que hacer más en el puzzle con cajas
+                        
                     }
                     animCaja = false;
                     caja.GetComponent<NavMeshObstacle>().enabled = true;
@@ -218,6 +221,7 @@ public class movimiento : MonoBehaviour
                 if (caja.transform.parent.transform.position.x < puntomascercano.x)
                 {
                     caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x + 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+                    navMeshA.SetDestination(caja.transform.position);
                 }
                 else
                 {
@@ -228,6 +232,8 @@ public class movimiento : MonoBehaviour
                     }
                     animCaja = false;
                     caja.GetComponent<NavMeshObstacle>().enabled = true;
+                    navMeshA.ResetPath();
+
 
                 }
             }
@@ -323,7 +329,7 @@ public class movimiento : MonoBehaviour
                 cajacolocada = true;
                 navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
                 //  puntomascercano = path.corners[path.corners.Length - 1];
-                puntomascercano = cajaImaginaria.transform.position;
+                puntomascercano = cajaImaginaria[0].transform.position;
                 colocarmeParaEmpujar = true;
                 StartCoroutine(mostrarAccion(empujar));
             }
@@ -333,7 +339,7 @@ public class movimiento : MonoBehaviour
                 moverCajaIzq = false;
                 cajacolocada = true;
                 navMeshA.SetDestination(caja.transform.parent.transform.position - new Vector3(3.5f, 0, 0));
-                puntomascercano = cajaImaginaria.transform.position;
+                puntomascercano = cajaImaginaria[0].transform.position;
                 colocarmeParaEmpujar = true;
                 StartCoroutine(mostrarAccion(empujar));
             }
@@ -342,7 +348,7 @@ public class movimiento : MonoBehaviour
     }
     IEnumerator movimientosCaja(NavMeshPath path, RaycastHit hit) {
 
-        for (int i = 0; i < posicionCaja.Length; i++)
+        for (int i = cajasporVer; i < posicionCaja.Length; i++)
         {
             //Primero miramos si hay algun obstaculo que no nos permita llevar la caja  a ese punto (JUGADOR POR EJEMPLO)
             yield return new WaitForSeconds(1);
@@ -374,38 +380,47 @@ public class movimiento : MonoBehaviour
                 caja.GetComponent<NavMeshObstacle>().enabled = true;
               //  cajaAgent.SetDestination(puntoMallaObjetivo(posicionCaja[i]));//ESTO SE PODRA BORRAR
                 //Activamos ese objeto imáginario para ver si es la solución
-                cajaImaginaria.SetActive(true);
+                cajaImaginaria[i].SetActive(true);
+                yield return new WaitForSeconds(0.05f);
+
                 navMeshA.CalculatePath(hit.point, path);
                 if (path.status == NavMeshPathStatus.PathPartial)
                 {
-                    cajaImaginaria.SetActive(false);
+                    cajaImaginaria[i].SetActive(false);
                     Debug.Log("Esta caja no es la solución ");
 
                 }
                 else
                 {
-                    cajaImaginaria.SetActive(false);
+                    cajaImaginaria[i].SetActive(false);
                     //Codigo de mover la caja falta hacer que determin
                     //e la dirección en la que lo debe mover
                     Debug.Log("Esta caja es la solución ");
+                    cajasporVer++;
                     if (objetivos[objetivoActual].transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
                     {
+                        Debug.Log("Mover Izq");
+
+                        Debug.Log(objetivos[objetivoActual].transform.position.x +" "+ caja.transform.parent.transform.position.x);
+
                         //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
                         moverCajaIzq = true;
                         cajacolocada = true;
                         navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
                         //  puntomascercano = path.corners[path.corners.Length - 1];
-                        puntomascercano = cajaImaginaria.transform.position;
+                        puntomascercano = cajaImaginaria[i].transform.position;
                         colocarmeParaEmpujar = true;
                         StartCoroutine(mostrarAccion(empujar));
                     }
                     else
                     {
                         Debug.Log("Mover Dcha");
+
+                        Debug.Log(objetivos[objetivoActual].transform.position.x +" "+ caja.transform.parent.transform.position.x);
                         moverCajaIzq = false;
                         cajacolocada = true;
                         navMeshA.SetDestination(caja.transform.parent.transform.position - new Vector3(3.5f, 0, 0));
-                        puntomascercano = cajaImaginaria.transform.position;
+                        puntomascercano = cajaImaginaria[i].transform.position;
                         colocarmeParaEmpujar = true;
                         StartCoroutine(mostrarAccion(empujar));
                     }
@@ -431,14 +446,14 @@ public class movimiento : MonoBehaviour
                 Debug.Log("No hay camino directo ");
 
                 //3. ¿HAY CAJA EN LA ESCENA? ¿PODEMOS HACER COSAS CON ELLA(FALTA ESTO)?
-                if (caja.activeInHierarchy && !heTerminadoCajas)
+                if (caja!=null&&caja.activeInHierarchy && !heTerminadoCajas)
                 {
                     caja.GetComponent<NavMeshObstacle>().enabled = false;
                     StartCoroutine(movimientosCaja(path, hit));
 
                 }
                 //4.¿HAY JUGADOR EN LA ESCENA? ¿MIRAMOS SI MOVIENDOLO A ALGUNA POSICION PUEDO LLEGAR SALTANDO SOBRE ÉL ?
-                else if (jugador.activeInHierarchy)
+                else if (jugador!=null&&jugador.activeInHierarchy)
                 {
                     for (int i = 0; i < posicionesApilarse.Length; i++)
                     {
