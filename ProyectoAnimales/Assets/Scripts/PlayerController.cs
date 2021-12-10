@@ -535,7 +535,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         //No quirto que los objetos copia de los otro jugadores lo ejecuten
         if (!photonView.IsMine)
             return;
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil") && !collision.gameObject.tag.Equals("Caja")) {
             return;
         }
 
@@ -556,7 +556,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         if (!photonView.IsMine)
             return;
 
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil") && !collision.gameObject.tag.Equals("Caja")) {
             return;
         }
 
@@ -581,7 +581,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         }
         if (!photonView.IsMine)
             return;
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil") && !collision.gameObject.tag.Equals("Caja")) {
             return;
         }
  

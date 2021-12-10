@@ -297,7 +297,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer){
-        UpdateLobbyUI();
+
+        //UpdateLobbyUI();
         //GameManager.instance.LeavePlayer();
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
         PhotonNetwork.LeaveRoom();
@@ -380,6 +381,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
             buttonComp.onClick.RemoveAllListeners();
             buttonComp.onClick.AddListener(() => { OnJoinRoomButton(roomNameComp); });
+
+            if (roomList[i].MaxPlayers == 0) button.SetActive(false);
         }
     }
 
@@ -408,6 +411,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public void SelectorPersonajes(int i){
         if(PhotonNetwork.PlayerList.Length != 2) i = 0;
+
+        if (PhotonNetwork.PlayerList.Length == 1) carteles[1].transform.position = cartelesPos[3].transform.position;
 
         if (PhotonNetwork.IsMasterClient){
             if (carteles[1].transform.position == cartelesPos[i].transform.position)
