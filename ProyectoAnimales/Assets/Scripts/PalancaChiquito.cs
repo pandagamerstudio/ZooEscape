@@ -86,7 +86,7 @@ public class PalancaChiquito : MonoBehaviourPun
     }
 
     IEnumerator changeActivada(bool b){
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         activada = b;
         dentro = true;
         collider.enabled = true;

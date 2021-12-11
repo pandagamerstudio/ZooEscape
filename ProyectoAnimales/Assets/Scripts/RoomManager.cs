@@ -11,7 +11,8 @@ public class RoomManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
         GameManager.instance.LeavePlayer();
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.LoadLevel("Desconexion");
+        //PhotonNetwork.LeaveRoom();
         //PhotonNetwork.LoadLevel("Menu");
     }
 

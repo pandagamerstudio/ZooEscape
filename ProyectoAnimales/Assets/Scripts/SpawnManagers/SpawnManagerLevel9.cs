@@ -18,12 +18,10 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
     public GameObject sueloBox;
 
 
-    public Transform[] cajasPequenaSpwan;
+    public Transform cajasPequenaSpwan;
     public GameObject cajasPeque;
 
-    public Transform[] cajasGrandeSpwan;
-    public GameObject cajasGrande;
-     GameObject ultimacaja;
+    GameObject ultimacaja;
     bool unavez = true;
 
     public Sprite cajaJug1;
@@ -62,25 +60,10 @@ public class SpawnManagerLevel9 : SpawnManagerLevel1
             photonView.RPC("setCaja2", RpcTarget.All, ultimacaja.GetComponent<PhotonView>().ViewID);
         }
 
-        for (int i = 0; i < cajasPequenaSpwan.Length; i++) {
-          GameObject caja=  PhotonNetwork.Instantiate(cajasPeque.name, cajasPequenaSpwan[i].position, Quaternion.identity);
-            //Destroy(caja.)
-           
 
-            photonView.RPC("cajasJugadores", RpcTarget.All, caja.GetComponent<PhotonView>().ViewID);
+        GameObject caja = PhotonNetwork.Instantiate(cajasPeque.name, cajasPequenaSpwan.position, Quaternion.identity);
 
-
-        }
-
-        for (int i = 0; i < cajasGrandeSpwan.Length; i++)
-        {
-            GameObject caja = PhotonNetwork.Instantiate(cajasGrande.name, cajasGrandeSpwan[i].position, cajasGrandeSpwan[i].rotation);
-           
-
-            photonView.RPC("cajasJugadores2", RpcTarget.All, caja.GetComponent<PhotonView>().ViewID);
-
-
-        }
+        photonView.RPC("cajasJugadores", RpcTarget.All, caja.GetComponent<PhotonView>().ViewID);
 
         Scene scene = SceneManager.GetActiveScene();
         PlayerPrefs.SetString("pasoEscena", scene.name);
