@@ -63,6 +63,7 @@
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\SocketWebTcp.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\WebGLInput.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\WrappedInputField.cs" />
+    <Compile Include="Assets\cambioSentido.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\AppSettingsExtensions.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
     <Compile Include="Assets\Scripts\NetworkManager.cs" />
+    <Compile Include="Assets\controladorBotones.cs" />
     <Compile Include="Assets\Scripts\BotonScript.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel8.cs" />
     <Compile Include="Assets\Scripts\Parallax\ParallaxFondo.cs" />
@@ -87,6 +89,7 @@
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel4.cs" />
     <Compile Include="Assets\Scripts\PlatMovManager.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\EventSystemSpawner.cs" />
+    <Compile Include="Assets\Scripts\cambiarGravedad3d.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\WrappedTMPInputField.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel3.cs" />
     <Compile Include="Assets\Scripts\cambiarGravedad.cs" />
@@ -157,7 +160,6 @@
     <Compile Include="Assets\ForJump\ForJump\AgentJumpToTarget.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\controladorBotones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

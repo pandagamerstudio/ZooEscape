@@ -9,6 +9,8 @@ public class resolutor : MonoBehaviour
     public GameObject jug1;
     public GameObject jug2;
     public GameObject jugNoNav;
+    public GameObject jugNoNav2;
+
     public GameObject cajaAnim;
     public GameObject[] posicionesSpawnJug1;
     public GameObject[] posicionesSpawnJug2;
@@ -43,7 +45,11 @@ public class resolutor : MonoBehaviour
     public int coolDownsCompletados = 0;
     int coolDownsNecesarios = 0;
 
-
+    //Los tengo harcodeados
+    public GameObject[] spawnsNoNavAgent1;
+    //Los tengo en el editor
+    public GameObject[] spawnsNoNavAgent2;
+    public GameObject[] puntosObjetivoNoNavAgent2;
     public void evento(int objetivoAct) { 
         
 
@@ -56,6 +62,10 @@ public class resolutor : MonoBehaviour
         jug1.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
         jug2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
         jugNoNav.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
+       
+        if (jugNoNav2!=null)
+        jugNoNav2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
+
         cajaAnim.GetComponent<MeshRenderer>().material.color = new Color(1f, 1f, 1f, 0f);
         rotJug1 = jug1.transform.rotation;
         rotJug2 = jug2.transform.rotation;
@@ -78,8 +88,13 @@ public class resolutor : MonoBehaviour
         jug2.transform.rotation= rotJug2;
 
         if (moverCaja) {
-            cajaAnim.transform.position = Vector3.MoveTowards(cajaAnim.transform.position, accionesCaja[objActual].transform.position, Time.deltaTime * 2);
-            jugNoNav.transform.position = Vector3.MoveTowards(jugNoNav.transform.position, cajaAnim.transform.position, Time.deltaTime * 2);
+            cajaAnim.transform.position = Vector3.MoveTowards(cajaAnim.transform.position, accionesCaja[objActual].transform.position, Time.deltaTime * 5);
+            jugNoNav.transform.position = Vector3.MoveTowards(jugNoNav.transform.position, cajaAnim.transform.position, Time.deltaTime * 5);
+             if (jugNoNav2!=null&&jugNoNav2.active == true) {
+            jugNoNav2.transform.position= Vector3.MoveTowards(jugNoNav2.transform.position, puntosObjetivoNoNavAgent2[objActual].transform.position, Time.deltaTime * 5);
+          
+               
+            }
             if (Vector3.Distance(cajaAnim.transform.position, accionesCaja[objActual].transform.position) < 0.001f){
                 moverCaja = false;
             }
@@ -170,15 +185,35 @@ public class resolutor : MonoBehaviour
 
 
         }//Boton
-        else if (objActPuzle[objActual].layer == 17) {
+        else if (objActPuzle[objActual].layer == 17)
+        {
             //Poner su spawn point
             jug1.SetActive(false);
             jug2.SetActive(false);
             jugNoNav.SetActive(true);
             jugNoNav.transform.position = spawnNoNavAgent.transform.position;
-            moverNoNavAPunto =true;
+            moverNoNavAPunto = true;
         }
-        else {
+        //MOver caja + movimiento del otro
+        else if (objActPuzle[objActual].layer == 19)
+        {
+            jug1.SetActive(false);
+            jug2.SetActive(false);
+
+            jugNoNav.SetActive(true);
+            jugNoNav2.SetActive(true);
+            cajaAnim.SetActive(true);
+
+            moverCaja = true;
+
+
+            //    jugNoNav.transform.position = new Vector3(cajaAnim.transform.position.x + cajaAnim.transform.localScale.x - 1 / 2, jugNoNav.transform.position.y, jugNoNav.transform.position.z);
+            jugNoNav.transform.position = spawnsNoNavAgent1[objActual].transform.position;
+            jugNoNav2.transform.position = spawnsNoNavAgent2[objActual].transform.position;
+            cajaAnim.transform.position = posicionesSpawnCaja[objActual].transform.position;
+        }
+        else
+        {
             //Apilarse
             NavMeshPath path = new NavMeshPath();
             Vector3 puntoMalla = puntoMallaObjetivo(accionesJug1[objActual]);
@@ -209,7 +244,7 @@ public class resolutor : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        Debug.Log(posicionesSpawnJug1[objActual].transform.position);
+        //Debug.Log(posicionesSpawnJug1[objActual].transform.position);
         // navJug1.Warp(posicionesSpawnJug1[objActual].transform.position);
 
         //  navJug2.isStopped = true;
@@ -237,6 +272,9 @@ public class resolutor : MonoBehaviour
         //jug2.SetActive(false);
 
         jugNoNav.SetActive(false);
+        if (jugNoNav2 != null) {
+            jugNoNav2.SetActive(false);
+        }
         cajaAnim.SetActive(false);
 
     }

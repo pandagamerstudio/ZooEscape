@@ -26,8 +26,11 @@ public class controladorBotones : MonoBehaviour
         if (activados == 2)
         {
             Debug.Log("Paredes quitadas");
-            paredes[0].SetActive(false);
-            paredes[1].SetActive(false);
+            for (int i = 0; i < paredes.Length; i++) {
+                paredes[i].SetActive(false);
+               
+            }
+            
 
         }
         }
@@ -37,10 +40,21 @@ public class controladorBotones : MonoBehaviour
 
         if (activados == 2) {
 
-            paredes[0].SetActive(false);
-            paredes[1].SetActive(false);
-            paredesBotonVerde[0].SetActive(true);
-            paredesBotonVerde[1].SetActive(true);
+            if (paredes.Length != 0) {
+                for (int i = 0; i < paredes.Length; i++) {
+                    paredes[i].SetActive(false);
+                  
+                }
+               
+            }
+            if (paredesBotonVerde.Length != 0) {
+                for (int i = 0; i < paredesBotonVerde.Length; i++)
+                {
+                    paredesBotonVerde[i].SetActive(true);
+                }
+            }
+            
+          
 
 
         }
@@ -50,10 +64,21 @@ public class controladorBotones : MonoBehaviour
         if (activados>0)
             activados--;
         if (activados < 2) {
-            paredes[0].SetActive(true);
-            paredes[1].SetActive(true);
-            paredesBotonVerde[0].SetActive(false);
-            paredesBotonVerde[1].SetActive(false);
+            if (paredes.Length != 0)
+            {
+                for (int i = 0; i < paredes.Length; i++)
+                {
+                    paredes[i].SetActive(true);
+
+                }
+            }
+            if (paredesBotonVerde.Length != 0)
+            {
+                for (int i = 0; i < paredesBotonVerde.Length; i++)
+                {
+                    paredesBotonVerde[i].SetActive(false);
+                }
+            }
         }
        
 

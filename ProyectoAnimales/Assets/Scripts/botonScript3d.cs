@@ -5,7 +5,7 @@ using UnityEngine;
 public class botonScript3d : MonoBehaviour
 {
     public GameObject[] paredes;
-    bool activada = false;
+  public  bool activada = false;
     float pulsar;
     public Animator animator;
     public GameObject suelo;
@@ -13,7 +13,7 @@ public class botonScript3d : MonoBehaviour
 
 
 
-    int cols = 0;
+  public  int cols = 0;
 
 
     public GameObject controladorBotones;
@@ -35,16 +35,16 @@ public class botonScript3d : MonoBehaviour
                 if (collision.CompareTag("cajaEspecial"))
                 {
                     Debug.Log("colision caja especial");
-                    paredes[0].SetActive(true);
-                    paredes[1].SetActive(true);
+                   
+                    for (int i = 0;i< paredes.Length; i++) {
+                        paredes[i].SetActive(true);
+                    }
                     controladorBotones.GetComponent<controladorBotones>().sumEspecial();
                    StartCoroutine(cajaEspecial());
                 }
                 else {
                     cols++;
                     if (!activada) { 
-                   
-
                         controladorBotones.GetComponent<controladorBotones>().sumar();
                         activada = true;
                         animator.SetBool("Activada", true);
@@ -110,8 +110,10 @@ public class botonScript3d : MonoBehaviour
 
     IEnumerator cajaEspecial() {
         yield return new WaitForSeconds(0.5f);
-        paredes[0].SetActive(false);
-                paredes[1].SetActive(false);
+        for (int i = 0; i < paredes.Length; i++)
+        {
+            paredes[i].SetActive(false);
+        }
         controladorBotones.GetComponent<controladorBotones>().restar();
     }
     IEnumerator cajaEspecial2()

@@ -1894,9 +1894,9 @@ GameObject:
   - component: {fileID: 634332306}
   - component: {fileID: 634332305}
   - component: {fileID: 634332304}
-  - component: {fileID: 634332303}
   - component: {fileID: 634332302}
   - component: {fileID: 634332308}
+  - component: {fileID: 634332303}
   m_Layer: 0
   m_Name: caja
   m_TagString: Untagged
@@ -3840,9 +3840,9 @@ GameObject:
   - component: {fileID: 752388809}
   - component: {fileID: 752388808}
   - component: {fileID: 752388807}
-  - component: {fileID: 752388806}
   - component: {fileID: 752388805}
   - component: {fileID: 752388804}
+  - component: {fileID: 752388806}
   m_Layer: 6
   m_Name: CAJA
   m_TagString: Untagged
@@ -4754,9 +4754,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d110a5225d1a0469d5086c9380a728, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paredes: []
+  activada: 0
   animator: {fileID: 0}
   suelo: {fileID: 55944766}
   idObjetivo: 0
+  cols: 0
+  controladorBotones: {fileID: 0}
 --- !u!95 &919383266
 Animator:
   serializedVersion: 3
@@ -5201,7 +5205,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 54e4037e4000aad4ebf279e17ec4354b, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 591366ecf001f1b4d970c34034990e66, type: 2}
 --- !u!4 &995106778
 Transform:
   m_ObjectHideFlags: 0
@@ -5911,7 +5915,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1215396616}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: bc4c55cb564d5ab409f5fe5932881196, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -6265,7 +6269,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 72
   m_CollisionDetection: 0
 --- !u!65 &1298354851
 BoxCollider:
@@ -6308,8 +6312,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 1298354853}
+        m_TargetAssemblyTypeName: playerController3d, Assembly-CSharp
         m_MethodName: Movimiento
         m_Mode: 0
         m_Arguments:
@@ -6324,8 +6328,8 @@ MonoBehaviour:
     m_ActionName: Player/Movimiento[/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 1298354853}
+        m_TargetAssemblyTypeName: playerController3d, Assembly-CSharp
         m_MethodName: salto
         m_Mode: 0
         m_Arguments:
@@ -6422,6 +6426,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 31268e7e-f267-46d5-8a9e-b4faf6018225
     m_ActionName: Player/clickDcho[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 17919982-b937-4ac7-b8bc-6dfab7c5abd8
+    m_ActionName: Player/pista[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -6439,11 +6447,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b11d1e4050bd84b8f5532f8cba94dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  runSpeed: 2
-  jumpSpeed: 2.5
+  runSpeed: 6
+  jumpSpeed: 8
   sr: {fileID: 0}
   anim: {fileID: 0}
   scale: 0
+  g: 0
 --- !u!95 &1298354854
 Animator:
   serializedVersion: 3
@@ -7092,6 +7101,7 @@ MonoBehaviour:
   agent: {fileID: 0}
   cajaAgent: {fileID: 778513453}
   movePos: {x: 0, y: 0, z: 0}
+  inicio: {x: 0, y: 0, z: 0, w: 0}
   objetivos:
   - {fileID: 919383263}
   - {fileID: 1363510868}
@@ -7100,8 +7110,10 @@ MonoBehaviour:
   llave: {fileID: 2121143631}
   caja: {fileID: 752388802}
   jugador: {fileID: 1298354849}
-  cajaImaginaria: {fileID: 1626971559}
+  cajaImaginaria:
+  - {fileID: 0}
   cajaMovible: {fileID: 778513452}
+  cajaBoton: {fileID: 0}
   posicionesApilarse: []
   posicionCaja:
   - {fileID: 184294019}
@@ -7118,6 +7130,9 @@ MonoBehaviour:
   apilar: {fileID: 1875782392}
   algoMeCorta: {fileID: 1100804420}
   empujar: {fileID: 324481662}
+  resolutor: {fileID: 0}
+  movimientosDeCajaPorNivel: 0
+  desviaciones: 
 --- !u!65 &1394301209
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7645,7 +7660,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: ca5250d286d23464c883fd4df5cc8bcf, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 65092d2f0eb8b8a47befe7107fefe001, type: 2}
 --- !u!4 &1626971561
 Transform:
   m_ObjectHideFlags: 0

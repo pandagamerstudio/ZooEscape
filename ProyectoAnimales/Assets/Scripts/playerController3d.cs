@@ -18,6 +18,15 @@ public class playerController3d : MonoBehaviour
 
     //Efectos sonido
     AudioVolume sonido;
+
+    public enum gra
+    {
+        normal,
+        izquierda,
+        derecha,
+        arriba
+    }
+    public gra g;
     private void Awake()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -51,7 +60,24 @@ public class playerController3d : MonoBehaviour
     }
     public void checkGravedad()
     {
-        rb.velocity = new Vector3(runSpeed * ad.x, rb.velocity.y, rb.velocity.z);
+        switch (g)
+        {
+            case gra.normal:
+                rb.velocity = new Vector3(runSpeed * ad.x, rb.velocity.y, rb.velocity.z);
+                break;
+            case gra.izquierda:
+                rb.velocity = new Vector3(rb.velocity.x, -runSpeed * ad.x, rb.velocity.z);
+               
+                break;
+            case gra.derecha:
+                rb.velocity = new Vector3(rb.velocity.x,runSpeed*ad.x, rb.velocity.z);
+                break;
+            case gra.arriba:
+                rb.velocity = new Vector3(-runSpeed * ad.x, rb.velocity.y, rb.velocity.z);
+                break;
+
+        }
+      //  rb.velocity = new Vector3(runSpeed * ad.x, rb.velocity.y, rb.velocity.z);
     }
         public void Movimiento(InputAction.CallbackContext callback)
     {
@@ -72,9 +98,58 @@ public class playerController3d : MonoBehaviour
 
     public void Flip()
     {
+        switch (g)
+        {
+            case gra.normal:
+                transform.eulerAngles = Vector3.zero;
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+                }
+                break;
+            case gra.izquierda:
+                transform.eulerAngles = new Vector3(0, 0, -90f);
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+                }
+                break;
+            case gra.derecha:
+                transform.eulerAngles = new Vector3(0, 0, 90f);
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+                }
+                break;
+            case gra.arriba:
+                transform.eulerAngles = new Vector3(0, 0, 180f);
+                if (ad.x > 0)
+                {
+                    transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
+                }
+                else if (ad.x < 0)
+                {
+                    transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
+                }
+                break;
+        }
 
 
-        transform.eulerAngles = Vector3.zero;
+
+
+      /*  transform.eulerAngles = Vector3.zero;
         if (ad.x > 0)
         {
             transform.localScale = new Vector3(1f, 1f, 1f) * (scale);
@@ -82,7 +157,7 @@ public class playerController3d : MonoBehaviour
         else if (ad.x < 0)
         {
             transform.localScale = new Vector3(-1f, 1f, 1f) * scale;
-        }
+        }*/
 
 
     }
@@ -96,10 +171,22 @@ public class playerController3d : MonoBehaviour
         Vector3 velocidadDoble = Vector3.zero;
         Vector3 velocidadSuper = Vector3.zero;
 
-        velocidad = new Vector3(rb.velocity.x, jumpSpeed * jumpM);
-        velocidadSuper = new Vector3(rb.velocity.x, Physics2D.gravity.y);
-
-        rb.velocity = velocidad;
+        switch (g)
+        {
+            case gra.normal:
+                velocidad = new Vector3(rb.velocity.x, jumpSpeed * jumpM,rb.velocity.z);
+                break;
+            case gra.izquierda:
+                velocidad = new Vector3(jumpSpeed * jumpM, rb.velocity.y, rb.velocity.z);
+                break;
+            case gra.derecha:
+                velocidad = new Vector3(-jumpSpeed * jumpM, rb.velocity.y, rb.velocity.z);
+                break;
+            case gra.arriba:
+                velocidad = new Vector3(rb.velocity.x, -jumpSpeed * jumpM, rb.velocity.z);
+                break;
+        }
+                rb.velocity = velocidad;
     }
 
     public void OnSaltarButton()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 public class movimiento : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -13,7 +13,7 @@ public class movimiento : MonoBehaviour
    public  NavMeshAgent cajaAgent;
     // Update is called once per frame
     public Vector3 movePos;
-    Quaternion inicio;
+    public Quaternion inicio;
 
     public GameObject[] objetivos;
     public int objetivoActual;
@@ -63,19 +63,67 @@ public class movimiento : MonoBehaviour
     int cajasporVer = 0;
 
     public int movimientosDeCajaPorNivel;
+
+    public int []desviaciones;
+    int desviacion =0;
     
 
+    enum orientacion{
+    normal,
+    izq,
+    arriba,
+    dcha
+    }
+    int orientacionAct=0;
+    orientacion sentido=orientacion.normal;
 
+    public void cambiarOrientacion(int i) {
 
+        StartCoroutine(cambiarOr(i));
+    }
+    IEnumerator cambiarOr(int i) {
+        yield return new WaitForSeconds(0.1f);
+        if (i == orientacionAct)
+        {
+            orientacionAct = 0;
+            sentido = orientacion.normal;
+            inicio = new Quaternion(0, 0, 0, 1);
+            desviacion = 0;
+        }
+        else if (i == 1)
+        {
+            sentido = orientacion.izq;
+            inicio = new Quaternion(100, 100, 0, 1);
+            desviacion = desviaciones[i];
+            orientacionAct = 1;
+        }
+        else if (i == 2)
+        {
+            sentido = orientacion.arriba;
+            inicio = new Quaternion(50, 0, 0, 1);
+            desviacion = 0;
+            orientacionAct = 2;
 
+        }
+        else if (i == 3)
+        {
+            orientacionAct = 3;
 
+            sentido = orientacion.dcha;
+            inicio = new Quaternion(0, 0, 1, 1);
+            desviacion = 0;
+
+        }
+    }
     private void Awake()
     {
         navMeshA = GetComponent<NavMeshAgent>();
         
         inicio = transform.rotation;
         click = false;
+        if(cajaMovible!=null)
         rotInicialcaja = cajaMovible.transform.rotation;
+
         colocarmeParaEmpujar = false;
         animCaja = false;
         cajacolocada = false;
@@ -146,16 +194,19 @@ public class movimiento : MonoBehaviour
         void Update()
     {
         transform.rotation= inicio;
+        if(cajaMovible!=null)
         cajaMovible.transform.rotation = rotInicialcaja;
     
 
 
         if (!navMeshA.pathPending&& click)
         {
-            if (navMeshA.remainingDistance <= navMeshA.stoppingDistance)
+            
+            if (navMeshA.remainingDistance - desviacion <= navMeshA.stoppingDistance)
             {
                 if (!navMeshA.hasPath || navMeshA.velocity.sqrMagnitude == 0f)
                 {
+                    Debug.Log("click hecho");
                     click = false;
                     mejorAccion();
 
@@ -164,10 +215,17 @@ public class movimiento : MonoBehaviour
         }
         if (!navMeshA.pathPending && colocarmeParaEmpujar)
         {
+         //   Debug.Log(navMeshA.remainingDistance + " " + navMeshA.stoppingDistance);
+
             if (navMeshA.remainingDistance <= navMeshA.stoppingDistance)
             {
+         //       Debug.Log(navMeshA.remainingDistance + " ,"+ navMeshA.stoppingDistance);
+         //       Debug.Log("2");
+
                 if (!navMeshA.hasPath || navMeshA.velocity.sqrMagnitude == 0f)
                 {
+        //            Debug.Log("3");
+
                     colocarmeParaEmpujar = false;
                     animCaja = true;
 
@@ -221,6 +279,7 @@ public class movimiento : MonoBehaviour
                 if (caja.transform.parent.transform.position.x < puntomascercano.x)
                 {
                     caja.transform.parent.transform.position = new Vector3(caja.transform.parent.transform.position.x + 0.01f, caja.transform.parent.transform.position.y, caja.transform.parent.transform.position.z);
+                    Debug.Log("pollalala");
                     navMeshA.SetDestination(caja.transform.position);
                 }
                 else
@@ -262,10 +321,18 @@ public class movimiento : MonoBehaviour
             RaycastHit hit;
         if (Physics.Raycast(ray, out hit)&& callback.phase==InputActionPhase.Started)
         {
+            if (sentido == orientacion.izq)
+            {
+                gameObject.transform.position = gameObject.transform.position + new Vector3(0, 0, 0.1f);
+            }
+            navMeshA.SetDestination(hit.point);
+
             click = true;
             // MOVE OUR AGENT
+            Debug.Log(hit.point);
             movePos = hit.point;
-            navMeshA.SetDestination(hit.point);
+            
+            
             
 
         }
@@ -321,6 +388,7 @@ public class movimiento : MonoBehaviour
 
         }
         else {
+            cajaMovible.SetActive(false);
             caja.GetComponent<NavMeshObstacle>().enabled = true;
             if (objetivos[objetivoActual].transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
             {
@@ -406,7 +474,17 @@ public class movimiento : MonoBehaviour
                         //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
                         moverCajaIzq = true;
                         cajacolocada = true;
-                        navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
+                        Debug.Log(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
+
+                        if (SceneManager.GetActiveScene().name.Equals("comportamientosNivel3"))
+                        {
+                            navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(3.0f, 0, 0));
+                        }
+                        else {
+                            navMeshA.SetDestination(caja.transform.parent.transform.position + new Vector3(2, 0, 0));
+
+                        }
+
                         //  puntomascercano = path.corners[path.corners.Length - 1];
                         puntomascercano = cajaImaginaria[i].transform.position;
                         colocarmeParaEmpujar = true;

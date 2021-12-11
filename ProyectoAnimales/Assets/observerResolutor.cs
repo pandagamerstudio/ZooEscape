@@ -24,6 +24,7 @@ public class observerResolutor : MonoBehaviour
         if (collision.gameObject.tag.Equals("resolutor")) {
             Debug.Log(gameObject.name);
             suscriptores[0].GetComponent<resolutor>().pruebaCompletada();
+            
         }
     }
 
