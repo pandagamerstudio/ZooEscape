@@ -80,9 +80,11 @@
      <Compile Include="Assets\Scripts\Enemy\IgnoreCollision.cs" />
      <Compile Include="Assets\Scripts\BoxScript.cs" />
      <Compile Include="Assets\Scripts\moverizqlvl9.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\MonoScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\IdleState.cs" />
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\PlayerControllerIA.cs" />
      <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
      <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
@@ -121,7 +123,10 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel1.cs" />
      <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
-     <Compile Include="Assets\Scripts\MonoScript.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\BoxScriptIA.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\KeyCollectIA.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\checkColisionBoxIA.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\BotonScriptIA.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

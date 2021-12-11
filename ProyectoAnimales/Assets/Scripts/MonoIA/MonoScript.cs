@@ -14,16 +14,19 @@ public class MonoScript : MonoBehaviour
     public GameObject target;
 
     public GameObject llave;
+    public Quaternion rotacionInicial;
     
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         target = GameObject.Find("OsoPardo");
+        //rotacionInicial = gameObject.transform.rotation;
     }
 
     void Update(){
         comportamientoMono();
+        //gameObject.transform.rotation = rotacionInicial;
     }
 
     // Update is called once per frame
@@ -67,7 +70,7 @@ public class MonoScript : MonoBehaviour
             transform.Translate(transform.forward * NPCSpeed);
         }
 
-        if (llave == null){
+        if (GameObject.Find("Llave") == null){
             Debug.Log("Pulsar boton");
         }
     }
