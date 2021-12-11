@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 100
-  m_Sprite: {fileID: -5247805891164658483, guid: cb6e7fb87029ea14bbb566e21cc47904,
+  m_Sprite: {fileID: 8213797361591612249, guid: e128f42c4f77393469476e86e476e713,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -107,7 +107,7 @@ Animator:
   m_GameObject: {fileID: 2044231414510557450}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0accb6abace2d844e8e30194f89bf022, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5ddeaba830a22f1419914c40d96eab17, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -499,7 +499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8887853907757300620}
   - component: {fileID: 4997658161710723418}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grav
   m_TagString: Gravedad
   m_Icon: {fileID: 0}

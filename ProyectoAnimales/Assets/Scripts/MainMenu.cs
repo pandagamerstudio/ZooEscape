@@ -301,6 +301,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         //UpdateLobbyUI();
         //GameManager.instance.LeavePlayer();
         PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        
         PhotonNetwork.LeaveRoom();
     }
 
@@ -308,6 +309,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         base.OnLeftRoom();
 
+        
         SetScreen(mainScreen);
     }
 
