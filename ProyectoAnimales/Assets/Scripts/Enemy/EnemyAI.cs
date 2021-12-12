@@ -17,6 +17,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField]
     private GameObject knifePrefab;
 
+    public Collider2D sight;
+
     private float throwTimer;
     private float throwAnimTimer;
     private float throwCoolDown = 3f;
@@ -49,6 +51,7 @@ public class EnemyAI : MonoBehaviour
 
     public void ChangeDirection()
     {
+        Debug.Log("changeDir");
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
     }
@@ -90,14 +93,17 @@ public class EnemyAI : MonoBehaviour
         {
             if (facingRight)
             {
+                Debug.Log("right");
                 knifePrefab.transform.localScale = new Vector3(transform.localScale.x * 1, 1, 1);
                 GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
                 tmp.GetComponent<Knife>().Initialize(Vector2.right);
             }
             else
             {
-                knifePrefab.transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+                Debug.Log("left");
+                //knifePrefab.transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
                 GameObject tmp = (GameObject)Instantiate(knifePrefab, knifePos.position, Quaternion.identity);
+                tmp.transform.localScale = new Vector3(tmp.transform.localScale.x * -1, 1, 1);
                 tmp.GetComponent<Knife>().Initialize(Vector2.left);
             }
             canSpawn = false;
@@ -125,6 +131,8 @@ public class EnemyAI : MonoBehaviour
             currentState.Exit();
         }
 
+        StartCoroutine(reactivarSight());
+
         currentState = newState;
 
         currentState.Enter(this);
@@ -141,9 +149,16 @@ public class EnemyAI : MonoBehaviour
         return facingRight ? Vector2.right : Vector2.left;
     }
 
+    IEnumerator reactivarSight()
+    {
+        Debug.Log("reactivarVista");
+        yield return new WaitForSeconds(1);
+        sight.enabled = true;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        currentState.OnTriggerEnter(collision);
+        currentState.MyOnTriggerEnter(collision);
     }
 
 }

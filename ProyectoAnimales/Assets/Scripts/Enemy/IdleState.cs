@@ -27,7 +27,7 @@ public class IdleState : IEnemyState
     {
 
     }
-    public void OnTriggerEnter(Collider2D other)
+    public void MyOnTriggerEnter(Collider2D other)
     {
 
     }
