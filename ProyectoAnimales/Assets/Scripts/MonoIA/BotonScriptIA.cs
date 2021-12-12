@@ -9,9 +9,7 @@ public class BotonScriptIA : MonoBehaviour
     bool activada = false;
     float pulsar;
     private Animator animator;
-    private SpawnManagerLevel1 nivel;
 
-    int id;
     void Awake()
     {
         animator = this.GetComponent<Animator>();
@@ -19,28 +17,28 @@ public class BotonScriptIA : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Caja"))
+        if (collision.CompareTag("Player"))
         {
             if (!activada) {
                 activada = true;
-                nivel.activarBotones(id, true);
+                activarBotones(true);
                 animator.SetBool("Activada" , true);
             }      
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision){
-        if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
+        if (collision.CompareTag("Player")){
             activada = false;
-            nivel.activarBotones(id, false);
+            activarBotones(false);
             animator.SetBool("Activada" , false);
         }
     }
 
     public void OnTriggerStay2D(Collider2D collision){
-        if ((collision.CompareTag("Player") || collision.CompareTag("Caja"))){
+        if (collision.CompareTag("Player")){
             activada = true;
-            nivel.activarBotones(id, true);
+            activarBotones(true);
             animator.SetBool("Activada" , true);
         }
     }
@@ -49,31 +47,25 @@ public class BotonScriptIA : MonoBehaviour
         paredes = par;
     }
 
-    public void inicializarBoton(SpawnManagerLevel1 s, int i){
-        nivel = s;
-        id = i;
-    }
+    public void activarBotones(bool aux){
 
-    public void activarBotones(int id, bool aux){
-        botonesActivados[id] = aux;
-        foreach (bool b in botonesActivados){
-            if (!b){
-                activarParedes();
-                return;
-            }
+        if (aux)
+        {
+            activarParedes();
+            return;
         }
         desactivarParedes();   
     }
 
     public void desactivarParedes(){
         foreach(GameObject p in paredes){
-            p.GetComponent<Animator>().SetBool("Pared", true);
+            p.SetActive(false);
         }
     }
 
     public void activarParedes(){
         foreach(GameObject p in paredes){
-            p.GetComponent<Animator>().SetBool("Pared", false);
+            p.SetActive(true);
         }
     }
 }

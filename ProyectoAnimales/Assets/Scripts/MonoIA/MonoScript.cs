@@ -14,7 +14,13 @@ public class MonoScript : MonoBehaviour
     public GameObject target;
 
     public GameObject llave;
-    public Quaternion rotacionInicial;
+    public GameObject boton;
+    public GameObject checkPoint1, checkPoint2;
+    bool irIzq, irDer, huyendo = false;
+    bool atrapado = false;
+    Vector3 scaleIzq = new Vector3 (-1.0f, 1.0f, 1.0f);
+    Vector3 scaleDer = new Vector3 (1.0f, 1.0f, 1.0f);
+
     
     // Start is called before the first frame update
     void Start()
@@ -38,40 +44,104 @@ public class MonoScript : MonoBehaviour
                 rutina = Random.Range(0,2);
                 cronometro = 0;
             }
+
             switch (rutina){
                 case 0:
                     anim.SetBool("Walk", false);
                     break;
                 case 1:
-                    grado = Random.Range(0,360);
-                    angulo = Quaternion.Euler(0, grado,0);
-                    rutina++;
-                    break;
-                case 2:
-                    transform.rotation = Quaternion.RotateTowards(transform.rotation, angulo, 0.5f);
-                    transform.Translate(Vector3.forward*1* Time.deltaTime);
-                    anim.SetBool("Walk", true);
+                    float distancia1 = transform.position.x - checkPoint1.transform.position.x;
+                    float distancia2 = checkPoint2.transform.position.x - transform.position.x;
+                    Mathf.Abs(distancia1);
+                    Mathf.Abs(distancia2);
+                    Vector3 direccionCheckPoint1 = checkPoint1.transform.position;
+                    Vector3 direccionCheckPoint2 = checkPoint2.transform.position;
+
+                    if(irIzq) transform.localScale = scaleIzq;
+                    if(irDer) transform.localScale = scaleDer;
+
+                    if (!irDer)
+                    {
+                        irIzq = true;
+                        if (transform.position.x <= checkPoint1.transform.position.x){
+                            Debug.Log("He llegado al 1");
+                            irIzq = false;
+                            irDer = true;
+                            
+                        }
+
+                        transform.position = Vector3.MoveTowards(transform.position, direccionCheckPoint1, Time.deltaTime * 4);
+                        anim.SetBool("Walk", true);
+                    }
+                    else if(!irIzq)
+                    {
+                        irDer = true;
+                        if(transform.position.x >= checkPoint2.transform.position.x)
+                        {
+                            Debug.Log("He llegado al 2");
+                            irDer = false;
+                            irIzq = true;
+                        }
+
+                        transform.position = Vector3.MoveTowards(transform.position, direccionCheckPoint2, Time.deltaTime * 4);
+                        anim.SetBool("Walk", true);
+                    }
+
                     break;
             }
         }
         else {
-            var lookPos = target.transform.position - transform.position;
+            Debug.Log("Deberia huir");
+
+            Vector3 lookPos = target.transform.position - transform.position;
             lookPos.y = 0;
             var rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rotation, 2);
             anim.SetBool("Walk", false);
+            huyendo = false;
 
-            //Hacer que huya
-            Debug.Log("Deberia huir");
-            Vector3 direction = transform.position - target.transform.position;
-            direction.y = 0;
-            direction = Vector3.Normalize(direction);
-            transform.rotation = Quaternion.Euler(direction);
-            transform.Translate(transform.forward * NPCSpeed);
+            if (huyendo){
+                lookPos = Vector3.Normalize(lookPos);
+                transform.position = Vector3.MoveTowards(transform.position, lookPos, Time.deltaTime *4);
+                huyendo = true;
+                anim.SetBool("Walk", true);
+            }
+            
         }
 
-        if (GameObject.Find("Llave") == null){
+        if (GameObject.Find("Llave") == null && !atrapado){
             Debug.Log("Pulsar boton");
+            huyendo = false;
+            PulsarBoton();
         }
+    }
+
+    public void PulsarBoton(){
+        StartCoroutine(esperando());
+
+        Vector3 direccionFinal = boton.transform.position;
+        transform.position = Vector3.MoveTowards(transform.position, direccionFinal, Time.deltaTime * 6);
+        
+        if (transform.position.x < boton.transform.position.x){
+            transform.localScale = scaleDer;
+        } else {
+            transform.localScale = scaleIzq;
+        }
+
+        if (transform.position == boton.transform.position){
+            anim.SetBool("Walk", false);
+            atrapado = true;
+            Debug.Log("Atrapado");
+            StartCoroutine(liberarJugador());
+        }
+    }
+    private IEnumerator liberarJugador()
+    {
+        yield return new WaitForSeconds(2f);
+    }
+
+    private IEnumerator esperando(){
+        yield return new WaitForSeconds(0.5f);
+        anim.SetBool("walk", true);
     }
 }

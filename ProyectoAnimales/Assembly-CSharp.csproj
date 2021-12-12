@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\PlatformMovement.cs" />
      <Compile Include="Assets\Scripts\CheckGround.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\checkColisionBoxIA.cs" />
      <Compile Include="Assets\Scripts\PuertaScript.cs" />
      <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
      <Compile Include="Assets\Scripts\Enemy\RangedState.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\WebGLSupport\WebGLWindow\WebGLWindow.cs" />
      <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
      <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel7.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\KeyCollectIA.cs" />
      <Compile Include="Assets\Scripts\EscenaFinal.cs" />
      <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel5.cs" />
      <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\IInputField.cs" />
@@ -92,9 +94,11 @@
      <Compile Include="Assets\Scripts\BotonScriptLevel5.cs" />
      <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel6.cs" />
      <Compile Include="Assets\Scripts\SpawnObject.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\BotonScriptIA.cs" />
      <Compile Include="Assets\Scripts\Enemy\Knife.cs" />
      <Compile Include="Assets\Scripts\KeyCollect.cs" />
      <Compile Include="Assets\Scripts\RopeSegment.cs" />
+     <Compile Include="Assets\Scripts\MonoIA\BoxScriptIA.cs" />
      <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
      <Compile Include="Assets\Scripts\LifesScript.cs" />
      <Compile Include="Assets\Scripts\RoomManager.cs" />
@@ -123,10 +127,6 @@
      <Compile Include="Assets\Photon\PhotonChat\Demos\Common\OnStartDelete.cs" />
      <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel1.cs" />
      <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
-     <Compile Include="Assets\Scripts\MonoIA\BoxScriptIA.cs" />
-     <Compile Include="Assets\Scripts\MonoIA\KeyCollectIA.cs" />
-     <Compile Include="Assets\Scripts\MonoIA\checkColisionBoxIA.cs" />
-     <Compile Include="Assets\Scripts\MonoIA\BotonScriptIA.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\Photon\PhotonLibs\netstandard2.0\Photon3Unity3D.xml" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

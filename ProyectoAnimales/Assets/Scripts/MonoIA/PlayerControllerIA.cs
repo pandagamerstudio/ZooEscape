@@ -5,12 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerControllerIA : MonoBehaviour
 {
-    public float runSpeed = 7f;
-    public float jumpSpeed = 10f;
+    public float runSpeed = 8f;
+    public float jumpSpeed = 15f;
     Rigidbody2D rb;
     CheckGround cg;
-    public SpriteRenderer sr;
-    public Animator anim;
+    SpriteRenderer sr;
+    Animator anim;
 
     Vector2 ad;
     //Efectos sonido
