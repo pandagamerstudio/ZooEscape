@@ -531,6 +531,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         if (collision.tag.Equals("Kunai"))
         {
+            Destroy(collision.gameObject);
             canvasVidas.GetComponent<LifesScript>().LoseLife();
             canvasVidas.GetComponent<LifesScript>().UpdateLivesUI();
             if (canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
@@ -547,7 +548,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("platMovil")&&!padre)
+        if (collision.gameObject.tag.Equals("platMovil") && !padre)
         {
             padre = true;
           //  Vector3 scala = transform.localScale;
