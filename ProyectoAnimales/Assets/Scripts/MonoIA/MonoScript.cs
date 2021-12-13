@@ -110,7 +110,7 @@ public class MonoScript : MonoBehaviour
             if (!irDer)
             {
                 irIzq = true;
-                if (transform.position.x <= checkPoint1.transform.position.x)
+                if (transform.position.x - 1 <= checkPoint1.transform.position.x)
                 {
                     Debug.Log("He llegado al 1");
                     irIzq = false;
@@ -123,7 +123,7 @@ public class MonoScript : MonoBehaviour
             else if(!irIzq)
             {
                 irDer = true;
-                if(transform.position.x >= checkPoint2.transform.position.x)
+                if(transform.position.x + 1 >= checkPoint2.transform.position.x)
                 {
                     Debug.Log("He llegado al 2");
                     irDer = false;
