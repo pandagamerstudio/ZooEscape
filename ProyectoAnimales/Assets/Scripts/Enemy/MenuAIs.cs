@@ -36,4 +36,10 @@ public class MenuAIs : MonoBehaviour
 
         screen.SetActive(true);
     }
+
+
+    public void ChangeScene( string scene)
+    {
+        SceneManager.LoadScene(scene);
+    }
 }

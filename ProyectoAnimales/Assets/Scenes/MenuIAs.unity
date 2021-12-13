@@ -257,7 +257,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9ee3d767acf355546b635cdb88a5e391, type: 3}
-    m_FontSize: 97
+    m_FontSize: 77
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -496,13 +496,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnCreditosButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: SetScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 857337866}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -605,10 +605,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9ee3d767acf355546b635cdb88a5e391, type: 3}
-    m_FontSize: 97
+    m_FontSize: 77
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 7
     m_MaxSize: 169
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -915,13 +915,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnOptionsButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: SetScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1512372229}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1583,13 +1583,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnControlesButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: SetScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1339539802}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1692,7 +1692,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9ee3d767acf355546b635cdb88a5e391, type: 3}
-    m_FontSize: 97
+    m_FontSize: 64
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1703,7 +1703,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: NINJA
+  m_Text: MATE + RESOLUTOR
 --- !u!222 &769294636
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2232,16 +2232,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnCreditosButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: NivelMono
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1022643820
@@ -2518,13 +2518,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnVolverButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: SetScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1768213658}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2840,13 +2840,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnVolverButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: SetScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1768213658}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3134,13 +3134,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnVolverOpcButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: SetScreen
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1512372229}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3474,7 +3474,7 @@ RectTransform:
   m_Children:
   - {fileID: 1617236700}
   m_Father: {fileID: 1962627638}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3527,14 +3527,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1396210483}
         m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
-        m_MethodName: SetScreen
-        m_Mode: 2
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 872568968}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: EnemySM
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1561119581
@@ -3643,7 +3643,7 @@ RectTransform:
   m_Children:
   - {fileID: 259754336}
   m_Father: {fileID: 1962627638}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -3696,14 +3696,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1396210483}
         m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
-        m_MethodName: SetScreen
-        m_Mode: 2
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 872568968}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: LevelPajaro
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1566114310
@@ -3803,7 +3803,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9ee3d767acf355546b635cdb88a5e391, type: 3}
-    m_FontSize: 97
+    m_FontSize: 77
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -4063,10 +4063,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1566114308}
+  - {fileID: 1561119579}
   - {fileID: 2081146304}
   - {fileID: 1022643818}
-  - {fileID: 1561119579}
+  - {fileID: 1566114308}
   m_Father: {fileID: 872568969}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4209,7 +4209,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 9ee3d767acf355546b635cdb88a5e391, type: 3}
-    m_FontSize: 97
+    m_FontSize: 77
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -4220,7 +4220,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: BIRD
+  m_Text: RETURN
 --- !u!222 &1994275842
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4391,16 +4391,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OnOptionsButton
-        m_Mode: 1
+      - m_Target: {fileID: 1396210483}
+        m_TargetAssemblyTypeName: MenuAIs, Assembly-CSharp
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: companero4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &2081146306

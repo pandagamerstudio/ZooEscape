@@ -54,9 +54,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     Vector2 gravedadLados;
     public static PlayerController me;
 
-    public GameObject canvas;
     //GameObject canvasEnt;
-    public GameObject canvasPause;
     public GameObject canvasVidas;
 
 
@@ -131,14 +129,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
         if (!photonView.IsMine)
             return;
 
-        canvasPause = this.transform.GetChild(3).gameObject;
         canvasVidas = this.transform.GetChild(1).gameObject;
 
         posI = gameObject.transform;
         var user = GetComponent<PlayerInput>().user;
-        //canvas = GameObject.FindWithTag("Canvas");
-        canvas = this.transform.GetChild(2).gameObject;
-        canvas.SetActive(false);
+
         canvasVidas.SetActive(true);
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
@@ -149,7 +144,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         CheckIfMobile();
         if(isMobile){
-            canvas.SetActive(true);
 
             //canvasEnt = GameObject.FindWithTag("Canvas");
             //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
@@ -209,17 +203,11 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
     public void Pause(InputAction.CallbackContext callback)
     {
-        if (!canvasPause.GetComponent<PauseScript>().panelOptions.activeSelf && !canvasPause.GetComponent<PauseScript>().panelControls.activeSelf)
-            OnPause();
     }
 
     public void OnPause(){
         if (!photonView.IsMine) return;
         
-        canvasPause.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
-
-        if (isMobile)
-            canvas.SetActive(false);
     }
 
     public void OnEvent(EventData photonEvent)
