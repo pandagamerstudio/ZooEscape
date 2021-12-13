@@ -164,7 +164,7 @@ public class IAPajaro : MonoBehaviour
         switch (pathObjetivo) 
         {
             case 1:
-                transform.position = Vector3.MoveTowards(transform.position, path1.transform.position, Time.deltaTime * 10);
+                transform.position = Vector3.MoveTowards(transform.position, path1.transform.position, Time.deltaTime * 40);
                 if (transform.position == path1.transform.position)
                 {
                     if (sentidoPath == true)
@@ -179,7 +179,7 @@ public class IAPajaro : MonoBehaviour
                 }
                 break;
             case 2:
-                transform.position = Vector3.MoveTowards(transform.position, path2.transform.position, Time.deltaTime * 10);
+                transform.position = Vector3.MoveTowards(transform.position, path2.transform.position, Time.deltaTime * 40);
                 if (transform.position == path2.transform.position)
                 {
                     if (sentidoPath == true)
@@ -195,7 +195,7 @@ public class IAPajaro : MonoBehaviour
                 }
                 break;
             case 3:
-                transform.position = Vector3.MoveTowards(transform.position, path3.transform.position, Time.deltaTime * 10);
+                transform.position = Vector3.MoveTowards(transform.position, path3.transform.position, Time.deltaTime * 40);
                 if (transform.position == path3.transform.position)
                 {
                     if (sentidoPath == true)
@@ -211,7 +211,7 @@ public class IAPajaro : MonoBehaviour
                 }
                 break;
             case 4:
-                transform.position = Vector3.MoveTowards(transform.position, path4.transform.position, Time.deltaTime * 10);
+                transform.position = Vector3.MoveTowards(transform.position, path4.transform.position, Time.deltaTime * 40);
                 if (transform.position == path4.transform.position)
                 {
                     if (sentidoPath == true)
