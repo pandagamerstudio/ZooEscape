@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3400769}
   - component: {fileID: 3400768}
-  - component: {fileID: 3400767}
   - component: {fileID: 3400766}
   - component: {fileID: 3400770}
   m_Layer: 19
@@ -169,18 +168,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.43, y: 1.47}
   m_EdgeRadius: 0
---- !u!114 &3400767
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3400765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0a599df7a6a074bbd7526306f392ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &3400768
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -243,7 +230,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 30.39, y: 13, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 873236238}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5637,6 +5625,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &873236237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 873236238}
+  - component: {fileID: 873236240}
+  - component: {fileID: 873236239}
+  m_Layer: 19
+  m_Name: pasarnivel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &873236238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873236237}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3400769}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &873236239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873236237}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &873236240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873236237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1a53c36cee9b7429adaddde58564d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &939194797
 GameObject:
   m_ObjectHideFlags: 0
@@ -6419,6 +6464,7 @@ MonoBehaviour:
   jug2: {fileID: 1688440412}
   jugNoNav: {fileID: 107147083}
   jugNoNav2: {fileID: 796154083}
+  osoApilar: {fileID: 0}
   cajaAnim: {fileID: 36231147}
   posicionesSpawnJug1:
   - {fileID: 0}
@@ -6447,6 +6493,7 @@ MonoBehaviour:
   - {fileID: 1867368047}
   - {fileID: 0}
   cooldown: 0
+  cooldown2: 0
   coolDownsCompletados: 0
   spawnsNoNavAgent1:
   - {fileID: 1440551499}
@@ -6457,6 +6504,7 @@ MonoBehaviour:
   puntosObjetivoNoNavAgent2:
   - {fileID: 267693382}
   - {fileID: 0}
+  casoRaro: {fileID: 0}
 --- !u!4 &1159129328
 Transform:
   m_ObjectHideFlags: 0
@@ -11702,7 +11750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2071687182
 Transform:
   m_ObjectHideFlags: 0

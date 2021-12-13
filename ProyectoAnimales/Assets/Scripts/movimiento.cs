@@ -86,6 +86,7 @@ public class movimiento : MonoBehaviour
     }
     IEnumerator cambiarOr(int i) {
         yield return new WaitForSeconds(0.1f);
+        Debug.Log("Hola");
         if (i == orientacionAct)
         {
             orientacionAct = 0;
@@ -233,7 +234,7 @@ public class movimiento : MonoBehaviour
 
                     colocarmeParaEmpujar = false;
                     animCaja = true;
-                    StartCoroutine(mostrarTexto("Empujando", 0.2f));
+                    StartCoroutine(mostrarTexto("Empujando", 0.1f));
 
 
                 }
@@ -280,6 +281,7 @@ public class movimiento : MonoBehaviour
                     animCaja = false;
                     caja.GetComponent<NavMeshObstacle>().enabled = true;
                     navMeshA.ResetPath();
+                    StartCoroutine(mostrarTexto("      Quieto", 0.2f));
                     estado.text = "      Quieto";
 
 
@@ -301,6 +303,9 @@ public class movimiento : MonoBehaviour
                     animCaja = false;
                     caja.GetComponent<NavMeshObstacle>().enabled = true;
                     navMeshA.ResetPath();
+                    StartCoroutine(mostrarTexto("      Quieto", 0.2f));
+                    estado.text = "      Quieto";
+
 
 
                 }
@@ -386,6 +391,8 @@ public class movimiento : MonoBehaviour
 
     IEnumerator movimientosEsp(NavMeshPath path) {
         yield return new WaitForSeconds(1);
+        estado.text = "Comprobando \ncajas...";
+
         cajaMovible.SetActive(true);
         cajaAgent.CalculatePath(puntoMallaObjetivo(posicionCaja[0]), path);
         Debug.Log(path.status);
@@ -399,6 +406,7 @@ public class movimiento : MonoBehaviour
         else {
             cajaMovible.SetActive(false);
             caja.GetComponent<NavMeshObstacle>().enabled = true;
+            StartCoroutine(mostrarTexto("Colocándome", 0.2f));
             if (objetivos[objetivoActual].transform.position.x < caja.transform.parent.transform.position.x && !cajacolocada)
             {
                 //Me coloco hasta la derecha de la caja y se activa el desplazar la caja hacia el punto pata llegar a la llave
@@ -553,7 +561,7 @@ public class movimiento : MonoBehaviour
                 Debug.Log("No hay camino directo ");
 
                 //3. ¿HAY CAJA EN LA ESCENA? ¿PODEMOS HACER COSAS CON ELLA(FALTA ESTO)?
-                if (caja != null && caja.activeInHierarchy && !heTerminadoCajas)
+                if (caja != null && caja.activeInHierarchy && !heTerminadoCajas&&!objetivos[objetivoActual].tag.Equals("boton"))
                 {
                     caja.GetComponent<NavMeshObstacle>().enabled = false;
                     StartCoroutine(movimientosCaja(path, hit));
@@ -576,6 +584,9 @@ public class movimiento : MonoBehaviour
                         {
                             //Si el jugador se coloca en este sitio habrá cámino
                             Debug.Log("Jugador muevete aqui " + i);
+                            StartCoroutine(mostrarTexto(" Indicar apilarse", 0.1f));
+                           
+
                             indicador[i].SetActive(true);
                             StartCoroutine(desactivarIndicador(i));
                             posicionesApilarse[i].SetActive(false);//Lo desactivamos
@@ -610,7 +621,8 @@ public class movimiento : MonoBehaviour
                     else
                     {
                         Debug.Log("Este boton  lleva a la solución");
-                        StartCoroutine(mostrarTexto("Mirando botones...", 0.5f));
+                        StartCoroutine(mostrarTexto("Pulsar botón", 0.5f));
+                        StartCoroutine(mostrarTexto("     Quieto", 1.5f));
                         boton[botonActual].GetComponent<botonScript3d>().desactivarElementos();//Lo quitamos porque si no se queda el navMesh activo y podria llegar a la solucion
                         navMeshA.SetDestination(puntoMallaObjetivo(boton[botonActual]));//Obtenemos la posición del boton para ir a él
                         StartCoroutine(mostrarAccion(irBoton));
@@ -619,8 +631,7 @@ public class movimiento : MonoBehaviour
                     }
                 }
                 else {
-                    StartCoroutine(mostrarTexto("    No se qúe \n   hacer", 0.5f));
-                    StartCoroutine(mostrarTexto("      Quieto", 0.5f));
+                    StartCoroutine(mostrarTexto("      Quieto", 1.5f));
 
 
                 }
@@ -643,10 +654,14 @@ public class movimiento : MonoBehaviour
                     int accion=objetivos[objetivoActual].layer;
                     if (accion == 17)
                     {
-                        StartCoroutine(mostrarAccion(irBoton));
+                        //Caso especial nivel 5 MIRAR SI ESTAMOS EN ESE NIVEL Y YA
+                      //  StartCoroutine(mostrarAccion(irBoton));
+                       // StartCoroutine(mostrarTexto("Pulsar botón", 0.5f));
+                        StartCoroutine(mostrarTexto("      Quieto", 1.5f));
 
                     }
                     else if (accion == 6) {
+                        //Se puede borrar no se usa ya
                         StartCoroutine(mostrarAccion(empujar));
                     } else {
                         StartCoroutine(mostrarAccion(accionAndar));

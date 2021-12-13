@@ -10,6 +10,7 @@ public class resolutor : MonoBehaviour
     public GameObject jug2;
     public GameObject jugNoNav;
     public GameObject jugNoNav2;
+    public GameObject osoApilar;
 
     public GameObject cajaAnim;
     public GameObject[] posicionesSpawnJug1;
@@ -42,6 +43,7 @@ public class resolutor : MonoBehaviour
     bool moverNoNavAPunto;
 
   public  bool cooldown;
+  public  bool cooldown2;
     public int coolDownsCompletados = 0;
     int coolDownsNecesarios = 0;
 
@@ -50,6 +52,8 @@ public class resolutor : MonoBehaviour
     //Los tengo en el editor
     public GameObject[] spawnsNoNavAgent2;
     public GameObject[] puntosObjetivoNoNavAgent2;
+
+    public BoxCollider2D casoRaro;
     public void evento(int objetivoAct) { 
         
 
@@ -62,15 +66,19 @@ public class resolutor : MonoBehaviour
         jug1.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
         jug2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
         jugNoNav.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
-       
+
+        if(osoApilar!=null)
+            osoApilar.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
         if (jugNoNav2!=null)
         jugNoNav2.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
 
+        if(cajaAnim!=null)
         cajaAnim.GetComponent<MeshRenderer>().material.color = new Color(1f, 1f, 1f, 0f);
         rotJug1 = jug1.transform.rotation;
         rotJug2 = jug2.transform.rotation;
         moverCaja = false;
         cooldown = false;
+        cooldown2 = false;
         moverNoNavAPunto = false;
 
 
@@ -100,34 +108,44 @@ public class resolutor : MonoBehaviour
             }
         }
 
-        if (!navJug1.pathPending && cooldown)
-        {
-            if (navJug1.remainingDistance <= navJug1.stoppingDistance)
+      
+            if (!navJug1.pathPending && cooldown)
             {
-                if (!navJug1.hasPath || navJug1.velocity.sqrMagnitude == 0f)
+                if (navJug1.remainingDistance <= navJug1.stoppingDistance)
                 {
-                    coolDownsCompletados++;
-                    if (coolDownsCompletados == coolDownsNecesarios) {
-                        coolDownsCompletados = 0;
-                        coolDownsNecesarios = 0;
-                        cooldown = false;
-                    }
+                    if (!navJug1.hasPath || navJug1.velocity.sqrMagnitude == 0f)
+                    {
 
+                        Debug.Log("Holaaa");
+                    cooldown = false;
+                    if (osoApilar != null)
+                        osoApilar.SetActive(false);
+
+                    coolDownsCompletados++;
+                        if (coolDownsCompletados == coolDownsNecesarios)
+                        {
+                            coolDownsCompletados = 0;
+                            coolDownsNecesarios = 0;
+                        }
+
+                    }
                 }
             }
-        }
-        if (!navJug2.pathPending && cooldown)
+        
+        
+        if (cooldown2&&!navJug2.pathPending )
         {
             if (navJug2.remainingDistance <= navJug2.stoppingDistance)
             {
                 if (!navJug2.hasPath || navJug2.velocity.sqrMagnitude == 0f)
                 {
                     coolDownsCompletados++;
+                    cooldown2 = false;
+
                     if (coolDownsCompletados == coolDownsNecesarios)
                     {
                         coolDownsCompletados = 0;
                         coolDownsNecesarios = 0;
-                        cooldown = false;
 
                     }
 
@@ -162,6 +180,9 @@ public class resolutor : MonoBehaviour
             Debug.Log("Esta en cooldown");
             return;
         }
+        
+        if(casoRaro!=null)
+        casoRaro.enabled = false;
 
         jug1.SetActive(true);
         jug1.GetComponent<SpriteRenderer>().enabled = true;
@@ -197,28 +218,57 @@ public class resolutor : MonoBehaviour
         //MOver caja + movimiento del otro
         else if (objActPuzle[objActual].layer == 19)
         {
+            if(casoRaro!=null)
+            casoRaro.enabled = true;
+
             jug1.SetActive(false);
             jug2.SetActive(false);
 
             jugNoNav.SetActive(true);
-            jugNoNav2.SetActive(true);
+            jugNoNav.transform.position = spawnsNoNavAgent1[objActual].transform.position;
+
+            if (spawnsNoNavAgent2[objActual] != null)
+            {
+                jugNoNav2.SetActive(true);
+                jugNoNav2.transform.position = spawnsNoNavAgent2[objActual].transform.position;
+            }
+
+
             cajaAnim.SetActive(true);
+            cajaAnim.transform.position = posicionesSpawnCaja[objActual].transform.position;
 
             moverCaja = true;
 
 
             //    jugNoNav.transform.position = new Vector3(cajaAnim.transform.position.x + cajaAnim.transform.localScale.x - 1 / 2, jugNoNav.transform.position.y, jugNoNav.transform.position.z);
-            jugNoNav.transform.position = spawnsNoNavAgent1[objActual].transform.position;
-            jugNoNav2.transform.position = spawnsNoNavAgent2[objActual].transform.position;
-            cajaAnim.transform.position = posicionesSpawnCaja[objActual].transform.position;
+
+
+
+        }
+        else if (objActPuzle[objActual].layer == 20) {
+
+            osoApilar.SetActive(true);
+            jug2.SetActive(false);
+
+            NavMeshPath path = new NavMeshPath();
+            Vector3 puntoMalla = puntoMallaObjetivo(accionesJug1[objActual]);
+            navJug1.CalculatePath(puntoMalla, path);
+            navJug1.SetDestination(puntoMalla);
+
         }
         else
         {
             //Apilarse
             NavMeshPath path = new NavMeshPath();
-            Vector3 puntoMalla = puntoMallaObjetivo(accionesJug1[objActual]);
-            navJug1.CalculatePath(puntoMalla, path);
-            navJug1.SetDestination(puntoMalla);
+            if (accionesJug1[objActual] != null)
+            {
+
+                Vector3 puntoMalla = puntoMallaObjetivo(accionesJug1[objActual]);
+                navJug1.CalculatePath(puntoMalla, path);
+                navJug1.SetDestination(puntoMalla);
+            }
+
+
             //Debug.Log(puntoMalla);
 
 
@@ -234,6 +284,7 @@ public class resolutor : MonoBehaviour
 
 
     public void pruebaCompletada() {
+
         StartCoroutine(quitarPersonajes());
     }
 
@@ -249,6 +300,8 @@ public class resolutor : MonoBehaviour
 
         //  navJug2.isStopped = true;
         //  navJug2.ResetPath();
+        if (osoApilar != null)
+            osoApilar.SetActive(false);
 
         if (jug1.active) {
             jug1.GetComponent<SpriteRenderer>().enabled = false;
@@ -260,7 +313,7 @@ public class resolutor : MonoBehaviour
         if (jug2.active) {
             jug2.GetComponent<SpriteRenderer>().enabled = false;
             navJug2.SetDestination(puntoMallaObjetivo(posicionesSpawnJug2[objActual]));
-            cooldown = true;
+            cooldown2 = true;
             coolDownsNecesarios++;
         }
 
@@ -275,6 +328,7 @@ public class resolutor : MonoBehaviour
         if (jugNoNav2 != null) {
             jugNoNav2.SetActive(false);
         }
+        if(cajaAnim!=null)
         cajaAnim.SetActive(false);
 
     }
