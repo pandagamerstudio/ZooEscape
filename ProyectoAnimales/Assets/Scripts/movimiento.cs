@@ -592,6 +592,7 @@ public class movimiento : MonoBehaviour
                 else { 
                 
                 }
+
                 if (boton.Length != 0 && objetivos[objetivoActual].tag.Equals("boton") && mirarBotones && boton[0].activeInHierarchy && objetivoActual <= 2)
                 {
                     //5. ¿QUE PASARÍA SI PULSO EL PRIMER BOTÓN?
