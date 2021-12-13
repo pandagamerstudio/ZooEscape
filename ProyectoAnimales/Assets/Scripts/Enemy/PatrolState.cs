@@ -9,7 +9,7 @@ public class PatrolState : IEnemyState
 
 
     private float patrolTimer;
-    private float patrolDuration = 10f;
+    private float patrolDuration = Random.Range(1f, 10f);
     public void Execute()
     {
         Patrol();
@@ -24,6 +24,7 @@ public class PatrolState : IEnemyState
     public void Enter(EnemyAI enemy)
     {
         this.enemy = enemy;
+        enemy.estadoTxt.text = "Patrullando";
     }
     public void Exit()
     {

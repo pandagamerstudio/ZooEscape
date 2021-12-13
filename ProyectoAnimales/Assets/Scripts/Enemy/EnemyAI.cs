@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -33,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     private IEnemyState currentState;
 
     public bool tieneLlave = false;
+
+    public Text estadoTxt;
 
     // Start is called before the first frame update
     void Start()

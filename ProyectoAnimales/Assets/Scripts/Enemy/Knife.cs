@@ -28,8 +28,16 @@ public class Knife : MonoBehaviour
         this.direction = direction;
     }
 
-    private void OnBecameInvisible()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(gameObject);
+        if (collision.gameObject.tag.Equals("Player"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag.Equals("suelo"))
+        {
+            Destroy(gameObject);
+        }
     }
 }

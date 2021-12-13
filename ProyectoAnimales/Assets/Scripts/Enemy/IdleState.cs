@@ -9,7 +9,7 @@ public class IdleState : IEnemyState
 
 
     private float idleTimer;
-    private float idleDuration = 5f;
+    private float idleDuration = Random.Range(1f, 5f);
     public void Execute()
     {
         Idle();
@@ -22,7 +22,9 @@ public class IdleState : IEnemyState
     public void Enter(EnemyAI enemy)
     {
         this.enemy = enemy;
+        enemy.estadoTxt.text = "Idle";
     }
+
     public void Exit()
     {
 

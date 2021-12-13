@@ -531,7 +531,7 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         if (collision.tag.Equals("Kunai"))
         {
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
             canvasVidas.GetComponent<LifesScript>().LoseLife();
             canvasVidas.GetComponent<LifesScript>().UpdateLivesUI();
             if (canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)

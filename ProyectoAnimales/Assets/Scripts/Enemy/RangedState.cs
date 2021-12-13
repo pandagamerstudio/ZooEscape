@@ -23,6 +23,7 @@ public class RangedState : IEnemyState
     public void Enter(EnemyAI enemy)
     {
         this.enemy = enemy;
+        enemy.estadoTxt.text = "Atacando";
     }
     public void Exit()
     {
