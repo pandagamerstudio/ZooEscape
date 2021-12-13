@@ -17,7 +17,7 @@ public class BotonScriptIA : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Mono"))
         {
             if (!activada) {
                 activada = true;
@@ -28,7 +28,7 @@ public class BotonScriptIA : MonoBehaviour
     }
 
     public void OnTriggerExit2D(Collider2D collision){
-        if (collision.CompareTag("Player")){
+        if (collision.CompareTag("Mono")){
             activada = false;
             activarBotones(false);
             animator.SetBool("Activada" , false);
@@ -36,7 +36,7 @@ public class BotonScriptIA : MonoBehaviour
     }
 
     public void OnTriggerStay2D(Collider2D collision){
-        if (collision.CompareTag("Player")){
+        if (collision.CompareTag("Mono")){
             activada = true;
             activarBotones(true);
             animator.SetBool("Activada" , true);
