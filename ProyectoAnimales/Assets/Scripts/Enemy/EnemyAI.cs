@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
 
     private IEnemyState currentState;
 
+    public bool tieneLlave = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -159,6 +161,15 @@ public class EnemyAI : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         currentState.MyOnTriggerEnter(collision);
+
+        if(collision.tag == "Llave")
+        {
+            tieneLlave = true;
+        }
+        else if (collision.tag == "Puerta" && tieneLlave)
+        {
+            
+        }
     }
 
 }
