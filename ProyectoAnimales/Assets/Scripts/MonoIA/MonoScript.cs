@@ -32,32 +32,20 @@ public class MonoScript : MonoBehaviour
 
     // Update is called once per frame
     public void comportamientoMono(){
-        float distancia = transform.position.x - target.transform.position.x;
+        float distanciaX = transform.position.x - target.transform.position.x;
+        float distanciaY = transform.position.y - target.transform.position.y;
         //Debug.Log(distancia); 
-        if (Mathf.Abs(distancia) > 7 && !huyendo){
-            
-            cronometro += 1 * Time.deltaTime;
-            if (cronometro >=4){
-                rutina = Random.Range(0,2);
-                cronometro = 0;
-            }
-            if(!irBoton){
-                switch (rutina){
-                case 0:
-                    Debug.Log("Estoy quieto");
-                    quedarseParado();
-                    break;
-                case 1:
-                    Debug.Log("Yendo a checkpoint");
-                    irCheckpoints();
-                    break;
-                }
-            }
-            
+        if (!huyendo && Mathf.Abs(distanciaY) > 1){
+            estadoUno();
         }
         else {
-            Debug.Log("Deberia huir");
-            huir();          
+            if(Mathf.Abs(distanciaX) < 7){
+                Debug.Log("Deberia huir");
+                huir();   
+            }
+            else{
+                estadoUno();
+            }
         }
 
         if (GameObject.Find("Llave") == null && !atrapado){
@@ -68,6 +56,25 @@ public class MonoScript : MonoBehaviour
         }
     }
 
+    public void estadoUno(){
+        cronometro += 1 * Time.deltaTime;
+        if (cronometro >=4){
+            rutina = Random.Range(0,2);
+            cronometro = 0;
+        }
+        if(!irBoton){
+            switch (rutina){
+            case 0:
+                Debug.Log("Estoy quieto");
+                quedarseParado();
+                break;
+            case 1:
+                Debug.Log("Yendo a checkpoint");
+                irCheckpoints();
+                break;
+            }
+        }
+    }
     public void PulsarBoton(){
         StartCoroutine(esperando());
 
@@ -148,7 +155,7 @@ public class MonoScript : MonoBehaviour
         } else {
             irIzq = false;
             irDer = true;  
-            lookPos = transform.position + new Vector3(15.0f, 0f,0f);   
+            lookPos = transform.position + new Vector3(25.0f, 0f,0f);   
         }
 
         if (huyendo){
@@ -157,9 +164,10 @@ public class MonoScript : MonoBehaviour
             anim.SetBool("Walk", true);
         }
         
-        float distancia = transform.position.x - target.transform.position.x;
+        float distanciaX = transform.position.x - target.transform.position.x;
+        float distanciaY = transform.position.y - target.transform.position.y;
 
-        if(Mathf.Abs(distancia) > 15) huyendo = false;
+        if(Mathf.Abs(distanciaX) > 15 || Mathf.Abs(distanciaY) > 1) huyendo = false;
 
     }
     private IEnumerator liberarJugador()
