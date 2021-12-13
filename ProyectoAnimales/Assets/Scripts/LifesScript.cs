@@ -10,10 +10,10 @@ public class LifesScript : MonoBehaviourPun
     public int livesRemaining;
     void Start()
     {
-        if (PlayerPrefs.HasKey("livesRemaining"))
-        {
-            livesRemaining = PlayerPrefs.GetInt("livesRemaining");
-        }
+        //if (PlayerPrefs.HasKey("livesRemaining"))
+        //{
+        //    livesRemaining = PlayerPrefs.GetInt("livesRemaining");
+        //}
         Debug.Log(livesRemaining);
 
         UpdateLivesUI();
@@ -22,12 +22,12 @@ public class LifesScript : MonoBehaviourPun
     public void LoseLife()
     {
         livesRemaining--;
-        PlayerPrefs.SetInt("livesRemaining", livesRemaining);
+        //PlayerPrefs.SetInt("livesRemaining", livesRemaining);
 
         Debug.Log(livesRemaining);
     }
 
-    private void UpdateLivesUI()
+    public void UpdateLivesUI()
     {
         Debug.Log("Enta ui");
 

@@ -81,8 +81,8 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
     //Efectos sonido
     AudioVolume sonido;
 
+    public bool tieneLlave = false;
 
- 
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
@@ -520,7 +520,31 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
 
         this.gameObject.layer = 9+id;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Llave"))
+        {
+            Debug.Log("entra llave");
+            tieneLlave = true;
+        }
+
+        if (collision.tag.Equals("Kunai"))
+        {
+            canvasVidas.GetComponent<LifesScript>().LoseLife();
+            canvasVidas.GetComponent<LifesScript>().UpdateLivesUI();
+            if (canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
+            {
+                SceneManager.LoadScene("MenuIAs");
+            }
+        }
+
+        if (collision.tag.Equals("Puerta") && tieneLlave)
+        {
+            SceneManager.LoadScene("MenuIAs");
+        }
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("platMovil")&&!padre)
@@ -539,8 +563,6 @@ public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallbac
             return;
         }
 
-   
-      
         if ( !checkGround.isGrounded)
         {
             chocandLatPlat = true;
