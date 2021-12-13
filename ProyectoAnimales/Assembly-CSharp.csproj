@@ -65,6 +65,7 @@
     <Compile Include="Assets\WebGLSupport\WebGLInput\Wrapper\WrappedInputField.cs" />
     <Compile Include="Assets\cambioSentido.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\Enemy\LlaveEnemy.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\FixedJoystick.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\PlatformMovement.cs" />
     <Compile Include="Assets\Scripts\CheckGround.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChannelSelector.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\checkColisionBoxIA.cs" />
     <Compile Include="Assets\Scripts\PuertaScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySight.cs" />
     <Compile Include="Assets\Scripts\Enemy\RangedState.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel3.cs" />
     <Compile Include="Assets\Scripts\cambiarGravedad.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel10.cs" />
+    <Compile Include="Assets\Scripts\DesconexionScript.cs" />
     <Compile Include="Assets\Scripts\botonScript3d.cs" />
     <Compile Include="Assets\Scripts\PauseScript.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
@@ -101,6 +104,8 @@
     <Compile Include="Assets\objetivoCompanero4.cs" />
     <Compile Include="Assets\Joystick Pack\Examples\JoystickPlayerExample.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel7.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\KeyCollectIA.cs" />
+    <Compile Include="Assets\pasarNivel.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
     <Compile Include="Assets\Scripts\EscenaFinal.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel5.cs" />
@@ -111,20 +116,26 @@
     <Compile Include="Assets\Scripts\moverizqlvl9.cs" />
     <Compile Include="Assets\Scripts\movimiento.cs" />
     <Compile Include="Assets\Scripts\actualizarObjetivoAgente.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\MonoScript.cs" />
     <Compile Include="Assets\Scripts\Enemy\IdleState.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\DynamicJoystick.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\PlayerControllerIA.cs" />
     <Compile Include="Assets\Scripts\Enemy\IEnemyState.cs" />
     <Compile Include="Assets\Photon\PhotonLibs\WebSocket\WebSocket.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextButtonTransition.cs" />
     <Compile Include="Assets\Joystick Pack\Scripts\Base\Joystick.cs" />
     <Compile Include="Assets\Scripts\BotonScriptLevel5.cs" />
     <Compile Include="Assets\observerResolutor.cs" />
+    <Compile Include="Assets\Scripts\Enemy\PuertaEnemy.cs" />
+    <Compile Include="Assets\Scripts\Enemy\MenuAIs.cs" />
     <Compile Include="Assets\Scripts\SpawnManagers\SpawnManagerLevel6.cs" />
     <Compile Include="Assets\Scripts\SpawnObject.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\BotonScriptIA.cs" />
     <Compile Include="Assets\Scripts\Enemy\Knife.cs" />
     <Compile Include="Assets\Scripts\KeyCollect.cs" />
     <Compile Include="Assets\Scripts\RopeSegment.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\BoxScriptIA.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\NamePickGui.cs" />
     <Compile Include="Assets\Scripts\LifesScript.cs" />
     <Compile Include="Assets\Scripts\RoomManager.cs" />
@@ -142,6 +153,7 @@
     <Compile Include="Assets\Scripts\playerController3d.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\IgnoreUiRaycastWhenInactive.cs" />
     <Compile Include="Assets\Scripts\checkBoxColorColission.cs" />
+    <Compile Include="Assets\Scripts\IAPajaro.cs" />
     <Compile Include="Assets\Scripts\AudioVolume.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
@@ -152,6 +164,8 @@
     <Compile Include="Assets\Scripts\AgentLinkMover.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\DemoChat\ChatGui.cs" />
     <Compile Include="Assets\Scripts\SliderController.cs" />
+    <Compile Include="Assets\pasarNivel2.cs" />
+    <Compile Include="Assets\Scripts\MonoIA\PuertaScriptIA.cs" />
     <Compile Include="Assets\Scripts\Rope.cs" />
     <Compile Include="Assets\Photon\PhotonChat\Demos\Common\TextToggleIsOnTransition.cs" />
     <Compile Include="Assets\Scripts\cargarEscena.cs" />
@@ -160,8 +174,6 @@
     <Compile Include="Assets\ForJump\ForJump\AgentJumpToTarget.cs" />
     <Compile Include="Assets\WebGLSupport\WebGLInput\Detail\RebuildChecker.cs" />
     <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
-    <Compile Include="Assets\pasarNivel.cs" />
-    <Compile Include="Assets\pasarNivel2.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
