@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using UnityEngine.SceneManagement;
 using ExitGames.Client.Photon;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun,IPunObservable, IOnEventCallback
 {
 
 
@@ -54,7 +54,10 @@ public class PlayerController : MonoBehaviour
     Vector2 gravedadLados;
     public static PlayerController me;
 
-
+    public GameObject canvas;
+    //GameObject canvasEnt;
+    public GameObject canvasPause;
+    public GameObject canvasVidas;
 
 
     //Para quitar lag
@@ -78,8 +81,8 @@ public class PlayerController : MonoBehaviour
     //Efectos sonido
     AudioVolume sonido;
 
+    public bool tieneLlave = false;
 
- 
     void Awake(){
         rb2D = this.GetComponent<Rigidbody2D>();
         sr = this.GetComponent<SpriteRenderer>();
@@ -118,13 +121,25 @@ public class PlayerController : MonoBehaviour
 
     void Start(){
 
+        if (!photonView.IsMine)
+        {
+            canvasVidas = this.transform.GetChild(1).gameObject;
+            canvasVidas.SetActive(true);
+        }
 
 
+        if (!photonView.IsMine)
+            return;
+
+        canvasPause = this.transform.GetChild(3).gameObject;
+        canvasVidas = this.transform.GetChild(1).gameObject;
 
         posI = gameObject.transform;
         var user = GetComponent<PlayerInput>().user;
         //canvas = GameObject.FindWithTag("Canvas");
-
+        canvas = this.transform.GetChild(2).gameObject;
+        canvas.SetActive(false);
+        canvasVidas.SetActive(true);
         /*
         if (SystemInfo.deviceType == DeviceType.Desktop){
             user.ActivateControlScheme("Keyboard&Mouse");
@@ -134,6 +149,7 @@ public class PlayerController : MonoBehaviour
 
         CheckIfMobile();
         if(isMobile){
+            canvas.SetActive(true);
 
             //canvasEnt = GameObject.FindWithTag("Canvas");
             //GameObject b = Instantiate(canvas, new Vector3(937f, 395f, 0), Quaternion.identity);
@@ -144,7 +160,7 @@ public class PlayerController : MonoBehaviour
     }
     public void checkGravedad() {
 
-      switch (g) {
+        switch (g) {
             case gra.normal:
                 rb2D.velocity = new Vector2(runSpeed * ad.x, rb2D.velocity.y);
                 break;
@@ -163,7 +179,16 @@ public class PlayerController : MonoBehaviour
     }
 
     void Update(){
-
+        if (!photonView.IsMine)
+        {
+            tiempo = tiempoActualPaquete - tiempoUltimoPaquete;
+            tiempoActual += Time.deltaTime;
+            if (!padre)
+            {
+                transform.position = Vector2.Lerp(posicionUltimoPaquete, posicionReal, (float)(tiempoActual / tiempo));
+            }
+           
+        }
     }
 
     void FixedUpdate()
@@ -184,12 +209,17 @@ public class PlayerController : MonoBehaviour
 
     public void Pause(InputAction.CallbackContext callback)
     {
-        OnPause();
+        if (!canvasPause.GetComponent<PauseScript>().panelOptions.activeSelf && !canvasPause.GetComponent<PauseScript>().panelControls.activeSelf)
+            OnPause();
     }
 
     public void OnPause(){
+        if (!photonView.IsMine) return;
         
-    
+        canvasPause.transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+
+        if (isMobile)
+            canvas.SetActive(false);
     }
 
     public void OnEvent(EventData photonEvent)
@@ -243,7 +273,8 @@ public class PlayerController : MonoBehaviour
     public void Movimiento(InputAction.CallbackContext callback) {
         Player p = PhotonNetwork.LocalPlayer;
 
-      
+        if (!photonView.IsMine && p != photonPlayer)
+            return;
 
         ad = callback.ReadValue<Vector2>();
 
@@ -253,7 +284,8 @@ public class PlayerController : MonoBehaviour
 
     public void salto(InputAction.CallbackContext callback)
     {
-      
+        if (!photonView.IsMine && !canvasBool)
+            return;
 
         if(attached)
             return;
@@ -264,7 +296,8 @@ public class PlayerController : MonoBehaviour
     }
     
     public void Gravedad(InputAction.CallbackContext callback) {
-       
+        if (!photonView.IsMine)
+            return;
         gravedad = callback.ReadValue<float>();
 
         if (gravedad > 0 && activadaGravedad == false){
@@ -289,7 +322,8 @@ public class PlayerController : MonoBehaviour
         activadaGravedad = false;
     }
     public void GravedadLados(InputAction.CallbackContext callback) {
-      
+        if (!photonView.IsMine)
+            return;
         gravedadLados = callback.ReadValue<Vector2>();
 
         if (gravedadLados.x > 0){
@@ -410,13 +444,15 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnSaltarButton(){
-     
+        if (!photonView.IsMine)
+            return;
 
         Saltar(1);
     }
 
     public void OnMoveButton(float dir){
-    
+        if (!photonView.IsMine)
+            return;
 
         ad = new Vector2(dir, 0);
         Flip();
@@ -484,7 +520,31 @@ public class PlayerController : MonoBehaviour
 
         this.gameObject.layer = 9+id;
     }
-    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag.Equals("Llave"))
+        {
+            Debug.Log("entra llave");
+            tieneLlave = true;
+        }
+
+        if (collision.tag.Equals("Kunai"))
+        {
+            canvasVidas.GetComponent<LifesScript>().LoseLife();
+            canvasVidas.GetComponent<LifesScript>().UpdateLivesUI();
+            if (canvasVidas.GetComponent<LifesScript>().livesRemaining == 0)
+            {
+                SceneManager.LoadScene("MenuIAs");
+            }
+        }
+
+        if (collision.tag.Equals("Puerta") && tieneLlave)
+        {
+            SceneManager.LoadScene("MenuIAs");
+        }
+    }
+
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag.Equals("platMovil")&&!padre)
@@ -496,13 +556,13 @@ public class PlayerController : MonoBehaviour
          //   transform.localScale = scala;
                 
         }
-
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
+        //No quirto que los objetos copia de los otro jugadores lo ejecuten
+        if (!photonView.IsMine)
+            return;
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil") && !collision.gameObject.tag.Equals("Caja")) {
             return;
         }
 
-   
-      
         if ( !checkGround.isGrounded)
         {
             chocandLatPlat = true;
@@ -515,9 +575,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnCollisionStay2D(Collision2D collision)
     {
-   
+        if (!photonView.IsMine)
+            return;
 
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil") && !collision.gameObject.tag.Equals("Caja")) {
             return;
         }
 
@@ -540,8 +601,9 @@ public class PlayerController : MonoBehaviour
             padre = false;
 
         }
-  
-        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil")) {
+        if (!photonView.IsMine)
+            return;
+        if (!collision.gameObject.tag.Equals("suelo") && !collision.gameObject.tag.Equals("Objects") && !collision.gameObject.tag.Equals("platMovil") && !collision.gameObject.tag.Equals("Caja")) {
             return;
         }
  
@@ -562,7 +624,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void changeScale(float f){
-        transform.localScale = new Vector3(f,f,f);
+        //transform.localScale = new Vector3(f,f,f);
+        if (f == 1f && scale == 2)
+            transform.localScale *= 0.5f;
+        else if (f == 2f && scale == 1)
+            transform.localScale *= f;
         scale = (int)f;
     }
 

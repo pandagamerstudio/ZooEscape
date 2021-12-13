@@ -40,11 +40,13 @@ public class BoxScript : MonoBehaviourPun, IPunObservable
 
     private void Update()
     {
-        //if (nPlayersNecesarios < 0)
-        //{
-        //    nPlayersNecesarios = 0;
-        //}
-        textoCaja.text = "" + nPlayersNecesarios;
+        if (nPlayersNecesarios < 0)
+        {
+            textoCaja.text = "0";
+        }else{
+            textoCaja.text = "" + nPlayersNecesarios;
+        }
+        
 
         if (!photonView.IsMine)
         {

@@ -29,9 +29,16 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public GameObject[] personajes;
     public GameObject canvasMenu;
 
+    public GameObject[] carteles;
+    public GameObject[] cartelesPos;
+
 
     void Start(){
 
+        if (PhotonNetwork.NickName != "") playerNameInput.text = PhotonNetwork.NickName;
+
+        if (PlayerPrefs.GetInt("livesRemaining") == 0) PlayerPrefs.SetInt("livesRemaining", 4);
+        
         if (PlayerPrefs.HasKey("LevelMenu")){
             if (PlayerPrefs.GetInt("LevelMenu") == 1){
                 if (PhotonNetwork.IsMasterClient){
@@ -89,6 +96,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
                 actualLevel2 = PlayerPrefs.GetInt("actualLevel2");
             }
         }
+
+        if (!PlayerPrefs.HasKey("Completado"))
+            PlayerPrefs.SetInt("Completado", 0);
 
         createRoomButton.interactable = false;
         findRoomButton.interactable = false;
@@ -287,14 +297,30 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer){
-        UpdateLobbyUI();
+
+        //UpdateLobbyUI();
+        //GameManager.instance.LeavePlayer();
+        PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+        
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnLeftRoom()
+    {
+        base.OnLeftRoom();
+
+        
+        SetScreen(mainScreen);
     }
 
 
     [PunRPC]
     void UpdateLobbyUI(){
         //enable or disable the start button depending on if we are the Host
-        startGameButton.interactable = PhotonNetwork.IsMasterClient;
+        if (PhotonNetwork.PlayerList.Length == 2)
+            startGameButton.interactable = PhotonNetwork.IsMasterClient;
+        else
+            startGameButton.interactable = false;
 
         playerListText.text = "";
         foreach(Player player in PhotonNetwork.PlayerList)
@@ -331,7 +357,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public void OnLeaveLobbyButton(){
         PhotonNetwork.LeaveRoom();
-        SetScreen(mainScreen);
+        //SetScreen(mainScreen);
     }
 
 
@@ -357,6 +383,8 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
             buttonComp.onClick.RemoveAllListeners();
             buttonComp.onClick.AddListener(() => { OnJoinRoomButton(roomNameComp); });
+
+            if (roomList[i].MaxPlayers == 0) button.SetActive(false);
         }
     }
 
@@ -384,17 +412,39 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     }
 
     public void SelectorPersonajes(int i){
+        if(PhotonNetwork.PlayerList.Length != 2) i = 0;
+
+        if (PhotonNetwork.PlayerList.Length == 1) carteles[1].transform.position = cartelesPos[3].transform.position;
+
+        if (PhotonNetwork.IsMasterClient){
+            if (carteles[1].transform.position == cartelesPos[i].transform.position)
+                return;
+        }else{
+            if (carteles[0].transform.position == cartelesPos[i].transform.position)
+                return;
+        }
+
         idJugSel = i;
         foreach(GameObject p in personajes){
             p.GetComponent<Animator>().SetBool("Seleccionado", false);
         }
         Debug.Log(i);
         personajes[i].GetComponent<Animator>().SetBool("Seleccionado", true);
+        photonView.RPC("PersonajeSeleccionado", RpcTarget.All, idJugSel, PhotonNetwork.IsMasterClient);
 
         if (PhotonNetwork.IsMasterClient){
             PlayerPrefs.SetInt ("idPersonaje1", idJugSel);
         }else{
             PlayerPrefs.SetInt ("idPersonaje2", idJugSel);
+        }
+    }
+
+    [PunRPC]
+    public void PersonajeSeleccionado(int i, bool master){
+        if (master){
+            carteles[0].transform.position = cartelesPos[i].transform.position;
+        }else{
+            carteles[1].transform.position = cartelesPos[i].transform.position;
         }
     }
 

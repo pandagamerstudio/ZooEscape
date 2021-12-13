@@ -7,5 +7,5 @@ public interface IEnemyState
     void Execute();
     void Enter(EnemyAI enemy);
     void Exit();
-    void OnTriggerEnter(Collider2D other);
+    void MyOnTriggerEnter(Collider2D other);
 }

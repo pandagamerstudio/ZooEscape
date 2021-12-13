@@ -5,9 +5,12 @@ using UnityEngine;
 public class RangedState : IEnemyState
 {
     private EnemyAI enemy;
+
+    public float timer;
     
     public void Execute()
     {
+        enemy.ThrowKnife();
         if(enemy.Target != null)
         {
             enemy.Move();
@@ -25,8 +28,25 @@ public class RangedState : IEnemyState
     {
 
     }
-    public void OnTriggerEnter(Collider2D other)
+    public void MyOnTriggerEnter(Collider2D other)
     {
+        if(other.tag == "Edge")
+        {
+            enemy.sight.enabled = false;
+            //sumaTimer();
+            enemy.ChangeDirection();
+            enemy.ChangeState(new PatrolState());
+        }
+    }
 
+    public void sumaTimer()
+    {
+        timer += Time.deltaTime;
+
+        if(timer >= 1f)
+        {
+            enemy.sight.enabled = true;
+            timer = 0f;
+        }
     }
 }

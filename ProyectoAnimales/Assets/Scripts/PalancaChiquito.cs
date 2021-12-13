@@ -10,7 +10,7 @@ public class PalancaChiquito : MonoBehaviourPun
     float pulsar;
     private Animator animator;
     public GameObject[] players;
-    bool playerIn, dentro;
+    public bool playerIn, dentro;
     Collider2D collider;
     [SerializeField]
    public static bool unaVez;
@@ -38,7 +38,7 @@ public class PalancaChiquito : MonoBehaviourPun
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") )
+        if (collision.CompareTag("Player") && !dentro)
         {
 
             dentro = true;
@@ -66,7 +66,7 @@ public class PalancaChiquito : MonoBehaviourPun
                     players[1].GetComponent<PlayerController>().changeScale(1);
                     players[0].GetComponent<PlayerController>().changeScale(2);
                 }*/
-                //Caso que ambos jugadores tengan la misma escala(primera colisión), 
+                //Caso que ambos jugadores tengan la misma escala(primera colisiï¿½n), 
  
               
                     cambiarTamano(collision.gameObject);
@@ -86,8 +86,9 @@ public class PalancaChiquito : MonoBehaviourPun
     }
 
     IEnumerator changeActivada(bool b){
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         activada = b;
+        dentro = true;
         collider.enabled = true;
     }
 
@@ -110,7 +111,7 @@ public class PalancaChiquito : MonoBehaviourPun
 
     public void cambiarTamano(GameObject collision) {
 
-        Debug.Log("Tamaño cambiado, mi tamalo acutal "+ (int)Mathf.Abs(miPersonaje.transform.localScale.x));
+        Debug.Log("Tamaï¿½o cambiado, mi tamalo acutal "+ (int)Mathf.Abs(miPersonaje.transform.localScale.x));
 
         if ((int)Mathf.Abs(miPersonaje.transform.localScale.x) == (int)Mathf.Abs(personajeDelOtro.transform.localScale.x))
         {
@@ -147,7 +148,7 @@ public class PalancaChiquito : MonoBehaviourPun
 
 
        
-        Debug.Log("Mi tamaño cambiado " + (int)Mathf.Abs(miPersonaje.transform.localScale.x));
+        Debug.Log("Mi tamaï¿½o cambiado " + (int)Mathf.Abs(miPersonaje.transform.localScale.x));
     }
 
 }
