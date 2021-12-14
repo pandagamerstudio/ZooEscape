@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+using TMPro;
 public class MonoScript : MonoBehaviour
 {
     
@@ -12,11 +13,13 @@ public class MonoScript : MonoBehaviour
     public GameObject llave;
     public GameObject boton;
     public GameObject checkPoint1, checkPoint2;
+    public TMP_Text textoEstados; 
     bool irIzq, irDer, huyendo = false;
     bool atrapado = false;
     bool irBoton = false;
     Vector3 scaleIzq = new Vector3 (-10.0f, 10.0f, 1.0f);
     Vector3 scaleDer = new Vector3 (10.0f, 10.0f, 1.0f);
+    
 
     
     // Start is called before the first frame update
@@ -40,7 +43,8 @@ public class MonoScript : MonoBehaviour
         }
         else {
             if(Mathf.Abs(distanciaX) < 7){
-                Debug.Log("Deberia huir");
+                //Debug.Log("Deberia huir");
+                textoEstados.text = "Huyendo";
                 huir();   
             }
             else{
@@ -49,7 +53,8 @@ public class MonoScript : MonoBehaviour
         }
 
         if (GameObject.Find("Llave") == null && !atrapado){
-            Debug.Log("Pulsar boton");
+            //Debug.Log("Pulsar boton");
+            textoEstados.text = "Pulsando botón";
             irBoton = true;
             huyendo = false;
             PulsarBoton();
@@ -65,11 +70,13 @@ public class MonoScript : MonoBehaviour
         if(!irBoton){
             switch (rutina){
             case 0:
-                Debug.Log("Estoy quieto");
+                //Debug.Log("Estoy quieto");
+                textoEstados.text = "Quieto";
                 quedarseParado();
                 break;
             case 1:
-                Debug.Log("Yendo a checkpoint");
+                //Debug.Log("Yendo a checkpoint");
+                textoEstados.text = "Yendo checkpoint";
                 irCheckpoints();
                 break;
             }
@@ -90,7 +97,7 @@ public class MonoScript : MonoBehaviour
         if (transform.position == boton.transform.position){
             anim.SetBool("Walk", false);
             atrapado = true;
-            Debug.Log("Atrapado");
+            //Debug.Log("Atrapado");
             irBoton = false;
             StartCoroutine(liberarJugador());
         }
@@ -112,7 +119,8 @@ public class MonoScript : MonoBehaviour
                 irIzq = true;
                 if (transform.position.x - 1 <= checkPoint1.transform.position.x)
                 {
-                    Debug.Log("He llegado al 1");
+                    //Debug.Log("He llegado al 1");
+                    textoEstados.text = "He llegado al 1";
                     irIzq = false;
                     irDer = true;    
                 }
@@ -125,7 +133,8 @@ public class MonoScript : MonoBehaviour
                 irDer = true;
                 if(transform.position.x + 1 >= checkPoint2.transform.position.x)
                 {
-                    Debug.Log("He llegado al 2");
+                    //Debug.Log("He llegado al 2");
+                    textoEstados.text = "He llegado al 2";
                     irDer = false;
                     irIzq = true;
                 }
