@@ -230,48 +230,63 @@ Versión 1.0
 > #### 7.1 Diseños básicos de los menús
 > ##### - Menu Inicio:
 > El menú de inicio del juego cuenta con el título en grande en la parte superior de la pantalla y 4 botones debajo de éste: jugar, opciones, créditos y salir del juego. Además, el fondo de este menú cuenta con los dibujos de nuestros 3 personajes.
+> 
 > ![Menu](https://user-images.githubusercontent.com/93246063/146686195-c26254ce-707a-4384-a54b-5d8af2681536.png)
 > ##### - Introduce tu nombre:
 > Es el menú que aparece cuando le das al botón de play del menú de inicio. En este menú el jugador puede introducir su nombre para la partida, y elegir entre crear un sala o unirse a una ya creada. Además, como todos los menús, tiene un botón de return que le permite volver a la pantalla anterior.
+> 
 > ![](https://i.imgur.com/pUBZSHI.png)
 > ##### - Crear sala:
 > Es el menú que aparece cuando le das al botón de crear sala. En este menú puedes introducir el nombre que quieres que tenga tu sala, aunque si no pones nada el sistema te asignará uno él. También hay un botón para confirmarlo y para volver a la pantalla anterior.
+> 
 > ![](https://i.imgur.com/rFqqsR7.png)
 > ##### - Encontrar sala:
 > Es la otra opción respecto al anterior menú. Cuando un jugador ya ha creado una sala, el segundo jugador deberá buscar esa sala en vez de crear otra nueva (si quieren jugar juntos). En este menú aparecerán todas las salas disponibles, y cuántos jugadores hay en cada una respecto a la capacidad total de cada sala (de dos jugadores). Cuenta con un botón de "refresh" que permite refrescar la lista de salas por si acaso se crea la sala después de que el jugador haya entrado a buscarla.
+> 
 > ![](https://i.imgur.com/XRqRb9p.png)
 > ##### - Lobby de inicio:
 > Es el menú que aparece justo antes de empezar la partida. En este menú se puede ver el nombre de la sala y los jugadores que están en esa sala. Además, aparecen los 3 avatares disponibles en nuestro juego para que el jugador elija con cúal quiere jugar. 
+> 
 > ![Selección](https://user-images.githubusercontent.com/93246063/146686198-67acd327-21da-470d-ac99-d1c3cf31607d.png)
 > ##### - Niveles:
 > El menú de niveles se dividirá en tantas pantallas como sean necesarias. Si tenemos 8 niveles, tendremos solo una. Si tenemos 16, tendremos dos y nos desplazaríamos de una a otra con las flechas que aparecerán en los laterales. Con el botón de 'return' podemos volver al menú de inicio.
+> 
 >![](https://i.imgur.com/9EOEABY.png)
 > ##### - Historia:
 > En esta pantalla se muestran unas pocas lineas de texto poniendo en contexto al jugador.
+> 
 >![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/Historia.png?raw=true)
 > ##### - Interfaz:
 > La interfaz de nuestro juego es muy sencilla. Para ordenador solo se muestra la vida del jugador, y para móviles, se muestran las vidas, los controles y el icono del menú de  > pausa.
+> 
 > ![Nivel](https://user-images.githubusercontent.com/93246063/146686196-5aa40108-06eb-41a3-b9fb-64ce3048f350.png)
 > ##### - Opciones:
 > El menú de opciones le da la opción al jugador de subir/bajar el volumen y los efectos especiales del juego. Además puede acceder a 'controles' para ver o recordar los controles del juego. El botón de 'Quit' te devuelve al menú de inicio o de pausa, dependiendo desde cuál de los dos has accedido a 'opciones'.
->![](https://i.imgur.com/m1epiTo.png)
+> 
+> ![Options](https://user-images.githubusercontent.com/93246063/146686197-480b8ce6-7ea3-42f4-8071-c914c340f4bd.png)
 > ##### - Pausa:
 > El menú de pausa le da al jugador la opción de volver al juego, reiniciar el nivel actual, ir al menú de opciones, salir al menú de niveles o salir al menú principal. Le permitimos al jugador volver al menú de niveles para que el juego sea más dinámico y fácil de navegar.
->![](https://i.imgur.com/Wi7r0q6.png)
+> 
+> ![](https://i.imgur.com/Wi7r0q6.png)
 > ##### - Controles:
 > En esta pantalla mostramos al jugador los controles de nuestro juego. Se puede acceder a esta pantalla desde el menú de opciones, el cual a su vez se puede acceder desde el menú inicial o el menú de pausa. De este modo el jugador podrá consultar los controles del juego en cualquier momento de la partida si así lo necesita.
+> 
 > ![Controles](https://user-images.githubusercontent.com/93246063/146686193-64365061-c3be-40bb-aa5c-83ff3ef558ac.png)
 > ##### - Superar Nivel:
 > Esta pantalla aparece cuando superamos un nivel. En ella tenemos las opciones de volver al menu de niveles (por si queremos jugar un nivel distinto al siguiente) o siguiente nivel.
+> 
 >![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/PasarseUnNivel.png?raw=true)
 > ##### - Victoria:
 > Es una pantalla que aparece cuando superamos el último nivel. En ella se nos da la opción de volver al menú principal, o al menú de niveles.
+> 
 >![](https://github.com/pandagamerstudio/ZooEscape/blob/main/Dise%C3%B1o/Menus/Preview/Victoria.png?raw=true)
 > ##### - GameOver:
 > Es una pantalla que aparece cuando pierdes todas las vidas. En ella se te da la opción de jugar de nuevo o de volver al menú de inicio.
+> 
 >![](https://i.imgur.com/l5aC8wN.png)
 > ##### - Creditos:
 > Es una pantalla que muestra la información relevante sobre los autores del juego y nuestra compañía.
+> 
 >![](https://i.imgur.com/ESqFIR8.png)
 
 > #### 7.2 Diagrama de flujo
