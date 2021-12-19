@@ -33,6 +33,7 @@ public class LifesScript : MonoBehaviourPun
 
         int aux = livesRemaining;
 
+    /*
         while(aux > 0)
         {
             if(livesRemaining == 3)
@@ -51,6 +52,22 @@ public class LifesScript : MonoBehaviourPun
                 lives[1].enabled = false;
             }
             aux--;
+        }*/
+
+        if(livesRemaining == 3)
+        {
+            lives[3].enabled = false;
+        }
+        if (livesRemaining == 2)
+        {
+            lives[3].enabled = false;
+            lives[2].enabled = false;
+        }
+        if (livesRemaining == 1)
+        {
+            lives[3].enabled = false;
+            lives[2].enabled = false;
+            lives[1].enabled = false;
         }
     }
 }

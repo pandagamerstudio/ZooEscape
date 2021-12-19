@@ -113,10 +113,15 @@ public class PauseScript : MonoBehaviourPun
         {
             PhotonNetwork.LoadLevel("Derrota");
         } else {
-            PlayerPrefs.SetInt("LevelMenu", 1);
+            photonView.RPC("OnLevelMenu", RpcTarget.All);
             PhotonNetwork.LoadLevel("Menu");
         }
         
+    }
+
+    [PunRPC]
+    public void OnLevelMenu(){
+        PlayerPrefs.SetInt("LevelMenu", 1);
     }
 
     public void OnExitToMain(){

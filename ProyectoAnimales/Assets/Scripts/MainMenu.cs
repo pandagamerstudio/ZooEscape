@@ -65,10 +65,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
                 
 
                 return;
+            }else{
+                PlayerPrefs.SetInt("livesRemaining", 4);
             }
         }
 
-        PlayerPrefs.DeleteKey("livesRemaining");
+        //PlayerPrefs.DeleteKey("livesRemaining");
+        //
 
         if (PlayerPrefs.HasKey("music") == false)
         {
